@@ -21,6 +21,7 @@ HERE=Path(__file__).resolve().parent
 RESEARCH=HERE.parent
 DEVELOPMENT=RESEARCH/'simple_herd_strike_pilot_2026-11-08'
 REPLICATION=RESEARCH/'exposed_replication_2026-11-08'
+LONGER=RESEARCH/'longer_replication_2026-11-09'
 DEPTH=RESEARCH/'gannet_depth_study_2026-11-08'
 OUT=HERE/'figures'
 D='#087F8C'
@@ -181,59 +182,92 @@ def development_figure():
     save(fig,'fig2_development',caption,[file,DEVELOPMENT/'results/analysis_final/analysis_audit.json'],rows)
 
 
+def publication_figure(pairs,statistics,output):
+    # Full reset keeps these pixels independent of whichever other paper figure
+    # was generated earlier, while preserving its caller's plotting style.
+    with matplotlib.rc_context(matplotlib.rcParamsDefault):
+        return _publication_figure(pairs,statistics,output)
+
+
+def _publication_figure(pairs,statistics,output):
+    plt.rcParams.update({'font.family':'DejaVu Sans','font.size':8.5,'axes.spines.top':False,
+        'axes.spines.right':False,'pdf.fonttype':42,'savefig.facecolor':'white'})
+    fig,axes=plt.subplots(1,2,figsize=(7.05,2.45),sharex=True)
+    for ax,species,color,title in zip(axes,('D','G'),('#087F8C','#D98525'),('Dolphin partner effect','Gannet partner effect')):
+        ax.axhline(0,color='#73818B',linewidth=.7)
+        points={}
+        for index,horizon in enumerate((36.,72.)):
+            group=sorted((r for r in pairs if float(r['horizon_T'])==horizon),key=lambda r:int(r['school_seed']))
+            assert len(group)==8
+            y=np.asarray([float(r[species+'_difference']) for r in group]);x=index+np.linspace(-.16,.16,8)
+            ax.scatter(x,y,s=21,color=color,alpha=.8,zorder=3,label='School difference' if index==0 else None)
+            mean=float(y.mean());ax.scatter([index],[mean],marker='D',s=34,color='#263746',zorder=5,
+                label='Mean' if index==0 else None)
+            points[str(int(horizon))]=dict(schools=[int(r['school_seed']) for r in group],differences=y.tolist(),mean=mean)
+            if horizon==36.:
+                low,high=statistics[species]['interval']
+                ax.vlines(index,low,high,color='#263746',lw=1.4,zorder=4)
+                ax.hlines([low,high],index-.07,index+.07,color='#263746',lw=1.4,zorder=4)
+                points['36']['marginal_97_5_percent_interval']=[low,high]
+        ax.set(xticks=[0,1],xticklabels=['36T primary','72T secondary'],xlim=(-.42,1.42),
+            title=title,ylabel='Mixed − alone captures')
+        ax.grid(axis='y',alpha=.18)
+        if species=='D':ax.legend(frameon=False,fontsize=7,loc='best')
+    fig.tight_layout(pad=.8)
+    for ext in ('png','pdf'):fig.savefig(output/('fig3_replication.'+ext),dpi=230,bbox_inches='tight',pad_inches=.035)
+    plt.close(fig)
+    return dict(D=axes_data(pairs,'D'),G=axes_data(pairs,'G'),primary_statistics=statistics)
+
+
+def axes_data(pairs,species):
+    return {str(int(h)):[dict(school=int(r['school_seed']),difference=float(r[species+'_difference']))
+        for r in sorted(pairs,key=lambda r:int(r['school_seed'])) if float(r['horizon_T'])==h] for h in (36.,72.)}
+
+
 def replication_figure():
-    base=REPLICATION/'results/full_36T_v1/cases';pairs=[];inputs=[]
-    expected=[base/f's{s}_exposed_{g}_c{c}' for s in (39063501,39063502)
-              for c in (61001,61002) for g in ('D','DG')]
-    if not all((p/'completion.json').exists() for p in expected):
-        print('fig3_replication: pending sealed 36T pairs; no placeholder generated',flush=True)
-        return False
-    for seed in (39063501,39063502):
-        for capture in (61001,61002):
-            summaries={}
-            for presence in ('D','DG'):
-                directory=base/f's{seed}_exposed_{presence}_c{capture}'
-                require_sealed(directory,['summary.json','audit.json'])
-                summary=read(directory/'summary.json')
-                assert summary['status']=='complete' and abs(summary['actual_duration']-36.)<1e-7
-                assert read(directory/'audit.json')['status']=='passed'
-                summaries[presence]=summary;inputs.extend([directory/'summary.json',directory/'completion.json'])
-            a=summaries['D']['species']['D']['captures'];b=summaries['DG']['species']['D']['captures']
-            pairs.append({'school_seed':seed,'capture_seed':capture,'D':a,'DG':b,'difference':b-a})
-    fig,axes=plt.subplots(1,2,figsize=(7.05,2.4),gridspec_kw={'width_ratios':[1.45,1]})
-    fig.subplots_adjust(left=.075,right=.995,wspace=.58,bottom=.29,top=.77)
-    x=np.array([0.,.9,2.25,3.15])
-    for offset,key,color,label in [(-.16,'D',D,'Dolphins only'),(.16,'DG',DG,'With gannets')]:
-        bars=axes[0].bar(x+offset,[p[key] for p in pairs],.29,color=color,label=label,zorder=3)
-        axes[0].bar_label(bars,padding=2,fontsize=8.5)
-    panel(axes[0],'a','Fresh-school captures')
-    axes[0].set_ylabel('Dolphin captures / 36T')
-    axes[0].set_ylim(0,max(max(p['D'],p['DG']) for p in pairs)+7)
-    axes[0].set_xticks(x,[str(p['capture_seed']) for p in pairs])
-    axes[0].text(.45,-.34,'School 39063501',ha='center',transform=axes[0].get_xaxis_transform(),fontsize=8.5)
-    axes[0].text(2.7,-.34,'School 39063502',ha='center',transform=axes[0].get_xaxis_transform(),fontsize=8.5)
-    axes[0].axvline(1.575,color='#D5DEE5',lw=.7)
-    panel(axes[1],'b','Paired change')
-    values=[p['difference'] for p in pairs];y=np.arange(4)[::-1]
-    axes[1].axvline(0,color='#74828E',lw=.8)
-    for yy,p in zip(y,pairs):
-        axes[1].plot([0,p['difference']],[yy,yy],color=D,lw=1.2)
-        axes[1].scatter([p['difference']],[yy],s=35,color=D,zorder=3)
-        axes[1].annotate(f'{p["difference"]:+d}',(p['difference'],yy),xytext=(5,5),
-                         textcoords='offset points',fontsize=8.5)
-    axes[1].set_yticks(y,[f'S{i//2+1} / {p["capture_seed"]}' for i,p in enumerate(pairs)])
-    axes[1].set_xlabel('Capture difference (DG − D)')
-    axes[1].set_xlim(min(0,min(values))-2,max(0,max(values))+3)
-    axes[1].set_ylim(-.6,3.7);axes[1].grid(False)
-    fig.legend(*axes[0].get_legend_handles_labels(),loc='upper center',ncol=2,frameon=False,bbox_to_anchor=(.5,1.015))
-    caption=('Fresh-school replication of the frozen exposed-target policy. (a) Actual dolphin '
-        'captures with and without gannets for two fresh schools crossed with two random-stream '
-        'settings; labels 61001 and 61002 identify those settings. (b) The within-pair capture '
-        'difference; S1 and S2 denote schools 39063501 and 39063502. All encounters last 36T and retain identical dolphin rules and starting '
-        'conditions within each pair. Four stochastic comparisons represent two independent '
-        'school configurations, not four independent schools. No confidence intervals are shown.')
-    save(fig,'fig3_replication',caption,inputs,pairs)
+    analysis=LONGER/'results/analysis_final'
+    audit=read(analysis/'analysis_audit.json')
+    assert audit['status']=='passed' and audit['sealed_horizon_records']==48 and not audit['pending']
+    pairs=table(analysis/'paired_horizons.csv');statistics=read(analysis/'primary_statistics.json')
+    plan=read(LONGER/'analysis_plan.json')
+    assert statistics['status']=='complete' and statistics['independent_schools']==8 and len(pairs)==16
+    inputs=[analysis/'paired_horizons.csv',analysis/'primary_statistics.json',analysis/'analysis_audit.json',LONGER/'analysis_plan.json',Path(__file__)]
+    by={(int(r['school_seed']),float(r['horizon_T'])):r for r in pairs}
+    for school in range(39064501,39064509):
+        for horizon in (36.,72.):
+            states={}
+            for presence in ('D','G','DG'):
+                directory=LONGER/'results/full_72T_v1/cases'/f's{school}_exposed_{presence}_c61001'
+                seal_path=directory/f'checkpoint_{horizon:g}T.seal.json';seal=read(seal_path)
+                assert seal['status']=='complete'
+                for name,digest in seal['files'].items():assert sha(directory/name)==digest
+                data_path=directory/f'checkpoint_{horizon:g}T.json'
+                states[presence]=read(data_path);inputs.extend([seal_path,data_path])
+            row=by[(school,horizon)]
+            for field,presence,species in (('D_alone','D','D'),('D_with_gannets','DG','D'),('G_alone','G','G'),('G_with_dolphins','DG','G')):
+                assert int(row[field])==states[presence]['species'][species]['captures']
+            assert int(row['D_difference'])==int(row['D_with_gannets'])-int(row['D_alone'])
+            assert int(row['G_difference'])==int(row['G_with_dolphins'])-int(row['G_alone'])
+    vectors=np.asarray([[float(by[(s,36.)]['D_difference']),float(by[(s,36.)]['G_difference'])] for s in range(39064501,39064509)])
+    generator=np.random.default_rng(plan['bootstrap']['seed'])
+    draws=generator.integers(0,8,size=(plan['bootstrap']['draws'],8))
+    intervals=np.quantile(vectors[draws].mean(axis=1),plan['bootstrap']['quantiles'],axis=0)
+    for index,species in enumerate(('D','G')):
+        assert statistics[species]['mean_difference']==float(vectors[:,index].mean())
+        assert np.array_equal(np.asarray(statistics[species]['interval']),intervals[:,index])
+    OUT.mkdir(parents=True,exist_ok=True)
+    plotted=publication_figure(pairs,statistics,OUT)
+    caption='Eight-school replication of the unchanged exposed-prey rule. Each point is one school’s mixed-minus-alone capture difference. Diamonds show equal-school means. Bars at 36T are 97.5% marginal percentile bootstrap intervals for the two primary species (approximate 95% familywise coverage, with small-sample limitations). The 72T outcomes are descriptive extensions of the same trajectories. No historical development or two-school follow-up data enter these estimates.'
+    receipt_path=OUT/'figure_receipts.json';receipts=read(receipt_path) if receipt_path.exists() else {}
+    receipts['fig3_replication']=dict(caption=caption,sources=[source(p) for p in inputs],plotted_data=plotted,
+        created_at=datetime.now(ZoneInfo('Australia/Perth')).isoformat(),native_steps=0,
+        outputs={ext:source(OUT/('fig3_replication.'+ext)) for ext in ('pdf','png')},
+        uncertainty_intervals='97.5% marginal school-vector bootstrap at36T only;72T descriptive')
+    receipt_path.write_text(json.dumps(receipts,indent=2,allow_nan=False)+'\n')
+    (OUT/'captions.txt').write_text('\n\n'.join(key+': '+receipts[key]['caption'] for key in sorted(receipts))+'\n')
+    print('fig3_replication: eight independent schools,36Tprimary/72Tsecondary',flush=True)
     return True
+
 
 
 def mechanism_figure():

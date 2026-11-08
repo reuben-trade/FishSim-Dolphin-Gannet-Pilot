@@ -1,0 +1,37 @@
+{
+  "status": "passed",
+  "mode": "quick_integration",
+  "actual_model": true,
+  "behavioral_code_modified": false,
+  "checkpoint_arrays_modified": false,
+  "duration_per_case_T": 0.5,
+  "cases": 2,
+  "native_steps": 800,
+  "wall_seconds": 16.718873550009448,
+  "command": [
+    "python",
+    "run_model.py",
+    "--quick",
+    "--workers",
+    "1",
+    "--output",
+    "outputs/native_smoke_validation"
+  ],
+  "runtime_relocation": "work/model_runtime/NOTEBOOK_RELOCATION.json",
+  "output": "outputs/native_smoke_validation",
+  "interpretation": "Quick check is too short to test the 2T herding cycle or feeding benefit.",
+  "case_checks": {
+    "s39063501_exposed_DG_c61001": {
+      "audit": "passed",
+      "duration_T": 0.49999999999954525,
+      "native_steps": 400,
+      "completion_sha256": "e1a6704ed12b4fd96754bea200f1a8a0ce02a8c9e834e875261ade3e1e93e76b"
+    },
+    "s39063501_exposed_D_c61001": {
+      "audit": "passed",
+      "duration_T": 0.49999999999954525,
+      "native_steps": 400,
+      "completion_sha256": "f817ccbd938da56c529ff335e4ca19839cdbf5ee18473af071387e4b78835ce5"
+    }
+  }
+}

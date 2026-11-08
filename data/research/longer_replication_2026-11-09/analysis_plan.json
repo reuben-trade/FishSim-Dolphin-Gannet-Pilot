@@ -1,0 +1,44 @@
+{
+  "prespecified_at": "2026-11-09T00:33:04.632594+08:00",
+  "native_steps": 0,
+  "primary_horizon_T": 36.0,
+  "secondary_horizons_T": [
+    72.0
+  ],
+  "secondary_interval_T": [
+    36.0,
+    72.0
+  ],
+  "independent_units": [
+    39064501,
+    39064502,
+    39064503,
+    39064504,
+    39064505,
+    39064506,
+    39064507,
+    39064508
+  ],
+  "weighting": "each complete school contributes equal weight; no weighting by captures or fish survival",
+  "paired_primary": [
+    "D_captures_DG minus D_captures_D",
+    "G_captures_DG minus G_captures_G"
+  ],
+  "bootstrap": {
+    "draws": 10000,
+    "seed": 88491009,
+    "generator": "NumPydefault_rng PCG64",
+    "resampling_unit": "whole paired school vectors, shared resampling indices for bothspecies",
+    "per_species_marginal_coverage": 0.975,
+    "quantiles": [
+      0.0125,
+      0.9875
+    ],
+    "interpretation": "approximate95%familywise coverage for two primary species viaBonferroni; percentile bootstrap withn8 can be unstable; notbiological calibration"
+  },
+  "secondary_inference": "descriptive only; no horizon pooling or independence claim",
+  "joint_positive": "count schools with strict positive D andG differences; zerosreported separately",
+  "historical_data": "not pooled with these8 independent freshschools",
+  "depletion": "allfixedhorizonfoodcounts includeexactabsorbing continuation; effort observedonlyuntilphysicaltermination",
+  "missing": "never fabricate missingcases; report complete-schoolpairs andexplicitpending/failurecounts; primarybootstraponlyafterall8tripletsvalidated"
+}

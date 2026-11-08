@@ -1,6 +1,6 @@
 {
   "fig1_model": {
-    "caption": "Model rules and one recorded encounter. (a) Both dolphin target policies use the same 2T near-prey herding cycle, one feasible strike and normal handling/recovery. Gannets influence dolphins through prey dynamics, without a dolphin response to a bird cue. (b,c) Actual top and side views at 12T for development school 39061002, exposed targeting with gannets; lines show predator paths over 6\u201312T and crosses mark actual captures in that interval. Horizontal coordinates are relative to the surviving fish centroid at 12T; z=0 is the surface. Coordinates are model units. This snapshot illustrates the model, not successful whole-school containment.",
+    "caption": "Model rules and one recorded encounter. (a) Both dolphin target policies use the same 2T near-prey herding cycle, one feasible strike and normal handling/recovery. Gannets influence dolphins through prey dynamics, without a dolphin response to a bird cue. (b,c) Actual top and side views at 12T for development school 39061002, exposed targeting with gannets; lines show predator paths over 6–12T and crosses mark actual captures in that interval. Horizontal coordinates are relative to the surviving fish centroid at 12T; z=0 is the surface. Coordinates are model units. This snapshot illustrates the model, not successful whole-school containment.",
     "sources": [
       {
         "path": "/home/venture/uwa/complex-systems/FishSim-RL/research/simple_herd_strike_pilot_2026-11-08/results/full_36T_v1/cases/s39061002_exposed_DG/trajectories.npz",
@@ -4885,115 +4885,396 @@
     "uncertainty_intervals": "none"
   },
   "fig3_replication": {
-    "caption": "Fresh-school replication of the frozen exposed-target policy. (a) Actual dolphin captures with and without gannets for two fresh schools crossed with two random-stream settings; labels 61001 and 61002 identify those settings. (b) The within-pair capture difference; S1 and S2 denote schools 39063501 and 39063502. All encounters last 36T and retain identical dolphin rules and starting conditions within each pair. Four stochastic comparisons represent two independent school configurations, not four independent schools. No confidence intervals are shown.",
-    "sources": [
-      {
-        "path": "/home/venture/uwa/complex-systems/FishSim-RL/research/exposed_replication_2026-11-08/results/full_36T_v1/cases/s39063501_exposed_D_c61001/summary.json",
-        "sha256": "d2ff9838af53c752616db9130de9497181565578a3107ab876023d776f05752b"
+    "caption": "Eight-school replication of the unchanged exposed-prey rule. Each point is one school’s mixed-minus-alone capture difference. Diamonds show equal-school means. Bars at 36T are 97.5% marginal percentile bootstrap intervals for the two primary species (approximate 95% familywise coverage, with small-sample limitations). The 72T outcomes are descriptive extensions of the same trajectories. No historical development or two-school follow-up data enter these estimates.",
+    "plotted_data": {
+      "D": {
+        "36": [
+          {
+            "school": 39064501,
+            "difference": -2.0
+          },
+          {
+            "school": 39064502,
+            "difference": 3.0
+          },
+          {
+            "school": 39064503,
+            "difference": -1.0
+          },
+          {
+            "school": 39064504,
+            "difference": -2.0
+          },
+          {
+            "school": 39064505,
+            "difference": 11.0
+          },
+          {
+            "school": 39064506,
+            "difference": 3.0
+          },
+          {
+            "school": 39064507,
+            "difference": -6.0
+          },
+          {
+            "school": 39064508,
+            "difference": 2.0
+          }
+        ],
+        "72": [
+          {
+            "school": 39064501,
+            "difference": 8.0
+          },
+          {
+            "school": 39064502,
+            "difference": 11.0
+          },
+          {
+            "school": 39064503,
+            "difference": -3.0
+          },
+          {
+            "school": 39064504,
+            "difference": 0.0
+          },
+          {
+            "school": 39064505,
+            "difference": 6.0
+          },
+          {
+            "school": 39064506,
+            "difference": 7.0
+          },
+          {
+            "school": 39064507,
+            "difference": -5.0
+          },
+          {
+            "school": 39064508,
+            "difference": 4.0
+          }
+        ]
       },
-      {
-        "path": "/home/venture/uwa/complex-systems/FishSim-RL/research/exposed_replication_2026-11-08/results/full_36T_v1/cases/s39063501_exposed_D_c61001/completion.json",
-        "sha256": "df57912c662bff0ca6f97021f927a058bf8909d981438b3e05f5327ff132c016"
+      "G": {
+        "36": [
+          {
+            "school": 39064501,
+            "difference": 7.0
+          },
+          {
+            "school": 39064502,
+            "difference": 4.0
+          },
+          {
+            "school": 39064503,
+            "difference": 8.0
+          },
+          {
+            "school": 39064504,
+            "difference": 5.0
+          },
+          {
+            "school": 39064505,
+            "difference": 6.0
+          },
+          {
+            "school": 39064506,
+            "difference": -1.0
+          },
+          {
+            "school": 39064507,
+            "difference": 4.0
+          },
+          {
+            "school": 39064508,
+            "difference": 8.0
+          }
+        ],
+        "72": [
+          {
+            "school": 39064501,
+            "difference": 9.0
+          },
+          {
+            "school": 39064502,
+            "difference": 10.0
+          },
+          {
+            "school": 39064503,
+            "difference": 3.0
+          },
+          {
+            "school": 39064504,
+            "difference": 0.0
+          },
+          {
+            "school": 39064505,
+            "difference": 14.0
+          },
+          {
+            "school": 39064506,
+            "difference": 4.0
+          },
+          {
+            "school": 39064507,
+            "difference": 11.0
+          },
+          {
+            "school": 39064508,
+            "difference": 13.0
+          }
+        ]
       },
-      {
-        "path": "/home/venture/uwa/complex-systems/FishSim-RL/research/exposed_replication_2026-11-08/results/full_36T_v1/cases/s39063501_exposed_DG_c61001/summary.json",
-        "sha256": "b24d208bbae5bb7fc4ef724cd20c7785868266e036778acc6048339456c4cba7"
-      },
-      {
-        "path": "/home/venture/uwa/complex-systems/FishSim-RL/research/exposed_replication_2026-11-08/results/full_36T_v1/cases/s39063501_exposed_DG_c61001/completion.json",
-        "sha256": "1698e6334a04a8042a4748b1d7780ef4c7b798ee074e1b33bdc33db9a4c82992"
-      },
-      {
-        "path": "/home/venture/uwa/complex-systems/FishSim-RL/research/exposed_replication_2026-11-08/results/full_36T_v1/cases/s39063501_exposed_D_c61002/summary.json",
-        "sha256": "c30a5880f1244f81ff818cccc1fc89453eef260020a9bf75efce496d96c39e69"
-      },
-      {
-        "path": "/home/venture/uwa/complex-systems/FishSim-RL/research/exposed_replication_2026-11-08/results/full_36T_v1/cases/s39063501_exposed_D_c61002/completion.json",
-        "sha256": "466fab143b20e709919350ecca80cfb9438aa1527c8b854cb97dfb6baf1fa28c"
-      },
-      {
-        "path": "/home/venture/uwa/complex-systems/FishSim-RL/research/exposed_replication_2026-11-08/results/full_36T_v1/cases/s39063501_exposed_DG_c61002/summary.json",
-        "sha256": "71ee7320609171df4995a382fae3284e0ae007ff8a08dd8c9413ea71fbc07a52"
-      },
-      {
-        "path": "/home/venture/uwa/complex-systems/FishSim-RL/research/exposed_replication_2026-11-08/results/full_36T_v1/cases/s39063501_exposed_DG_c61002/completion.json",
-        "sha256": "6b522474716b61e4b5325cfa2be0a39a3235264b8ffaa8f0f0549d8da2e10d3c"
-      },
-      {
-        "path": "/home/venture/uwa/complex-systems/FishSim-RL/research/exposed_replication_2026-11-08/results/full_36T_v1/cases/s39063502_exposed_D_c61001/summary.json",
-        "sha256": "9453d1417a84f28bfac828f649ca25345cb76b96e09f8662e5423ae81bec7d5e"
-      },
-      {
-        "path": "/home/venture/uwa/complex-systems/FishSim-RL/research/exposed_replication_2026-11-08/results/full_36T_v1/cases/s39063502_exposed_D_c61001/completion.json",
-        "sha256": "10f34986efddd9607a92b0df0ddd1e5bc10aef780b530c0da3b7059f8e32ca5a"
-      },
-      {
-        "path": "/home/venture/uwa/complex-systems/FishSim-RL/research/exposed_replication_2026-11-08/results/full_36T_v1/cases/s39063502_exposed_DG_c61001/summary.json",
-        "sha256": "1fc1df872928332d16e8996bc822232b377bcde5c2bfd76e997cb5621802fc22"
-      },
-      {
-        "path": "/home/venture/uwa/complex-systems/FishSim-RL/research/exposed_replication_2026-11-08/results/full_36T_v1/cases/s39063502_exposed_DG_c61001/completion.json",
-        "sha256": "2511b86a2fdff5621eec17058e077cfad5b0af5e34f58669f83d343a1ed7fdf0"
-      },
-      {
-        "path": "/home/venture/uwa/complex-systems/FishSim-RL/research/exposed_replication_2026-11-08/results/full_36T_v1/cases/s39063502_exposed_D_c61002/summary.json",
-        "sha256": "f1fcc1a2114aeed00e9c3c3633c2509c890c53f6a49bac5425e4af9eb6c38bbe"
-      },
-      {
-        "path": "/home/venture/uwa/complex-systems/FishSim-RL/research/exposed_replication_2026-11-08/results/full_36T_v1/cases/s39063502_exposed_D_c61002/completion.json",
-        "sha256": "c0aa1f24eaa3c5c8e11a4f43bb836059880aeb605dd8900a59381a78fee06fbf"
-      },
-      {
-        "path": "/home/venture/uwa/complex-systems/FishSim-RL/research/exposed_replication_2026-11-08/results/full_36T_v1/cases/s39063502_exposed_DG_c61002/summary.json",
-        "sha256": "21cb1c33e6f1f997a420f773c2c04c067e08c043446d927e4557e1d3a71ca47c"
-      },
-      {
-        "path": "/home/venture/uwa/complex-systems/FishSim-RL/research/exposed_replication_2026-11-08/results/full_36T_v1/cases/s39063502_exposed_DG_c61002/completion.json",
-        "sha256": "c921a1e40f69d650dfcfdbefa2fbdd37a6557288b1dc3f1eec64d94b65950823"
-      }
-    ],
-    "plotted_data": [
-      {
-        "school_seed": 39063501,
-        "capture_seed": 61001,
-        "D": 23,
-        "DG": 24,
-        "difference": 1
-      },
-      {
-        "school_seed": 39063501,
-        "capture_seed": 61002,
-        "D": 20,
-        "DG": 24,
-        "difference": 4
-      },
-      {
-        "school_seed": 39063502,
-        "capture_seed": 61001,
-        "D": 22,
-        "DG": 23,
-        "difference": 1
-      },
-      {
-        "school_seed": 39063502,
-        "capture_seed": 61002,
-        "D": 22,
-        "DG": 30,
-        "difference": 8
-      }
-    ],
-    "created_at": "2026-11-08T23:48:43.816675+08:00",
-    "outputs": {
-      "pdf": {
-        "path": "/home/venture/uwa/complex-systems/FishSim-RL/research/thesis_working_draft_2026-11-08/figures/fig3_replication.pdf",
-        "sha256": "e598ed2d33f49c8804bf831e13e454a3fbb1dc223ade1e38e2ac7525712f12d2"
-      },
-      "png": {
-        "path": "/home/venture/uwa/complex-systems/FishSim-RL/research/thesis_working_draft_2026-11-08/figures/fig3_replication.png",
-        "sha256": "dbdd6450776c1c7d7766742da161b8bae13904a70c88f7c10b4aef3c30c0d8e4"
+      "primary_statistics": {
+        "status": "complete",
+        "independent_schools": 8,
+        "bootstrap_draws": 10000,
+        "analysis_seed": 88491009,
+        "resampling_unit": "whole paired school vectors, equal school weights",
+        "marginal_interval_coverage": 0.975,
+        "familywise_interpretation": "approximate95% across two primary species; small-n percentile-bootstrap limits",
+        "D": {
+          "mean_difference": 1.0,
+          "interval": [
+            -2.375,
+            5.0
+          ]
+        },
+        "G": {
+          "mean_difference": 5.125,
+          "interval": [
+            2.75,
+            7.0
+          ]
+        },
+        "joint_positive": 3
       }
     },
+    "sources": [
+      {
+        "path": "/home/venture/uwa/complex-systems/FishSim-RL/research/longer_replication_2026-11-09/results/analysis_final/paired_horizons.csv",
+        "sha256": "03896c372c38ee49bf06249b66072019e4746aa506c2d19a94b192e24a32958e"
+      },
+      {
+        "path": "/home/venture/uwa/complex-systems/FishSim-RL/research/longer_replication_2026-11-09/results/analysis_final/primary_statistics.json",
+        "sha256": "b7d4f57378ab983241caec19699f772798c5e10b6c93c83d73da15d2c5e24cce"
+      },
+      {
+        "path": "/home/venture/uwa/complex-systems/FishSim-RL/research/longer_replication_2026-11-09/results/analysis_final/analysis_audit.json",
+        "sha256": "042e59ce5a80dd8da7617b7e57ff28483fbdae9b9fb8db8423a9393996e8a90a"
+      }
+    ],
+    "horizon_seals": [
+      {
+        "path": "/home/venture/uwa/complex-systems/FishSim-RL/research/longer_replication_2026-11-09/results/full_72T_v1/cases/s39064501_exposed_DG_c61001/checkpoint_36T.seal.json",
+        "sha256": "fc3ff01b96c5d8d88b07716cbee715764ee08ea5a65a939a9a5bd069a06b1085"
+      },
+      {
+        "path": "/home/venture/uwa/complex-systems/FishSim-RL/research/longer_replication_2026-11-09/results/full_72T_v1/cases/s39064501_exposed_DG_c61001/checkpoint_72T.seal.json",
+        "sha256": "e7d0d4d239ab58701f709f2b9c82c90275c43bb6dcbe8f5fe70fcb5c83dd6f48"
+      },
+      {
+        "path": "/home/venture/uwa/complex-systems/FishSim-RL/research/longer_replication_2026-11-09/results/full_72T_v1/cases/s39064501_exposed_D_c61001/checkpoint_36T.seal.json",
+        "sha256": "aacdaf8b174523c0d13f2e5705411f05689f55f5196cbf7c64d54f1a2052f732"
+      },
+      {
+        "path": "/home/venture/uwa/complex-systems/FishSim-RL/research/longer_replication_2026-11-09/results/full_72T_v1/cases/s39064501_exposed_D_c61001/checkpoint_72T.seal.json",
+        "sha256": "d367fa2996effb4dc4335328c695e888e7b15fe6ddf0ccea96ca39d66c5d58f7"
+      },
+      {
+        "path": "/home/venture/uwa/complex-systems/FishSim-RL/research/longer_replication_2026-11-09/results/full_72T_v1/cases/s39064501_exposed_G_c61001/checkpoint_36T.seal.json",
+        "sha256": "e166206375d13b6df075b3bc83d0668052eda3886cb9bf4ddd9442eb9e0aa5bc"
+      },
+      {
+        "path": "/home/venture/uwa/complex-systems/FishSim-RL/research/longer_replication_2026-11-09/results/full_72T_v1/cases/s39064501_exposed_G_c61001/checkpoint_72T.seal.json",
+        "sha256": "44feb2d9e38ac77e111d428b025df32124db50f4cc2b6b0b73fa7e263db19a9e"
+      },
+      {
+        "path": "/home/venture/uwa/complex-systems/FishSim-RL/research/longer_replication_2026-11-09/results/full_72T_v1/cases/s39064502_exposed_DG_c61001/checkpoint_36T.seal.json",
+        "sha256": "fa5984dfbf5f2ee891d09120ca2fb47993b7b3faf6c7641bebc559a23cec3630"
+      },
+      {
+        "path": "/home/venture/uwa/complex-systems/FishSim-RL/research/longer_replication_2026-11-09/results/full_72T_v1/cases/s39064502_exposed_DG_c61001/checkpoint_72T.seal.json",
+        "sha256": "f5567afd63e4c9e7e95e6b4cdafa31cc4c951413b3bd32394d9fde2eaa2698a2"
+      },
+      {
+        "path": "/home/venture/uwa/complex-systems/FishSim-RL/research/longer_replication_2026-11-09/results/full_72T_v1/cases/s39064502_exposed_D_c61001/checkpoint_36T.seal.json",
+        "sha256": "9981c2127c2b4ea56e5417d59ababd478c445a434d51bdfdf011a1864a5000eb"
+      },
+      {
+        "path": "/home/venture/uwa/complex-systems/FishSim-RL/research/longer_replication_2026-11-09/results/full_72T_v1/cases/s39064502_exposed_D_c61001/checkpoint_72T.seal.json",
+        "sha256": "f94e74d84ae53c62463269a0cb0939d9daacaf78c92efc9426d84dd533ce5d25"
+      },
+      {
+        "path": "/home/venture/uwa/complex-systems/FishSim-RL/research/longer_replication_2026-11-09/results/full_72T_v1/cases/s39064502_exposed_G_c61001/checkpoint_36T.seal.json",
+        "sha256": "399a6b28165433b7bded09d5046bd40cfb7ea78663bc509158d9410e59ee584a"
+      },
+      {
+        "path": "/home/venture/uwa/complex-systems/FishSim-RL/research/longer_replication_2026-11-09/results/full_72T_v1/cases/s39064502_exposed_G_c61001/checkpoint_72T.seal.json",
+        "sha256": "d132398946e257424bb4881f9af964641c26b9f1e405505521162a6e26842769"
+      },
+      {
+        "path": "/home/venture/uwa/complex-systems/FishSim-RL/research/longer_replication_2026-11-09/results/full_72T_v1/cases/s39064503_exposed_DG_c61001/checkpoint_36T.seal.json",
+        "sha256": "d6a8318e656c62ba3d29111028b812e70b800a811c339a2eedee1557a6b45dc5"
+      },
+      {
+        "path": "/home/venture/uwa/complex-systems/FishSim-RL/research/longer_replication_2026-11-09/results/full_72T_v1/cases/s39064503_exposed_DG_c61001/checkpoint_72T.seal.json",
+        "sha256": "231d3cfc2e9a35d27291c6da59ea74c2c688fb6fb256f62cb1827b19f97f0203"
+      },
+      {
+        "path": "/home/venture/uwa/complex-systems/FishSim-RL/research/longer_replication_2026-11-09/results/full_72T_v1/cases/s39064503_exposed_D_c61001/checkpoint_36T.seal.json",
+        "sha256": "0340432c31fa487ae9db0e104e75e2e461644af1ba54435123e97a0203557f09"
+      },
+      {
+        "path": "/home/venture/uwa/complex-systems/FishSim-RL/research/longer_replication_2026-11-09/results/full_72T_v1/cases/s39064503_exposed_D_c61001/checkpoint_72T.seal.json",
+        "sha256": "d31027907a7b8ad5495900fc6fe339fbecb304b31413f7c3dfd2555f7801fb1a"
+      },
+      {
+        "path": "/home/venture/uwa/complex-systems/FishSim-RL/research/longer_replication_2026-11-09/results/full_72T_v1/cases/s39064503_exposed_G_c61001/checkpoint_36T.seal.json",
+        "sha256": "9c84fc8056b170df0f32b36d016e9ad1754cb1cba74a1699b4fcb1e152b56749"
+      },
+      {
+        "path": "/home/venture/uwa/complex-systems/FishSim-RL/research/longer_replication_2026-11-09/results/full_72T_v1/cases/s39064503_exposed_G_c61001/checkpoint_72T.seal.json",
+        "sha256": "ee6dff11b1b855c7abcf8c366acd5f2c4eec22fd8579e399def78c9e99b0cd4b"
+      },
+      {
+        "path": "/home/venture/uwa/complex-systems/FishSim-RL/research/longer_replication_2026-11-09/results/full_72T_v1/cases/s39064504_exposed_DG_c61001/checkpoint_36T.seal.json",
+        "sha256": "50900509750f8bccf7d231ec0daa25627a287ed0d8d5b113202088d8d8859a5b"
+      },
+      {
+        "path": "/home/venture/uwa/complex-systems/FishSim-RL/research/longer_replication_2026-11-09/results/full_72T_v1/cases/s39064504_exposed_DG_c61001/checkpoint_72T.seal.json",
+        "sha256": "1760b8ebdd78eb5e95e859593d8732ca335b89c41914acaf48079da45e76dd5f"
+      },
+      {
+        "path": "/home/venture/uwa/complex-systems/FishSim-RL/research/longer_replication_2026-11-09/results/full_72T_v1/cases/s39064504_exposed_D_c61001/checkpoint_36T.seal.json",
+        "sha256": "a967774dfdc67c1f96e343aaf45c98a4b6a170b56329eb069672b4d90fed5ff4"
+      },
+      {
+        "path": "/home/venture/uwa/complex-systems/FishSim-RL/research/longer_replication_2026-11-09/results/full_72T_v1/cases/s39064504_exposed_D_c61001/checkpoint_72T.seal.json",
+        "sha256": "4ff3d7a09f6f8a60a06287ef7ef51a7f9c3689f4118ac16a8f21d6db779e2f39"
+      },
+      {
+        "path": "/home/venture/uwa/complex-systems/FishSim-RL/research/longer_replication_2026-11-09/results/full_72T_v1/cases/s39064504_exposed_G_c61001/checkpoint_36T.seal.json",
+        "sha256": "aca8529b8ba90868b95168cc1b7d52f2472d6173deb3e4e93c7c815fea0b1276"
+      },
+      {
+        "path": "/home/venture/uwa/complex-systems/FishSim-RL/research/longer_replication_2026-11-09/results/full_72T_v1/cases/s39064504_exposed_G_c61001/checkpoint_72T.seal.json",
+        "sha256": "d57cf73f6ce68bbcb1db90004fb30c018b0e17c93754a3a20ab47cce3abb5dc4"
+      },
+      {
+        "path": "/home/venture/uwa/complex-systems/FishSim-RL/research/longer_replication_2026-11-09/results/full_72T_v1/cases/s39064505_exposed_DG_c61001/checkpoint_36T.seal.json",
+        "sha256": "a1915991ea732f61c457b6281e5d1e65a3f70b01bbeb656072eaa85cdb3b01b8"
+      },
+      {
+        "path": "/home/venture/uwa/complex-systems/FishSim-RL/research/longer_replication_2026-11-09/results/full_72T_v1/cases/s39064505_exposed_DG_c61001/checkpoint_72T.seal.json",
+        "sha256": "614e0b94a0eea50c74ebdff48902c80d80897e4834840fe98dcd0c0176ba9016"
+      },
+      {
+        "path": "/home/venture/uwa/complex-systems/FishSim-RL/research/longer_replication_2026-11-09/results/full_72T_v1/cases/s39064505_exposed_D_c61001/checkpoint_36T.seal.json",
+        "sha256": "af2214fbf64748252f3d085619e6954b0e9da6b1919cbfbf8e05355e04894f27"
+      },
+      {
+        "path": "/home/venture/uwa/complex-systems/FishSim-RL/research/longer_replication_2026-11-09/results/full_72T_v1/cases/s39064505_exposed_D_c61001/checkpoint_72T.seal.json",
+        "sha256": "a39d5fdf01e56bc76664593c6166b59be2d9d43f54a5a5d32935dde8b8051a96"
+      },
+      {
+        "path": "/home/venture/uwa/complex-systems/FishSim-RL/research/longer_replication_2026-11-09/results/full_72T_v1/cases/s39064505_exposed_G_c61001/checkpoint_36T.seal.json",
+        "sha256": "1f110b95c8abaa05324a8d1306ef5df769a2bb7f8bcdb9d680f80bb3811e1bf6"
+      },
+      {
+        "path": "/home/venture/uwa/complex-systems/FishSim-RL/research/longer_replication_2026-11-09/results/full_72T_v1/cases/s39064505_exposed_G_c61001/checkpoint_72T.seal.json",
+        "sha256": "57a22884d261e62201a01eb92dbb8e68e595885fb4392cebfc0c28e718cfed64"
+      },
+      {
+        "path": "/home/venture/uwa/complex-systems/FishSim-RL/research/longer_replication_2026-11-09/results/full_72T_v1/cases/s39064506_exposed_DG_c61001/checkpoint_36T.seal.json",
+        "sha256": "0fad071319e02801f3c6a16cb45dea53ecce7bfdf12bdd033a340f4ed2985e4f"
+      },
+      {
+        "path": "/home/venture/uwa/complex-systems/FishSim-RL/research/longer_replication_2026-11-09/results/full_72T_v1/cases/s39064506_exposed_DG_c61001/checkpoint_72T.seal.json",
+        "sha256": "b21f5c3c30a35cb1606abc82aee827e8b190ebe87f2348bfd79dff0991462cab"
+      },
+      {
+        "path": "/home/venture/uwa/complex-systems/FishSim-RL/research/longer_replication_2026-11-09/results/full_72T_v1/cases/s39064506_exposed_D_c61001/checkpoint_36T.seal.json",
+        "sha256": "b8cc5d084db0e7a248c9bb9a61939c3e69b79137397b61dfea7ffd2fdd2896f2"
+      },
+      {
+        "path": "/home/venture/uwa/complex-systems/FishSim-RL/research/longer_replication_2026-11-09/results/full_72T_v1/cases/s39064506_exposed_D_c61001/checkpoint_72T.seal.json",
+        "sha256": "40eb3fda29a1fdf3c405264fc2190e4c5ce82662cf661678fa882ecc1ab95a21"
+      },
+      {
+        "path": "/home/venture/uwa/complex-systems/FishSim-RL/research/longer_replication_2026-11-09/results/full_72T_v1/cases/s39064506_exposed_G_c61001/checkpoint_36T.seal.json",
+        "sha256": "c492623474601e40bcd68962383d9e11763bd894d28aa38c2e9976065f706157"
+      },
+      {
+        "path": "/home/venture/uwa/complex-systems/FishSim-RL/research/longer_replication_2026-11-09/results/full_72T_v1/cases/s39064506_exposed_G_c61001/checkpoint_72T.seal.json",
+        "sha256": "377c1568bd4ecd3dce75e3dc746fa63e17c3177bbae00d6211862ffa42807525"
+      },
+      {
+        "path": "/home/venture/uwa/complex-systems/FishSim-RL/research/longer_replication_2026-11-09/results/full_72T_v1/cases/s39064507_exposed_DG_c61001/checkpoint_36T.seal.json",
+        "sha256": "72a121bbbce0e81383bcb37d5e0b2d8c04990aabd1404c8af215bf13d0f536fa"
+      },
+      {
+        "path": "/home/venture/uwa/complex-systems/FishSim-RL/research/longer_replication_2026-11-09/results/full_72T_v1/cases/s39064507_exposed_DG_c61001/checkpoint_72T.seal.json",
+        "sha256": "17881f22f312464ecec16fb5d8e3a10800096a00cd9cf636f3aeffcc7d897a93"
+      },
+      {
+        "path": "/home/venture/uwa/complex-systems/FishSim-RL/research/longer_replication_2026-11-09/results/full_72T_v1/cases/s39064507_exposed_D_c61001/checkpoint_36T.seal.json",
+        "sha256": "86da81af0f0e577ea8e97208ea412f08f684c33ce98d1c93298244cfde15b13c"
+      },
+      {
+        "path": "/home/venture/uwa/complex-systems/FishSim-RL/research/longer_replication_2026-11-09/results/full_72T_v1/cases/s39064507_exposed_D_c61001/checkpoint_72T.seal.json",
+        "sha256": "35304ef5e8e8a9f62c10b2d7fa1828a1ea2b48990ff0c0f2ea5688b9d79e6863"
+      },
+      {
+        "path": "/home/venture/uwa/complex-systems/FishSim-RL/research/longer_replication_2026-11-09/results/full_72T_v1/cases/s39064507_exposed_G_c61001/checkpoint_36T.seal.json",
+        "sha256": "d3b6ce3679cd3fe6f99039ed5f0f868fb898392a518de4e754570aa92895576c"
+      },
+      {
+        "path": "/home/venture/uwa/complex-systems/FishSim-RL/research/longer_replication_2026-11-09/results/full_72T_v1/cases/s39064507_exposed_G_c61001/checkpoint_72T.seal.json",
+        "sha256": "3b634d0831eb6d40d7c8b5d20c088f7119b93e1c35597a0d9ce0b46f9876caac"
+      },
+      {
+        "path": "/home/venture/uwa/complex-systems/FishSim-RL/research/longer_replication_2026-11-09/results/full_72T_v1/cases/s39064508_exposed_DG_c61001/checkpoint_36T.seal.json",
+        "sha256": "da1862ad09b09e65c787e3d13449a114de83b492ba8ac4f150621c1cab7b36c0"
+      },
+      {
+        "path": "/home/venture/uwa/complex-systems/FishSim-RL/research/longer_replication_2026-11-09/results/full_72T_v1/cases/s39064508_exposed_DG_c61001/checkpoint_72T.seal.json",
+        "sha256": "42e3e291354e4a058b03efb07e41720bc90bc519940956f9c09e178d060d5e72"
+      },
+      {
+        "path": "/home/venture/uwa/complex-systems/FishSim-RL/research/longer_replication_2026-11-09/results/full_72T_v1/cases/s39064508_exposed_D_c61001/checkpoint_36T.seal.json",
+        "sha256": "3192490f485cabdcfc2b13487c68a4e75c14858103d7bab1cc1573339a289447"
+      },
+      {
+        "path": "/home/venture/uwa/complex-systems/FishSim-RL/research/longer_replication_2026-11-09/results/full_72T_v1/cases/s39064508_exposed_D_c61001/checkpoint_72T.seal.json",
+        "sha256": "5a467400057c2b7ddbb459c637f667a7e93dea7889b4da62b323bdab71336d9f"
+      },
+      {
+        "path": "/home/venture/uwa/complex-systems/FishSim-RL/research/longer_replication_2026-11-09/results/full_72T_v1/cases/s39064508_exposed_G_c61001/checkpoint_36T.seal.json",
+        "sha256": "f9db1b32f5ccb259f329bd8438e1506d28edb46588259fb0fb4bd582a5e9865e"
+      },
+      {
+        "path": "/home/venture/uwa/complex-systems/FishSim-RL/research/longer_replication_2026-11-09/results/full_72T_v1/cases/s39064508_exposed_G_c61001/checkpoint_72T.seal.json",
+        "sha256": "891ced3e55c755f2dde3e496929988f94cc76e9941b546d5cd3e22e425f1eb08"
+      }
+    ],
+    "plotting_source": {
+      "path": "/home/venture/uwa/complex-systems/FishSim-RL/research/thesis_working_draft_2026-11-08/build_paper_figures.py",
+      "sha256": "94c72f5f3e05456feb4e3dde798218c43103aac2f30575c3222259d110890ba5"
+    },
     "native_steps": 0,
-    "uncertainty_intervals": "none"
+    "created_at": "2026-11-09T02:31:38.051369+08:00",
+    "outputs": {
+      "pdf": {
+        "path": "/home/venture/uwa/complex-systems/FishSim-RL/research/longer_replication_2026-11-09/publication_candidate/figures/fig3_replication.pdf",
+        "sha256": "48b894eaccc3d73c67fe4f2dde5059718a189a700d0f2e03b9e198460d04fed8"
+      },
+      "png": {
+        "path": "/home/venture/uwa/complex-systems/FishSim-RL/research/longer_replication_2026-11-09/publication_candidate/figures/fig3_replication.png",
+        "sha256": "5fb8cb98d678c72fe1b9b755b77ed2f1d1520207574cb3a9142f3326f9aff582"
+      }
+    }
   }
 }

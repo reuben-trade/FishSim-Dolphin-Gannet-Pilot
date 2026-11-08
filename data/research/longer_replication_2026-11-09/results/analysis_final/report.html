@@ -1,0 +1,29 @@
+<!doctype html><meta charset="utf-8"><title>Longer FishSim replication</title>
+<style>body{font:16px system-ui;max-width:1150px;margin:40px auto;padding:0 20px;color:#243544}table{border-collapse:collapse;margin:18px 0;font-size:14px}td,th{border:1px solid #ccd5dd;padding:7px;text-align:right}img{max-width:100%}code,pre{white-space:pre-wrap}</style>
+<h1>Fresh eight-school replication: 36T primary, 72T secondary</h1><p>All prespecified horizons are sealed and validated.</p>
+<p>Fixed exposed-prey dolphin cycle, unchanged gannet policy and contact physics. Each of eight new starting schools has one matched D/G/DG triplet and one stochastic setting. The36T and72T records come from the same continuous trajectory. Historical development and two-school replication results are excluded.</p>
+<p>Capture success remains0.7 conditional on an eligible physical oral contact. Units are uncalibrated. Dolphins use2T continuous nearby-prey pressure before a feasible strike; this does not certify school compaction or explicit waiting for a bird dive.</p>
+<h2>36T: 8 complete school triplets</h2><table><thead><tr><th>school_seed</th><th>D_alone</th><th>D_with_gannets</th><th>D_difference</th><th>G_alone</th><th>G_with_dolphins</th><th>G_difference</th><th>joint_positive</th></tr></thead><tbody><tr><td>39064501</td><td>24</td><td>22</td><td>-2</td><td>2</td><td>9</td><td>7</td><td>False</td></tr><tr><td>39064502</td><td>17</td><td>20</td><td>3</td><td>3</td><td>7</td><td>4</td><td>True</td></tr><tr><td>39064503</td><td>22</td><td>21</td><td>-1</td><td>3</td><td>11</td><td>8</td><td>False</td></tr><tr><td>39064504</td><td>20</td><td>18</td><td>-2</td><td>6</td><td>11</td><td>5</td><td>False</td></tr><tr><td>39064505</td><td>18</td><td>29</td><td>11</td><td>2</td><td>8</td><td>6</td><td>True</td></tr><tr><td>39064506</td><td>22</td><td>25</td><td>3</td><td>9</td><td>8</td><td>-1</td><td>False</td></tr><tr><td>39064507</td><td>24</td><td>18</td><td>-6</td><td>6</td><td>10</td><td>4</td><td>False</td></tr><tr><td>39064508</td><td>21</td><td>23</td><td>2</td><td>4</td><td>12</td><td>8</td><td>True</td></tr></tbody></table><h2>72T: 8 complete school triplets</h2><table><thead><tr><th>school_seed</th><th>D_alone</th><th>D_with_gannets</th><th>D_difference</th><th>G_alone</th><th>G_with_dolphins</th><th>G_difference</th><th>joint_positive</th></tr></thead><tbody><tr><td>39064501</td><td>44</td><td>52</td><td>8</td><td>6</td><td>15</td><td>9</td><td>True</td></tr><tr><td>39064502</td><td>32</td><td>43</td><td>11</td><td>10</td><td>20</td><td>10</td><td>True</td></tr><tr><td>39064503</td><td>46</td><td>43</td><td>-3</td><td>14</td><td>17</td><td>3</td><td>False</td></tr><tr><td>39064504</td><td>43</td><td>43</td><td>0</td><td>15</td><td>15</td><td>0</td><td>False</td></tr><tr><td>39064505</td><td>49</td><td>55</td><td>6</td><td>2</td><td>16</td><td>14</td><td>True</td></tr><tr><td>39064506</td><td>43</td><td>50</td><td>7</td><td>12</td><td>16</td><td>4</td><td>True</td></tr><tr><td>39064507</td><td>48</td><td>43</td><td>-5</td><td>13</td><td>24</td><td>11</td><td>False</td></tr><tr><td>39064508</td><td>47</td><td>51</td><td>4</td><td>13</td><td>26</td><td>13</td><td>True</td></tr></tbody></table><img src="paired_differences.png" alt="All observed school-paired effects"><h2>Primary uncertainty</h2><pre>{
+  &quot;status&quot;: &quot;complete&quot;,
+  &quot;independent_schools&quot;: 8,
+  &quot;bootstrap_draws&quot;: 10000,
+  &quot;analysis_seed&quot;: 88491009,
+  &quot;resampling_unit&quot;: &quot;whole paired school vectors, equal school weights&quot;,
+  &quot;marginal_interval_coverage&quot;: 0.975,
+  &quot;familywise_interpretation&quot;: &quot;approximate95% across two primary species; small-n percentile-bootstrap limits&quot;,
+  &quot;D&quot;: {
+    &quot;mean_difference&quot;: 1.0,
+    &quot;interval&quot;: [
+      -2.375,
+      5.0
+    ]
+  },
+  &quot;G&quot;: {
+    &quot;mean_difference&quot;: 5.125,
+    &quot;interval&quot;: [
+      2.75,
+      7.0
+    ]
+  },
+  &quot;joint_positive&quot;: 3
+}</pre><p>Bootstrap resamples whole school-paired vectors with equal weights.97.5% marginal percentile intervals target approximate95% familywise coverage across the two primary species. With only eight schools, interval coverage and tails are uncertain. Secondary72T and36–72T comparisons are descriptive; horizons are not independent observations.</p><h2>Finite prey and effort</h2><p>If all160 fish are physically captured, native stepping ends and subsequent capture totals remain exactly fixed. Rates retain the prespecified nominal36T/72T denominator. Native duration, steps and effort remain the actual observed values; no later movement, handling or energy expenditure is invented.</p><h2>Files</h2><p><a href="case_horizons.csv">Species-level outcomes and effort</a> · <a href="paired_horizons.csv">Paired school outcomes</a> · <a href="interval_36_to_72.csv">36–72T increments</a> · <a href="analysis_audit.json">Evidence audit and pending cases</a> · <a href="primary_statistics.json">Primary statistics</a></p><p>Analysis uses zero native simulation steps. Sealed horizon records:48; pending horizon records:0.</p>

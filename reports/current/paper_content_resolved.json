@@ -1,14 +1,14 @@
 {
   "title": "Feeding Frenzy: testing mutual feeding benefits in dolphin–gannet hunting",
   "author": "Reuben Stanley | University of Western Australia",
-  "date": "Working draft · 9 November 2026",
+  "date": "Working draft · 9 November 2026 · eight-school extension",
   "pages": [
     {
       "heading": "1 Introduction and current evidence",
       "paragraphs": [
         [
           "Abstract",
-          "Dolphins and Cape gannets feed on the same fish schools, but their association does not establish a feeding advantage for both species. We test mutual feeding benefit in a three-dimensional agent-based model. Dolphins repeat local herding, a feasible strike and recovery. Development comparisons favoured an exposed-prey targeting rule for its response to adding gannets. Keeping that rule unchanged, fresh comparisons increased dolphin captures from 87 to 101 across four paired repetitions from two new schools. Matching gannet-only controls gave 26 captures versus 32 with dolphins. Both species gained in two of the four repetitions; gannet gains were concentrated in one repetition. A separate initial-depth contrast showed no monotonic reduction in gannet feeding: prey moved into and out of the reachable depth range. The pilot supports conditional joint gains under the specified rules, rather than a uniform reciprocal advantage. Capture calibration, numerical convergence and controlled attack timing remain open."
+          "Dolphins and Cape gannets feed on the same fish schools, but association alone does not establish mutual benefit. We compare species-specific feeding returns in a three-dimensional agent-based model. Dolphins repeat local herding, a feasible strike and recovery. An exploratory policy comparison selected exposed-prey targeting for a same-policy partner test. A prespecified extension used eight independent new schools, each with dolphin-only, gannet-only and mixed 72T encounters. At the 36T primary horizon, mean mixed-minus-alone changes were +1.00 dolphin and +5.12 gannet captures; both species gained in 3 of 8 schools. Secondary 72T outcomes describe persistence within the same trajectories. Earlier depth experiments were transient initial-state contrasts. All results remain conditional on uncalibrated perception, herding and contact-success assumptions; controlled timing and numerical convergence remain separate tests."
         ],
         [
           "Motivation",
@@ -26,7 +26,8 @@
           "Hypothesis and objectives",
           "The overarching hypothesis is that dolphin–gannet hunting provides mutual feeding benefits: both species achieve greater individual feeding returns together than independently. The programme retains three objectives: (1) measure gannet feeding across initial prey depths; (2) establish dolphin herding and targeting rules, then test the effect of adding gannets; and (3) test whether controlled relative attack timing improves both returns. This draft reports a development and replication test for objective 2, followed by matching gannet-only controls and an initial-depth pilot for objective 1. Objective 3 remains a separate intervention."
         ]
-      ]
+      ],
+      "caption": ""
     },
     {
       "heading": "2 Model and behavioural assumptions",
@@ -66,7 +67,7 @@
         ],
         [
           "Outcome and duration",
-          "For species s, the feeding return is Y_s=C_s/(N_s T), where C_s is the number of uniquely removed fish credited to that species, N_s is its abundance and T is the complete encounter duration. The partner effects are Δ_D=Y_D(DG)−Y_D(D) and Δ_G=Y_G(DG)−Y_G(G). Joint benefit requires both to be positive in the same comparison. Each encounter lasts 36T, including travel, herding, unsuccessful attacks, handling and recovery. It starts from a predator-free school checkpoint after 20T of maturation; that preceding fish-only preparation is not dolphin herding time and is excluded from the feeding horizon."
+          "For species s, feeding return is Y_s=C_s/(N_s T), where C_s counts uniquely removed fish, N_s is predator abundance and T is the prespecified elapsed horizon. Effects compare mixed with same-policy alone conditions for each species. Development encounters lasted 36T. The new extension lasts 72T with 36T fixed in advance as the primary horizon;72T and 36–72T increments are secondary. All travel, herding, missed attacks, handling and recovery count toward elapsed time. Predator-free 20T preparation is excluded. Complete prey depletion fixes later capture counts, while native stepping and effort accounting end at the actual depletion time."
         ],
         [
           "Development set",
@@ -83,40 +84,40 @@
       ]
     },
     {
-      "heading": "4 Replication on new schools",
+      "heading": "4 Prespecified replication on eight new schools",
       "figure": "fig3_replication",
-      "caption": "Replication of the unchanged exposed-prey rule on two new schools. (a) Bars show dolphin captures with and without gannets for two repetitions per school. (b) Points show the capture difference within each matched pair. The four paired comparisons come from two independent schools. The development data in Figure 2 are excluded from these replication estimates.",
+      "caption": "Eight-school replication of the unchanged exposed-prey rule. Each point is one school’s mixed-minus-alone capture difference. Diamonds show equal-school means. Bars at 36T are 97.5% marginal percentile bootstrap intervals for the two primary species (approximate 95% familywise coverage, with small-sample limitations). The 72T outcomes are descriptive extensions of the same trajectories. No historical development or two-school follow-up data enter these estimates.",
       "paragraphs": [
         [
-          "Follow-up design",
-          "We kept the dolphin and gannet rules unchanged for the follow-up tests. Two new schools, labelled new schools 1 and 2, were chosen before their feeding outcomes were known. Both used the original fish sampler and baseline scenario. At timestep 0.00125T, a checkpoint was saved after 20T without predators, followed by the original predator-free stability screen through 56T. Both retained all 160 fish and passed the finite, submerged, route-speed and connectivity criteria. No candidates were replaced."
+          "Frozen design",
+          "Eight new starting schools were declared before feeding outcomes. Each retained the original sampler,160 fish, predator-free 20T checkpoint, physical model and exposed-prey controller. The original 36T stability screen and an additional 36T predator-free route check passed for every fixed candidate; none was replaced. One stochastic setting per school produced matched D, G and DG encounters, with 12 dolphins and/or 3 gannets. Private species capture and target-choice streams, contact ties and physical starts matched within triplets."
         ],
         [
-          "Repeated comparisons",
-          "Each new school was tested in two repetitions, labelled repetitions 1 and 2. The repetitions used different random sequences for capture success, contact ties and each bird’s target choice. Initial positions, velocities and readiness were unchanged between repetitions. Within each repetition, encounters with and without gannets began with the same dolphin rule and capture sequences. Paths and the number of random draws could then diverge as each encounter progressed."
+          "Primary outcome",
+          "Across eight independent schools at the prespecified 36T primary horizon, dolphin captures totalled 168 alone and 176 with gannets; gannet captures totalled 35 alone and 76 with dolphins. Equal-school mean differences were +1.00 dolphin captures and +5.12 gannet captures. The 97.5% marginal percentile intervals were -2.38 to +5.00 and +2.75 to +7.00, respectively. Both differences were strictly positive in 3 of 8 schools."
         ],
         [
-          "Replication outcome",
-          "The follow-up tests produced 87 captures alone and 101 with gannets, a descriptive increase of 16.1%. The paired counts were 23 to 24 and 20 to 24 in new school 1, and 22 to 23 and 22 to 30 in new school 2. School-average gains were 2.5 and 4.5 fish. All four repetitions were positive, but they represent only two independent new schools."
+          "Independent units and uncertainty",
+          "The independent unit is the starting school, giving n=8 paired vectors. Means weight schools equally. A fixed-seed 10,000-draw bootstrap resamples entire paired dolphin–gannet school vectors. The two 97.5% marginal intervals target approximate 95% familywise coverage, but percentile interval coverage and tails can be unstable at this sample size. Development comparisons selected the policy; the earlier fresh two-school pilot motivated this extension. Neither is pooled into this estimate."
         ],
         [
-          "Unit of replication",
-          "The eight encounters provide four paired presence comparisons but only two newly generated school configurations. Results are therefore presented for each school and repetition, with school-level means across the two repetitions. A pooled total is descriptive and is not a sample of four independent ecological schools. The earlier development gain is kept separate because it was used to select the target rule."
+          "Longer encounter",
+          "At 72T, dolphin captures totalled 352 alone and 380 with birds; gannet captures totalled 85 alone and 149 with dolphins. Jointly positive school differences numbered 5 of 8. 0 of 24 encounters reached complete prey depletion. These are secondary outcomes from the same trajectories, not another independent sample. The 36–72T increments and observed effort are reported separately in the companion tables."
         ],
         [
           "Verification",
-          "We checked each completed encounter for correct time budgets, unique prey removals, eligible mouth contacts, recovery periods and consistency with the saved source code. Each dolphin attack was checked against the event log to confirm at least 2T of continuous proximity to prey before launch. For exposed targeting, we checked that the selected fish had the fewest neighbours among feasible targets. We also replayed the saved random sequences for capture success, contact ties and bird target choice. These checks verify the implementation; they do not establish biological calibration or timestep convergence."
+          "Each 36T checkpoint has its own sealed ordered event prefix, physical fish state and random-stream receipts. The 72T continuation was checked against that exact prefix and the saved 36T trajectory frame. All 24 cases passed unique-removal, eligible-contact, recovery, cycle-gating and random-stream replay checks. Actual native duration is distinguished from nominal horizons after depletion. These implementation checks do not establish biological calibration or timestep convergence."
         ]
       ]
     },
     {
-      "heading": "5 Gannet controls, depth and joint gains",
+      "heading": "5 Earlier gannet controls, depth and timing",
       "figure": "fig4_mechanism",
-      "caption": "Matching gannet-only controls and initial-depth results. (a) Changes in dolphin and gannet captures when hunting together; S1 and S2 identify the two fresh schools, and 1 and 2 identify random settings 61001 and 61002. Both species gain in two of four repetitions. (b) Gannet-only captures across initial mean depths, using setting 61001; lines join the same school. (c) The fraction of surviving fish within the reference depth envelope changes during each encounter. Colour identifies initial depth; solid and dashed curves identify schools 1 and 2. Initial depth is not maintained, and the connecting lines in (b) are not fitted response curves.",
+      "caption": "Earlier two-school controls and initial-depth pilot, kept separate from the eight-school replication. Matching gannet-only controls and initial-depth results. (a) Changes in dolphin and gannet captures when hunting together; S1 and S2 identify the two fresh schools, and 1 and 2 identify random settings 61001 and 61002. Both species gain in two of four repetitions. (b) Gannet-only captures across initial mean depths, using setting 61001; lines join the same school. (c) The fraction of surviving fish within the reference depth envelope changes during each encounter. Colour identifies initial depth; solid and dashed curves identify schools 1 and 2. Initial depth is not maintained, and the connecting lines in (b) are not fitted response curves.",
       "paragraphs": [
         [
           "Matching gannet controls",
-          "We completed eight additional 36T gannet-only encounters. Four unshifted controls match the two fresh schools and both random settings used in Figure 3. The three birds retain the same capabilities, initial states and private capture and target-choice streams as their mixed counterparts. Four further encounters translate each school to initial mean depths 8 and 11, using setting 61001. Translation preserves school geometry without clipping; the preferred fish depth remains 5 with deadband 3–7."
+          "Before the eight-school extension, eight additional 36T gannet-only encounters were completed. Four unshifted controls match the earlier two-school follow-up and its two random settings. Their birds retain the same capabilities, initial states and private capture and target-choice streams as the mixed counterparts. Four other encounters translate each school to initial mean depths 8 and 11 using setting 61001. Translation preserves geometry without clipping; the preferred fish depth remains 5 with deadband 3–7. These earlier outcomes do not enter Figure 3."
         ],
         [
           "Joint feeding response",
@@ -141,7 +142,7 @@
       "paragraphs": [
         [
           "Interpretation",
-          "The development comparison shows that the sign of a partner effect depends on dolphin target choice and starting school. Exposed targeting produced a positive pooled response, whereas nearest targeting did not, although nearest targeting yielded more dolphin food overall. Fresh replication retained a positive dolphin response in both school averages and all four repetitions. The new gannet controls narrow the interpretation: both predators gained in two repetitions, but gannet returns did not improve in the other two. The central hypothesis remains falsifiable; mutual benefit may be restricted to particular prey states and behaviours."
+          "The development comparison showed that the partner effect depends on target selection and starting school: exposed targeting had a positive pooled response while nearest targeting produced more total food. The prespecified eight-school extension estimates the same-policy partner effect with mean 36T changes of +1.00 dolphin and +5.12 gannet captures and joint positive differences in 3 of 8 schools. The dolphin primary interval included zero; the gannet interval lay above zero. The two primary intervals do not jointly support positive average partner effects for both species. This interpretation remains limited by eight schools, percentile-bootstrap uncertainty and uncalibrated model assumptions. Neither pooled total nor one favourable trajectory establishes uniform reciprocal benefit."
         ],
         [
           "Behavioural assumptions",
@@ -157,13 +158,14 @@
         ],
         [
           "Conclusion",
-          "The pilot establishes a reproducible comparison of specified herd–strike rules, with a positive dolphin response on two fresh schools and conditional gains for both predators. Gannet gains were uneven, and translating initial prey depth did not produce a monotonic feeding response because depth remained free to change. The next tests are a controlled timing intervention, more independent starting schools and sensitivity to the herding, perception and capture assumptions. These are needed before drawing a general ecological conclusion."
+          "The eight-school primary comparison supports a gannet feeding gain under the tested model, while the dolphin interval spans negative and positive effects. It therefore does not establish a general mutual feeding advantage. The longer 72T comparison describes the same encounters and remains secondary. These findings concern fixed herd–strike rules, not deliberate coordination, energetic profitability or evolutionary stability. Numerical sensitivity and calibration of herding, perception and contact success remain open."
         ],
         [
           "Reproducibility and draft status",
-          "The timestep is 0.00125T; a 36T encounter contains 28,800 steps. Configurations, source and checkpoint hashes, saved random states, event logs, trajectories and verified summaries are retained. The local Jupyter notebook verifies 24 sealed development, replication and gannet-only/depth encounters and regenerates all four report figures and eight tables. All 18 default code cells passed in fresh processes, including a relocated folder; analysis imports no native simulator. Original inputs and manifests are preserved. The unchanged optional runner passed a short simulation pair on the tested Linux host; platform constraints are documented. Timing checks have separate supporting evidence. The longer eight-school study is running and remains excluded from this snapshot. Code and evidence: https://github.com/reuben-trade/FishSim-Dolphin-Gannet-Pilot."
+          "The timestep is 0.00125T:36T requires 28,800 steps and 72T at most 57,600. The local notebook verifies 48 feeding encounters:24 earlier cases and 24 new eight-school cases with 48 separately sealed horizon records. All 20 default code cells pass, regenerate the four current figures and export 12 tables without native simulation. Earlier cohorts and three timing engineering checks remain separate. Original input manifests and case seals are preserved. The unchanged optional model runner has documented platform constraints. The finer-timestep follow-up is running and excluded from these results. Code and data: https://github.com/reuben-trade/FishSim-Dolphin-Gannet-Pilot."
         ]
-      ]
+      ],
+      "caption": ""
     }
   ],
   "references": [
@@ -175,5 +177,14 @@
     "[6] Ropert-Coudert Y, Grémillet D, Ryan P, Kato A, Naito Y, Le Maho Y. Between air and water: the plunge dive of the Cape Gannet Morus capensis. Ibis. 2004;146:281–290. doi:10.1111/j.1474-919x.2003.00250.x.",
     "[7] Mohapatra S, Sinha Mahapatra P. Behavioural response of prey to repeated attacks by non-coordinating predators. Scientific Reports. 2025;15:22977. doi:10.1038/s41598-025-05946-6.",
     "[8] Licht M, Correia E, Wikelski M, Krause J. How volant seabirds benefit from sub-surface predators during multi-predator feeding aggregations. Philosophical Transactions of the Royal Society B. 2026;381:20250199. doi:10.1098/rstb.2025.0199."
-  ]
+  ],
+  "replication_result": "Across eight independent schools at the prespecified36T primary horizon, dolphin captures totalled 168 alone and 176 with gannets; gannet captures totalled 35 alone and 76 with dolphins. Equal-school mean differences were +1.00 dolphin captures and +5.12 gannet captures. The97.5% marginal percentile intervals were -2.38 to +5.00 and +2.75 to +7.00, respectively. Both differences were strictly positive in 3 of8 schools.",
+  "replication_verdict": "The dolphin primary interval included zero; the gannet interval lay above zero. The two primary intervals do not jointly support positive average partner effects for both species. This interpretation remains limited by eight schools, percentile-bootstrap uncertainty and uncalibrated model assumptions.",
+  "replication_counts": {
+    "D_alone": 168,
+    "D_mixed": 176,
+    "G_alone": 35,
+    "G_mixed": 76,
+    "independent_schools": 8
+  }
 }

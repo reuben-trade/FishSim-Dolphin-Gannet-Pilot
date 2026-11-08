@@ -12,8 +12,8 @@ from PIL import Image
 
 ROOT=Path(__file__).resolve().parent
 d=json.loads((ROOT/'paper_content.json').read_text())
-summary='The follow-up tests produced 87 captures alone and 101 with gannets, a descriptive increase of 16.1%. The paired counts were 23 to 24 and 20 to 24 in new school 1, and 22 to 23 and 22 to 30 in new school 2. School-average gains were 2.5 and 4.5 fish. All four repetitions were positive, but they represent only two independent new schools.'
-verdict='The follow-up tests showed a positive effect of adding gannets in both school averages and all four repetitions. This strengthens the development signal under this fixed model; it does not establish statistical generality or reciprocal benefits to gannets.'
+summary=d['replication_result']
+verdict=d['replication_verdict']
 for page in d['pages']:
  page['paragraphs']=[[h,t.replace('REPLICATION_RESULT',summary).replace('REPLICATION_VERDICT',verdict)] for h,t in page['paragraphs']]
 (ROOT/'paper_content_resolved.json').write_text(json.dumps(d,indent=2,ensure_ascii=False)+'\n')
@@ -133,5 +133,5 @@ for i,page in enumerate(d['pages']):
 parts += [r'\twocolumn\bibliographystyle{unsrtnat}\bibliography{references}',r'\end{document}']
 (ROOT/'main.tex').write_text('\n'.join(parts)+'\n')
 for name in ['references.bib']:(ROOT/name).write_bytes((ROOT/'original_downloads'/name).read_bytes())
-(ROOT/'build_validation.json').write_text(json.dumps(dict(at=datetime.now(ZoneInfo('Australia/Perth')).isoformat(),body_pages=6,reference_pages=1,numbered_figures=4,body_font_points=10,margins_mm=18,columns=2,renderer='matplotlib vector PDF; editable DOCX companion',latex_compiler_network_unavailable=True,replication_captures_alone=87,replication_captures_with_gannets=101,word_count=sum(len(t.split()) for p in d['pages'] for h,t in p['paragraphs'])),indent=2))
+(ROOT/'build_validation.json').write_text(json.dumps(dict(at=datetime.now(ZoneInfo('Australia/Perth')).isoformat(),body_pages=6,reference_pages=1,numbered_figures=4,body_font_points=10,margins_mm=18,columns=2,renderer='matplotlib vector PDF; editable DOCX companion',latex_compiler_network_unavailable=True,replication_captures_alone=d['replication_counts']['D_alone'],replication_captures_with_gannets=d['replication_counts']['D_mixed'],word_count=sum(len(t.split()) for p in d['pages'] for h,t in p['paragraphs'])),indent=2))
 print(pdf)

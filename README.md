@@ -1,8 +1,10 @@
 # FishSim: local research notebook
 
-Open **FishSim_Professor_Notebook.ipynb** and choose **Run → Run All Cells**. The default run verifies 24 sealed feeding encounters and three separate timing engineering checks, rebuilds all four figures in the 9 November report snapshot, and exports eight CSV tables. It does not execute the fish simulator. The saved notebook already contains the executed outputs for review.
+Open **FishSim_Professor_Notebook.ipynb** and choose **Run → Run All Cells**. The default run verifies 48 sealed feeding encounters and three separate timing engineering checks, rebuilds all four figures in the 9 November report snapshot, and exports twelve CSV tables. It does not execute the fish simulator. The saved notebook already contains the executed outputs for review.
 
-The current evidence snapshot contains eight development encounters, eight fresh exposed-policy replication encounters, and eight matching gannet-only/depth encounters, each lasting 36 model-time units. It excludes the earlier C-policy pilot and the later eight-school 72T study. The latter is running separately; no partial results enter this notebook. The two capture streams in each fresh school are repeated stochastic runs of the same starting geometry, not additional independent schools.
+The active snapshot preserves the earlier 24 encounters and adds 24 D/G/DG encounters across eight new independent schools. Each new encounter supplies separately sealed 36T primary and 72T secondary results; the horizons are not independent samples. Earlier two-school evidence is displayed separately and is not pooled into eight-school estimates. The finer-timestep follow-up is still running and excluded.
+
+At the primary horizon, mean dolphin change is+1 capture per school with a 97.5% marginal interval−2.375 to+5; gannets gain+5.125 with interval 2.75 to 7. The dolphin benefit is unresolved. These small-sample model results do not establish a general mutual feeding advantage.
 
 ## Local setup: analysis and figures
 
@@ -33,7 +35,7 @@ Analysis code is designed to work across operating systems. Validation receipts 
 
 The final notebook section is disabled by default. It calls the unchanged frozen model through `run_model.py` in a new process. `QUICK_RUN = True` executes a 0.5T dolphin-only encounter followed by its 0.5T dolphin–gannet match. This checks integration and is too short to test the 2T feeding cycle. A full matched pair uses 36T per encounter; the complete replication option runs both schools and both capture streams, eight cases. Runtime depends on the computer and can be tens of minutes.
 
-The supplied historical binary requires **CPython 3.12, Linux x86-64, glibc 2.43 or newer, compatible C++ runtime and OpenMP**. It is not a portable macOS/Windows binary and will fail on many older Linux distributions. Read [NATIVE_SETUP.md](NATIVE_SETUP.md) before enabling model execution. Its explicit compatibility check prevents an unsupported binary from being silently substituted. The complete C++ source and real build recipe are included, but a rebuild is a new binary requiring separate validation.
+The supplied historical binary requires **CPython 3.12, Linux x 86-64, glibc 2.43 or newer, compatible C++ runtime and OpenMP**. It is not a portable macOS/Windows binary and will fail on many older Linux distributions. Read [NATIVE_SETUP.md](NATIVE_SETUP.md) before enabling model execution. Its explicit compatibility check prevents an unsupported binary from being silently substituted. The complete C++ source and real build recipe are included, but a rebuild is a new binary requiring separate validation.
 
 ## Scientific interpretation
 
@@ -46,20 +48,22 @@ The supplied historical binary requires **CPython 3.12, Linux x86-64, glibc 2.43
 
 ## Evidence snapshots and preservation
 
-The active notebook imports `notebook_support_v2.py` and uses `DATASET_2026-11-09.json` plus `INPUT_MANIFEST_2026-11-09.json`. It verifies the original first-draft manifest as well as the new snapshot. All 24 cases retain their original complete file seals. The eight new G-only/depth cases include the unshifted controls needed for the joint-benefit comparison; translated depths are analysed separately.
+The active notebook imports `notebook_support_v3.py` and uses `DATASET_2026-11-09_0231.json` and `INPUT_MANIFEST_2026-11-09_0231.json`. It verifies 48 completed encounters,48 exact horizon records from the new 24 encounters, and both previous input manifests. Original case files and earlier source/reference sets remain byte-identical.
 
-The original `DATASET.json`, `INPUT_MANIFEST.json`, `notebook_support.py`, `paper_figure_source.py`, `reference_figures/` and 16 original case directories are unchanged. The first executed notebook and its validation receipt are preserved in `snapshots/first_draft_2026-11-08/`. Current figures are rebuilt from `paper_figure_source_current.py` and compared with `reference_figures_current/`. New tables and figures go to `outputs/current_tables/` and `outputs/current_figures/`.
+The original 16-case inventory/manifest and the later 24-case inventory/manifest remain available. Their saved notebooks and validation receipts are preserved under `snapshots/`. The v 3 figure source is `paper_figure_source_v3.py`, with matching `reference_figures_v3/`. Current figures are written to `outputs/eight_school_figures/`; four new-cohort tables go to `outputs/eight_school_tables/`, alongside eight separately reconstructed earlier tables.
 
-`SOURCE_CLOSURE_2026-11-09.json` maps every source named by the new G-only case manifests to byte-identical bundled files in `frozen_model/`, `data/` or `study_sources/`. `REPORT_SNAPSHOT_2026-11-09.json` records the report text belonging to the current figure snapshot. Historical absolute paths remain provenance; analysis resolves bundled paths directly.
+`SOURCE_CLOSURE_2026-11-09_0231.json` maps the new cohort's historical source references to exact bundled files. `REPORT_SNAPSHOT_2026-11-09_0231.json` and `reports/snapshots/2026-11-09_0231/` retain its report text, compiledPDF and source. The report at `reports/current/` is the current presentation alias. Source and report snapshots are versioned rather than rewritten.
 
-The optional `run_model.py` and frozen runtime are unchanged from the tested first-draft delivery. This optional path still runs the documented original D/DG pair or eight-case fresh replication, not the later depth or 72T study. `snapshot_tools.py` is a maintainer utility for additive, explicitly versioned evidence inventories; it performs no simulation and rejects changed old evidence. `create_notebook.py` and `create_notebook_current.py` are authoring utilities, not steps a professor needs to run.
+The optional `run_model.py` and historical runtime remain unchanged. That optional path runs the documented original 36T D/DG pair or original eight-case replication, not this new eight-school 72T cohort. Reconstructing the current report requires no native simulator. `snapshot_tools.py` is a maintainer utility for additive inventories; all `create_notebook*` scripts are authoring utilities rather than professor setup steps.
 
 ## Supporting timing evidence
 
-[Timing engineering records](supporting_evidence/timing/README.md) retain three sealed4T,8T and36T checks, their protocols and independent audits. They are verified separately during Run All and excluded from the24case feeding inventory and pooled analysis. The36T check was selected after baseline screening; it produced one partial hold, zero requested1T releases and unchanged catches. It is engineering validation, not independent confirmation of a feeding benefit.
+[Timing engineering records](supporting_evidence/timing/README.md) retain three sealed 4T,8T and 36T checks, their protocols and independent audits. They are verified separately during Run All and excluded from the 24case feeding inventory and pooled analysis. The 36T check was selected after baseline screening; it produced one partial hold, zero requested 1T releases and unchanged catches. It is engineering validation, not independent confirmation of a feeding benefit.
 
 ## Validation performed
 
-The default notebook is executed in a fresh Python process and clean namespace. Its receipt records verification of all 24 sealed cases, preservation of the original 16-case manifest, exact G-only/DG initial-state and private-stream matching, eight exported tables, and four figures pixel-identical to the current report references on the tested environment. Default analysis imports no native simulator and takes zero simulation steps. Other platforms or font versions can produce small rendering differences; macOS/Windows execution has not been tested here.
+All 20 default cells were executed in a fresh process and clean namespace. They verify the 48 feeding cases and 48 new sealed horizon records, check exact within-school fish/actor/private-stream starts, reconstruct oral-event captures, recompute the frozen 10,000-draw school-vector bootstrap, export 12 tables, and reproduce all four current figure pixels on the tested environment. Three engineering checks remain outside feeding statistics. No native simulator is imported by default analysis.
 
-The unchanged optional runner previously passed an actual 0.5T D / 0.5T DG integration pair using the pinned native binary: 800 native steps total, both original audits and seals passed. The short check verifies that execution path, not feeding outcomes. Receipts are `validation/current_notebook_2026-11-09.json` and the preserved `validation/native_smoke.json`.
+The relocated-folder check uses a path containing spaces and removes PYTHONPATH. Other operating systems and font versions can produce rendering differences; macOS/Windows execution has not been tested here. The unchanged optional runner's earlier 0.5T D/DG smoke passed 800 native steps; it is too short to test feeding.
+
+Receipts: `validation/eight_school_notebook_2026-11-09_0231.json`, its relocated-folder companion, and the preserved earlier validation files.

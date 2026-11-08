@@ -1,0 +1,531 @@
+{
+  "status": "complete",
+  "at": "2026-11-09T00:28:54.343669+08:00",
+  "scope": "bounded_longer_replication_preparation",
+  "school_seeds": [
+    39064501,
+    39064502,
+    39064503,
+    39064504,
+    39064505,
+    39064506,
+    39064507,
+    39064508
+  ],
+  "seeds": [
+    39064501,
+    39064502,
+    39064503,
+    39064504,
+    39064505,
+    39064506,
+    39064507,
+    39064508
+  ],
+  "scenario": {
+    "n": 160,
+    "dt": 0.00125,
+    "speed": 3.0,
+    "repulsion_radius": 1.0,
+    "alignment_radius": 10.0,
+    "attraction_radius": 14.0,
+    "perception_angle": 2.356194490192345,
+    "turn_rate": 1.5707963267948966,
+    "native_noise": 0.0,
+    "initial_shape": "elongated",
+    "elongated_semiaxes": [
+      12.0,
+      4.0,
+      3.0
+    ],
+    "initial_centre_xy": [
+      0.0,
+      0.0
+    ],
+    "initial_centre_depth": 6.0,
+    "initial_min_distance": 1.0,
+    "initial_heading_spread": 0.1,
+    "initial_max_draws": 200000,
+    "route_direction": [
+      1.0,
+      0.0,
+      0.0
+    ],
+    "migration_gain": 0.2,
+    "preferred_depth": 5.0,
+    "depth_gain": 0.1,
+    "depth_scale": 2.0,
+    "depth_deadband": 2.0,
+    "surface_z": 0.0,
+    "surface_layer": 3.0,
+    "surface_gain": 0.8,
+    "external_cap": 0.8,
+    "threat_radius": 4.5,
+    "threat_gain": 0.8,
+    "threat_turn_multiplier": 1.0
+  },
+  "preparation_dt": 0.00125,
+  "encounter_checkpoint_time": 20.0,
+  "stability_screen_duration": 72.0,
+  "preparation_horizon": 92.0,
+  "expected_steps_per_school": 73600,
+  "sample_interval": 0.5,
+  "sampler": "research.prey_mediated.scenario.make_initial_state",
+  "factory": "research.prey_mediated.scenario.TravellingSchool",
+  "original_algorithm": "/home/venture/uwa/complex-systems/FishSim-RL/research/herding_study_2026-11-06/run.py:prepare_schools",
+  "original_preparation": {
+    "duration": 20.0,
+    "stability_duration": 36.0,
+    "factory": "TravellingSchool",
+    "encounter_factory": "SurfaceSafeSchool",
+    "criteria": "all finite and submerged, all prey retained; route speed >=0.6*swim speed and LCC>=0.9 for >=90% of the fixed stability window; all candidates/dispositions retained; no predator-outcome exclusion",
+    "numerical_tolerances": {
+      "mean_depth": 0.1,
+      "rg": 0.1,
+      "polarization": 0.01,
+      "largest_component_fraction": 0.02,
+      "route_speed": 0.03
+    },
+    "numerical_rule": "All declared development seeds: endpoint and p95 matched absolute discrepancies over t20-56 within tolerances for two finest grids; identical raw starts. Surface reflections require separate review."
+  },
+  "workers": 3,
+  "numeric_threads_per_worker": 1,
+  "criteria": {
+    "finite_and_submerged": true,
+    "retained_fish": 160,
+    "minimum_route_speed_fraction": 0.6,
+    "minimum_route_interval_fraction": 0.9,
+    "minimum_largest_component_fraction": 0.9,
+    "minimum_connected_sample_fraction": 0.9
+  },
+  "replacement_rule": "none; retain all eight fixed candidate dispositions",
+  "calibration": "none",
+  "numerical_convergence": "not assessed; one unchanged preparation grid",
+  "no_predators": true,
+  "feeding_encounters": 0,
+  "native": {
+    "path": "/home/venture/uwa/complex-systems/FishSim-RL/lib/fish_sim/cmodel.cpython-312-x86_64-linux-gnu.so",
+    "sha256": "eb8654a520304cc429aced67c7e3706db8d2ef1449c5e1327a682a479b10a558",
+    "bytes": 1350264,
+    "imported": false
+  },
+  "source_sha256": {
+    "/home/venture/uwa/complex-systems/FishSim-RL/research/longer_replication_2026-11-09/prepare.py": "28536204b5bcb10971231f54efbd4711b1b73b0e77de778b0819266a2040959c",
+    "/home/venture/uwa/complex-systems/FishSim-RL/research/prey_mediated/BASELINE_V1.json": "d182173fabb5cb6080f1d11aa339c778310276b37383b4c07de922a405372be8",
+    "/home/venture/uwa/complex-systems/FishSim-RL/research/prey_mediated/results/short_angular_physical_g3_v1/manifest.json": "a2612b118c31fa6f26d85e40d182aeee3e9bacab7ccee6d0288fed1a27fedd5f",
+    "/home/venture/uwa/complex-systems/FishSim-RL/research/herding_study_2026-11-06/protocol.json": "9757bd1c714ba73d9c1c617fe25e9bc0d4ce18213b50ee1a8db2d3b64f7c4b88",
+    "/home/venture/uwa/complex-systems/FishSim-RL/research/herding_study_2026-11-06/run.py": "6ea7947276d716b0ffc71e9f5259c7b25b3f94cdd0bc9730f1ef198e73ceae67",
+    "/home/venture/uwa/complex-systems/FishSim-RL/research/herding_study_2026-11-07/v2_numeric_execution_v1.json": "c0ac69da535059d5b820679cdb019cd6312c7bf06eaf406a669f7ce1d520894a",
+    "/home/venture/uwa/complex-systems/FishSim-RL/research/prey_mediated/scenario.py": "6b4bd3b1da96c01a6ace04b35782cc4204d7fcd1fe9cbec88cbe01549d9e3777",
+    "/home/venture/uwa/complex-systems/FishSim-RL/research/prey_mediated/metrics.py": "a40ca44f51c44f24e90d764f3389de136c7fe0ec506adeb29e0328c031b88865",
+    "/home/venture/uwa/complex-systems/FishSim-RL/research/multispecies_feeding_study_2026-11-05/model_setup.py": "092be02e62a9cd1e19197ad0c985e2bdbe8df0c74553d844f68f637f2b7e48f4"
+  },
+  "preparation_gate_passed": true,
+  "candidates": [
+    {
+      "status": "complete",
+      "at": "2026-11-09T00:26:54.755985+08:00",
+      "school_seed": 39064501,
+      "accepted": true,
+      "checkpoint": {
+        "path": "/home/venture/uwa/complex-systems/FishSim-RL/research/longer_replication_2026-11-09/checkpoints/s39064501/encounter.npz",
+        "sha256": "276a0ea09393a8cb8953440d162ece05bd17937882356784dbec605264d47b11",
+        "preparation_dt": 0.00125,
+        "time": 19.999999999999932
+      },
+      "construction_sha256": "7a95a8dfba947c19f05ad2eb5f12a60463ff8bb072424491d02b4911eca59329",
+      "initial_array_sha256": "25a56a98af931786aa335d00cc71844beb45f90f9c7098ccfca89cd193caca5b",
+      "screen_final_sha256": "fcda64cd292ab89e839de55e758a39bec12674e26206f634a644545b4bb59f79",
+      "native_steps": 73600,
+      "checkpoint_metrics": {
+        "time": 20.0,
+        "rg": 5.697400078185099,
+        "polarization": 0.9997053153421628,
+        "largest_component_fraction": 1.0,
+        "centroid_x": 59.72951053442116,
+        "centroid_y": 0.09326775051188956,
+        "centroid_z": -5.691734084637401
+      },
+      "acceptance_checks": {
+        "finite_submerged": true,
+        "retained_fish": 160,
+        "route_speed_passing_fraction": 1.0,
+        "connectivity_passing_fraction": 1.0
+      },
+      "stability_min_route_speed": 2.9991351719325223,
+      "original_screen_duration": 36.0,
+      "additional_screen_duration": 36.0,
+      "additional_screen": {
+        "route_speed_passing_fraction": 1.0,
+        "connectivity_passing_fraction": 1.0,
+        "passed": true
+      },
+      "surface_reflections_at_checkpoint": 0,
+      "surface_reflections_at_screen_end": 0,
+      "wall_seconds": 60.08931242203107
+    },
+    {
+      "status": "complete",
+      "at": "2026-11-09T00:26:56.128157+08:00",
+      "school_seed": 39064502,
+      "accepted": true,
+      "checkpoint": {
+        "path": "/home/venture/uwa/complex-systems/FishSim-RL/research/longer_replication_2026-11-09/checkpoints/s39064502/encounter.npz",
+        "sha256": "2f9f2dc12aa79791cd4df420bdfafbc680d97b3d7dd847e225523c2badd0200f",
+        "preparation_dt": 0.00125,
+        "time": 19.999999999999932
+      },
+      "construction_sha256": "f064414a29cf5ed7ebb0f6141273ffa7450d548f2157ce2da84a114fadf07d07",
+      "initial_array_sha256": "04733189e0a529c509288b96e5c58193948243e5c0f84a49f93bdc85736f4076",
+      "screen_final_sha256": "c59a03ab50576b1c90ac745db3e6fd231938f58a8322ce9e69c70d526b9bf7b8",
+      "native_steps": 73600,
+      "checkpoint_metrics": {
+        "time": 20.0,
+        "rg": 5.636338163885687,
+        "polarization": 0.9998396773160717,
+        "largest_component_fraction": 1.0,
+        "centroid_x": 59.587613880191874,
+        "centroid_y": 0.1759448025731803,
+        "centroid_z": -5.669270492514189
+      },
+      "acceptance_checks": {
+        "finite_submerged": true,
+        "retained_fish": 160,
+        "route_speed_passing_fraction": 1.0,
+        "connectivity_passing_fraction": 1.0
+      },
+      "stability_min_route_speed": 2.9993815959953736,
+      "original_screen_duration": 36.0,
+      "additional_screen_duration": 36.0,
+      "additional_screen": {
+        "route_speed_passing_fraction": 1.0,
+        "connectivity_passing_fraction": 1.0,
+        "passed": true
+      },
+      "surface_reflections_at_checkpoint": 0,
+      "surface_reflections_at_screen_end": 0,
+      "wall_seconds": 61.46147091803141
+    },
+    {
+      "status": "complete",
+      "at": "2026-11-09T00:26:55.811265+08:00",
+      "school_seed": 39064503,
+      "accepted": true,
+      "checkpoint": {
+        "path": "/home/venture/uwa/complex-systems/FishSim-RL/research/longer_replication_2026-11-09/checkpoints/s39064503/encounter.npz",
+        "sha256": "1c11c361580c412b97edf65874d2b9d482beda72bbaeca2f3d4eaac0cb72813d",
+        "preparation_dt": 0.00125,
+        "time": 19.999999999999932
+      },
+      "construction_sha256": "2000f15d7cb5a26a19284b77d023ff468a37ac38c708c9709b3f23f2193163de",
+      "initial_array_sha256": "57ce8e17238e19a62e3366c3a374fec82a2f6d57e57a11949be31fce62ccf451",
+      "screen_final_sha256": "402f4e5f477aaff379eaec7af54ea98938b75671a05023bc87ab7a491d344bff",
+      "native_steps": 73600,
+      "checkpoint_metrics": {
+        "time": 20.0,
+        "rg": 5.752250162471257,
+        "polarization": 0.9998345468962174,
+        "largest_component_fraction": 1.0,
+        "centroid_x": 59.996871246858085,
+        "centroid_y": -0.24995845508810133,
+        "centroid_z": -5.553549228785227
+      },
+      "acceptance_checks": {
+        "finite_submerged": true,
+        "retained_fish": 160,
+        "route_speed_passing_fraction": 1.0,
+        "connectivity_passing_fraction": 1.0
+      },
+      "stability_min_route_speed": 2.999298329286546,
+      "original_screen_duration": 36.0,
+      "additional_screen_duration": 36.0,
+      "additional_screen": {
+        "route_speed_passing_fraction": 1.0,
+        "connectivity_passing_fraction": 1.0,
+        "passed": true
+      },
+      "surface_reflections_at_checkpoint": 0,
+      "surface_reflections_at_screen_end": 0,
+      "wall_seconds": 61.14461013395339
+    },
+    {
+      "status": "complete",
+      "at": "2026-11-09T00:27:54.827787+08:00",
+      "school_seed": 39064504,
+      "accepted": true,
+      "checkpoint": {
+        "path": "/home/venture/uwa/complex-systems/FishSim-RL/research/longer_replication_2026-11-09/checkpoints/s39064504/encounter.npz",
+        "sha256": "e5f3fda397f9dd31e447a6418379ba6491cabb895e1dcfe54b923b3fbe6c40e3",
+        "preparation_dt": 0.00125,
+        "time": 19.999999999999932
+      },
+      "construction_sha256": "cd5bb2256864e80a6b918b2eede1c85cafa80719ddfbe951cd949f027d3768af",
+      "initial_array_sha256": "924303c2e96a3e40d4facc41066f905ce1360a4b6a6b1ff11cc5dbed6bec6c88",
+      "screen_final_sha256": "e5777895621e5ca4f320903c401d4f215609f0dec6e8ce10e04c4d4cb4004b89",
+      "native_steps": 73600,
+      "checkpoint_metrics": {
+        "time": 20.0,
+        "rg": 5.596770372984843,
+        "polarization": 0.9998217246297773,
+        "largest_component_fraction": 1.0,
+        "centroid_x": 60.13674685818546,
+        "centroid_y": -0.17720368374231044,
+        "centroid_z": -5.502754725270445
+      },
+      "acceptance_checks": {
+        "finite_submerged": true,
+        "retained_fish": 160,
+        "route_speed_passing_fraction": 1.0,
+        "connectivity_passing_fraction": 1.0
+      },
+      "stability_min_route_speed": 2.999361177146909,
+      "original_screen_duration": 36.0,
+      "additional_screen_duration": 36.0,
+      "additional_screen": {
+        "route_speed_passing_fraction": 1.0,
+        "connectivity_passing_fraction": 1.0,
+        "passed": true
+      },
+      "surface_reflections_at_checkpoint": 0,
+      "surface_reflections_at_screen_end": 0,
+      "wall_seconds": 60.071099238004535
+    },
+    {
+      "status": "complete",
+      "at": "2026-11-09T00:27:56.119124+08:00",
+      "school_seed": 39064505,
+      "accepted": true,
+      "checkpoint": {
+        "path": "/home/venture/uwa/complex-systems/FishSim-RL/research/longer_replication_2026-11-09/checkpoints/s39064505/encounter.npz",
+        "sha256": "b80e4b5c81bd7fcf7d5497acc40a8e12adab73ce8a9b7795536af1ec898d2ee9",
+        "preparation_dt": 0.00125,
+        "time": 19.999999999999932
+      },
+      "construction_sha256": "d5ab8af53d5b928ec887114ff827ec05a0290eb88919bbe7641a7f91b0c6d463",
+      "initial_array_sha256": "37d612c6f5e58a8849a3c220f23c0f7f4cc2c5c6587a49ef586a61f180ab677f",
+      "screen_final_sha256": "069d13f2b664de9f2c876521e8ba45e45adf6b43d522e65868793e6f828cfae0",
+      "native_steps": 73600,
+      "checkpoint_metrics": {
+        "time": 20.0,
+        "rg": 5.929314199164421,
+        "polarization": 0.9998296826245457,
+        "largest_component_fraction": 1.0,
+        "centroid_x": 59.74238268015633,
+        "centroid_y": 0.16582800275515988,
+        "centroid_z": -5.634901107873004
+      },
+      "acceptance_checks": {
+        "finite_submerged": true,
+        "retained_fish": 160,
+        "route_speed_passing_fraction": 1.0,
+        "connectivity_passing_fraction": 1.0
+      },
+      "stability_min_route_speed": 2.999395243515295,
+      "original_screen_duration": 36.0,
+      "additional_screen_duration": 36.0,
+      "additional_screen": {
+        "route_speed_passing_fraction": 1.0,
+        "connectivity_passing_fraction": 1.0,
+        "passed": true
+      },
+      "surface_reflections_at_checkpoint": 0,
+      "surface_reflections_at_screen_end": 0,
+      "wall_seconds": 60.30710580799496
+    },
+    {
+      "status": "complete",
+      "at": "2026-11-09T00:27:57.333565+08:00",
+      "school_seed": 39064506,
+      "accepted": true,
+      "checkpoint": {
+        "path": "/home/venture/uwa/complex-systems/FishSim-RL/research/longer_replication_2026-11-09/checkpoints/s39064506/encounter.npz",
+        "sha256": "f6383985c7ba08d529f6bbccdf770b7968722d462264c6fa105208cdfbd7d122",
+        "preparation_dt": 0.00125,
+        "time": 19.999999999999932
+      },
+      "construction_sha256": "b92746047abf947833fdb421612ef62278a3547881a1250a374a32e75d909a21",
+      "initial_array_sha256": "51d61c1871c17123c73157f0d4612cc70bbf894e84588cd9506981b8dbe6e0f6",
+      "screen_final_sha256": "0aa9082767b93ad8f22e009d129a678dbab9c09a7b0fba50b36f59b7a2c104e1",
+      "native_steps": 73600,
+      "checkpoint_metrics": {
+        "time": 20.0,
+        "rg": 5.638902092601532,
+        "polarization": 0.9998182477734439,
+        "largest_component_fraction": 0.99375,
+        "centroid_x": 59.6784703656219,
+        "centroid_y": 0.20044033304073477,
+        "centroid_z": -5.462197775889023
+      },
+      "acceptance_checks": {
+        "finite_submerged": true,
+        "retained_fish": 160,
+        "route_speed_passing_fraction": 1.0,
+        "connectivity_passing_fraction": 1.0
+      },
+      "stability_min_route_speed": 2.99930915285492,
+      "original_screen_duration": 36.0,
+      "additional_screen_duration": 36.0,
+      "additional_screen": {
+        "route_speed_passing_fraction": 1.0,
+        "connectivity_passing_fraction": 1.0,
+        "passed": true
+      },
+      "surface_reflections_at_checkpoint": 0,
+      "surface_reflections_at_screen_end": 0,
+      "wall_seconds": 61.20468408497982
+    },
+    {
+      "status": "complete",
+      "at": "2026-11-09T00:28:53.345064+08:00",
+      "school_seed": 39064507,
+      "accepted": true,
+      "checkpoint": {
+        "path": "/home/venture/uwa/complex-systems/FishSim-RL/research/longer_replication_2026-11-09/checkpoints/s39064507/encounter.npz",
+        "sha256": "ff775a653db509a8a62d27c350b9971b049fbdcb3eb5a136678ea0164ea16203",
+        "preparation_dt": 0.00125,
+        "time": 19.999999999999932
+      },
+      "construction_sha256": "afb020388d1e867dc8dbeb590e3e9b16ca8d98caa2e320b210fd7f0dceb159ab",
+      "initial_array_sha256": "a6905b941f6c280b05e9d463bbe75401092d8bbcddeb059f87eb2b6787f23594",
+      "screen_final_sha256": "a48461f5466a0938cb36d21b30b6e8c35254a74a9f612030ab7fdb7946140a08",
+      "native_steps": 73600,
+      "checkpoint_metrics": {
+        "time": 20.0,
+        "rg": 5.675348514041993,
+        "polarization": 0.9998668165304123,
+        "largest_component_fraction": 1.0,
+        "centroid_x": 59.900110403830965,
+        "centroid_y": -0.23397767269136782,
+        "centroid_z": -5.564983283158336
+      },
+      "acceptance_checks": {
+        "finite_submerged": true,
+        "retained_fish": 160,
+        "route_speed_passing_fraction": 1.0,
+        "connectivity_passing_fraction": 1.0
+      },
+      "stability_min_route_speed": 2.9994252878256873,
+      "original_screen_duration": 36.0,
+      "additional_screen_duration": 36.0,
+      "additional_screen": {
+        "route_speed_passing_fraction": 1.0,
+        "connectivity_passing_fraction": 1.0,
+        "passed": true
+      },
+      "surface_reflections_at_checkpoint": 0,
+      "surface_reflections_at_screen_end": 0,
+      "wall_seconds": 58.51664096303284
+    },
+    {
+      "status": "complete",
+      "at": "2026-11-09T00:28:54.334197+08:00",
+      "school_seed": 39064508,
+      "accepted": true,
+      "checkpoint": {
+        "path": "/home/venture/uwa/complex-systems/FishSim-RL/research/longer_replication_2026-11-09/checkpoints/s39064508/encounter.npz",
+        "sha256": "751f55c282bf995515789d8fd4c1dcfe029bd629411372e2a0153835320c8e38",
+        "preparation_dt": 0.00125,
+        "time": 19.999999999999932
+      },
+      "construction_sha256": "56ffcbab03ec1731afdc5c921b4930b4f126d265825fb24b3813f5644bd71f9a",
+      "initial_array_sha256": "507ea977e72abd3ba29da7e2d2eaec7cf910edd0def417438031436051e7ce04",
+      "screen_final_sha256": "fcc73df4518e51d1e533f6743bd35d7613c9659b504a1806bf525f782ac10155",
+      "native_steps": 73600,
+      "checkpoint_metrics": {
+        "time": 20.0,
+        "rg": 5.55572720757228,
+        "polarization": 0.999841281640366,
+        "largest_component_fraction": 1.0,
+        "centroid_x": 59.79101619803178,
+        "centroid_y": 0.11255279660826893,
+        "centroid_z": -5.540570400541016
+      },
+      "acceptance_checks": {
+        "finite_submerged": true,
+        "retained_fish": 160,
+        "route_speed_passing_fraction": 1.0,
+        "connectivity_passing_fraction": 1.0
+      },
+      "stability_min_route_speed": 2.9993382854217145,
+      "original_screen_duration": 36.0,
+      "additional_screen_duration": 36.0,
+      "additional_screen": {
+        "route_speed_passing_fraction": 1.0,
+        "connectivity_passing_fraction": 1.0,
+        "passed": true
+      },
+      "surface_reflections_at_checkpoint": 0,
+      "surface_reflections_at_screen_end": 0,
+      "wall_seconds": 58.21444427798269
+    }
+  ],
+  "checkpoints": {
+    "39064501": {
+      "path": "/home/venture/uwa/complex-systems/FishSim-RL/research/longer_replication_2026-11-09/checkpoints/s39064501/encounter.npz",
+      "sha256": "276a0ea09393a8cb8953440d162ece05bd17937882356784dbec605264d47b11",
+      "preparation_dt": 0.00125,
+      "time": 19.999999999999932,
+      "accepted": true,
+      "screen_status": "passed"
+    },
+    "39064502": {
+      "path": "/home/venture/uwa/complex-systems/FishSim-RL/research/longer_replication_2026-11-09/checkpoints/s39064502/encounter.npz",
+      "sha256": "2f9f2dc12aa79791cd4df420bdfafbc680d97b3d7dd847e225523c2badd0200f",
+      "preparation_dt": 0.00125,
+      "time": 19.999999999999932,
+      "accepted": true,
+      "screen_status": "passed"
+    },
+    "39064503": {
+      "path": "/home/venture/uwa/complex-systems/FishSim-RL/research/longer_replication_2026-11-09/checkpoints/s39064503/encounter.npz",
+      "sha256": "1c11c361580c412b97edf65874d2b9d482beda72bbaeca2f3d4eaac0cb72813d",
+      "preparation_dt": 0.00125,
+      "time": 19.999999999999932,
+      "accepted": true,
+      "screen_status": "passed"
+    },
+    "39064504": {
+      "path": "/home/venture/uwa/complex-systems/FishSim-RL/research/longer_replication_2026-11-09/checkpoints/s39064504/encounter.npz",
+      "sha256": "e5f3fda397f9dd31e447a6418379ba6491cabb895e1dcfe54b923b3fbe6c40e3",
+      "preparation_dt": 0.00125,
+      "time": 19.999999999999932,
+      "accepted": true,
+      "screen_status": "passed"
+    },
+    "39064505": {
+      "path": "/home/venture/uwa/complex-systems/FishSim-RL/research/longer_replication_2026-11-09/checkpoints/s39064505/encounter.npz",
+      "sha256": "b80e4b5c81bd7fcf7d5497acc40a8e12adab73ce8a9b7795536af1ec898d2ee9",
+      "preparation_dt": 0.00125,
+      "time": 19.999999999999932,
+      "accepted": true,
+      "screen_status": "passed"
+    },
+    "39064506": {
+      "path": "/home/venture/uwa/complex-systems/FishSim-RL/research/longer_replication_2026-11-09/checkpoints/s39064506/encounter.npz",
+      "sha256": "f6383985c7ba08d529f6bbccdf770b7968722d462264c6fa105208cdfbd7d122",
+      "preparation_dt": 0.00125,
+      "time": 19.999999999999932,
+      "accepted": true,
+      "screen_status": "passed"
+    },
+    "39064507": {
+      "path": "/home/venture/uwa/complex-systems/FishSim-RL/research/longer_replication_2026-11-09/checkpoints/s39064507/encounter.npz",
+      "sha256": "ff775a653db509a8a62d27c350b9971b049fbdcb3eb5a136678ea0164ea16203",
+      "preparation_dt": 0.00125,
+      "time": 19.999999999999932,
+      "accepted": true,
+      "screen_status": "passed"
+    },
+    "39064508": {
+      "path": "/home/venture/uwa/complex-systems/FishSim-RL/research/longer_replication_2026-11-09/checkpoints/s39064508/encounter.npz",
+      "sha256": "751f55c282bf995515789d8fd4c1dcfe029bd629411372e2a0153835320c8e38",
+      "preparation_dt": 0.00125,
+      "time": 19.999999999999932,
+      "accepted": true,
+      "screen_status": "passed"
+    }
+  },
+  "total_native_steps": 588800,
+  "total_model_time_T": 736.0,
+  "wall_seconds": 179.8017661049962
+}

@@ -1,0 +1,96 @@
+{
+  "study": "longer_replication_2026-11-09",
+  "frozen_at": "2026-11-09T00:25:54.407405+08:00",
+  "status": "prespecified_before_preparation",
+  "school_seeds": [
+    39064501,
+    39064502,
+    39064503,
+    39064504,
+    39064505,
+    39064506,
+    39064507,
+    39064508
+  ],
+  "capture_seeds": [
+    61001
+  ],
+  "policies": [
+    "exposed"
+  ],
+  "presences": [
+    "D",
+    "G",
+    "DG"
+  ],
+  "initial_fish": 160,
+  "D_count": 12,
+  "G_count": 3,
+  "duration_T": 72.0,
+  "primary_horizon_T": 36.0,
+  "secondary_horizon_T": 72.0,
+  "dt": 0.00125,
+  "maximum_workers": 3,
+  "numeric_threads_per_worker": 1,
+  "independent_unit": "starting school; eight independent draws with one stochastic setting each",
+  "historical_results": "separate exploratory/comparison evidence; not pooled as new independent schools",
+  "preparation": {
+    "burn_T": 20.0,
+    "checkpoint_T": 20.0,
+    "original_screen_T": 36.0,
+    "additional_screen_T": 36.0,
+    "full_screen_T": 72.0,
+    "candidate_replacements": 0,
+    "acceptance": "original criteria over original36T; additional36T diagnostics retained and reviewed before feeding; no feeding outcome selection"
+  },
+  "native_budget": {
+    "preparation_steps": 588800,
+    "integration_steps": 9600,
+    "full_steps_maximum": 1382400,
+    "total_maximum": 1980800
+  },
+  "case_order": "fixed interleaved triplets D,G,DG for each school ascending; maximum3workers; all24 cases prespecified, no adaptive stop/tuning",
+  "primary_comparisons": [
+    "Dolphin captures in DG minus D at36T for eachschool",
+    "Gannet captures in DG minus G at36T for eachschool"
+  ],
+  "secondary_comparisons": [
+    "same paired outcomes at72T",
+    "captures and effort during36\u201372T",
+    "joint-positive species benefit per school"
+  ],
+  "reported_metrics": [
+    "species captures, peractor pernominal elapsedT",
+    "launches, physical oral contacts and catches per launch/contact",
+    "observed phase time, distance and underwater bite exposure",
+    "school survival, route position, depth, cohesion, envelope retention",
+    "physical saturation/depletion and last-capture times"
+  ],
+  "depletion": {
+    "kind": "ecological absorbing no-food state",
+    "native_action": "stop native stepping immediately after final physical prey removal",
+    "nominal_horizons_T": [
+      36.0,
+      72.0
+    ],
+    "feeding_counts": "fixed forever after depletion; counts at later prespecified horizons are exact absorbing values",
+    "effort": "observed only to depletion; no extrapolated handling, distance, movement or phase exposure",
+    "denominator": "nominal36T or72T for horizon capture rates; actual native duration explicitly reported separately",
+    "audit": "all160 prey captured uniquely; no prey remain; counts constant after recorded termination; step count actual not nominal"
+  },
+  "no_parameter_tuning": true,
+  "no_adaptive_stopping": true,
+  "full_run_requires_root_review": true,
+  "model_sources": {
+    "controllers.py": "c871248ad9cd83f54dee225cd3b724dd4fe9b60418eaebc3414f4e8f58bb460a",
+    "gannet.py": "718942e1a02587da927a78410e0bde54219f265551f8e4e7755f9aefced1e086"
+  },
+  "native_sha256": "eb8654a520304cc429aced67c7e3706db8d2ef1449c5e1327a682a479b10a558",
+  "queue_amendment": {
+    "at": "2026-11-09T00:29:34.839253+08:00",
+    "reason": "root review: complete paired schools earlier; no feeding started and no outcomes used"
+  },
+  "statistical_analysis_plan": "analysis_plan.json",
+  "analysis_plan_sha256": "75ae06c5aa0eb651dd9e99e2c21687e06741ce5f810d9883706cb47aa5503d0b",
+  "source_freeze_amendment": "Before any full feeding: bind live controller declaration, shared accounting/stream replay code and prespecified statistical analysis plan. Original integration revision archived unchanged."
+}
