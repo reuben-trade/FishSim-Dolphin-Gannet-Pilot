@@ -1,0 +1,16 @@
+{
+  "version": "paired_two_grid_sensitivity_v1",
+  "horizon_T": 36,
+  "school_seeds": [39064501,39064502,39064503,39064504,39064505,39064506,39064507,39064508],
+  "presences": ["D","G","DG"],
+  "capture_seed": 61001,
+  "coarse_dt": 0.00125,
+  "fine_dt": 0.000625,
+  "independent_unit": "same eight starting schools paired across grids; not16 independent schools",
+  "case_metrics": ["species unique catches","launches","resolved oral contacts","captures per actor per nominal36T","actually observed effort duration/distance","fish survival/depth/cohesion"],
+  "primary_grid_effects": ["DG dolphin catches minus D dolphin catches per school","DG gannet catches minus G gannet catches per school"],
+  "numerical_differences": ["fine minus coarse partner effect per species per school","sign agreement and joint-positive school counts on both grids","mixed-case catches fine minus coarse"],
+  "summary": "Keep eight paired school rows; report mean/range and direction counts descriptively. Do not select cases or tune policy from either grid.",
+  "interpretation": "Two-grid numerical sensitivity; agreement does not establish convergence,order of accuracy,or timestep independence. Numerical sensitivity of an eight-school conclusion is reported explicitly.",
+  "depletion": "Use sealed nominal36T absorbing capture counts if all160 fish are removed before36T. Effort is actually observed only; never extrapolate postdepletion effort."
+}

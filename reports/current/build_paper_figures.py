@@ -22,6 +22,7 @@ RESEARCH=HERE.parent
 DEVELOPMENT=RESEARCH/'simple_herd_strike_pilot_2026-11-08'
 REPLICATION=RESEARCH/'exposed_replication_2026-11-08'
 LONGER=RESEARCH/'longer_replication_2026-11-09'
+FINE=RESEARCH/'fine_dt_replication_2026-11-09'
 DEPTH=RESEARCH/'gannet_depth_study_2026-11-08'
 OUT=HERE/'figures'
 D='#087F8C'
@@ -182,41 +183,46 @@ def development_figure():
     save(fig,'fig2_development',caption,[file,DEVELOPMENT/'results/analysis_final/analysis_audit.json'],rows)
 
 
-def publication_figure(pairs,statistics,output):
+def publication_figure(pairs,statistics,output,fine_pairs):
     # Full reset keeps these pixels independent of whichever other paper figure
     # was generated earlier, while preserving its caller's plotting style.
     with matplotlib.rc_context(matplotlib.rcParamsDefault):
-        return _publication_figure(pairs,statistics,output)
+        return _publication_figure(pairs,statistics,output,fine_pairs)
 
 
-def _publication_figure(pairs,statistics,output):
+def _publication_figure(pairs,statistics,output,fine_pairs):
     plt.rcParams.update({'font.family':'DejaVu Sans','font.size':8.5,'axes.spines.top':False,
         'axes.spines.right':False,'pdf.fonttype':42,'savefig.facecolor':'white'})
-    fig,axes=plt.subplots(1,2,figsize=(7.05,2.45),sharex=True)
+    fig,axes=plt.subplots(1,2,figsize=(7.05,2.6),sharex=True)
     for ax,species,color,title in zip(axes,('D','G'),('#087F8C','#D98525'),('Dolphin partner effect','Gannet partner effect')):
         ax.axhline(0,color='#73818B',linewidth=.7)
-        points={}
-        for index,horizon in enumerate((36.,72.)):
-            group=sorted((r for r in pairs if float(r['horizon_T'])==horizon),key=lambda r:int(r['school_seed']))
+        groups=[sorted((r for r in pairs if float(r['horizon_T'])==36.),key=lambda r:int(r['school_seed'])),
+                sorted(fine_pairs,key=lambda r:int(r['school_seed'])),
+                sorted((r for r in pairs if float(r['horizon_T'])==72.),key=lambda r:int(r['school_seed']))]
+        offsets=np.linspace(-.12,.12,8)
+        for j in range(8):
+            ax.plot([offsets[j],1+offsets[j]],
+                    [float(groups[0][j][species+'_difference']),float(groups[1][j][species+'_difference'])],
+                    color=color,alpha=.32,lw=.6,zorder=1)
+        for index,group in enumerate(groups):
             assert len(group)==8
-            y=np.asarray([float(r[species+'_difference']) for r in group]);x=index+np.linspace(-.16,.16,8)
-            ax.scatter(x,y,s=21,color=color,alpha=.8,zorder=3,label='School difference' if index==0 else None)
-            mean=float(y.mean());ax.scatter([index],[mean],marker='D',s=34,color='#263746',zorder=5,
+            y=np.asarray([float(r[species+'_difference']) for r in group]);x=index+offsets
+            ax.scatter(x,y,s=17,color=color,alpha=.8,zorder=3,label='School' if index==0 else None)
+            mean=float(y.mean());ax.scatter([index],[mean],marker='D',s=28,color='#263746',zorder=5,
                 label='Mean' if index==0 else None)
-            points[str(int(horizon))]=dict(schools=[int(r['school_seed']) for r in group],differences=y.tolist(),mean=mean)
-            if horizon==36.:
+            if index==0:
                 low,high=statistics[species]['interval']
                 ax.vlines(index,low,high,color='#263746',lw=1.4,zorder=4)
                 ax.hlines([low,high],index-.07,index+.07,color='#263746',lw=1.4,zorder=4)
-                points['36']['marginal_97_5_percent_interval']=[low,high]
-        ax.set(xticks=[0,1],xticklabels=['36T primary','72T secondary'],xlim=(-.42,1.42),
+        ax.axvline(1.5,color='#B7C2C9',lw=.6,ls=':',zorder=0)
+        ax.set(xticks=[0,1,2],xticklabels=['36T coarse\nprimary','36T fine\nsensitivity','72T coarse\nsecondary'],xlim=(-.34,2.34),
             title=title,ylabel='Mixed − alone captures')
+        ax.tick_params(axis='x',labelsize=7.5)
         ax.grid(axis='y',alpha=.18)
-        if species=='D':ax.legend(frameon=False,fontsize=7,loc='best')
     fig.tight_layout(pad=.8)
     for ext in ('png','pdf'):fig.savefig(output/('fig3_replication.'+ext),dpi=230,bbox_inches='tight',pad_inches=.035)
     plt.close(fig)
-    return dict(D=axes_data(pairs,'D'),G=axes_data(pairs,'G'),primary_statistics=statistics)
+    return dict(D=axes_data(pairs,'D'),G=axes_data(pairs,'G'),fine_36T=fine_pairs,primary_statistics=statistics)
 
 
 def axes_data(pairs,species):
@@ -255,17 +261,50 @@ def replication_figure():
     for index,species in enumerate(('D','G')):
         assert statistics[species]['mean_difference']==float(vectors[:,index].mean())
         assert np.array_equal(np.asarray(statistics[species]['interval']),intervals[:,index])
+    fine_analysis=FINE/'results/full_36T_v1/analysis_final'
+    fine_audit=read(fine_analysis/'analysis_audit.json')
+    assert fine_audit['status']=='complete' and fine_audit['independent_schools']==8 and fine_audit['grids']==2
+    fine_table=table(fine_analysis/'paired_effect_grid_differences.csv')
+    assert len(fine_table)==8
+    inputs.extend([fine_analysis/'analysis_audit.json',fine_analysis/'paired_effect_grid_differences.csv',
+                   FINE/'paper_update_validation.json'])
+    assert read(FINE/'paper_update_validation.json')['status']=='passed'
+    fine_pairs=[]
+    assert sorted(int(r['school_seed']) for r in fine_table)==list(range(39064501,39064509))
+    for row in sorted(fine_table,key=lambda r:int(r['school_seed'])):
+        school=int(row['school_seed']);states={}
+        for presence in ('D','G','DG'):
+            directory=FINE/'results/full_36T_v1/cases'/f's{school}_exposed_{presence}_c61001'
+            seal_path=directory/'checkpoint_36T.seal.json';seal=read(seal_path)
+            assert seal['status']=='complete'
+            for name,digest in seal['files'].items():assert sha(directory/name)==digest
+            data_path=directory/'checkpoint_36T.json';states[presence]=read(data_path)
+            assert states[presence]['native_steps']==57600
+            inputs.extend([seal_path,data_path])
+        fine_row=dict(school_seed=school,horizon_T=36.)
+        for species,alone in [('D','D'),('G','G')]:
+            a=states[alone]['species'][species]['captures'];m=states['DG']['species'][species]['captures']
+            assert int(row[f'fine_{species}_alone'])==a and int(row[f'fine_{species}_mixed'])==m
+            assert int(row[f'fine_{species}_partner_effect'])==m-a
+            assert int(row[f'coarse_{species}_partner_effect'])==int(by[(school,36.)][species+'_difference'])
+            coarse=by[(school,36.)]
+            assert int(row[f'coarse_{species}_alone'])==int(coarse[species+'_alone'])
+            assert int(row[f'coarse_{species}_mixed'])==int(coarse['D_with_gannets' if species=='D' else 'G_with_dolphins'])
+            assert int(row[f'{species}_effect_fine_minus_coarse'])==m-a-int(by[(school,36.)][species+'_difference'])
+            fine_row[species+'_difference']=m-a
+            fine_row[species+'_alone']=a;fine_row[species+'_mixed']=m
+        fine_pairs.append(fine_row)
     OUT.mkdir(parents=True,exist_ok=True)
-    plotted=publication_figure(pairs,statistics,OUT)
-    caption='Eight-school replication of the unchanged exposed-prey rule. Each point is one school’s mixed-minus-alone capture difference. Diamonds show equal-school means. Bars at 36T are 97.5% marginal percentile bootstrap intervals for the two primary species (approximate 95% familywise coverage, with small-sample limitations). The 72T outcomes are descriptive extensions of the same trajectories. No historical development or two-school follow-up data enter these estimates.'
+    plotted=publication_figure(pairs,statistics,OUT,fine_pairs)
+    caption='Partner effects and numerical sensitivity on the same eight schools. Points show mixed-minus-alone captures; lines join each school across coarse (0.00125T) and fine (0.000625T) grids at 36T. Diamonds show equal-school means. Only the coarse 36T primary estimates have 97.5% marginal bootstrap intervals (approximate 95% familywise coverage, with small-sample limitations). Fine 36T and coarse 72T results are descriptive sensitivity and duration checks, not additional independent schools. Earlier cohorts are excluded.'
     receipt_path=OUT/'figure_receipts.json';receipts=read(receipt_path) if receipt_path.exists() else {}
     receipts['fig3_replication']=dict(caption=caption,sources=[source(p) for p in inputs],plotted_data=plotted,
         created_at=datetime.now(ZoneInfo('Australia/Perth')).isoformat(),native_steps=0,
         outputs={ext:source(OUT/('fig3_replication.'+ext)) for ext in ('pdf','png')},
-        uncertainty_intervals='97.5% marginal school-vector bootstrap at36T only;72T descriptive')
+        uncertainty_intervals='97.5% marginal school-vector bootstrap at coarse36T only;fine36T/coarse72T descriptive')
     receipt_path.write_text(json.dumps(receipts,indent=2,allow_nan=False)+'\n')
     (OUT/'captions.txt').write_text('\n\n'.join(key+': '+receipts[key]['caption'] for key in sorted(receipts))+'\n')
-    print('fig3_replication: eight independent schools,36Tprimary/72Tsecondary',flush=True)
+    print('fig3_replication: eight independent schools,coarse36Tprimary/fine36Tsensitivity/coarse72Tsecondary',flush=True)
     return True
 
 

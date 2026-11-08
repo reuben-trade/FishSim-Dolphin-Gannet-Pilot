@@ -1,7 +1,7 @@
 # Current working report
 
-The current report contains the complete eight-school extension:24 new D/G/DG encounters with 36T primary and 72T secondary sealed records. Earlier development, two-school follow-up and depth results remain separate. The notebook reproduces all four figures and reconstructs the new cohort from exact horizon prefixes; its 48 encounters include the earlier 24. Three timing engineering checks are retained separately.
+This final overnight snapshot adds the completed timestep sensitivity: 24 finer-grid encounters on the same eight schools as the coarse study. At 36T the mean dolphin partner effect changes from +1 to 0 fish/school; the gannet effect changes from +5.125 to +2.5. Dolphin signs agree in only 3/8 schools and gannet signs in 6/8. The report does not claim convergence or stable dolphin facilitation.
 
-Primary dolphin benefit is unresolved: mean+1 capture/school,97.5% marginal interval−2.375 to+5. Gannets gain+5.125, interval 2.75 to 7. The 72T outcomes are secondary observations of the same encounters. The finer-timestep follow-up is running and excluded. These model results do not establish general reciprocal cooperation or numerical convergence.
+The notebook verifies 72 feeding encounters, preserving all earlier case seals and inventories. Its 22 default cells rebuild four figures and 14 tables without native simulation. The same eight schools are paired across grids; these are not sixteen independent schools. Three timing engineering checks remain separate.
 
-The main body has six pages and four numbered figures; references occupy page 7.
+The report has six body pages, four numbered figures and references on page 7. All authorized experiments are complete; no further tuning or native runs were performed for this update.

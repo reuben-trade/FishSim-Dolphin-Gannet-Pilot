@@ -1,0 +1,47 @@
+{
+  "study": "fine_dt_replication_2026-11-09",
+  "declared_at": "2026-11-09T00:39:34.111575+08:00",
+  "status": "plan_and_zero_step_validation_only; full_native_requires_root_review",
+  "school_seeds": [
+    39064501,
+    39064502,
+    39064503,
+    39064504,
+    39064505,
+    39064506,
+    39064507,
+    39064508
+  ],
+  "presences": [
+    "D",
+    "G",
+    "DG"
+  ],
+  "capture_seed": 61001,
+  "policy": "exposed",
+  "duration_T": 36,
+  "dt": 0.000625,
+  "reference_dt": 0.00125,
+  "reference_horizon_T": 36,
+  "reference_study": "/home/venture/uwa/complex-systems/FishSim-RL/research/longer_replication_2026-11-09",
+  "reference_output": "/home/venture/uwa/complex-systems/FishSim-RL/research/longer_replication_2026-11-09/results/full_72T_v1",
+  "reference_checkpoints_manifest_sha256": "1ac484af5bd45f3f586523d8c634fcf99aa4f7e415c563a2c6726fb4b1eaf5ab",
+  "prepared_checkpoint_T": 20,
+  "preparation_steps": 0,
+  "reuse_exact_prepared_state_and_step_index": true,
+  "independent_unit": "same eight schools paired across timestep grids; no additional independent schools",
+  "maximum_native_steps": 1382400,
+  "maximum_workers": 3,
+  "numeric_threads_per_worker": 1,
+  "observational_cadence": {
+    "sample_interval_T": 0.1,
+    "sample_steps": 160,
+    "progress_interval_T": 1,
+    "progress_steps": 1600
+  },
+  "shared_model": "Byte-identical exposed dolphin and dense-gannet sources; samephysicalparameters,prNGs,readiness,schoolgeometries,setupdeclaration and captureq. Only numericaldt changes; no policy/threshold/lag/seed tuning.",
+  "change_scope": "Compare36T fine runs with sealed36T coarse checkpoints from72T parent runs. Keep whole coarse runs immutable. Record absorbing depletion if encountered; no postdepletion effort extrapolation.",
+  "analysis": "Report per-school D(DG-D) and G(DG-G), mixed-case captures,effort,fishsurvival and depth for both grids and paired grid differences. Two grids diagnose sensitivity and do not establish convergence or timestep independence.",
+  "execution_gate": "Require root approvalreceipt tied to protocol/sourcefreeze plus complete all24coarse cases beforefine native pool; max3fineworkers aftercoarse pool exits. No finer native calls during preflight/tests.",
+  "full_native_authorized": false
+}
