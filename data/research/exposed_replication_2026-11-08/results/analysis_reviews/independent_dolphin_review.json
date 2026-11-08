@@ -1,0 +1,653 @@
+{
+  "status": "passed",
+  "reviewed_at": "2026-11-08T23:37:06.519310+08:00",
+  "scope": "Offline independent review of four sealed dolphin-only exposed-policy replication cases, original fresh-school preparation, fixed policy provenance, physical/contact/recovery/RNG/cycle audit and matched starts.",
+  "helper_sha256": "eaf3a701f5bb0588d32ce3c511b6bfb95fa7ffc900c2b6be0a006ab0bb2405a3",
+  "source": "/home/venture/uwa/complex-systems/FishSim-RL/research/exposed_replication_2026-11-08/results/full_36T_v1",
+  "preparation_manifest_sha256": "2a90921c49deeb74377df4a501a189c0057b842c4f5623bbe8949084c0fe1d49",
+  "preparation": [
+    {
+      "school_seed": 39063501,
+      "status": "passed",
+      "sealed_files": 6,
+      "native_steps": 44800,
+      "route_speed_passing_fraction": 1.0,
+      "connectivity_passing_fraction": 1.0,
+      "checkpoint_sha256": "495d9e45b609064ccaffadca406d8f7fb6c164bf1929e9cb90fbb9365157e7f9",
+      "completion_sha256": "67b2c696bda0a524f8e1d704da28e346a31bdc9a6faa287c1ad994d945b5bd75"
+    },
+    {
+      "school_seed": 39063502,
+      "status": "passed",
+      "sealed_files": 6,
+      "native_steps": 44800,
+      "route_speed_passing_fraction": 1.0,
+      "connectivity_passing_fraction": 1.0,
+      "checkpoint_sha256": "9e9c78c42908c051d585802ddf16ca1da5fb83905ca6a6529d386b57dd78ad3d",
+      "completion_sha256": "e0802eade3def72e0375c93f94347ffc71ea3063d61dfb9b33bd8d9946843ac6"
+    }
+  ],
+  "cases": [
+    {
+      "case": "s39063501_exposed_D_c61001",
+      "status": "passed",
+      "duration": 35.99999999996726,
+      "native_steps": 28800,
+      "species": {
+        "D": {
+          "count": 12,
+          "captures": 23,
+          "launches": 48,
+          "contacts": 33
+        },
+        "G": {
+          "count": 0,
+          "captures": 0,
+          "launches": 0,
+          "contacts": 0
+        }
+      },
+      "source_and_file_hashes": "passed",
+      "gannet_source_exact_copy": "passed",
+      "dolphin_source_exact_copy": "passed",
+      "preparation_provenance_and_checkpoint_loading": "passed",
+      "matched_presence_initial_state": "passed",
+      "actors": {
+        "D00": {
+          "launches": 4,
+          "contacts": 3,
+          "captures": 2,
+          "contact_geometry": "passed",
+          "recovery_readiness": "passed",
+          "capture_rng_replay": "passed"
+        },
+        "D01": {
+          "launches": 5,
+          "contacts": 3,
+          "captures": 3,
+          "contact_geometry": "passed",
+          "recovery_readiness": "passed",
+          "capture_rng_replay": "passed"
+        },
+        "D02": {
+          "launches": 5,
+          "contacts": 4,
+          "captures": 2,
+          "contact_geometry": "passed",
+          "recovery_readiness": "passed",
+          "capture_rng_replay": "passed"
+        },
+        "D03": {
+          "launches": 4,
+          "contacts": 3,
+          "captures": 2,
+          "contact_geometry": "passed",
+          "recovery_readiness": "passed",
+          "capture_rng_replay": "passed"
+        },
+        "D04": {
+          "launches": 3,
+          "contacts": 1,
+          "captures": 0,
+          "contact_geometry": "passed",
+          "recovery_readiness": "passed",
+          "capture_rng_replay": "passed"
+        },
+        "D05": {
+          "launches": 3,
+          "contacts": 3,
+          "captures": 3,
+          "contact_geometry": "passed",
+          "recovery_readiness": "passed",
+          "capture_rng_replay": "passed"
+        },
+        "D06": {
+          "launches": 3,
+          "contacts": 3,
+          "captures": 2,
+          "contact_geometry": "passed",
+          "recovery_readiness": "passed",
+          "capture_rng_replay": "passed"
+        },
+        "D07": {
+          "launches": 4,
+          "contacts": 4,
+          "captures": 3,
+          "contact_geometry": "passed",
+          "recovery_readiness": "passed",
+          "capture_rng_replay": "passed"
+        },
+        "D08": {
+          "launches": 4,
+          "contacts": 3,
+          "captures": 2,
+          "contact_geometry": "passed",
+          "recovery_readiness": "passed",
+          "capture_rng_replay": "passed"
+        },
+        "D09": {
+          "launches": 5,
+          "contacts": 2,
+          "captures": 1,
+          "contact_geometry": "passed",
+          "recovery_readiness": "passed",
+          "capture_rng_replay": "passed"
+        },
+        "D10": {
+          "launches": 4,
+          "contacts": 2,
+          "captures": 1,
+          "contact_geometry": "passed",
+          "recovery_readiness": "passed",
+          "capture_rng_replay": "passed"
+        },
+        "D11": {
+          "launches": 4,
+          "contacts": 2,
+          "captures": 2,
+          "contact_geometry": "passed",
+          "recovery_readiness": "passed",
+          "capture_rng_replay": "passed"
+        }
+      },
+      "unique_removals": 23,
+      "tie_rng_replay": "passed",
+      "tie_calls": 0,
+      "cycle_counts": {
+        "cycle_pressure_start": 73,
+        "cycle_launch": 48,
+        "cycle_pressure_reset": 21
+      },
+      "minimum_prelaunch_pressure_T": 1.9999999999999964,
+      "maximum_prelaunch_pressure_T": 2.0,
+      "exposed_launches_at_positive_neighbor_count": 29,
+      "sampled_pressure_checks": 1154,
+      "gannets": {},
+      "completion_sha256": "df57912c662bff0ca6f97021f927a058bf8909d981438b3e05f5327ff132c016",
+      "school_seed": 39063501,
+      "capture_seed": 61001,
+      "presence": "D",
+      "policy": "exposed",
+      "max_sampled_dolphin_speed": 5.999999983033349,
+      "sampled_horizon_and_speed_bound": "passed",
+      "behaviour_time_and_stationary_recovery": "passed",
+      "sources_equal_execution_freeze": "passed",
+      "no_bird_objects_or_events": "passed",
+      "selected_neighbor_min": 0,
+      "selected_neighbor_max": 7,
+      "zero_neighbor_target_launches": 19,
+      "dense_target_launches": 14
+    },
+    {
+      "case": "s39063501_exposed_D_c61002",
+      "status": "passed",
+      "duration": 35.99999999996726,
+      "native_steps": 28800,
+      "species": {
+        "D": {
+          "count": 12,
+          "captures": 20,
+          "launches": 54,
+          "contacts": 32
+        },
+        "G": {
+          "count": 0,
+          "captures": 0,
+          "launches": 0,
+          "contacts": 0
+        }
+      },
+      "source_and_file_hashes": "passed",
+      "gannet_source_exact_copy": "passed",
+      "dolphin_source_exact_copy": "passed",
+      "preparation_provenance_and_checkpoint_loading": "passed",
+      "matched_presence_initial_state": "passed",
+      "actors": {
+        "D00": {
+          "launches": 5,
+          "contacts": 3,
+          "captures": 2,
+          "contact_geometry": "passed",
+          "recovery_readiness": "passed",
+          "capture_rng_replay": "passed"
+        },
+        "D01": {
+          "launches": 5,
+          "contacts": 4,
+          "captures": 4,
+          "contact_geometry": "passed",
+          "recovery_readiness": "passed",
+          "capture_rng_replay": "passed"
+        },
+        "D02": {
+          "launches": 5,
+          "contacts": 2,
+          "captures": 0,
+          "contact_geometry": "passed",
+          "recovery_readiness": "passed",
+          "capture_rng_replay": "passed"
+        },
+        "D03": {
+          "launches": 5,
+          "contacts": 4,
+          "captures": 2,
+          "contact_geometry": "passed",
+          "recovery_readiness": "passed",
+          "capture_rng_replay": "passed"
+        },
+        "D04": {
+          "launches": 3,
+          "contacts": 2,
+          "captures": 1,
+          "contact_geometry": "passed",
+          "recovery_readiness": "passed",
+          "capture_rng_replay": "passed"
+        },
+        "D05": {
+          "launches": 5,
+          "contacts": 3,
+          "captures": 1,
+          "contact_geometry": "passed",
+          "recovery_readiness": "passed",
+          "capture_rng_replay": "passed"
+        },
+        "D06": {
+          "launches": 4,
+          "contacts": 3,
+          "captures": 3,
+          "contact_geometry": "passed",
+          "recovery_readiness": "passed",
+          "capture_rng_replay": "passed"
+        },
+        "D07": {
+          "launches": 5,
+          "contacts": 2,
+          "captures": 1,
+          "contact_geometry": "passed",
+          "recovery_readiness": "passed",
+          "capture_rng_replay": "passed"
+        },
+        "D08": {
+          "launches": 4,
+          "contacts": 2,
+          "captures": 1,
+          "contact_geometry": "passed",
+          "recovery_readiness": "passed",
+          "capture_rng_replay": "passed"
+        },
+        "D09": {
+          "launches": 5,
+          "contacts": 2,
+          "captures": 0,
+          "contact_geometry": "passed",
+          "recovery_readiness": "passed",
+          "capture_rng_replay": "passed"
+        },
+        "D10": {
+          "launches": 4,
+          "contacts": 2,
+          "captures": 2,
+          "contact_geometry": "passed",
+          "recovery_readiness": "passed",
+          "capture_rng_replay": "passed"
+        },
+        "D11": {
+          "launches": 4,
+          "contacts": 3,
+          "captures": 3,
+          "contact_geometry": "passed",
+          "recovery_readiness": "passed",
+          "capture_rng_replay": "passed"
+        }
+      },
+      "unique_removals": 20,
+      "tie_rng_replay": "passed",
+      "tie_calls": 0,
+      "cycle_counts": {
+        "cycle_pressure_start": 74,
+        "cycle_launch": 54,
+        "cycle_pressure_reset": 18
+      },
+      "minimum_prelaunch_pressure_T": 1.9999999999999964,
+      "maximum_prelaunch_pressure_T": 2.0,
+      "exposed_launches_at_positive_neighbor_count": 29,
+      "sampled_pressure_checks": 1236,
+      "gannets": {},
+      "completion_sha256": "466fab143b20e709919350ecca80cfb9438aa1527c8b854cb97dfb6baf1fa28c",
+      "school_seed": 39063501,
+      "capture_seed": 61002,
+      "presence": "D",
+      "policy": "exposed",
+      "max_sampled_dolphin_speed": 5.999999949085886,
+      "sampled_horizon_and_speed_bound": "passed",
+      "behaviour_time_and_stationary_recovery": "passed",
+      "sources_equal_execution_freeze": "passed",
+      "no_bird_objects_or_events": "passed",
+      "selected_neighbor_min": 0,
+      "selected_neighbor_max": 7,
+      "zero_neighbor_target_launches": 25,
+      "dense_target_launches": 8
+    },
+    {
+      "case": "s39063502_exposed_D_c61001",
+      "status": "passed",
+      "duration": 35.99999999996726,
+      "native_steps": 28800,
+      "species": {
+        "D": {
+          "count": 12,
+          "captures": 22,
+          "launches": 47,
+          "contacts": 30
+        },
+        "G": {
+          "count": 0,
+          "captures": 0,
+          "launches": 0,
+          "contacts": 0
+        }
+      },
+      "source_and_file_hashes": "passed",
+      "gannet_source_exact_copy": "passed",
+      "dolphin_source_exact_copy": "passed",
+      "preparation_provenance_and_checkpoint_loading": "passed",
+      "matched_presence_initial_state": "passed",
+      "actors": {
+        "D00": {
+          "launches": 5,
+          "contacts": 4,
+          "captures": 4,
+          "contact_geometry": "passed",
+          "recovery_readiness": "passed",
+          "capture_rng_replay": "passed"
+        },
+        "D01": {
+          "launches": 4,
+          "contacts": 4,
+          "captures": 2,
+          "contact_geometry": "passed",
+          "recovery_readiness": "passed",
+          "capture_rng_replay": "passed"
+        },
+        "D02": {
+          "launches": 5,
+          "contacts": 3,
+          "captures": 3,
+          "contact_geometry": "passed",
+          "recovery_readiness": "passed",
+          "capture_rng_replay": "passed"
+        },
+        "D03": {
+          "launches": 4,
+          "contacts": 3,
+          "captures": 3,
+          "contact_geometry": "passed",
+          "recovery_readiness": "passed",
+          "capture_rng_replay": "passed"
+        },
+        "D04": {
+          "launches": 3,
+          "contacts": 2,
+          "captures": 2,
+          "contact_geometry": "passed",
+          "recovery_readiness": "passed",
+          "capture_rng_replay": "passed"
+        },
+        "D05": {
+          "launches": 4,
+          "contacts": 3,
+          "captures": 2,
+          "contact_geometry": "passed",
+          "recovery_readiness": "passed",
+          "capture_rng_replay": "passed"
+        },
+        "D06": {
+          "launches": 3,
+          "contacts": 0,
+          "captures": 0,
+          "contact_geometry": "passed",
+          "recovery_readiness": "passed",
+          "capture_rng_replay": "passed"
+        },
+        "D07": {
+          "launches": 4,
+          "contacts": 2,
+          "captures": 1,
+          "contact_geometry": "passed",
+          "recovery_readiness": "passed",
+          "capture_rng_replay": "passed"
+        },
+        "D08": {
+          "launches": 2,
+          "contacts": 1,
+          "captures": 0,
+          "contact_geometry": "passed",
+          "recovery_readiness": "passed",
+          "capture_rng_replay": "passed"
+        },
+        "D09": {
+          "launches": 4,
+          "contacts": 4,
+          "captures": 2,
+          "contact_geometry": "passed",
+          "recovery_readiness": "passed",
+          "capture_rng_replay": "passed"
+        },
+        "D10": {
+          "launches": 4,
+          "contacts": 0,
+          "captures": 0,
+          "contact_geometry": "passed",
+          "recovery_readiness": "passed",
+          "capture_rng_replay": "passed"
+        },
+        "D11": {
+          "launches": 5,
+          "contacts": 4,
+          "captures": 3,
+          "contact_geometry": "passed",
+          "recovery_readiness": "passed",
+          "capture_rng_replay": "passed"
+        }
+      },
+      "unique_removals": 22,
+      "tie_rng_replay": "passed",
+      "tie_calls": 0,
+      "cycle_counts": {
+        "cycle_pressure_start": 76,
+        "cycle_launch": 47,
+        "cycle_pressure_reset": 27
+      },
+      "minimum_prelaunch_pressure_T": 1.9999999999999964,
+      "maximum_prelaunch_pressure_T": 2.0,
+      "exposed_launches_at_positive_neighbor_count": 24,
+      "sampled_pressure_checks": 1185,
+      "gannets": {},
+      "completion_sha256": "10f34986efddd9607a92b0df0ddd1e5bc10aef780b530c0da3b7059f8e32ca5a",
+      "school_seed": 39063502,
+      "capture_seed": 61001,
+      "presence": "D",
+      "policy": "exposed",
+      "max_sampled_dolphin_speed": 5.999999919863952,
+      "sampled_horizon_and_speed_bound": "passed",
+      "behaviour_time_and_stationary_recovery": "passed",
+      "sources_equal_execution_freeze": "passed",
+      "no_bird_objects_or_events": "passed",
+      "selected_neighbor_min": 0,
+      "selected_neighbor_max": 7,
+      "zero_neighbor_target_launches": 23,
+      "dense_target_launches": 11
+    },
+    {
+      "case": "s39063502_exposed_D_c61002",
+      "status": "passed",
+      "duration": 35.99999999996726,
+      "native_steps": 28800,
+      "species": {
+        "D": {
+          "count": 12,
+          "captures": 22,
+          "launches": 46,
+          "contacts": 27
+        },
+        "G": {
+          "count": 0,
+          "captures": 0,
+          "launches": 0,
+          "contacts": 0
+        }
+      },
+      "source_and_file_hashes": "passed",
+      "gannet_source_exact_copy": "passed",
+      "dolphin_source_exact_copy": "passed",
+      "preparation_provenance_and_checkpoint_loading": "passed",
+      "matched_presence_initial_state": "passed",
+      "actors": {
+        "D00": {
+          "launches": 4,
+          "contacts": 4,
+          "captures": 4,
+          "contact_geometry": "passed",
+          "recovery_readiness": "passed",
+          "capture_rng_replay": "passed"
+        },
+        "D01": {
+          "launches": 4,
+          "contacts": 3,
+          "captures": 3,
+          "contact_geometry": "passed",
+          "recovery_readiness": "passed",
+          "capture_rng_replay": "passed"
+        },
+        "D02": {
+          "launches": 3,
+          "contacts": 0,
+          "captures": 0,
+          "contact_geometry": "passed",
+          "recovery_readiness": "passed",
+          "capture_rng_replay": "passed"
+        },
+        "D03": {
+          "launches": 4,
+          "contacts": 1,
+          "captures": 1,
+          "contact_geometry": "passed",
+          "recovery_readiness": "passed",
+          "capture_rng_replay": "passed"
+        },
+        "D04": {
+          "launches": 5,
+          "contacts": 3,
+          "captures": 1,
+          "contact_geometry": "passed",
+          "recovery_readiness": "passed",
+          "capture_rng_replay": "passed"
+        },
+        "D05": {
+          "launches": 3,
+          "contacts": 3,
+          "captures": 1,
+          "contact_geometry": "passed",
+          "recovery_readiness": "passed",
+          "capture_rng_replay": "passed"
+        },
+        "D06": {
+          "launches": 3,
+          "contacts": 2,
+          "captures": 2,
+          "contact_geometry": "passed",
+          "recovery_readiness": "passed",
+          "capture_rng_replay": "passed"
+        },
+        "D07": {
+          "launches": 5,
+          "contacts": 1,
+          "captures": 1,
+          "contact_geometry": "passed",
+          "recovery_readiness": "passed",
+          "capture_rng_replay": "passed"
+        },
+        "D08": {
+          "launches": 3,
+          "contacts": 1,
+          "captures": 1,
+          "contact_geometry": "passed",
+          "recovery_readiness": "passed",
+          "capture_rng_replay": "passed"
+        },
+        "D09": {
+          "launches": 4,
+          "contacts": 3,
+          "captures": 3,
+          "contact_geometry": "passed",
+          "recovery_readiness": "passed",
+          "capture_rng_replay": "passed"
+        },
+        "D10": {
+          "launches": 3,
+          "contacts": 1,
+          "captures": 1,
+          "contact_geometry": "passed",
+          "recovery_readiness": "passed",
+          "capture_rng_replay": "passed"
+        },
+        "D11": {
+          "launches": 5,
+          "contacts": 5,
+          "captures": 4,
+          "contact_geometry": "passed",
+          "recovery_readiness": "passed",
+          "capture_rng_replay": "passed"
+        }
+      },
+      "unique_removals": 22,
+      "tie_rng_replay": "passed",
+      "tie_calls": 0,
+      "cycle_counts": {
+        "cycle_pressure_start": 74,
+        "cycle_launch": 46,
+        "cycle_pressure_reset": 23
+      },
+      "minimum_prelaunch_pressure_T": 1.9999999999999964,
+      "maximum_prelaunch_pressure_T": 2.0,
+      "exposed_launches_at_positive_neighbor_count": 25,
+      "sampled_pressure_checks": 1109,
+      "gannets": {},
+      "completion_sha256": "c0aa1f24eaa3c5c8e11a4f43bb836059880aeb605dd8900a59381a78fee06fbf",
+      "school_seed": 39063502,
+      "capture_seed": 61002,
+      "presence": "D",
+      "policy": "exposed",
+      "max_sampled_dolphin_speed": 5.999999919863952,
+      "sampled_horizon_and_speed_bound": "passed",
+      "behaviour_time_and_stationary_recovery": "passed",
+      "sources_equal_execution_freeze": "passed",
+      "no_bird_objects_or_events": "passed",
+      "selected_neighbor_min": 0,
+      "selected_neighbor_max": 7,
+      "zero_neighbor_target_launches": 21,
+      "dense_target_launches": 9
+    }
+  ],
+  "cross_capture_seed_checks": [
+    {
+      "school_seed": 39063501,
+      "same_initial_fish_dolphin_physics_readiness_controllers": "passed",
+      "distinct_declared_capture_and_tie_stream_states": "passed",
+      "interpretation": "Two stochastic settings on the same school; not two independent school configurations."
+    },
+    {
+      "school_seed": 39063502,
+      "same_initial_fish_dolphin_physics_readiness_controllers": "passed",
+      "distinct_declared_capture_and_tie_stream_states": "passed",
+      "interpretation": "Two stochastic settings on the same school; not two independent school configurations."
+    }
+  ],
+  "native_steps_run_by_review": 0,
+  "limitations": [
+    "The continuous native trajectories were not re-simulated; displacement bounds use saved0.1T samples.",
+    "Exact launch candidate arrays are not stored. Soft-target ranking is verified against recorded selected/minimum neighbor counts and frozen tested controller.",
+    "D/G matching is performed only within the same school and capture setting. This report records any mixed initial state still pending when reviewed.",
+    "Two fresh school configurations crossed with two stochastic settings do not constitute four independent schools."
+  ]
+}

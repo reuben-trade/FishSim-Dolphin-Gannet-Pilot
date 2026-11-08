@@ -1,0 +1,430 @@
+{
+  "fig1_model": {
+    "caption": "Model rules and one recorded encounter. (a) Both dolphin target policies use the same 2T near-prey herding cycle, one feasible strike and normal handling/recovery. Gannets influence dolphins through prey dynamics, without a dolphin response to a bird cue. (b,c) Actual top and side views at 12T for development school 39061002, exposed targeting with gannets; lines show predator paths over 6\u201312T and crosses mark actual captures in that interval. Horizontal coordinates are relative to the surviving fish centroid at 12T; z=0 is the surface. Coordinates are model units. This snapshot illustrates the model, not successful whole-school containment.",
+    "sources": [
+      {
+        "path": "/home/venture/uwa/complex-systems/FishSim-RL/research/thesis_working_draft_2026-11-08/notebook/data/research/simple_herd_strike_pilot_2026-11-08/results/full_36T_v1/cases/s39061002_exposed_DG/trajectories.npz",
+        "sha256": "3b3a332893aed0480ad423fd2d7312c756d4af6a8e98e4adc11fc7ab6631e331"
+      },
+      {
+        "path": "/home/venture/uwa/complex-systems/FishSim-RL/research/thesis_working_draft_2026-11-08/notebook/data/research/simple_herd_strike_pilot_2026-11-08/results/full_36T_v1/cases/s39061002_exposed_DG/events.jsonl.gz",
+        "sha256": "182f6d9d256f9bca6d19aec737049060d61b5ef6f73fca051785bf614417d45b"
+      },
+      {
+        "path": "/home/venture/uwa/complex-systems/FishSim-RL/research/thesis_working_draft_2026-11-08/notebook/data/research/simple_herd_strike_pilot_2026-11-08/results/full_36T_v1/cases/s39061002_exposed_DG/initial_school.npz",
+        "sha256": "05e917c95bc83a80031f74fe63ae7ba475291f9ffd405dbe44ddb8a0c2dcaca5"
+      },
+      {
+        "path": "/home/venture/uwa/complex-systems/FishSim-RL/research/thesis_working_draft_2026-11-08/notebook/data/research/simple_herd_strike_pilot_2026-11-08/results/full_36T_v1/cases/s39061002_exposed_DG/completion.json",
+        "sha256": "1bb79775c5e6c9bc0bda177551b735cde720b485bfb67e9959714c67307cf3dd"
+      },
+      {
+        "path": "/home/venture/uwa/complex-systems/FishSim-RL/research/thesis_working_draft_2026-11-08/notebook/data/research/simple_herd_strike_pilot_2026-11-08/controllers.py",
+        "sha256": "c871248ad9cd83f54dee225cd3b724dd4fe9b60418eaebc3414f4e8f58bb460a"
+      }
+    ],
+    "plotted_data": {
+      "school_seed": 39061002,
+      "policy": "exposed",
+      "presence": "DG",
+      "frame_elapsed_T": 11.999999999989086,
+      "path_interval_T": [
+        6.0,
+        12.0
+      ],
+      "live_fish": 152,
+      "capture_count_in_path_interval": 3,
+      "coordinate_reference_xyz": [
+        90.72999152383728,
+        4.126539436623031,
+        0.0
+      ],
+      "trajectory_sampling_T": 0.1
+    },
+    "created_at": "2026-11-09T00:12:43.082913+08:00",
+    "outputs": {
+      "pdf": {
+        "path": "/home/venture/uwa/complex-systems/FishSim-RL/research/thesis_working_draft_2026-11-08/notebook/outputs/figures/fig1_model.pdf",
+        "sha256": "d1453cd74c40188662cf0170ca04aa59c7dcb7b6aa252f8fdf83cf0fd9bfa6ce"
+      },
+      "png": {
+        "path": "/home/venture/uwa/complex-systems/FishSim-RL/research/thesis_working_draft_2026-11-08/notebook/outputs/figures/fig1_model.png",
+        "sha256": "9e95fde8879fe7908978f797405d4d66035e18aa2fdc0d212c1f76699514a35c"
+      }
+    },
+    "native_steps": 0,
+    "uncertainty_intervals": "none"
+  },
+  "fig2_development": {
+    "caption": "Development comparison of the two dolphin target-selection rules. Bars show actual dolphin captures in matched 36T encounters with 12 dolphins, with or without 3 gannets. Each policy was tested on the same two development schools with one random-stream setting. Nearest targeting changed from 55 to 53 captures in total; exposed targeting changed from 41 to 48. The exposed policy was selected for follow-up on this development evidence. Individual school outcomes are shown without confidence intervals.",
+    "sources": [
+      {
+        "path": "/home/venture/uwa/complex-systems/FishSim-RL/research/thesis_working_draft_2026-11-08/notebook/data/research/simple_herd_strike_pilot_2026-11-08/results/analysis_final/paired_comparison.csv",
+        "sha256": "0da919fcd06b98cb08dc3ada4121c540ee2c2c44d0b15b8b7cf2c0082d6b09ca"
+      },
+      {
+        "path": "/home/venture/uwa/complex-systems/FishSim-RL/research/thesis_working_draft_2026-11-08/notebook/data/research/simple_herd_strike_pilot_2026-11-08/results/analysis_final/analysis_audit.json",
+        "sha256": "0d8f688cb5c2fbaf42f128266023351768631911359a5e81ddea13eb0d5f62a0"
+      }
+    ],
+    "plotted_data": [
+      {
+        "school_seed": "39061001",
+        "policy": "nearest",
+        "dolphin_food_alone": "26",
+        "dolphin_food_with_gannets": "28",
+        "dolphin_food_difference": "2",
+        "dolphin_food_change_percent": "7.6923076923076925",
+        "gannet_food": "6",
+        "dolphin_food_per_animal_per_T_alone": "0.06018518518523992",
+        "dolphin_food_per_animal_per_T_with_gannets": "0.06481481481487376",
+        "dolphin_food_per_launch_alone": "0.5",
+        "dolphin_food_per_launch_with_gannets": "0.5384615384615384",
+        "dolphin_launches_alone": "52",
+        "dolphin_launches_with_gannets": "52",
+        "dolphin_contacts_alone": "35",
+        "dolphin_contacts_with_gannets": "41",
+        "final_live_fish_alone": "134",
+        "final_live_fish_with_gannets": "126",
+        "final_survival_fraction_alone": "0.8375",
+        "final_survival_fraction_with_gannets": "0.7875",
+        "final_envelope_retention_alone": "0.0",
+        "final_envelope_retention_with_gannets": "0.0",
+        "final_live_envelope_fraction_alone": "0.0",
+        "final_live_envelope_fraction_with_gannets": "0.0",
+        "final_largest_component_fraction_alone": "0.8507462686567164",
+        "final_largest_component_fraction_with_gannets": "0.8571428571428571",
+        "final_r90_alone": "6.663322887597063",
+        "final_r90_with_gannets": "6.878016909861989",
+        "cycle_launches_alone": "52",
+        "cycle_launches_with_gannets": "52",
+        "qualifying_proximity_dolphin_T_alone": "120.52963309632564",
+        "qualifying_proximity_dolphin_T_with_gannets": "123.00389912969281",
+        "recorded_containment_dolphin_T_alone": "120.50599705790424",
+        "recorded_containment_dolphin_T_with_gannets": "122.97568653077019",
+        "mean_selected_neighbor_count_alone": "4.4423076923076925",
+        "mean_selected_neighbor_count_with_gannets": "4.019230769230769"
+      },
+      {
+        "school_seed": "39061001",
+        "policy": "exposed",
+        "dolphin_food_alone": "22",
+        "dolphin_food_with_gannets": "22",
+        "dolphin_food_difference": "0",
+        "dolphin_food_change_percent": "0.0",
+        "gannet_food": "9",
+        "dolphin_food_per_animal_per_T_alone": "0.05092592592597224",
+        "dolphin_food_per_animal_per_T_with_gannets": "0.05092592592597224",
+        "dolphin_food_per_launch_alone": "0.39285714285714285",
+        "dolphin_food_per_launch_with_gannets": "0.4074074074074074",
+        "dolphin_launches_alone": "56",
+        "dolphin_launches_with_gannets": "54",
+        "dolphin_contacts_alone": "32",
+        "dolphin_contacts_with_gannets": "29",
+        "final_live_fish_alone": "138",
+        "final_live_fish_with_gannets": "129",
+        "final_survival_fraction_alone": "0.8625",
+        "final_survival_fraction_with_gannets": "0.80625",
+        "final_envelope_retention_alone": "0.0",
+        "final_envelope_retention_with_gannets": "0.0",
+        "final_live_envelope_fraction_alone": "0.0",
+        "final_live_envelope_fraction_with_gannets": "0.0",
+        "final_largest_component_fraction_alone": "0.8985507246376812",
+        "final_largest_component_fraction_with_gannets": "0.9224806201550387",
+        "final_r90_alone": "6.679682079068285",
+        "final_r90_with_gannets": "6.596575309413214",
+        "cycle_launches_alone": "56",
+        "cycle_launches_with_gannets": "54",
+        "qualifying_proximity_dolphin_T_alone": "123.80501743663955",
+        "qualifying_proximity_dolphin_T_with_gannets": "128.70728191868227",
+        "recorded_containment_dolphin_T_alone": "123.78051354052673",
+        "recorded_containment_dolphin_T_with_gannets": "128.6788276149953",
+        "mean_selected_neighbor_count_alone": "0.8214285714285714",
+        "mean_selected_neighbor_count_with_gannets": "0.6296296296296297"
+      },
+      {
+        "school_seed": "39061002",
+        "policy": "nearest",
+        "dolphin_food_alone": "29",
+        "dolphin_food_with_gannets": "25",
+        "dolphin_food_difference": "-4",
+        "dolphin_food_change_percent": "-13.793103448275861",
+        "gannet_food": "6",
+        "dolphin_food_per_animal_per_T_alone": "0.06712962962969068",
+        "dolphin_food_per_animal_per_T_with_gannets": "0.057870370370423",
+        "dolphin_food_per_launch_alone": "0.5087719298245614",
+        "dolphin_food_per_launch_with_gannets": "0.5102040816326531",
+        "dolphin_launches_alone": "57",
+        "dolphin_launches_with_gannets": "49",
+        "dolphin_contacts_alone": "42",
+        "dolphin_contacts_with_gannets": "36",
+        "final_live_fish_alone": "131",
+        "final_live_fish_with_gannets": "129",
+        "final_survival_fraction_alone": "0.81875",
+        "final_survival_fraction_with_gannets": "0.80625",
+        "final_envelope_retention_alone": "0.0",
+        "final_envelope_retention_with_gannets": "0.0",
+        "final_live_envelope_fraction_alone": "0.0",
+        "final_live_envelope_fraction_with_gannets": "0.0",
+        "final_largest_component_fraction_alone": "0.9312977099236641",
+        "final_largest_component_fraction_with_gannets": "0.9302325581395349",
+        "final_r90_alone": "5.971905671661044",
+        "final_r90_with_gannets": "6.54799617269799",
+        "cycle_launches_alone": "57",
+        "cycle_launches_with_gannets": "49",
+        "qualifying_proximity_dolphin_T_alone": "126.75438180906437",
+        "qualifying_proximity_dolphin_T_with_gannets": "120.57369254257125",
+        "recorded_containment_dolphin_T_alone": "126.72599035754232",
+        "recorded_containment_dolphin_T_with_gannets": "120.55256195637483",
+        "mean_selected_neighbor_count_alone": "4.526315789473684",
+        "mean_selected_neighbor_count_with_gannets": "4.204081632653061"
+      },
+      {
+        "school_seed": "39061002",
+        "policy": "exposed",
+        "dolphin_food_alone": "19",
+        "dolphin_food_with_gannets": "26",
+        "dolphin_food_difference": "7",
+        "dolphin_food_change_percent": "36.8421052631579",
+        "gannet_food": "8",
+        "dolphin_food_per_animal_per_T_alone": "0.043981481481521485",
+        "dolphin_food_per_animal_per_T_with_gannets": "0.06018518518523992",
+        "dolphin_food_per_launch_alone": "0.41304347826086957",
+        "dolphin_food_per_launch_with_gannets": "0.5652173913043478",
+        "dolphin_launches_alone": "46",
+        "dolphin_launches_with_gannets": "46",
+        "dolphin_contacts_alone": "26",
+        "dolphin_contacts_with_gannets": "34",
+        "final_live_fish_alone": "141",
+        "final_live_fish_with_gannets": "126",
+        "final_survival_fraction_alone": "0.88125",
+        "final_survival_fraction_with_gannets": "0.7875",
+        "final_envelope_retention_alone": "0.0",
+        "final_envelope_retention_with_gannets": "0.0",
+        "final_live_envelope_fraction_alone": "0.0",
+        "final_live_envelope_fraction_with_gannets": "0.0",
+        "final_largest_component_fraction_alone": "0.8652482269503546",
+        "final_largest_component_fraction_with_gannets": "0.8492063492063492",
+        "final_r90_alone": "7.057271578279925",
+        "final_r90_with_gannets": "6.709725998868899",
+        "cycle_launches_alone": "46",
+        "cycle_launches_with_gannets": "46",
+        "qualifying_proximity_dolphin_T_alone": "113.59706221094106",
+        "qualifying_proximity_dolphin_T_with_gannets": "122.19948558222973",
+        "recorded_containment_dolphin_T_alone": "113.57596775937358",
+        "recorded_containment_dolphin_T_with_gannets": "122.18062443009644",
+        "mean_selected_neighbor_count_alone": "1.108695652173913",
+        "mean_selected_neighbor_count_with_gannets": "0.5652173913043478"
+      }
+    ],
+    "created_at": "2026-11-09T00:12:43.271948+08:00",
+    "outputs": {
+      "pdf": {
+        "path": "/home/venture/uwa/complex-systems/FishSim-RL/research/thesis_working_draft_2026-11-08/notebook/outputs/figures/fig2_development.pdf",
+        "sha256": "424ec5a9a033eade697d211a76c59610724c743c036e3805aacd5353fe9533ec"
+      },
+      "png": {
+        "path": "/home/venture/uwa/complex-systems/FishSim-RL/research/thesis_working_draft_2026-11-08/notebook/outputs/figures/fig2_development.png",
+        "sha256": "c0f40b18fd93bf22531b0c67705edf24bfb95302e560dcd0a1faeeb62ee40b4f"
+      }
+    },
+    "native_steps": 0,
+    "uncertainty_intervals": "none"
+  },
+  "fig3_replication": {
+    "caption": "Fresh-school replication of the frozen exposed-target policy. (a) Actual dolphin captures with and without gannets for two fresh schools crossed with two random-stream settings; labels 61001 and 61002 identify those settings. (b) The within-pair capture difference; S1 and S2 denote schools 39063501 and 39063502. All encounters last 36T and retain identical dolphin rules and starting conditions within each pair. Four stochastic comparisons represent two independent school configurations, not four independent schools. No confidence intervals are shown.",
+    "sources": [
+      {
+        "path": "/home/venture/uwa/complex-systems/FishSim-RL/research/thesis_working_draft_2026-11-08/notebook/data/research/exposed_replication_2026-11-08/results/full_36T_v1/cases/s39063501_exposed_D_c61001/summary.json",
+        "sha256": "d2ff9838af53c752616db9130de9497181565578a3107ab876023d776f05752b"
+      },
+      {
+        "path": "/home/venture/uwa/complex-systems/FishSim-RL/research/thesis_working_draft_2026-11-08/notebook/data/research/exposed_replication_2026-11-08/results/full_36T_v1/cases/s39063501_exposed_D_c61001/completion.json",
+        "sha256": "df57912c662bff0ca6f97021f927a058bf8909d981438b3e05f5327ff132c016"
+      },
+      {
+        "path": "/home/venture/uwa/complex-systems/FishSim-RL/research/thesis_working_draft_2026-11-08/notebook/data/research/exposed_replication_2026-11-08/results/full_36T_v1/cases/s39063501_exposed_DG_c61001/summary.json",
+        "sha256": "b24d208bbae5bb7fc4ef724cd20c7785868266e036778acc6048339456c4cba7"
+      },
+      {
+        "path": "/home/venture/uwa/complex-systems/FishSim-RL/research/thesis_working_draft_2026-11-08/notebook/data/research/exposed_replication_2026-11-08/results/full_36T_v1/cases/s39063501_exposed_DG_c61001/completion.json",
+        "sha256": "1698e6334a04a8042a4748b1d7780ef4c7b798ee074e1b33bdc33db9a4c82992"
+      },
+      {
+        "path": "/home/venture/uwa/complex-systems/FishSim-RL/research/thesis_working_draft_2026-11-08/notebook/data/research/exposed_replication_2026-11-08/results/full_36T_v1/cases/s39063501_exposed_D_c61002/summary.json",
+        "sha256": "c30a5880f1244f81ff818cccc1fc89453eef260020a9bf75efce496d96c39e69"
+      },
+      {
+        "path": "/home/venture/uwa/complex-systems/FishSim-RL/research/thesis_working_draft_2026-11-08/notebook/data/research/exposed_replication_2026-11-08/results/full_36T_v1/cases/s39063501_exposed_D_c61002/completion.json",
+        "sha256": "466fab143b20e709919350ecca80cfb9438aa1527c8b854cb97dfb6baf1fa28c"
+      },
+      {
+        "path": "/home/venture/uwa/complex-systems/FishSim-RL/research/thesis_working_draft_2026-11-08/notebook/data/research/exposed_replication_2026-11-08/results/full_36T_v1/cases/s39063501_exposed_DG_c61002/summary.json",
+        "sha256": "71ee7320609171df4995a382fae3284e0ae007ff8a08dd8c9413ea71fbc07a52"
+      },
+      {
+        "path": "/home/venture/uwa/complex-systems/FishSim-RL/research/thesis_working_draft_2026-11-08/notebook/data/research/exposed_replication_2026-11-08/results/full_36T_v1/cases/s39063501_exposed_DG_c61002/completion.json",
+        "sha256": "6b522474716b61e4b5325cfa2be0a39a3235264b8ffaa8f0f0549d8da2e10d3c"
+      },
+      {
+        "path": "/home/venture/uwa/complex-systems/FishSim-RL/research/thesis_working_draft_2026-11-08/notebook/data/research/exposed_replication_2026-11-08/results/full_36T_v1/cases/s39063502_exposed_D_c61001/summary.json",
+        "sha256": "9453d1417a84f28bfac828f649ca25345cb76b96e09f8662e5423ae81bec7d5e"
+      },
+      {
+        "path": "/home/venture/uwa/complex-systems/FishSim-RL/research/thesis_working_draft_2026-11-08/notebook/data/research/exposed_replication_2026-11-08/results/full_36T_v1/cases/s39063502_exposed_D_c61001/completion.json",
+        "sha256": "10f34986efddd9607a92b0df0ddd1e5bc10aef780b530c0da3b7059f8e32ca5a"
+      },
+      {
+        "path": "/home/venture/uwa/complex-systems/FishSim-RL/research/thesis_working_draft_2026-11-08/notebook/data/research/exposed_replication_2026-11-08/results/full_36T_v1/cases/s39063502_exposed_DG_c61001/summary.json",
+        "sha256": "1fc1df872928332d16e8996bc822232b377bcde5c2bfd76e997cb5621802fc22"
+      },
+      {
+        "path": "/home/venture/uwa/complex-systems/FishSim-RL/research/thesis_working_draft_2026-11-08/notebook/data/research/exposed_replication_2026-11-08/results/full_36T_v1/cases/s39063502_exposed_DG_c61001/completion.json",
+        "sha256": "2511b86a2fdff5621eec17058e077cfad5b0af5e34f58669f83d343a1ed7fdf0"
+      },
+      {
+        "path": "/home/venture/uwa/complex-systems/FishSim-RL/research/thesis_working_draft_2026-11-08/notebook/data/research/exposed_replication_2026-11-08/results/full_36T_v1/cases/s39063502_exposed_D_c61002/summary.json",
+        "sha256": "f1fcc1a2114aeed00e9c3c3633c2509c890c53f6a49bac5425e4af9eb6c38bbe"
+      },
+      {
+        "path": "/home/venture/uwa/complex-systems/FishSim-RL/research/thesis_working_draft_2026-11-08/notebook/data/research/exposed_replication_2026-11-08/results/full_36T_v1/cases/s39063502_exposed_D_c61002/completion.json",
+        "sha256": "c0aa1f24eaa3c5c8e11a4f43bb836059880aeb605dd8900a59381a78fee06fbf"
+      },
+      {
+        "path": "/home/venture/uwa/complex-systems/FishSim-RL/research/thesis_working_draft_2026-11-08/notebook/data/research/exposed_replication_2026-11-08/results/full_36T_v1/cases/s39063502_exposed_DG_c61002/summary.json",
+        "sha256": "21cb1c33e6f1f997a420f773c2c04c067e08c043446d927e4557e1d3a71ca47c"
+      },
+      {
+        "path": "/home/venture/uwa/complex-systems/FishSim-RL/research/thesis_working_draft_2026-11-08/notebook/data/research/exposed_replication_2026-11-08/results/full_36T_v1/cases/s39063502_exposed_DG_c61002/completion.json",
+        "sha256": "c921a1e40f69d650dfcfdbefa2fbdd37a6557288b1dc3f1eec64d94b65950823"
+      }
+    ],
+    "plotted_data": [
+      {
+        "school_seed": 39063501,
+        "capture_seed": 61001,
+        "D": 23,
+        "DG": 24,
+        "difference": 1
+      },
+      {
+        "school_seed": 39063501,
+        "capture_seed": 61002,
+        "D": 20,
+        "DG": 24,
+        "difference": 4
+      },
+      {
+        "school_seed": 39063502,
+        "capture_seed": 61001,
+        "D": 22,
+        "DG": 23,
+        "difference": 1
+      },
+      {
+        "school_seed": 39063502,
+        "capture_seed": 61002,
+        "D": 22,
+        "DG": 30,
+        "difference": 8
+      }
+    ],
+    "created_at": "2026-11-09T00:12:43.584332+08:00",
+    "outputs": {
+      "pdf": {
+        "path": "/home/venture/uwa/complex-systems/FishSim-RL/research/thesis_working_draft_2026-11-08/notebook/outputs/figures/fig3_replication.pdf",
+        "sha256": "a76c68306df6388998d4b67eb1c920c6049b53bc1caee71c7317f1b18cac928b"
+      },
+      "png": {
+        "path": "/home/venture/uwa/complex-systems/FishSim-RL/research/thesis_working_draft_2026-11-08/notebook/outputs/figures/fig3_replication.png",
+        "sha256": "dbdd6450776c1c7d7766742da161b8bae13904a70c88f7c10b4aef3c30c0d8e4"
+      }
+    },
+    "native_steps": 0,
+    "uncertainty_intervals": "none"
+  },
+  "fig4_mechanism": {
+    "caption": "Development diagnostics separate attack opportunity from feeding yield. (a) Dolphin captures per actual attack launch and (b) launch counts for the same matched encounters as Figure 2. Lines join the same school and policy without gannets (D, teal) and with gannets (DG, orange); symbols identify schools. For exposed targeting, school 39061002 gained captures while retaining 46 launches in both conditions. These descriptive diagnostics do not isolate causal mediation by prey scattering, and captures per launch differ from the fixed conditional mouth-contact success probability of 0.7.",
+    "sources": [
+      {
+        "path": "/home/venture/uwa/complex-systems/FishSim-RL/research/thesis_working_draft_2026-11-08/notebook/data/research/simple_herd_strike_pilot_2026-11-08/results/analysis_final/case_outcomes.csv",
+        "sha256": "6d06eb86dfb70dc023256a19346c2fb95cd0413e69b660b2241b75713fb2a4b2"
+      },
+      {
+        "path": "/home/venture/uwa/complex-systems/FishSim-RL/research/thesis_working_draft_2026-11-08/notebook/data/research/simple_herd_strike_pilot_2026-11-08/results/analysis_final/analysis_audit.json",
+        "sha256": "0d8f688cb5c2fbaf42f128266023351768631911359a5e81ddea13eb0d5f62a0"
+      }
+    ],
+    "plotted_data": [
+      {
+        "metric": "dolphin_food_per_launch",
+        "school_seed": "39061001",
+        "policy": "nearest",
+        "D": 0.5,
+        "DG": 0.5384615384615384
+      },
+      {
+        "metric": "dolphin_food_per_launch",
+        "school_seed": "39061002",
+        "policy": "nearest",
+        "D": 0.5087719298245614,
+        "DG": 0.5102040816326531
+      },
+      {
+        "metric": "dolphin_food_per_launch",
+        "school_seed": "39061001",
+        "policy": "exposed",
+        "D": 0.39285714285714285,
+        "DG": 0.4074074074074074
+      },
+      {
+        "metric": "dolphin_food_per_launch",
+        "school_seed": "39061002",
+        "policy": "exposed",
+        "D": 0.41304347826086957,
+        "DG": 0.5652173913043478
+      },
+      {
+        "metric": "dolphin_launches",
+        "school_seed": "39061001",
+        "policy": "nearest",
+        "D": 52.0,
+        "DG": 52.0
+      },
+      {
+        "metric": "dolphin_launches",
+        "school_seed": "39061002",
+        "policy": "nearest",
+        "D": 57.0,
+        "DG": 49.0
+      },
+      {
+        "metric": "dolphin_launches",
+        "school_seed": "39061001",
+        "policy": "exposed",
+        "D": 56.0,
+        "DG": 54.0
+      },
+      {
+        "metric": "dolphin_launches",
+        "school_seed": "39061002",
+        "policy": "exposed",
+        "D": 46.0,
+        "DG": 46.0
+      }
+    ],
+    "created_at": "2026-11-09T00:12:43.888923+08:00",
+    "outputs": {
+      "pdf": {
+        "path": "/home/venture/uwa/complex-systems/FishSim-RL/research/thesis_working_draft_2026-11-08/notebook/outputs/figures/fig4_mechanism.pdf",
+        "sha256": "a01e3470530dbdc217ae4948cff14415b1e3460d75c20c58d0d9011d5135d3ca"
+      },
+      "png": {
+        "path": "/home/venture/uwa/complex-systems/FishSim-RL/research/thesis_working_draft_2026-11-08/notebook/outputs/figures/fig4_mechanism.png",
+        "sha256": "c8a56ebd2839feef96798b93eb19c6843b54a4e40c9aba417372d14ccfc0df56"
+      }
+    },
+    "native_steps": 0,
+    "uncertainty_intervals": "none"
+  }
+}

@@ -1,0 +1,730 @@
+{
+  "status": "passed",
+  "at": "2026-11-08T23:03:51.350619+08:00",
+  "scope": "Independent read-only audit of all four sealed 36T mixed encounters; no native construction or re-simulation.",
+  "review_helper": "/home/venture/uwa/complex-systems/FishSim-RL/research/simple_herd_strike_pilot_2026-11-08/results/analysis_reviews/audit_actual.py",
+  "review_helper_sha256": "06a4457c9aa3cee660233bb148418fe7cb0d595d9113b90721ac7bd6580ad98b",
+  "cross_policy_initial_physics_fish_capture_and_gannet_rng": "passed",
+  "limitations": [
+    "Exact committed cycle events and sampled proximity diagnostics support the 2T cycle checks; unsaved geometry between trajectory samples was not reconstructed.",
+    "Cluster probabilities and private target RNG sequences were replayed exactly from target diagnostics; full DBSCAN geometry at each selection is source/test validated rather than independently reconstructed."
+  ],
+  "cases": [
+    {
+      "case": "s39061001_nearest_DG",
+      "status": "passed",
+      "duration": 35.99999999996726,
+      "native_steps": 28800,
+      "species": {
+        "D": {
+          "count": 12,
+          "captures": 28,
+          "launches": 52,
+          "contacts": 41
+        },
+        "G": {
+          "count": 3,
+          "captures": 6,
+          "launches": 18,
+          "contacts": 9
+        }
+      },
+      "source_and_file_hashes": "passed",
+      "gannet_source_exact_copy": "passed",
+      "matched_presence_initial_state": "passed",
+      "actors": {
+        "D00": {
+          "launches": 4,
+          "contacts": 4,
+          "captures": 3,
+          "contact_geometry": "passed",
+          "recovery_readiness": "passed",
+          "capture_rng_replay": "passed"
+        },
+        "D01": {
+          "launches": 5,
+          "contacts": 4,
+          "captures": 2,
+          "contact_geometry": "passed",
+          "recovery_readiness": "passed",
+          "capture_rng_replay": "passed"
+        },
+        "D02": {
+          "launches": 4,
+          "contacts": 4,
+          "captures": 3,
+          "contact_geometry": "passed",
+          "recovery_readiness": "passed",
+          "capture_rng_replay": "passed"
+        },
+        "D03": {
+          "launches": 4,
+          "contacts": 3,
+          "captures": 3,
+          "contact_geometry": "passed",
+          "recovery_readiness": "passed",
+          "capture_rng_replay": "passed"
+        },
+        "D04": {
+          "launches": 4,
+          "contacts": 3,
+          "captures": 2,
+          "contact_geometry": "passed",
+          "recovery_readiness": "passed",
+          "capture_rng_replay": "passed"
+        },
+        "D05": {
+          "launches": 6,
+          "contacts": 3,
+          "captures": 2,
+          "contact_geometry": "passed",
+          "recovery_readiness": "passed",
+          "capture_rng_replay": "passed"
+        },
+        "D06": {
+          "launches": 4,
+          "contacts": 3,
+          "captures": 1,
+          "contact_geometry": "passed",
+          "recovery_readiness": "passed",
+          "capture_rng_replay": "passed"
+        },
+        "D07": {
+          "launches": 4,
+          "contacts": 3,
+          "captures": 2,
+          "contact_geometry": "passed",
+          "recovery_readiness": "passed",
+          "capture_rng_replay": "passed"
+        },
+        "D08": {
+          "launches": 4,
+          "contacts": 4,
+          "captures": 1,
+          "contact_geometry": "passed",
+          "recovery_readiness": "passed",
+          "capture_rng_replay": "passed"
+        },
+        "D09": {
+          "launches": 5,
+          "contacts": 4,
+          "captures": 4,
+          "contact_geometry": "passed",
+          "recovery_readiness": "passed",
+          "capture_rng_replay": "passed"
+        },
+        "D10": {
+          "launches": 4,
+          "contacts": 4,
+          "captures": 4,
+          "contact_geometry": "passed",
+          "recovery_readiness": "passed",
+          "capture_rng_replay": "passed"
+        },
+        "D11": {
+          "launches": 4,
+          "contacts": 2,
+          "captures": 1,
+          "contact_geometry": "passed",
+          "recovery_readiness": "passed",
+          "capture_rng_replay": "passed"
+        },
+        "G0": {
+          "launches": 6,
+          "contacts": 2,
+          "captures": 1,
+          "contact_geometry": "passed",
+          "recovery_readiness": "passed",
+          "capture_rng_replay": "passed"
+        },
+        "G1": {
+          "launches": 6,
+          "contacts": 3,
+          "captures": 2,
+          "contact_geometry": "passed",
+          "recovery_readiness": "passed",
+          "capture_rng_replay": "passed"
+        },
+        "G2": {
+          "launches": 6,
+          "contacts": 4,
+          "captures": 3,
+          "contact_geometry": "passed",
+          "recovery_readiness": "passed",
+          "capture_rng_replay": "passed"
+        }
+      },
+      "unique_removals": 34,
+      "tie_rng_replay": "passed",
+      "tie_calls": 0,
+      "cycle_counts": {
+        "cycle_pressure_start": 69,
+        "cycle_launch": 52,
+        "cycle_pressure_reset": 12
+      },
+      "minimum_prelaunch_pressure_T": 1.9999999999999964,
+      "maximum_prelaunch_pressure_T": 2.0,
+      "exposed_launches_at_positive_neighbor_count": null,
+      "sampled_pressure_checks": 1232,
+      "gannets": {
+        "G0": {
+          "weighted_draws": 7,
+          "sparse_fallbacks": 0,
+          "exact_target_rng_replay": "passed",
+          "prior_capabilities_and_initial_rng": "passed"
+        },
+        "G1": {
+          "weighted_draws": 7,
+          "sparse_fallbacks": 0,
+          "exact_target_rng_replay": "passed",
+          "prior_capabilities_and_initial_rng": "passed"
+        },
+        "G2": {
+          "weighted_draws": 6,
+          "sparse_fallbacks": 0,
+          "exact_target_rng_replay": "passed",
+          "prior_capabilities_and_initial_rng": "passed"
+        }
+      },
+      "completion_sha256": "3b8e930aaa45be3af85873bb8f67bf38a3bf985b1ae93e1b173cb4d56d98ca95",
+      "native_binary_and_checkpoint_hashes": "passed"
+    },
+    {
+      "case": "s39061001_exposed_DG",
+      "status": "passed",
+      "duration": 35.99999999996726,
+      "native_steps": 28800,
+      "species": {
+        "D": {
+          "count": 12,
+          "captures": 22,
+          "launches": 54,
+          "contacts": 29
+        },
+        "G": {
+          "count": 3,
+          "captures": 9,
+          "launches": 20,
+          "contacts": 15
+        }
+      },
+      "source_and_file_hashes": "passed",
+      "gannet_source_exact_copy": "passed",
+      "matched_presence_initial_state": "passed",
+      "actors": {
+        "D00": {
+          "launches": 4,
+          "contacts": 3,
+          "captures": 3,
+          "contact_geometry": "passed",
+          "recovery_readiness": "passed",
+          "capture_rng_replay": "passed"
+        },
+        "D01": {
+          "launches": 3,
+          "contacts": 2,
+          "captures": 1,
+          "contact_geometry": "passed",
+          "recovery_readiness": "passed",
+          "capture_rng_replay": "passed"
+        },
+        "D02": {
+          "launches": 5,
+          "contacts": 3,
+          "captures": 3,
+          "contact_geometry": "passed",
+          "recovery_readiness": "passed",
+          "capture_rng_replay": "passed"
+        },
+        "D03": {
+          "launches": 4,
+          "contacts": 1,
+          "captures": 1,
+          "contact_geometry": "passed",
+          "recovery_readiness": "passed",
+          "capture_rng_replay": "passed"
+        },
+        "D04": {
+          "launches": 5,
+          "contacts": 4,
+          "captures": 3,
+          "contact_geometry": "passed",
+          "recovery_readiness": "passed",
+          "capture_rng_replay": "passed"
+        },
+        "D05": {
+          "launches": 5,
+          "contacts": 4,
+          "captures": 3,
+          "contact_geometry": "passed",
+          "recovery_readiness": "passed",
+          "capture_rng_replay": "passed"
+        },
+        "D06": {
+          "launches": 5,
+          "contacts": 2,
+          "captures": 1,
+          "contact_geometry": "passed",
+          "recovery_readiness": "passed",
+          "capture_rng_replay": "passed"
+        },
+        "D07": {
+          "launches": 4,
+          "contacts": 0,
+          "captures": 0,
+          "contact_geometry": "passed",
+          "recovery_readiness": "passed",
+          "capture_rng_replay": "passed"
+        },
+        "D08": {
+          "launches": 5,
+          "contacts": 2,
+          "captures": 0,
+          "contact_geometry": "passed",
+          "recovery_readiness": "passed",
+          "capture_rng_replay": "passed"
+        },
+        "D09": {
+          "launches": 5,
+          "contacts": 1,
+          "captures": 1,
+          "contact_geometry": "passed",
+          "recovery_readiness": "passed",
+          "capture_rng_replay": "passed"
+        },
+        "D10": {
+          "launches": 4,
+          "contacts": 3,
+          "captures": 3,
+          "contact_geometry": "passed",
+          "recovery_readiness": "passed",
+          "capture_rng_replay": "passed"
+        },
+        "D11": {
+          "launches": 5,
+          "contacts": 4,
+          "captures": 3,
+          "contact_geometry": "passed",
+          "recovery_readiness": "passed",
+          "capture_rng_replay": "passed"
+        },
+        "G0": {
+          "launches": 7,
+          "contacts": 5,
+          "captures": 3,
+          "contact_geometry": "passed",
+          "recovery_readiness": "passed",
+          "capture_rng_replay": "passed"
+        },
+        "G1": {
+          "launches": 6,
+          "contacts": 5,
+          "captures": 2,
+          "contact_geometry": "passed",
+          "recovery_readiness": "passed",
+          "capture_rng_replay": "passed"
+        },
+        "G2": {
+          "launches": 7,
+          "contacts": 5,
+          "captures": 4,
+          "contact_geometry": "passed",
+          "recovery_readiness": "passed",
+          "capture_rng_replay": "passed"
+        }
+      },
+      "unique_removals": 31,
+      "tie_rng_replay": "passed",
+      "tie_calls": 0,
+      "cycle_counts": {
+        "cycle_pressure_start": 73,
+        "cycle_launch": 54,
+        "cycle_pressure_reset": 16
+      },
+      "minimum_prelaunch_pressure_T": 1.9999999999999964,
+      "maximum_prelaunch_pressure_T": 2.0,
+      "exposed_launches_at_positive_neighbor_count": 19,
+      "sampled_pressure_checks": 1290,
+      "gannets": {
+        "G0": {
+          "weighted_draws": 7,
+          "sparse_fallbacks": 0,
+          "exact_target_rng_replay": "passed",
+          "prior_capabilities_and_initial_rng": "passed"
+        },
+        "G1": {
+          "weighted_draws": 6,
+          "sparse_fallbacks": 0,
+          "exact_target_rng_replay": "passed",
+          "prior_capabilities_and_initial_rng": "passed"
+        },
+        "G2": {
+          "weighted_draws": 7,
+          "sparse_fallbacks": 0,
+          "exact_target_rng_replay": "passed",
+          "prior_capabilities_and_initial_rng": "passed"
+        }
+      },
+      "completion_sha256": "d895d0b7bab5e1ee8c3dcd215c3226d26409cd593393cd760cab71e6d9c3fcd5",
+      "native_binary_and_checkpoint_hashes": "passed"
+    },
+    {
+      "case": "s39061002_nearest_DG",
+      "status": "passed",
+      "duration": 35.99999999996726,
+      "native_steps": 28800,
+      "species": {
+        "D": {
+          "count": 12,
+          "captures": 25,
+          "launches": 49,
+          "contacts": 36
+        },
+        "G": {
+          "count": 3,
+          "captures": 6,
+          "launches": 19,
+          "contacts": 11
+        }
+      },
+      "source_and_file_hashes": "passed",
+      "gannet_source_exact_copy": "passed",
+      "matched_presence_initial_state": "passed",
+      "actors": {
+        "D00": {
+          "launches": 4,
+          "contacts": 3,
+          "captures": 1,
+          "contact_geometry": "passed",
+          "recovery_readiness": "passed",
+          "capture_rng_replay": "passed"
+        },
+        "D01": {
+          "launches": 6,
+          "contacts": 3,
+          "captures": 3,
+          "contact_geometry": "passed",
+          "recovery_readiness": "passed",
+          "capture_rng_replay": "passed"
+        },
+        "D02": {
+          "launches": 5,
+          "contacts": 4,
+          "captures": 4,
+          "contact_geometry": "passed",
+          "recovery_readiness": "passed",
+          "capture_rng_replay": "passed"
+        },
+        "D03": {
+          "launches": 2,
+          "contacts": 1,
+          "captures": 1,
+          "contact_geometry": "passed",
+          "recovery_readiness": "passed",
+          "capture_rng_replay": "passed"
+        },
+        "D04": {
+          "launches": 5,
+          "contacts": 3,
+          "captures": 2,
+          "contact_geometry": "passed",
+          "recovery_readiness": "passed",
+          "capture_rng_replay": "passed"
+        },
+        "D05": {
+          "launches": 2,
+          "contacts": 2,
+          "captures": 1,
+          "contact_geometry": "passed",
+          "recovery_readiness": "passed",
+          "capture_rng_replay": "passed"
+        },
+        "D06": {
+          "launches": 5,
+          "contacts": 4,
+          "captures": 3,
+          "contact_geometry": "passed",
+          "recovery_readiness": "passed",
+          "capture_rng_replay": "passed"
+        },
+        "D07": {
+          "launches": 5,
+          "contacts": 5,
+          "captures": 3,
+          "contact_geometry": "passed",
+          "recovery_readiness": "passed",
+          "capture_rng_replay": "passed"
+        },
+        "D08": {
+          "launches": 4,
+          "contacts": 3,
+          "captures": 1,
+          "contact_geometry": "passed",
+          "recovery_readiness": "passed",
+          "capture_rng_replay": "passed"
+        },
+        "D09": {
+          "launches": 6,
+          "contacts": 5,
+          "captures": 4,
+          "contact_geometry": "passed",
+          "recovery_readiness": "passed",
+          "capture_rng_replay": "passed"
+        },
+        "D10": {
+          "launches": 4,
+          "contacts": 3,
+          "captures": 2,
+          "contact_geometry": "passed",
+          "recovery_readiness": "passed",
+          "capture_rng_replay": "passed"
+        },
+        "D11": {
+          "launches": 1,
+          "contacts": 0,
+          "captures": 0,
+          "contact_geometry": "passed",
+          "recovery_readiness": "passed",
+          "capture_rng_replay": "passed"
+        },
+        "G0": {
+          "launches": 6,
+          "contacts": 4,
+          "captures": 3,
+          "contact_geometry": "passed",
+          "recovery_readiness": "passed",
+          "capture_rng_replay": "passed"
+        },
+        "G1": {
+          "launches": 7,
+          "contacts": 5,
+          "captures": 3,
+          "contact_geometry": "passed",
+          "recovery_readiness": "passed",
+          "capture_rng_replay": "passed"
+        },
+        "G2": {
+          "launches": 6,
+          "contacts": 2,
+          "captures": 0,
+          "contact_geometry": "passed",
+          "recovery_readiness": "passed",
+          "capture_rng_replay": "passed"
+        }
+      },
+      "unique_removals": 31,
+      "tie_rng_replay": "passed",
+      "tie_calls": 0,
+      "cycle_counts": {
+        "cycle_pressure_start": 73,
+        "cycle_pressure_reset": 22,
+        "cycle_launch": 49
+      },
+      "minimum_prelaunch_pressure_T": 1.9999999999999964,
+      "maximum_prelaunch_pressure_T": 2.0,
+      "exposed_launches_at_positive_neighbor_count": null,
+      "sampled_pressure_checks": 1206,
+      "gannets": {
+        "G0": {
+          "weighted_draws": 6,
+          "sparse_fallbacks": 0,
+          "exact_target_rng_replay": "passed",
+          "prior_capabilities_and_initial_rng": "passed"
+        },
+        "G1": {
+          "weighted_draws": 7,
+          "sparse_fallbacks": 0,
+          "exact_target_rng_replay": "passed",
+          "prior_capabilities_and_initial_rng": "passed"
+        },
+        "G2": {
+          "weighted_draws": 6,
+          "sparse_fallbacks": 0,
+          "exact_target_rng_replay": "passed",
+          "prior_capabilities_and_initial_rng": "passed"
+        }
+      },
+      "completion_sha256": "a6a31d9d5906cf6d6784eed7d963fb9d84e5c1d63c4061efac868dc55eff2abf",
+      "native_binary_and_checkpoint_hashes": "passed"
+    },
+    {
+      "case": "s39061002_exposed_DG",
+      "status": "passed",
+      "duration": 35.99999999996726,
+      "native_steps": 28800,
+      "species": {
+        "D": {
+          "count": 12,
+          "captures": 26,
+          "launches": 46,
+          "contacts": 34
+        },
+        "G": {
+          "count": 3,
+          "captures": 8,
+          "launches": 19,
+          "contacts": 14
+        }
+      },
+      "source_and_file_hashes": "passed",
+      "gannet_source_exact_copy": "passed",
+      "matched_presence_initial_state": "passed",
+      "actors": {
+        "D00": {
+          "launches": 1,
+          "contacts": 0,
+          "captures": 0,
+          "contact_geometry": "passed",
+          "recovery_readiness": "passed",
+          "capture_rng_replay": "passed"
+        },
+        "D01": {
+          "launches": 5,
+          "contacts": 4,
+          "captures": 4,
+          "contact_geometry": "passed",
+          "recovery_readiness": "passed",
+          "capture_rng_replay": "passed"
+        },
+        "D02": {
+          "launches": 5,
+          "contacts": 5,
+          "captures": 5,
+          "contact_geometry": "passed",
+          "recovery_readiness": "passed",
+          "capture_rng_replay": "passed"
+        },
+        "D03": {
+          "launches": 5,
+          "contacts": 4,
+          "captures": 2,
+          "contact_geometry": "passed",
+          "recovery_readiness": "passed",
+          "capture_rng_replay": "passed"
+        },
+        "D04": {
+          "launches": 4,
+          "contacts": 3,
+          "captures": 2,
+          "contact_geometry": "passed",
+          "recovery_readiness": "passed",
+          "capture_rng_replay": "passed"
+        },
+        "D05": {
+          "launches": 0,
+          "contacts": 0,
+          "captures": 0,
+          "contact_geometry": "passed",
+          "recovery_readiness": "passed",
+          "capture_rng_replay": "passed"
+        },
+        "D06": {
+          "launches": 5,
+          "contacts": 3,
+          "captures": 2,
+          "contact_geometry": "passed",
+          "recovery_readiness": "passed",
+          "capture_rng_replay": "passed"
+        },
+        "D07": {
+          "launches": 4,
+          "contacts": 3,
+          "captures": 3,
+          "contact_geometry": "passed",
+          "recovery_readiness": "passed",
+          "capture_rng_replay": "passed"
+        },
+        "D08": {
+          "launches": 6,
+          "contacts": 4,
+          "captures": 2,
+          "contact_geometry": "passed",
+          "recovery_readiness": "passed",
+          "capture_rng_replay": "passed"
+        },
+        "D09": {
+          "launches": 6,
+          "contacts": 4,
+          "captures": 3,
+          "contact_geometry": "passed",
+          "recovery_readiness": "passed",
+          "capture_rng_replay": "passed"
+        },
+        "D10": {
+          "launches": 5,
+          "contacts": 4,
+          "captures": 3,
+          "contact_geometry": "passed",
+          "recovery_readiness": "passed",
+          "capture_rng_replay": "passed"
+        },
+        "D11": {
+          "launches": 0,
+          "contacts": 0,
+          "captures": 0,
+          "contact_geometry": "passed",
+          "recovery_readiness": "passed",
+          "capture_rng_replay": "passed"
+        },
+        "G0": {
+          "launches": 6,
+          "contacts": 3,
+          "captures": 2,
+          "contact_geometry": "passed",
+          "recovery_readiness": "passed",
+          "capture_rng_replay": "passed"
+        },
+        "G1": {
+          "launches": 7,
+          "contacts": 6,
+          "captures": 4,
+          "contact_geometry": "passed",
+          "recovery_readiness": "passed",
+          "capture_rng_replay": "passed"
+        },
+        "G2": {
+          "launches": 6,
+          "contacts": 5,
+          "captures": 2,
+          "contact_geometry": "passed",
+          "recovery_readiness": "passed",
+          "capture_rng_replay": "passed"
+        }
+      },
+      "unique_removals": 34,
+      "tie_rng_replay": "passed",
+      "tie_calls": 0,
+      "cycle_counts": {
+        "cycle_pressure_start": 76,
+        "cycle_pressure_reset": 26,
+        "cycle_launch": 46
+      },
+      "minimum_prelaunch_pressure_T": 2.0,
+      "maximum_prelaunch_pressure_T": 2.0000000000000036,
+      "exposed_launches_at_positive_neighbor_count": 14,
+      "sampled_pressure_checks": 1220,
+      "gannets": {
+        "G0": {
+          "weighted_draws": 6,
+          "sparse_fallbacks": 0,
+          "exact_target_rng_replay": "passed",
+          "prior_capabilities_and_initial_rng": "passed"
+        },
+        "G1": {
+          "weighted_draws": 7,
+          "sparse_fallbacks": 0,
+          "exact_target_rng_replay": "passed",
+          "prior_capabilities_and_initial_rng": "passed"
+        },
+        "G2": {
+          "weighted_draws": 6,
+          "sparse_fallbacks": 0,
+          "exact_target_rng_replay": "passed",
+          "prior_capabilities_and_initial_rng": "passed"
+        }
+      },
+      "completion_sha256": "1bb79775c5e6c9bc0bda177551b735cde720b485bfb67e9959714c67307cf3dd",
+      "native_binary_and_checkpoint_hashes": "passed"
+    }
+  ]
+}

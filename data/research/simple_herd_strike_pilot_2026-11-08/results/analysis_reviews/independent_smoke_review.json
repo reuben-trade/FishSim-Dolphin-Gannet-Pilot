@@ -1,0 +1,167 @@
+{
+  "status": "passed",
+  "at": "2026-11-08T22:43:34.428156+08:00",
+  "scope": "Independent read-only audit of all four sealed 4T smoke cases; no native re-simulation.",
+  "matched_initial_presence_pairs": "passed",
+  "gannet_source_exact_copy": "passed",
+  "limitations": [
+    "Continuous 2T clocks are checked against exact committed cycle events and sampled proximity diagnostics; every intervening native geometry is not saved, so this does not independently reconstruct all proximity decisions.",
+    "This engineering smoke does not establish feeding benefit."
+  ],
+  "cases": [
+    {
+      "case": "s39061001_exposed_D",
+      "status": "passed",
+      "duration": 3.999999999996362,
+      "native_steps": 3200,
+      "species": {
+        "D": {
+          "count": 12,
+          "captures": 0,
+          "launches": 2,
+          "contacts": 0
+        },
+        "G": {
+          "count": 0,
+          "captures": 0,
+          "launches": 0,
+          "contacts": 0
+        }
+      },
+      "cycles": {
+        "cycle_pressure_start": 9,
+        "cycle_launch": 2
+      },
+      "minimum_prelaunch_pressure_T": 2.0,
+      "pressure_samples_checked": 124,
+      "source_and_file_hashes": "passed",
+      "capture_and_tie_streams": "passed",
+      "gannets": {}
+    },
+    {
+      "case": "s39061001_exposed_DG",
+      "status": "passed",
+      "duration": 3.999999999996362,
+      "native_steps": 3200,
+      "species": {
+        "D": {
+          "count": 12,
+          "captures": 0,
+          "launches": 2,
+          "contacts": 0
+        },
+        "G": {
+          "count": 3,
+          "captures": 0,
+          "launches": 3,
+          "contacts": 2
+        }
+      },
+      "cycles": {
+        "cycle_pressure_start": 9,
+        "cycle_launch": 2
+      },
+      "minimum_prelaunch_pressure_T": 2.0,
+      "pressure_samples_checked": 122,
+      "source_and_file_hashes": "passed",
+      "capture_and_tie_streams": "passed",
+      "gannets": {
+        "G0": {
+          "weighted_draws": 1,
+          "sparse_fallbacks": 0,
+          "exact_target_rng_replay": "passed",
+          "same_initial_capabilities_and_target_rng_as_prior": "passed"
+        },
+        "G1": {
+          "weighted_draws": 1,
+          "sparse_fallbacks": 0,
+          "exact_target_rng_replay": "passed",
+          "same_initial_capabilities_and_target_rng_as_prior": "passed"
+        },
+        "G2": {
+          "weighted_draws": 1,
+          "sparse_fallbacks": 0,
+          "exact_target_rng_replay": "passed",
+          "same_initial_capabilities_and_target_rng_as_prior": "passed"
+        }
+      }
+    },
+    {
+      "case": "s39061001_nearest_D",
+      "status": "passed",
+      "duration": 3.999999999996362,
+      "native_steps": 3200,
+      "species": {
+        "D": {
+          "count": 12,
+          "captures": 0,
+          "launches": 2,
+          "contacts": 0
+        },
+        "G": {
+          "count": 0,
+          "captures": 0,
+          "launches": 0,
+          "contacts": 0
+        }
+      },
+      "cycles": {
+        "cycle_pressure_start": 9,
+        "cycle_launch": 2
+      },
+      "minimum_prelaunch_pressure_T": 2.0,
+      "pressure_samples_checked": 124,
+      "source_and_file_hashes": "passed",
+      "capture_and_tie_streams": "passed",
+      "gannets": {}
+    },
+    {
+      "case": "s39061001_nearest_DG",
+      "status": "passed",
+      "duration": 3.999999999996362,
+      "native_steps": 3200,
+      "species": {
+        "D": {
+          "count": 12,
+          "captures": 0,
+          "launches": 2,
+          "contacts": 0
+        },
+        "G": {
+          "count": 3,
+          "captures": 0,
+          "launches": 3,
+          "contacts": 2
+        }
+      },
+      "cycles": {
+        "cycle_pressure_start": 9,
+        "cycle_launch": 2
+      },
+      "minimum_prelaunch_pressure_T": 2.0,
+      "pressure_samples_checked": 122,
+      "source_and_file_hashes": "passed",
+      "capture_and_tie_streams": "passed",
+      "gannets": {
+        "G0": {
+          "weighted_draws": 1,
+          "sparse_fallbacks": 0,
+          "exact_target_rng_replay": "passed",
+          "same_initial_capabilities_and_target_rng_as_prior": "passed"
+        },
+        "G1": {
+          "weighted_draws": 1,
+          "sparse_fallbacks": 0,
+          "exact_target_rng_replay": "passed",
+          "same_initial_capabilities_and_target_rng_as_prior": "passed"
+        },
+        "G2": {
+          "weighted_draws": 1,
+          "sparse_fallbacks": 0,
+          "exact_target_rng_replay": "passed",
+          "same_initial_capabilities_and_target_rng_as_prior": "passed"
+        }
+      }
+    }
+  ]
+}
