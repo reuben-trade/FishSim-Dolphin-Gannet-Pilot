@@ -1,0 +1,51 @@
+{
+  "version": "gannet_initial_depth_and_reciprocity_v1",
+  "status": "pre-outcome fixed design",
+  "study": "gannet_depth_study_2026-11-08",
+  "school_seeds": [39063501, 39063502],
+  "gannets": 3,
+  "dolphins": 0,
+  "fish": 160,
+  "model_units": "uncalibrated lengths; T is model time",
+  "dt": 0.00125,
+  "full_duration_T": 36,
+  "full_cases": [
+    {"school_seed":39063501,"depth_treatment":"baseline","capture_seed":61001},
+    {"school_seed":39063502,"depth_treatment":"baseline","capture_seed":61001},
+    {"school_seed":39063501,"depth_treatment":"baseline","capture_seed":61002},
+    {"school_seed":39063502,"depth_treatment":"baseline","capture_seed":61002},
+    {"school_seed":39063501,"depth_treatment":"depth8","capture_seed":61001},
+    {"school_seed":39063502,"depth_treatment":"depth8","capture_seed":61001},
+    {"school_seed":39063501,"depth_treatment":"depth11","capture_seed":61001},
+    {"school_seed":39063502,"depth_treatment":"depth11","capture_seed":61001}
+  ],
+  "baseline_mean_depths": {"39063501":5.5563279701031565,"39063502":5.582276179340367},
+  "translated_mean_depths": [8,11],
+  "initial_reference_accessible_fractions": {
+    "39063501":{"baseline":1.0,"depth8":0.44375,"depth11":0.0},
+    "39063502":{"baseline":1.0,"depth8":0.45,"depth11":0.0}
+  },
+  "reference_target_depth": 7.930281365794512,
+  "detection_depth": 12,
+  "maximum_body_dive_depth": 12,
+  "gannet_flight_start_z": 3,
+  "capture_probability_given_eligible_contact": 0.7,
+  "shared_baseline": "exposed_replication_2026-11-08 frozen global_dbscan_size_weighted_gannet_target_v1 and original point-mouth capture engine",
+  "initial_condition_contract": "Translate fish z only to requested mean; no clipping, compression, regeneration, heading changes, habitat-setpoint changes, bird translation, or readiness changes. Baseline is byte-matched original school. G initial states/config/target RNG/capture RNG/tie RNG equal prior DG for each school/capture seed.",
+  "unchanged_habitat": {"preferred_depth":5,"depth_deadband":2,"depth_gain":0.1,"depth_scale":2},
+  "stages": [
+    {"name":"controls","cases":4,"duration_T":4,"description":"Each shifted depth x both schools, no predators; retain existing baseline 36T fish-only preparation screens as provenance."},
+    {"name":"smoke","cases":2,"duration_T":4,"description":"School39063501 baseline and depth11 with gannets; verify legal acquisition/contact and initially inaccessible fallback."},
+    {"name":"full","cases":8,"duration_T":36,"description":"Execute only after zero-step matching tests and preceding stage integrity pass."}
+  ],
+  "maximum_native_model_time_T": 312,
+  "maximum_native_steps": 249600,
+  "workers_maximum": 4,
+  "primary_depth_metric": "G captures/(3*36T) at each initial depth; two school pairs and one capture seed per depth",
+  "reciprocity_metric": "For each of four unchanged-depth school/capture pairs compare new G-only to prior DG G return and prior D-only to DG D return; both species must gain in same pair for a joint gain.",
+  "replication_unit": "Two independent fresh school configurations; four baseline stochastic comparisons are not four independent schools.",
+  "interpretation": "Initial-depth transient pilot. Native habitat may relax translated schools upward. Measure realised depth and accessibility over time; no persistent-depth or calibrated biological-depth claim. No timing coupling intervention is executed.",
+  "stopping_rules": "No expansion for invalid geometry, reflection fallback, non-finite states, unmatched initialization, source drift, illegal contact, duplicate removal, or failed accounting. Zero feeding alone is informative. Fixed 36T valid encounters; no extensions based on capture counts.",
+  "logging": "Sample depth/accessibility/actor states every0.1T; actual transitions/oral events, water entries, source seals, private RNG replay, unique removals; case cap100MiB and free disk reserve250MiB.",
+  "legacy_prompt_reconciliation": "Earlier handoff fixed-versus-pursuit and finite-body wording is superseded by user-authorized completed simple exposed model and original point geometry; no dolphin policy executes here. Shared fish/gannet/contact sources stay compatible with completed objective2 replication. Numerical convergence remains unestablished."
+}

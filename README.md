@@ -1,8 +1,8 @@
 # FishSim: local research notebook
 
-Open **FishSim_Professor_Notebook.ipynb** and choose **Run → Run All Cells**. The default run verifies the bundled evidence, rebuilds all four figures in the first thesis working draft, and exports four CSV tables. It does not execute the fish simulator. The saved notebook already contains the executed outputs for review.
+Open **FishSim_Professor_Notebook.ipynb** and choose **Run → Run All Cells**. The default run verifies 24 sealed feeding encounters and three separate timing engineering checks, rebuilds all four figures in the 9 November report snapshot, and exports eight CSV tables. It does not execute the fish simulator. The saved notebook already contains the executed outputs for review.
 
-The evidence snapshot contains eight development encounters and eight fresh exposed-policy replication encounters, each lasting 36 model-time units. It excludes the earlier C-policy pilot and any later overnight experiments. The two capture streams in each fresh school are repeated stochastic runs of the same starting geometry, not additional independent schools.
+The current evidence snapshot contains eight development encounters, eight fresh exposed-policy replication encounters, and eight matching gannet-only/depth encounters, each lasting 36 model-time units. It excludes the earlier C-policy pilot and the later eight-school 72T study. The latter is running separately; no partial results enter this notebook. The two capture streams in each fresh school are repeated stochastic runs of the same starting geometry, not additional independent schools.
 
 ## Local setup: analysis and figures
 
@@ -41,17 +41,25 @@ The supplied historical binary requires **CPython 3.12, Linux x86-64, glibc 2.43
 - The exposed policy ranks feasible fish by low observed neighbour count within radius 2; dense fish remain eligible. It does not explicitly wait for a gannet dive or for post-dive scatter.
 - Gannets observe underwater fish globally within the permitted depth, form density clusters, choose a cluster with probability proportional to its accessible population, and target a locally dense part of that cluster.
 - Capture probability 0.7 is conditional on a resolved physical oral contact. It is not a 70% success probability per launch or dive. These runs were not calibrated to the field study's dive-success observations; the field categories should not be interpreted as repeated attempts on the same fish.
-- Space and model time are uncalibrated. The numerical timestep is 0.00125T; the 36T horizon is not a measured real-world encounter duration. These are fixed-model pilot results without a numerical convergence claim, energy budget, long-term evolutionary learning, or reciprocal-benefit demonstration.
+- Space and model time are uncalibrated. The numerical timestep is 0.00125T; the 36T horizon is not a measured real-world encounter duration. These are fixed-model pilot results without a numerical convergence claim, energy budget, or long-term evolutionary learning. Matching G-only controls show joint gains in two of four stochastic comparisons, from two independent schools; gannet benefits are uneven. This is not evidence for a general reciprocal advantage.
 - Fresh replication has two independent starting schools, with two capture streams each. Development was used to select the exposed policy. Keep its outcomes separate from the fresh replication when judging evidence.
 
-## Files
+## Evidence snapshots and preservation
 
-`data/` contains the original complete sealed case outputs and prior analysis tables. `INPUT_MANIFEST.json` protects those inputs, frozen model code and plotting code. `frozen_model/` contains the actual runtime source closure, fresh prepared checkpoints, native binary and C++ build source. Historical JSON manifests remain intact there; optional execution makes a private runtime copy under `work/` and records only path relocations. `outputs/` holds regenerated figures and tables and any explicitly requested new runs. `validation/` records notebook and integration checks. `reference_figures/` preserves the first working draft's four figures.
+The active notebook imports `notebook_support_v2.py` and uses `DATASET_2026-11-09.json` plus `INPUT_MANIFEST_2026-11-09.json`. It verifies the original first-draft manifest as well as the new snapshot. All 24 cases retain their original complete file seals. The eight new G-only/depth cases include the unshifted controls needed for the joint-benefit comparison; translated depths are analysed separately.
 
-New simulations never overwrite the bundled historical evidence. The repository-only bundling utility is omitted from this standalone distribution. See [PROVENANCE.md](PROVENANCE.md) for source attribution and retained third-party license notices.
+The original `DATASET.json`, `INPUT_MANIFEST.json`, `notebook_support.py`, `paper_figure_source.py`, `reference_figures/` and 16 original case directories are unchanged. The first executed notebook and its validation receipt are preserved in `snapshots/first_draft_2026-11-08/`. Current figures are rebuilt from `paper_figure_source_current.py` and compared with `reference_figures_current/`. New tables and figures go to `outputs/current_tables/` and `outputs/current_figures/`.
+
+`SOURCE_CLOSURE_2026-11-09.json` maps every source named by the new G-only case manifests to byte-identical bundled files in `frozen_model/`, `data/` or `study_sources/`. `REPORT_SNAPSHOT_2026-11-09.json` records the report text belonging to the current figure snapshot. Historical absolute paths remain provenance; analysis resolves bundled paths directly.
+
+The optional `run_model.py` and frozen runtime are unchanged from the tested first-draft delivery. This optional path still runs the documented original D/DG pair or eight-case fresh replication, not the later depth or 72T study. `snapshot_tools.py` is a maintainer utility for additive, explicitly versioned evidence inventories; it performs no simulation and rejects changed old evidence. `create_notebook.py` and `create_notebook_current.py` are authoring utilities, not steps a professor needs to run.
+
+## Supporting timing evidence
+
+[Timing engineering records](supporting_evidence/timing/README.md) retain three sealed4T,8T and36T checks, their protocols and independent audits. They are verified separately during Run All and excluded from the24case feeding inventory and pooled analysis. The36T check was selected after baseline screening; it produced one partial hold, zero requested1T releases and unchanged catches. It is engineering validation, not independent confirmation of a feeding benefit.
 
 ## Validation performed
 
-All 16 default code cells were executed in a fresh Python process and clean namespace. They verified all 16 sealed cases and 2,479 protected files, produced four CSV tables, and reproduced all four paper figures pixel-identically on the authoring environment. No native simulator was imported by the default cells. This validates their code execution; an interactive Jupyter frontend was not installed on that host.
+The default notebook is executed in a fresh Python process and clean namespace. Its receipt records verification of all 24 sealed cases, preservation of the original 16-case manifest, exact G-only/DG initial-state and private-stream matching, eight exported tables, and four figures pixel-identical to the current report references on the tested environment. Default analysis imports no native simulator and takes zero simulation steps. Other platforms or font versions can produce small rendering differences; macOS/Windows execution has not been tested here.
 
-Separately, the optional runner passed an actual 0.5T D / 0.5T DG integration pair using one worker, the exact pinned native binary and unchanged behavioral code/checkpoints: 800 native steps total, both original case audits and completion seals passed. The short check validates the execution path, not feeding outcomes. Receipts are in `validation/default_notebook.json` and `validation/native_smoke.json`.
+The unchanged optional runner previously passed an actual 0.5T D / 0.5T DG integration pair using the pinned native binary: 800 native steps total, both original audits and seals passed. The short check verifies that execution path, not feeding outcomes. Receipts are `validation/current_notebook_2026-11-09.json` and the preserved `validation/native_smoke.json`.

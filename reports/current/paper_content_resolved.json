@@ -51,7 +51,7 @@
         ],
         [
           "Capture",
-          "Food is credited only through an eligible swept mouth contact, followed by a fixed 0.7 success draw. This is not 70% success per attack. The first eligible contact closes the bout, successful or not; at most one fish is consumed, and it is removed once. A fish crossing the mouth path may differ from the selected target. No dense-school confusion penalty or post-dive capture bonus is imposed."
+          "Food requires an eligible swept contact between point prey and an offset mouth sphere (radius 0.4, forward offset 0.3), followed by a fixed 0.7 draw. The first eligible contact closes the bout, successful or not; each captured fish is removed once and may differ from the selected target. Predators observe the same step-start fish state and propose motion. Fish advance under submerged-predator cues; contacts are resolved jointly in time order, then controller memory commits the actual resolved step. No density-dependent capture bonus is imposed."
         ]
       ]
     },
@@ -66,7 +66,7 @@
         ],
         [
           "Outcome and duration",
-          "For species s, the feeding return is Y_s=C_s/(N_s T), where C_s is the number of uniquely removed fish credited to that species, N_s is its abundance and T is the complete encounter duration. The same-policy dolphin effect is Δ_D=Y_D(DG)−Y_D(D). Each encounter lasts 36T, including travel, herding, unsuccessful attacks, handling and recovery. It starts from a predator-free school checkpoint after 20T of maturation; that preceding fish-only preparation is not dolphin herding time and is excluded from the feeding horizon."
+          "For species s, the feeding return is Y_s=C_s/(N_s T), where C_s is the number of uniquely removed fish credited to that species, N_s is its abundance and T is the complete encounter duration. The partner effects are Δ_D=Y_D(DG)−Y_D(D) and Δ_G=Y_G(DG)−Y_G(G). Joint benefit requires both to be positive in the same comparison. Each encounter lasts 36T, including travel, herding, unsuccessful attacks, handling and recovery. It starts from a predator-free school checkpoint after 20T of maturation; that preceding fish-only preparation is not dolphin herding time and is excluded from the feeding horizon."
         ],
         [
           "Development set",
@@ -132,7 +132,7 @@
         ],
         [
           "Objective 3: attack timing",
-          "An isolated timing hook was checked against the unchanged model. With the hook disabled, a 4T replay exactly reproduced the baseline. In an enabled 8T test, all six legal bird launch decisions lacked a qualifying recent local dolphin-launch cue. No dive was deferred; all 81 saved frames matched the baseline prefix. The proposed local delay was therefore unexercised. This engineering check provides no evidence for or against a timing benefit."
+          "An isolated timing hook reproduced the disabled baseline exactly. The first enabled 8T check found no cue at any of six legal bird launches. Retrospective screening then identified one later opportunity in a different random setting. A separately declared, post-hoc 36T engineering run delayed one bird launch by 0.076T before loss of locality cancelled the wait. Its realised launch lag was 0.873T, short of the requested 1T. Dolphin and gannet captures, 24 and 11, matched the baseline. This demonstrates a partial deferral, without establishing a timing advantage."
         ]
       ]
     },
@@ -161,7 +161,7 @@
         ],
         [
           "Reproducibility and draft status",
-          "The timestep is 0.00125T; a full encounter contains 28,800 steps. Configurations, source and checkpoint hashes, saved random states, event logs, trajectories and verified summaries are retained. Figures are generated from these records without rerunning the model. The local Jupyter notebook reproduces the first working draft’s four figures and tables from 16 sealed development and replication encounters. All 16 default code cells passed, and an optional short simulation pair passed its original audits on the tested Linux host. Later gannet controls are reported here separately and are not yet part of that frozen notebook snapshot. Model execution has documented platform constraints. Calibration, convergence and timing remain open."
+          "The timestep is 0.00125T; a 36T encounter contains 28,800 steps. Configurations, source and checkpoint hashes, saved random states, event logs, trajectories and verified summaries are retained. The local Jupyter notebook verifies 24 sealed development, replication and gannet-only/depth encounters and regenerates all four report figures and eight tables. All 18 default code cells passed in fresh processes, including a relocated folder; analysis imports no native simulator. Original inputs and manifests are preserved. The unchanged optional runner passed a short simulation pair on the tested Linux host; platform constraints are documented. Timing checks have separate supporting evidence. The longer eight-school study is running and remains excluded from this snapshot. Code and evidence: https://github.com/reuben-trade/FishSim-Dolphin-Gannet-Pilot."
         ]
       ]
     }

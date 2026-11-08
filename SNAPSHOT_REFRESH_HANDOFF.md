@@ -1,0 +1,17 @@
+# Maintainer handoff: later evidence snapshots
+
+Current private candidate: 24 sealed full36T cases, 18 executed default cells, eight tables, four current report figures. `PUBLICATION_CANDIDATE.json` lists owned changed/new paths and excludes the concurrently edited report directory.
+
+The original root `DATASET.json`, `INPUT_MANIFEST.json`, `notebook_support.py`, `paper_figure_source.py`, `reference_figures/` and optional `run_model.py` remain byte-identical. The root notebook uses `notebook_support_v2.py`, `DATASET_2026-11-09.json`, `INPUT_MANIFEST_2026-11-09.json`, `paper_figure_source_current.py` and `reference_figures_current/`. Both old and new input manifests are verified in Run All. First-draft saved notebook/receipts are archived under `snapshots/first_draft_2026-11-08/`.
+
+For a later72T update:
+
+1. Wait for the complete, reviewed fixed matrix and analysis; retain the eight new schools as a separate cohort. Existing24case inputs stay unchanged.
+2. Add complete case folders using a fresh inventory version and the `snapshot_tools.append_study` pattern. That utility preserves old cases/seals and records any checkpoint seals. Pass `--case-subdir` for the actual new study case directory; its default is `results/full_36T_v1/cases`. Version labels should include a distinct cutoff when several snapshots share a date.
+3. Read36T primary results from each independently sealed `checkpoint_36T` record and its exact event prefix, not from the72T full-summary total. Read72T secondary results separately. A 36T/72T pair is one encounter and one school, not two independent samples. Early complete-depletion records use nominal denominators and observed-only effort.
+4. The present `notebook_support_v2.case_rows()` deliberately accepts only full36T cases and known study labels. A new support version must explicitly implement the sealed-horizon format; simply appending72T cases to this inventory will correctly fail. Preserve this v2 module/manifests as a dated snapshot rather than silently changing their meaning.
+5. Copy the reviewed analysis source, frozen numeric/analysis plans and all sources named in the case manifests to a byte-matched source closure. Map historical absolute paths to bundled file paths for read-only verification; do not rewrite sealed JSON manifests.
+6. Update only the new plotting adapter to point at bundled study paths, including any new LONGER source root. Preserve the first-draft plotting source. Copy the corresponding reviewed current report reference figures and report-text snapshot before validation.
+7. New default cells should show the eight-school paired primary D/G effects and declared uncertainty; label72T secondary effects and depletion explicitly. Keep earlier two-school selection/replication results separate. Optional original model execution remains unchanged unless a separately validated new execution path is intentionally added.
+8. Use a new additive input manifest whose previous_manifest names the last published manifest; verify all previous protected hashes before writing it. Re-execute all default cells in a fresh process, then from a relocated folder, checking every seal and all four figure pixels/data. Do not run native simulation for report reconstruction.
+9. The publisher owns final Git/Drive changes. Synchronize the current PDF/Doc/report text through PUBLICATION_WORKFLOW.txt, preserve any intervening user edits, and record the Git commit and stable Drive IDs. Update the notebook/report snapshot descriptions together.

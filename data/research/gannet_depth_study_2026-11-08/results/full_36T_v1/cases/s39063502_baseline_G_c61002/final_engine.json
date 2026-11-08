@@ -1,0 +1,583 @@
+{
+  "actors": [
+    {
+      "actor_id": "G0",
+      "species": "G",
+      "position": [
+        253.8296812375244,
+        113.36409248135745,
+        3.0000000000000178
+      ],
+      "heading": [
+        0.8060234859420712,
+        0.5918835528292637,
+        -1.7763568394002505e-14
+      ],
+      "time": 55.999999999967194,
+      "mode": "search",
+      "mode_since": 35.07701182234281,
+      "target_id": null,
+      "bout_id": 3,
+      "bout_start": null,
+      "bout_deadline": null,
+      "ready_at": 34.58374999998758,
+      "last_outcome": "target_not_visible"
+    },
+    {
+      "actor_id": "G1",
+      "species": "G",
+      "position": [
+        296.1857452424625,
+        -4.612802538252975,
+        3.0000000000000178
+      ],
+      "heading": [
+        1.0,
+        0.0,
+        -1.7763568394002505e-14
+      ],
+      "time": 55.999999999967194,
+      "mode": "search",
+      "mode_since": 35.5132116386435,
+      "target_id": null,
+      "bout_id": 2,
+      "bout_start": null,
+      "bout_deadline": null,
+      "ready_at": 33.217499999988824,
+      "last_outcome": "ascent_depth_margin"
+    },
+    {
+      "actor_id": "G2",
+      "species": "G",
+      "position": [
+        145.2048301078514,
+        -2.72740745255519,
+        7.45680677661521
+      ],
+      "heading": [
+        0.9659411919528946,
+        0.039927623961592586,
+        -0.2556626655055495
+      ],
+      "time": 55.999999999967194,
+      "mode": "orient",
+      "mode_since": 54.17769642084254,
+      "target_id": 141,
+      "bout_id": 4,
+      "bout_start": null,
+      "bout_deadline": null,
+      "ready_at": 53.69999999997565,
+      "last_outcome": "timeout"
+    }
+  ],
+  "actor_policy": {
+    "G0": {
+      "config": {
+        "species": "G",
+        "dolphin_policy": "direct",
+        "speed": 6.0,
+        "air_speed": 10.0,
+        "turn_rate": 1.5707963267948966,
+        "sense_radius": 1000000000.0,
+        "patch_radius": 3.0,
+        "edge_margin": 1.0,
+        "edge_tolerance": 1.0,
+        "positioning_budget": 4.0,
+        "intercept_horizon": 3.0,
+        "bout_duration": 6.0,
+        "handling_duration": 2.0,
+        "miss_recovery_duration": 1.0,
+        "surface_z": 0.0,
+        "flight_height": 3.0,
+        "plunge_horizontal_radius": 6.0,
+        "detection_depth": 12.0,
+        "max_dive_depth": 12.0,
+        "ascent_margin": 0.25,
+        "spacing_enabled": false,
+        "spacing_radius": 2.0,
+        "spacing_gain": 0.5,
+        "max_motion_interval": 0.05
+      },
+      "mouth": {
+        "radius": 0.4,
+        "forward_offset": 0.3,
+        "surface_z": 0.0
+      },
+      "capture_probability": 0.7
+    },
+    "G1": {
+      "config": {
+        "species": "G",
+        "dolphin_policy": "direct",
+        "speed": 6.0,
+        "air_speed": 10.0,
+        "turn_rate": 1.5707963267948966,
+        "sense_radius": 1000000000.0,
+        "patch_radius": 3.0,
+        "edge_margin": 1.0,
+        "edge_tolerance": 1.0,
+        "positioning_budget": 4.0,
+        "intercept_horizon": 3.0,
+        "bout_duration": 6.0,
+        "handling_duration": 2.0,
+        "miss_recovery_duration": 1.0,
+        "surface_z": 0.0,
+        "flight_height": 3.0,
+        "plunge_horizontal_radius": 6.0,
+        "detection_depth": 12.0,
+        "max_dive_depth": 12.0,
+        "ascent_margin": 0.25,
+        "spacing_enabled": false,
+        "spacing_radius": 2.0,
+        "spacing_gain": 0.5,
+        "max_motion_interval": 0.05
+      },
+      "mouth": {
+        "radius": 0.4,
+        "forward_offset": 0.3,
+        "surface_z": 0.0
+      },
+      "capture_probability": 0.7
+    },
+    "G2": {
+      "config": {
+        "species": "G",
+        "dolphin_policy": "direct",
+        "speed": 6.0,
+        "air_speed": 10.0,
+        "turn_rate": 1.5707963267948966,
+        "sense_radius": 1000000000.0,
+        "patch_radius": 3.0,
+        "edge_margin": 1.0,
+        "edge_tolerance": 1.0,
+        "positioning_budget": 4.0,
+        "intercept_horizon": 3.0,
+        "bout_duration": 6.0,
+        "handling_duration": 2.0,
+        "miss_recovery_duration": 1.0,
+        "surface_z": 0.0,
+        "flight_height": 3.0,
+        "plunge_horizontal_radius": 6.0,
+        "detection_depth": 12.0,
+        "max_dive_depth": 12.0,
+        "ascent_margin": 0.25,
+        "spacing_enabled": false,
+        "spacing_radius": 2.0,
+        "spacing_gain": 0.5,
+        "max_motion_interval": 0.05
+      },
+      "mouth": {
+        "radius": 0.4,
+        "forward_offset": 0.3,
+        "surface_z": 0.0
+      },
+      "capture_probability": 0.7
+    }
+  },
+  "ownership": {
+    "prey_ids": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24,
+      25,
+      26,
+      27,
+      28,
+      29,
+      30,
+      31,
+      32,
+      33,
+      34,
+      35,
+      36,
+      37,
+      38,
+      39,
+      40,
+      41,
+      42,
+      43,
+      44,
+      45,
+      46,
+      47,
+      48,
+      49,
+      50,
+      51,
+      52,
+      53,
+      54,
+      55,
+      56,
+      57,
+      58,
+      59,
+      60,
+      61,
+      62,
+      63,
+      64,
+      65,
+      66,
+      67,
+      68,
+      69,
+      70,
+      71,
+      72,
+      73,
+      74,
+      75,
+      76,
+      77,
+      78,
+      79,
+      80,
+      81,
+      82,
+      83,
+      84,
+      85,
+      86,
+      87,
+      88,
+      89,
+      90,
+      91,
+      92,
+      93,
+      94,
+      95,
+      96,
+      97,
+      98,
+      99,
+      100,
+      101,
+      102,
+      103,
+      104,
+      105,
+      106,
+      107,
+      108,
+      109,
+      110,
+      111,
+      112,
+      113,
+      114,
+      115,
+      116,
+      117,
+      118,
+      119,
+      120,
+      121,
+      122,
+      123,
+      124,
+      125,
+      126,
+      127,
+      128,
+      129,
+      130,
+      131,
+      132,
+      133,
+      134,
+      135,
+      136,
+      137,
+      138,
+      139,
+      140,
+      141,
+      142,
+      143,
+      144,
+      145,
+      146,
+      147,
+      148,
+      149,
+      150,
+      151,
+      152,
+      153,
+      154,
+      155,
+      156,
+      157,
+      158,
+      159
+    ],
+    "captured_ids": [
+      68,
+      140
+    ],
+    "closed_bouts": [
+      [
+        "G0",
+        1
+      ],
+      [
+        "G0",
+        2
+      ],
+      [
+        "G0",
+        3
+      ],
+      [
+        "G1",
+        1
+      ],
+      [
+        "G1",
+        2
+      ],
+      [
+        "G2",
+        1
+      ],
+      [
+        "G2",
+        2
+      ],
+      [
+        "G2",
+        3
+      ],
+      [
+        "G2",
+        4
+      ]
+    ],
+    "time": 55.999999999967194
+  },
+  "capture_rng": {
+    "G0": {
+      "bit_generator": "PCG64",
+      "state": {
+        "state": 179529732037801348479485185446436733440,
+        "inc": 126053657872237370190725635975628237801
+      },
+      "has_uint32": 0,
+      "uinteger": 0
+    },
+    "G1": {
+      "bit_generator": "PCG64",
+      "state": {
+        "state": 170291167754319594237221665461762838009,
+        "inc": 266343570128730416787312879367336426475
+      },
+      "has_uint32": 0,
+      "uinteger": 0
+    },
+    "G2": {
+      "bit_generator": "PCG64",
+      "state": {
+        "state": 161642114594206406552481965190170146017,
+        "inc": 4736757783122143194845051791778238965
+      },
+      "has_uint32": 0,
+      "uinteger": 0
+    }
+  },
+  "tie_rng": {
+    "bit_generator": "PCG64",
+    "state": {
+      "state": 21308471276550995959417060738021713437,
+      "inc": 157922707914145977789914867834695347763
+    },
+    "has_uint32": 0,
+    "uinteger": 0
+  },
+  "controllers": {
+    "G0": {
+      "version": "global_dbscan_size_weighted_gannet_target_v1",
+      "need_selection": true,
+      "target_rng_state": {
+        "bit_generator": "PCG64",
+        "state": {
+          "state": 318970157942023614000973197899096072194,
+          "inc": 33109946304748971585521896899374041911
+        },
+        "has_uint32": 0,
+        "uinteger": 0
+      },
+      "committed": {
+        "actor_id": "G0",
+        "species": "G",
+        "position": [
+          253.8296812375244,
+          113.36409248135745,
+          3.0000000000000178
+        ],
+        "heading": [
+          0.8060234859420712,
+          0.5918835528292637,
+          -1.7763568394002505e-14
+        ],
+        "time": 55.999999999967194,
+        "mode": "search",
+        "mode_since": 35.07701182234281,
+        "target_id": null,
+        "bout_id": 3,
+        "bout_start": null,
+        "bout_deadline": null,
+        "ready_at": 34.58374999998758,
+        "last_outcome": "target_not_visible"
+      },
+      "pending": null,
+      "last_diagnostics": {
+        "version": "global_dbscan_size_weighted_gannet_target_v1",
+        "selected": false,
+        "time": 55.998749999967195,
+        "input_mode": "search",
+        "visible_count": 158,
+        "patch_count": 1,
+        "noise_count": 2,
+        "eligible_patch_count": 0,
+        "accessible_count": 0,
+        "clustering_radius": 2.0,
+        "minimum_samples": 4,
+        "density_radius": 2.0,
+        "eligible_patch_sizes": [],
+        "eligible_patch_accessible_counts": [],
+        "reason": "no_accessible_target",
+        "selection_probabilities": [],
+        "withheld_no_accessible_target": true,
+        "committed_mode": "search"
+      }
+    },
+    "G1": {
+      "version": "global_dbscan_size_weighted_gannet_target_v1",
+      "need_selection": true,
+      "target_rng_state": {
+        "bit_generator": "PCG64",
+        "state": {
+          "state": 41186011634096826582684759206928876445,
+          "inc": 218406008898866762574330395457885581933
+        },
+        "has_uint32": 0,
+        "uinteger": 0
+      },
+      "committed": {
+        "actor_id": "G1",
+        "species": "G",
+        "position": [
+          296.1857452424625,
+          -4.612802538252975,
+          3.0000000000000178
+        ],
+        "heading": [
+          1.0,
+          0.0,
+          -1.7763568394002505e-14
+        ],
+        "time": 55.999999999967194,
+        "mode": "search",
+        "mode_since": 35.5132116386435,
+        "target_id": null,
+        "bout_id": 2,
+        "bout_start": null,
+        "bout_deadline": null,
+        "ready_at": 33.217499999988824,
+        "last_outcome": "ascent_depth_margin"
+      },
+      "pending": null,
+      "last_diagnostics": {
+        "version": "global_dbscan_size_weighted_gannet_target_v1",
+        "selected": false,
+        "time": 55.998749999967195,
+        "input_mode": "search",
+        "visible_count": 158,
+        "patch_count": 1,
+        "noise_count": 2,
+        "eligible_patch_count": 0,
+        "accessible_count": 0,
+        "clustering_radius": 2.0,
+        "minimum_samples": 4,
+        "density_radius": 2.0,
+        "eligible_patch_sizes": [],
+        "eligible_patch_accessible_counts": [],
+        "reason": "no_accessible_target",
+        "selection_probabilities": [],
+        "withheld_no_accessible_target": true,
+        "committed_mode": "search"
+      }
+    },
+    "G2": {
+      "version": "global_dbscan_size_weighted_gannet_target_v1",
+      "need_selection": false,
+      "target_rng_state": {
+        "bit_generator": "PCG64",
+        "state": {
+          "state": 329801899135504315079825328726407655293,
+          "inc": 150570379648520327207629019167781459819
+        },
+        "has_uint32": 0,
+        "uinteger": 0
+      },
+      "committed": {
+        "actor_id": "G2",
+        "species": "G",
+        "position": [
+          145.2048301078514,
+          -2.72740745255519,
+          7.45680677661521
+        ],
+        "heading": [
+          0.9659411919528946,
+          0.039927623961592586,
+          -0.2556626655055495
+        ],
+        "time": 55.999999999967194,
+        "mode": "orient",
+        "mode_since": 54.17769642084254,
+        "target_id": 141,
+        "bout_id": 4,
+        "bout_start": null,
+        "bout_deadline": null,
+        "ready_at": 53.69999999997565,
+        "last_outcome": "timeout"
+      },
+      "pending": null,
+      "last_diagnostics": {
+        "version": "global_dbscan_size_weighted_gannet_target_v1",
+        "selected": false,
+        "time": 55.998749999967195,
+        "input_mode": "orient",
+        "visible_count": 158,
+        "committed_mode": "orient"
+      }
+    }
+  }
+}

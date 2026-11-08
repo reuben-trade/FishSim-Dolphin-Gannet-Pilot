@@ -1,0 +1,69 @@
+{
+  "status": "complete",
+  "at": "2026-11-09T00:40:28.154498+08:00",
+  "arm": "lag1",
+  "actual_model_time_T": 36.0,
+  "native_steps": 28800,
+  "species": {
+    "D": {
+      "count": 12,
+      "captures": 24,
+      "launches": 60,
+      "contacts": 35
+    },
+    "G": {
+      "count": 3,
+      "captures": 11,
+      "launches": 20,
+      "contacts": 13
+    }
+  },
+  "timing": {
+    "actual_G_launches": 20,
+    "actual_previously_deferred_G_launches": 1,
+    "gate_calls": 141,
+    "deferred_launches": [
+      {
+        "kind": "actual_gannet_launch",
+        "actor_id": "G0",
+        "bout_id": 6,
+        "time": 45.63999999997662,
+        "position": [
+          119.35677438068585,
+          -5.0316626681121885,
+          3.760556555647318
+        ],
+        "target_id": 115,
+        "timing": {
+          "opportunity": 6,
+          "target_id": 115,
+          "cue": {
+            "actor_id": "D10",
+            "bout_id": 4,
+            "time": 44.766905061041314,
+            "position": [
+              116.52194244009463,
+              1.8430499246237515,
+              -5.664188774552809
+            ],
+            "target_id": 141,
+            "target_position": [
+              118.494836769344,
+              -2.4936219354857725,
+              -4.134763769953181
+            ],
+            "published_at": 44.76749999997741
+          },
+          "first_eligible_at": 45.56375782658795,
+          "requested_release": 45.766905061041314,
+          "status": "cancelled",
+          "ever_deferred": true,
+          "cancellation": "peer_outside_12"
+        },
+        "realized": true,
+        "launch_lag": 0.8730949389353029
+      }
+    ],
+    "stage": "single post-hoc opportunity-selected engineering demonstration"
+  }
+}

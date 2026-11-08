@@ -1,0 +1,37 @@
+{
+  "snapshot": "2026-11-09",
+  "engineering_case_count": 3,
+  "feeding_case_count": 0,
+  "cases": [
+    {
+      "case": "s39063501_disabled_DG_c61001",
+      "relative_path": "supporting_evidence/timing/results/disabled_4T_v1/cases/s39063501_disabled_DG_c61001",
+      "completion_sha256": "1e78c97aebf2ec463d6bf80c4acf47c904d213f307fd3d4044ffa98e8f723499",
+      "duration_T": 3.999999999996362,
+      "native_steps": 3200,
+      "kind": "engineering_check",
+      "feeding_inventory_included": false
+    },
+    {
+      "case": "s39063501_lag1_DG_c61002",
+      "relative_path": "supporting_evidence/timing/results/lag1_36T_demonstration_v1/cases/s39063501_lag1_DG_c61002",
+      "completion_sha256": "60333705405a1edcc784d04c1bb50ce0450897cc7184787d18356f6dac9128f5",
+      "duration_T": 35.99999999996726,
+      "native_steps": 28800,
+      "kind": "engineering_check",
+      "feeding_inventory_included": false
+    },
+    {
+      "case": "s39063501_lag1_DG_c61001",
+      "relative_path": "supporting_evidence/timing/results/lag1_8T_v1/cases/s39063501_lag1_DG_c61001",
+      "completion_sha256": "4b311442c5512e3ffa355f02979974f0d8fa1d2379bef4d25da27c16f82ac91e",
+      "duration_T": 7.999999999992724,
+      "native_steps": 6400,
+      "kind": "engineering_check",
+      "feeding_inventory_included": false
+    }
+  ],
+  "conclusion": "Disabled4T matches baseline; enabled8T has no delay; post-hoc36T demo has one partial0.07624T hold, zero requested1T releases and unchanged catches. These are engineering checks, not independent feeding replication.",
+  "primary_report": "supporting_evidence/timing/REPORT.md",
+  "native_steps_reconstruction": 0
+}

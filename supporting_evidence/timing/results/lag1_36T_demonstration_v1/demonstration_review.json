@@ -1,0 +1,100 @@
+{
+  "status": "passed",
+  "actual_delayed_plunges": 1,
+  "delayed_launches": [
+    {
+      "kind": "actual_gannet_launch",
+      "actor_id": "G0",
+      "bout_id": 6,
+      "time": 45.63999999997662,
+      "position": [
+        119.35677438068585,
+        -5.0316626681121885,
+        3.760556555647318
+      ],
+      "target_id": 115,
+      "timing": {
+        "opportunity": 6,
+        "target_id": 115,
+        "cue": {
+          "actor_id": "D10",
+          "bout_id": 4,
+          "time": 44.766905061041314,
+          "position": [
+            116.52194244009463,
+            1.8430499246237515,
+            -5.664188774552809
+          ],
+          "target_id": 141,
+          "target_position": [
+            118.494836769344,
+            -2.4936219354857725,
+            -4.134763769953181
+          ],
+          "published_at": 44.76749999997741
+        },
+        "first_eligible_at": 45.56375782658795,
+        "requested_release": 45.766905061041314,
+        "status": "cancelled",
+        "ever_deferred": true,
+        "cancellation": "peer_outside_12"
+      },
+      "realized": true,
+      "launch_lag": 0.8730949389353029
+    }
+  ],
+  "timing_changed": true,
+  "native_horizon_T": 36.0,
+  "gate_calls": 141,
+  "gate_reasons": {
+    "no_qualified_committed_local_cue": 19,
+    "waiting_for_committed_launch_lag": 121,
+    "cancelled_peer_outside_12": 1
+  },
+  "unchanged_dense_target_rng_replay": {
+    "G0": {
+      "status": "passed",
+      "weighted_draws": 7
+    },
+    "G1": {
+      "status": "passed",
+      "weighted_draws": 6
+    },
+    "G2": {
+      "status": "passed",
+      "weighted_draws": 7
+    }
+  },
+  "dolphin_2T_cycle_launches": 60,
+  "captures": {
+    "G": 11,
+    "D": 24
+  },
+  "baseline_same_elapsed_prefix_captures": {
+    "G": 11,
+    "D": 24
+  },
+  "baseline_reference": "/home/venture/uwa/complex-systems/FishSim-RL/research/exposed_replication_2026-11-08/results/full_36T_v1/cases/s39063501_exposed_DG_c61002",
+  "baseline_scope": "Fixed first36T of sealed36T encounter; no terminal-state claim for this prefix",
+  "interpretation": "Engineering timing feasibility only. Changes in realised effort and waiting are part of policy effect; no mutual-benefit or timing-efficiency claim.",
+  "independent_review": {
+    "status": "passed",
+    "actual_committed_D_cues": 60,
+    "legal_horizontal_plunge_gates": 141,
+    "denied_gate_records": 121,
+    "first_denied_gate_time": 45.56375782658795,
+    "exact_preintervention_frames": 256,
+    "oral_geometry_capture_rng_recovery_and_unique_removals": "passed",
+    "G_launches": 20,
+    "G_water_entries": 20,
+    "completion_sha256": "60333705405a1edcc784d04c1bb50ce0450897cc7184787d18356f6dac9128f5"
+  },
+  "demonstration_native_budget": {
+    "previous_feasibility_T": 12,
+    "posthoc_single_demonstration_T": 36,
+    "additional_native_steps": 28800,
+    "total_native_steps": 38400,
+    "full_timing_study": false
+  },
+  "posthoc_interpretation": "Selected after baseline opportunity screening; engineering demonstration only,not independent timing-benefit confirmation."
+}

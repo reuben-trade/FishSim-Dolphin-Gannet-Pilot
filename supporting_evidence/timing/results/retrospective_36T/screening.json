@@ -1,0 +1,94 @@
+{
+  "status": "complete",
+  "native_steps": 0,
+  "method": "Conservative speed-bound intervals: predator position lies in intersection of speed balls from both bracketing snapshot endpoints, enclosed around the chord point; fish uses closest alive snapshot. Exact sealed event times/target IDs. Max speeds D6,G10,fish3; target predictions include2*3*dt extra uncertainty each. Require cue age>=2dt to guarantee prior-step publication. Robust qualifies only if both distance upper bounds lie within unchanged12/4 thresholds.",
+  "limitation": "This is a retrospective screening of the unmodified baseline. It certifies distance margins without exact event-position reconstruction, and does not predict the altered trajectory after any first deferral. Borderline intervals remain unresolved. Exact target-selection behavior and flight response still require an enabled native run.",
+  "cases": [
+    {
+      "case": "s39063501_exposed_DG_c61001",
+      "source_completion_sha256": "1698e6334a04a8042a4748b1d7780ef4c7b798ee074e1b33bdc33db9a4c82992",
+      "G_launches": 18,
+      "D_launches": 57,
+      "recent_committed_time_candidates": 57,
+      "robust_qualifying_G_launches": 0,
+      "possible_qualifying_pairs": 0,
+      "possible_lag1_deferral_pairs": 0,
+      "robust_lag1_deferrable_G_launches": 0,
+      "first_robust_lag1_after8T": null
+    },
+    {
+      "case": "s39063501_exposed_DG_c61002",
+      "source_completion_sha256": "6b522474716b61e4b5325cfa2be0a39a3235264b8ffaa8f0f0549d8da2e10d3c",
+      "G_launches": 20,
+      "D_launches": 60,
+      "recent_committed_time_candidates": 57,
+      "robust_qualifying_G_launches": 1,
+      "possible_qualifying_pairs": 1,
+      "possible_lag1_deferral_pairs": 1,
+      "robust_lag1_deferrable_G_launches": 1,
+      "first_robust_lag1_after8T": {
+        "case": "s39063501_exposed_DG_c61002",
+        "school_seed": 39063501,
+        "capture_seed": 61002,
+        "G_actor": "G0",
+        "G_bout": 6,
+        "G_target": 115,
+        "G_time": 45.56375782658795,
+        "G_elapsed": 25.56375782658802,
+        "D_actor": "D10",
+        "D_bout": 4,
+        "D_target": 141,
+        "D_time": 44.766905061041314,
+        "cue_age_T": 0.7968527655466389,
+        "peer_distance_estimate": 11.434950305296791,
+        "peer_distance_lower": 11.420452066792482,
+        "peer_distance_upper": 11.4494485438011,
+        "target_region_distance_estimate": 2.2824059975855238,
+        "target_region_distance_lower": 2.059394640611222,
+        "target_region_distance_upper": 2.5054173545598255,
+        "robust_local_qualification": true,
+        "possible_local_qualification": true,
+        "lag1_release_still_future": true,
+        "robust_lag1_deferral_opportunity": true,
+        "G_body_snapshot_time": [
+          45.499999999976744,
+          45.59999999997665
+        ],
+        "D_body_snapshot_time": [
+          44.69999999997747,
+          44.79999999997738
+        ],
+        "G_target_snapshot_time": 45.59999999997665,
+        "D_target_snapshot_time": 44.79999999997738
+      }
+    },
+    {
+      "case": "s39063502_exposed_DG_c61001",
+      "source_completion_sha256": "2511b86a2fdff5621eec17058e077cfad5b0af5e34f58669f83d343a1ed7fdf0",
+      "G_launches": 17,
+      "D_launches": 54,
+      "recent_committed_time_candidates": 56,
+      "robust_qualifying_G_launches": 0,
+      "possible_qualifying_pairs": 0,
+      "possible_lag1_deferral_pairs": 0,
+      "robust_lag1_deferrable_G_launches": 0,
+      "first_robust_lag1_after8T": null
+    },
+    {
+      "case": "s39063502_exposed_DG_c61002",
+      "source_completion_sha256": "c921a1e40f69d650dfcfdbefa2fbdd37a6557288b1dc3f1eec64d94b65950823",
+      "G_launches": 18,
+      "D_launches": 61,
+      "recent_committed_time_candidates": 56,
+      "robust_qualifying_G_launches": 0,
+      "possible_qualifying_pairs": 0,
+      "possible_lag1_deferral_pairs": 0,
+      "robust_lag1_deferrable_G_launches": 0,
+      "first_robust_lag1_after8T": null
+    }
+  ],
+  "all_G_launches": 73,
+  "robust_qualifying_G_launches": 1,
+  "robust_lag1_deferrable_G_launches": 1,
+  "robust_lag1_after8T_pairs": 1
+}
