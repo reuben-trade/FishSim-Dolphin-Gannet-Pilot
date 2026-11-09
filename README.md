@@ -8,6 +8,22 @@ The full map uses **four previously observed schools and one capture-stream sett
 
 Read the [current report](reports/current/Feeding_Frenzy_Working_Draft.pdf) or [complete response map](reference_figures_v5/fig3_regime_map.png). The inventory contains 132 full feeding execution records: 72 historical records plus 60 corrected-v2 sweep records, **including eight exact historical replays**. Replays, shared controls, grid repetitions and longer horizons do not add independent schools. The stopped v1 recorder attempt is retained only as immutable supporting provenance.
 
+## Complete discovery map
+
+All nine mixed settings are retained below. Captures are summed across the same four known schools; each D baseline has the same H and each G baseline has the same bird count. The stronger D-only benchmark is H=1T, with 91 captures. Pointwise uncertainty and all school contrasts are in Figure 3 and the notebook.
+
+| H (T) | Gannets | D alone → mixed | Same-H D change | D change vs best H | G alone → mixed | Both gain |
+|---:|---:|---:|---:|---:|---:|---:|
+| 1 | 1 | 91 → 98 | +7.7% | +7.7% | 13 → 12 | 0/4 |
+| 1 | 3 | 91 → 107 | +17.6% | +17.6% | 24 → 22 | 1/4 |
+| 1 | 6 | 91 → 113 | +24.2% | +24.2% | 24 → 37 | 3/4 |
+| 2 | 1 | 86 → 90 | +4.7% | -1.1% | 13 → 13 | 0/4 |
+| 2 | 3 | 86 → 95 | +10.5% | +4.4% | 24 → 29 | 1/4 |
+| 2 | 6 | 86 → 103 | +19.8% | +13.2% | 24 → 53 | 4/4 |
+| 3 | 1 | 73 → 68 | -6.8% | -25.3% | 13 → 13 | 0/4 |
+| 3 | 3 | 73 → 72 | -1.4% | -20.9% | 24 → 30 | 1/4 |
+| 3 | 6 | 73 → 78 | +6.8% | -14.3% | 24 → 51 | 2/4 |
+
 ## Local setup: analysis and figures
 
 Use Python 3.10 or newer. From a terminal opened in this folder:
