@@ -1,0 +1,113 @@
+Current-paper model execution context — through 36 gannets
+
+The current paper extends the completed map to G={1,3,6,9,12,18,24,36}, with 140
+condition-school outcomes on the same four schools. main.ipynb reconstructs
+this completed evidence without running a model. Its default analysis and
+paper figures are updated; the historical model documents below remain
+explicitly labelled by their original scope.
+
+The retained optional run_current_model.py route runs the separate eight-school
+H2/G3 numerical study, not the twenty-four-setting map. The public repository's
+versioned v6 profile retains its optional model cells. This compact profile
+does not provide or validate a new full-through36 native ensemble launcher.
+
+The following reference text documents the ORIGINAL nine-setting V3 package;
+its 1/3/6 counts and 60 outcomes are historical subset descriptions, not the
+current paper's full scope. Its frozen source and ABI details are retained.
+
+Historical frozen model reference for Feeding Frenzy V3
+9 November 2026
+
+The V3 analysis notebook works entirely from the bundled completed outputs.
+It does not load a FishSim binary, construct a model, step a model, or generate
+bootstrap draws. Actual-model execution is a separate optional activity.
+
+FROZEN SCIENTIFIC VERSION
+The report's nine mixed settings are the original completed 1/3/6-gannet map,
+not the higher-count work now present on the repository's main branch.
+
+Repository: https://github.com/reuben-trade/FishSim-Dolphin-Gannet-Pilot
+Frozen commit: da2058cea610f62cd16443e8987c26ab9cd72f5d
+Commit subject: Map conditional feeding benefits across herding and bird counts
+Snapshot: 2026-11-09_regime_v2
+Study: pilot_regime_sweep_2026-11-09_v2
+Frozen source tree:
+https://github.com/reuben-trade/FishSim-Dolphin-Gannet-Pilot/tree/da2058cea610f62cd16443e8987c26ab9cd72f5d
+
+Every copied documentation/protocol/build receipt in model_reproduction was
+compared byte for byte with this commit. provenance.json records those hashes.
+The original 422-file closure is retained as SOURCE_CLOSURE_2026-11-09_regime_v2.json.
+It binds original source/input paths to bundled repository paths and SHA-256.
+This documentation subset is not a substitute for that full model/source bundle.
+
+STUDY CONFIGURATION AND CONTROLS
+Four previously examined schools: 39061001, 39061002, 39063501, 39063502.
+Herding minima H = 1, 2, 3T; bird counts G = 0, 1, 3, 6.
+Each positive bird count also has its own G-only control, shared across H.
+The full map has60 condition-school executions, including8 exact old replays.
+Each encounter starts with160 fish; dolphin-bearing conditions have12 dolphins.
+Duration36T, dt0.00125T, capture setting61001, conditional contact success0.7.
+Replays and shared controls add no independent schools. Exact rules, roster,
+source bindings, and retained execution gates are in:
+  model_reproduction/data/research/pilot_regime_sweep_2026-11-09_v2/protocol.json
+  model_reproduction/data/research/pilot_regime_sweep_2026-11-09_v2/analysis_plan.json
+  model_reproduction/data/research/pilot_regime_sweep_2026-11-09_v2/frozen_sources.json
+
+The native-free V3 notebook reads this frozen evidence rather than the mutable
+repository notebook. It reconstructs deterministic comparisons and redraws the
+report figures; prior uncertainty endpoints and fish-state summaries are retained.
+
+OPTIONAL ACTUAL-MODEL ROUTES — NOT EXECUTED FOR V3
+1. The separately documented run_current_model.py executes the eight-school
+   H=2T / three-gannet coarse/fine replication, not the nine-setting H x G map.
+   Read model_reproduction/CURRENT_MODEL_SETUP.md. Its --plan form is native-free;
+   --run or --quick creates new model output. Model execution remains disabled
+   in the V3 notebook. The older run_model.py covers older pair/replication scopes.
+
+2. Exact re-execution of the nine-setting map requires the frozen run.py,
+   cases.py, build.py, controllers and checkpoint dependencies in the preserved
+   original source-compatible layout, including absolute JSON input references.
+   Inspect the full422-file source closure and study freeze before restoring that
+   layout. In that original compatible study directory the runner documents:
+       python run.py --plan --output <fresh-plan-directory>
+       python run.py --execute --output <fresh-results-directory> --workers 3
+   These are documentation only. They are not a portable one-command model
+   launcher supplied by this small V3 analysis package. Preserve the runner's
+   source/protocol, smoke, audit, anchor-replay and execution-approval checks.
+   No rerun, new approval, gate bypass or high-count expansion is implied here.
+
+ENVIRONMENT AND VALIDATED LIMITS
+The historical binary is CPython3.12 / Linux x86-64, SHA-256:
+eb8654a520304cc429aced67c7e3706db8d2ef1449c5e1327a682a479b10a558
+Its native runtime requires glibc2.43 or newer plus the documented C++/OpenMP
+libraries. Model scientific package versions are in requirements-model-tested.txt;
+these are distinct from the analysis-kernel versions printed by the V3 notebook.
+
+The separately source-built Linux amd64 candidate uses Python3.12.13, Debian
+GCC12.2.0, and has binary SHA-256:
+cc21f00f355e1d25e8ecb48bd6aa50a7c9b63f909d921f4864a96e91d9ef2d4b
+It is not byte-identical to the historical accepted binary. Its bounded BuildKit
+checks total15,200 native steps and do not establish full feeding-ensemble
+equivalence, successful capture/removal, or host Docker bind-mount portability.
+Read the copied compile/import and runtime receipts for the exact scope.
+No new native validation is asserted by V3.
+
+The full NATIVE_BUILD.json receipt is stored losslessly as NATIVE_BUILD.json.gz
+to keep this documentation package compact. Its uncompressed original hash and
+compressed stored hash are both in model_reproduction/provenance.json.
+
+MODEL RULE POINTERS AT THE FROZEN COMMIT
+  frozen_model/src/couzin.cpp: social direction and baseline-turn multiplier.
+  frozen_model/research/prey_mediated/scenario.py: migration/habitat/threat cues.
+  frozen_model/research/prey_mediated/reactive_school.py: social/turning response.
+  frozen_model/research/prey_mediated/surface_safe_school.py: surface guard.
+  frozen_model/research/prey_mediated/encounter.py: common-state/event update order.
+  frozen_model/research/prey_mediated/predators.py: motion, ascent and recovery.
+  data/research/pilot_regime_sweep_2026-11-09_v2/regime_controller.py: shared dolphin rule.
+  data/research/pilot_regime_sweep_2026-11-09_v2/gannet.py: global density targeting,
+    new-target depth reserve and travel-feasibility criterion.
+  data/research/pilot_regime_sweep_2026-11-09_v2/run.py: local_geometry and recording.
+  Each completed case's config.json: actor/readiness/private-stream parameters.
+
+No simulator binary, raw trajectory bank or full model source tree is duplicated
+in model_reproduction. It contains only exact documentation/provenance copies.

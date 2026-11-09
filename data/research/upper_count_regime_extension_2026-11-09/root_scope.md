@@ -1,0 +1,1 @@
+Root authorized the bounded G24/G36 extension on 2026-11-09. Source: design_authorization.json. All32 full36T cases and five4T engineering smokes are mandatory, all-stage ceiling937600. Pilot8 is a subset. Stop this count expansion at36; no sign-dependent selection, retry, omission or further roster expansion. Separate D24 and fresh-school work remains outside this study.

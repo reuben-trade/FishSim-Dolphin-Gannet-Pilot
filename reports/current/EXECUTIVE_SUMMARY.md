@@ -1,77 +1,70 @@
-# FishSim dolphin–gannet pilot: executive summary
+# FishSim executive summary —10 November 2026
 
-**9 November 2026 — complete balanced map, including the four-school 9/12/18-gannet extension**
+The completed count extension finds **mutual feeding benefits within the model** at several settings, using an unchanged dolphin rule and matched single-species controls. The full map now contains 140 condition-school outcomes and 24 mixed settings on the same four previously observed schools.
 
-## Main finding
+At **H=1T/G=36**, dolphins capture 132 fish versus 91 without birds (+45.1%), and gannets 94 versus 16 without dolphins. Both species gain in every school. This is the largest dolphin total observed, but only five fish above the 127 reached at G9 and G18. The comparison does not establish 36 as an optimum.
 
-Adding gannets increased mean dolphin catches in **14 of 18** tested herding-duration/group-size settings; one was unchanged and three were negative. The largest mixed dolphin total tied at **1T herding with nine or eighteen gannets: 91→127 captures (+39.6%)**, with dolphin gains in all four schools. Nine birds are reported by the fewer-birds tie convention, not as a confirmed optimum. At 1T/nine birds, gannets changed 34→52, with three school gains and one tie.
+At **H=2T/G=12**, dolphins 86→110 (+27.9%) and gannets 31→57 (+83.9%), again with both species gaining in all four schools. Dolphins also exceed the best-tested H1 bird-free benchmark 91→110 (+20.9%). A smaller flock therefore supports mutual benefit too, with a different distribution of food.
 
-With **2T herding and twelve gannets, both species gained in all four schools**: dolphins 86→110 (+27.9%) and gannets 31→57. Mixed dolphins also exceeded the stronger, best-tested H=1T dolphin-only benchmark 91→110 (+20.9%); the exploratory pointwise interval remained positive. Six and eighteen birds at H=2T also gave joint gains in every school, although their stronger-baseline intervals crossed or touched zero.
+## Complete response map
 
-These are conditional model results. All settings use the same four previously observed schools and one stochastic setting per school. Searching this bank and reporting pointwise intervals does not establish an optimum, independent validation or a general biological advantage.
+All24 settings and signs are retained. Counts are four-school totals. D controls have the same H; G controls have the same bird count. There are 18 positive, two exact-zero and four negative mean dolphin changes; corresponding gannet counts are 20/two/two. Individual predators, reused controls and repeated settings are not independent schools.
 
-## What was compared
+| H (T) | Gannets | D alone → mixed | Same-H D change | D change vs best H | G alone → mixed | Both gain |
+|---:|---:|---:|---:|---:|---:|---:|
+| 1 | 1 | 91 → 98 | +7.7% | +7.7% | 13 → 12 | 0/4 |
+| 1 | 3 | 91 → 107 | +17.6% | +17.6% | 24 → 22 | 1/4 |
+| 1 | 6 | 91 → 113 | +24.2% | +24.2% | 24 → 37 | 3/4 |
+| 1 | 9 | 91 → 127 | +39.6% | +39.6% | 34 → 52 | 3/4 |
+| 1 | 12 | 91 → 126 | +38.5% | +38.5% | 31 → 37 | 3/4 |
+| 1 | 18 | 91 → 127 | +39.6% | +39.6% | 31 → 44 | 2/4 |
+| 1 | 24 | 91 → 126 | +38.5% | +38.5% | 21 → 80 | 4/4 |
+| 1 | 36 | 91 → 132 | +45.1% | +45.1% | 16 → 94 | 4/4 |
+| 2 | 1 | 86 → 90 | +4.7% | -1.1% | 13 → 13 | 0/4 |
+| 2 | 3 | 86 → 95 | +10.5% | +4.4% | 24 → 29 | 1/4 |
+| 2 | 6 | 86 → 103 | +19.8% | +13.2% | 24 → 53 | 4/4 |
+| 2 | 9 | 86 → 103 | +19.8% | +13.2% | 34 → 42 | 2/4 |
+| 2 | 12 | 86 → 110 | +27.9% | +20.9% | 31 → 57 | 4/4 |
+| 2 | 18 | 86 → 103 | +19.8% | +13.2% | 31 → 75 | 4/4 |
+| 2 | 24 | 86 → 103 | +19.8% | +13.2% | 21 → 72 | 3/4 |
+| 2 | 36 | 86 → 105 | +22.1% | +15.4% | 16 → 66 | 4/4 |
+| 3 | 1 | 73 → 68 | -6.8% | -25.3% | 13 → 13 | 0/4 |
+| 3 | 3 | 73 → 72 | -1.4% | -20.9% | 24 → 30 | 1/4 |
+| 3 | 6 | 73 → 78 | +6.8% | -14.3% | 24 → 51 | 2/4 |
+| 3 | 9 | 73 → 77 | +5.5% | -15.4% | 34 → 47 | 0/4 |
+| 3 | 12 | 73 → 73 | +0.0% | -19.8% | 31 → 66 | 2/4 |
+| 3 | 18 | 73 → 65 | -11.0% | -28.6% | 31 → 48 | 1/4 |
+| 3 | 24 | 73 → 73 | +0.0% | -19.8% | 21 → 54 | 1/4 |
+| 3 | 36 | 73 → 72 | -1.4% | -20.9% | 16 → 47 | 1/4 |
 
-- Every encounter began with 160 fish and lasted 36T. Dolphin-bearing encounters used 12 dolphins; gannet-only controls omitted dolphins. Time and length are uncalibrated model units.
-- Dolphins followed the same exposed-prey herd–strike rule in both conditions. Each cycle requires H of continuous local near-prey pressure, followed by one feasible strike and recovery. H is a herding proxy, not verification of a completed bait ball.
-- The balanced map crosses H = 1, 2 and 3T with one, three, six, nine, twelve and eighteen gannets. Each mixed setting was compared with its **same-H dolphin-only baseline** and a **same-count gannet-only control**.
-- Fish state, dolphin starts/readiness and initial dolphin random streams were matched within each comparison. The four school setups differed in fish configuration, predator readiness and school-linked random streams.
-- Birds had idealised global prey information within their depth limits and targeted accessible dense clusters. Capture required eligible physical mouth contact, then a fixed 0.7 success draw. No post-dive capture bonus was imposed.
+## What the model does
 
-## Complete dolphin results
+Dolphins maintain local pressure, wait at least H=1/2/3 model-time units near prey, then choose a physically feasible target with a preference for fewer neighbours. H does not certify a compact school or completed herding. The same rule runs with and without birds, with no bird-count cue, dive-triggered rule or capture bonus.
 
-Totals pool the same four schools. Percentages compare mixed catches with the no-gannet baseline in that row.
+Gannets identify globally known accessible density groups, sample groups by accessible population and target a dense location. More birds occupy a nested roster at the original three launch sites:24/36 birds place 8/12 at each site. Predators are point-represented and have no body-spacing avoidance.
 
-| Herding minimum | Dolphins alone | 1 bird | 3 birds | 6 birds | 9 birds | 12 birds | 18 birds |
-|---|---:|---:|---:|---:|---:|---:|---:|
-| 1T | 91 | 98 (+7.7%) | 107 (+17.6%) | 113 (+24.2%) | 127 (+39.6%) | 126 (+38.5%) | 127 (+39.6%) |
-| 2T | 86 | 90 (+4.7%) | 95 (+10.5%) | 103 (+19.8%) | 103 (+19.8%) | 110 (+27.9%) | 103 (+19.8%) |
-| 3T | 73 | 68 (-6.8%) | 72 (-1.4%) | 78 (+6.8%) | 77 (+5.5%) | 73 (+0.0%) | 65 (-11.0%) |
+The 0.7 capture probability applies only at eligible physical oral contact. It is uncalibrated and is not success per strike or dive. The fish move through the inherited FishSim C++ engine, coupled to Python predator controllers; this is not a newly authored all-Python fish simulator.
 
-At 1T/nine birds, dolphin school gains were +8, +12, +5 and +11 fish. Gannet changes were +8, 0, +7 and +3: the fourth school tied its control, so this is not four-school joint improvement. Mean changes per predator over 36T were +0.75 dolphin captures (pointwise 95% interval +0.54 to +0.96) and +0.50 gannet captures (+0.17 to +0.83). The nine- and eighteen-bird dolphin totals tie; their school outcomes and bird returns differ.
+## Opportunities and food shares
 
-At 2T/twelve birds, mean gains were +0.50 captures per dolphin (+0.21 to +0.71) and +0.54 per bird (+0.17 to +0.92). Against the stronger H=1T D-only benchmark, the dolphin mean gain was +0.40 (+0.21 to +0.58). All intervals resample the same four school vectors; none is adjusted for searching 18 settings.
+For H1, D-only has 251 dolphin launches,130 eligible contacts and 91 captures. With 36 birds the totals are 284/174/132. These realised changes accompany more contact opportunities with capture probability fixed. School-radius and contact diagnostics are descriptive; they do not isolate a causal scattering mechanism.
 
-## Why does longer herding show a smaller dolphin benefit?
+Food per bird generally declines as flocks grow, but not monotonically at every adjacent count. H1/G36 gives 0.653 fish per bird over 36T, versus 0.111 in its matched bird-only group. H2/G12 gives 1.188 per bird, versus 0.646 without dolphins. Larger group totals and stronger partner effects do not imply more food per individual. Competition for finite prey is plausible, but it has not been separated from access, disturbance or total predator abundance.
 
-The saved records support three related observations. The six-bird comparisons below retain the original discovery subset; Figure 4 and the notebook extend the diagnostics to every count through 18. At H=1T with nine birds, eligible dolphin contacts changed 130→179, launches 251→281 and food 91→127 under the same conditional success rule.
+## Limits and separate evidence
 
-**Longer herding leaves fewer strike opportunities within a fixed encounter.** With six gannets, mean recorded herding time per dolphin increased from 6.12T at H=1 to 13.29T at H=3; attack-mode time fell from 17.33T to 11.29T. Conditional mouth-contact success remained fixed, so additional herding carries a time cost without an automatic increase in capture probability.
+The map uses one capture setting and four previously examined schools. Its pointwise 95% intervals are exploratory, unadjusted across 24 settings and not independent confirmation of selected cells. School identity also seeds readiness/private streams; starting geometry and chance are not causally separated. Time and length are uncalibrated;36T is not 36 seconds, and catches do not measure energetic profit, fitness or intentional cooperation.
 
-**The additional contacts associated with gannets become smaller.**
+Original shared-rule pilots gave dolphin gains 17.1% and 16.1% in distinct earlier cohorts. They remain archived. The separate eight-school H2/G3 check changed mean dolphin effects from+1 to 0 fish/school when the timestep was halved, and gannet effects from+5.125 to+2.5. Its fine dolphin mean combines four gains, three losses and one tie. That result neither refines the selected H1/G36/H2/G12 settings nor proves their benefits vanish; their numerical robustness and fresh-school generalisation remain untested.
 
-| Herding minimum | Dolphin launches: alone → mixed | Eligible contacts: alone → mixed | Additional dolphin catches |
-|---|---:|---:|---:|
-| 1T | 251 → 267 | 130 → 156 | +22 |
-| 2T | 197 → 208 | 121 → 136 | +17 |
-| 3T | 168 → 164 | 100 → 107 | +5 |
+The departure diagnostic remains the older 48 bird-bearing G1/3/6 encounters, not all 128 bird-bearing runs in this map. It does not establish that continued bird diving is required to maintain dolphin gains.
 
-**The prey-state change is also smaller at longer H.** The time-averaged outward-motion proxy of surviving fish changed from 10.4% to 33.8% at H=1, from 27.6% to 36.5% at H=2, and from 32.7% to 36.6% at H=3 when six gannets were added. Birds therefore added less outward motion over the longer-H baselines. Whether this mediates better prey accessibility remains untested. This proxy is not a count of accessible targets or a prerequisite for dolphin attacks. Whole-school radius did not consistently increase with gannets.
+## Current artifacts and next tests
 
-These are descriptive explanations, not a causal decomposition. Herding, disturbance, consumption and survivor selection change together. Longer H also coincided with greater gannet food at six birds: 37 captures at H=1, 53 at H=2 and 51 at H=3. The trade-off between dolphin strike time and bird opportunities warrants investigation.
+The six-page paper has four figures and ten references. [main.ipynb](https://github.com/reuben-trade/FishSim-Dolphin-Gannet-Pilot/blob/main/main.ipynb) reproduces its figures and six summary tables with ten code cells, zero model steps and no new bootstrap draws. The full raw-data inventory has 212 feeding execution records; replays, horizons and engineering checks add no independent schools. Earlier notebooks/manifests and the through 18 report remain preserved.
 
-## Strength and limits of the evidence
+The interactive 3D viewer retains its validated 108-encounter through 18 catalogue. New upper-count raw cases are bundled separately. Optional native examples remain the bounded earlier H1/G9 and H2/G12 settings, disabled by default; they do not execute the entire new map.
 
-The first discovery sweep comprised 60 executions, including eight exact historical replays, and took **3 hours 18 minutes** with three workers. The balanced extension added 48 encounters with eight workers; feeding ran from 17:25 to 19:40 Perth, approximately **2 hours 15 minutes**, followed by final audits. All 108 retained/new outcomes, 48 new physical reviews, 72 paired contrasts, 18 summary cells, source/dispatch bindings and bootstrap calculations passed independent review. The sample remains four schools. The first-school 12-case pilot is a subset of the 48 new encounters, not an additional cohort.
+The D24 comparison remains planned here until all its outcomes are audited, with matched D24-only controls and per-animal returns. Attack synchronisation is a future controlled test, not a demonstrated mechanism or completed experiment.
 
-Earlier shared-rule pilots showed dolphin gains of 17.1% and 16.1%. A separate eight-school study gave 168→176 dolphin catches at 36T on the original timestep, 179→179 on a halved timestep, and 352→380 at the secondary 72T horizon on the original timestep. Those finer runs did not repeat the original positive cohorts or this new sweep. They show why numerical sensitivity and generalisation remain open questions.
-
-School identity is not an ecological explanation. The present sweep cannot separate starting-state/readiness effects from random capture, target-choice and tie-resolution effects. Captures also exclude energetic costs, learning and fitness.
-
-## Higher-gannet extension: complete
-
-The extension tested **9, 12 and 18 gannets at every H** on the same four schools, retaining all old 1/3/6-bird results and reusing same-H D-only controls. Each new count has its own G-only controls. All 48 full encounters completed, using exactly 1,382,400 feeding steps; the five preceding 4T engineering checks used 16,000 steps separately. Every setting was retained regardless of sign.
-
-Counts 9/12/18 place 3/4/6 birds at each of the same three launch sites. Predators are point-represented and have no body-spacing avoidance, so the high-count outcomes describe idealised pressure and competition rather than calibrated crowding. More birds did not produce uniformly increasing dolphin returns: at H=3T, eighteen birds gave 73→65 captures, while twelve gave 73→73.
-
-The [first-school preliminary tables](https://github.com/reuben-trade/FishSim-Dolphin-Gannet-Pilot/blob/main/reports/current/PRELIMINARY_HIGH_COUNT_PILOT.md) remain separately archived with their n=1 scope; the complete four-school map supersedes them for ensemble interpretation. Fresh-school feeding and stochastic-repeat runs remain on hold. The eight-school predator-free preparation already completed contains no feeding outcomes. Numerical checks on these new counts and independent validation remain future work.
-
-## Report and reproducibility
-
-The report presents one dolphin model, the separate positive pilots and replication, the complete parameter map, and prey/contact diagnostics within four figures. Its central claim is conditional feeding benefit under a fixed local dolphin rule. The completed map should not be described as evidence of intentional interspecies cooperation or an unrestricted best strategy.
-
-- [Current report PDF](https://github.com/reuben-trade/FishSim-Dolphin-Gannet-Pilot/blob/main/reports/current/Feeding_Frenzy_Working_Draft.pdf)
-- [Runnable analysis notebook](https://github.com/reuben-trade/FishSim-Dolphin-Gannet-Pilot/blob/main/main.ipynb)
-- [Complete discovery summary table](https://github.com/reuben-trade/FishSim-Dolphin-Gannet-Pilot/blob/main/data/research/high_count_regime_extension_2026-11-09/results/full_36T_v1/analysis_final/regime_summary.csv)
-
-The current main.ipynb reproduces the revised paper’s four figures and six summary tables without running simulations. The archived v6 notebook retains the full raw-evidence workflow and 19 tables. Its optional model runner has a separate, narrower tested scope, documented in the repository.
+[Current report](https://github.com/reuben-trade/FishSim-Dolphin-Gannet-Pilot/blob/main/reports/current/Feeding_Frenzy_Working_Draft.pdf) · [All current study details](https://github.com/reuben-trade/FishSim-Dolphin-Gannet-Pilot/blob/main/docs/STUDY_OVERVIEW.md)

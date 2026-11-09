@@ -19,7 +19,7 @@ In this single realization, both species gained at H=1 and H=2 for both counts. 
 
 **No across-school SD or confidence interval is estimated for n=1.** Individual dolphins, the two counts, H settings and reused controls are not independent school replicates. One stochastic setting cannot separate starting-state/readiness effects from random capture and target-choice effects. Counts 24/36 place 8/12 point birds at each of the same three launch sites; body-spacing avoidance is absent.
 
-These eight encounters are a subset of the declared 32-case extension. The remaining 24 encounters cover the other three schools and remain required regardless of signs. The [main report](Feeding_Frenzy_Working_Draft.pdf) and [notebook](../../main.ipynb) retain the completed four-school 1/3/6/9/12/18-bird map until the full 140-outcome audit passes. The new counts use the original coarse timestep and have not been tested on the finer grid.
+These eight encounters are a subset of the declared 32-case extension. The remaining 24 encounters subsequently completed on the other three schools; the full 32-case extension has passed physical, raw-event and independent review. The [main report](Feeding_Frenzy_Working_Draft.pdf) and [notebook](../../main.ipynb) now present the complete four-school 1/3/6/9/12/18/24/36-bird map. This preliminary table remains only its first-school subset. The new counts use the original coarse timestep and have not been tested on the finer grid.
 
 The [point-outcome CSV](pilot_upper_count_point_outcomes.csv) and [independent reader receipt](preliminary_upper_count_pilot_receipt.json) retain all six rows, case/control seals and source bindings. Raw upper-count evidence will be packaged with the completed extension.
 

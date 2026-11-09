@@ -7,9 +7,9 @@ python refresh_main_notebook.py
 python refresh_main_notebook.py --save
 ```
 
-The validator checks canonical code before kernel creation, then runs all cells in a fresh kernel using the calling Python interpreter. A previously enabled native toggle or altered command is rejected. It verifies frozen hashes, CSV bytes and current report pixels. `--save` also refreshes cached notebook outputs. Install the analysis requirements first; a notebook/kernel environment is needed. The tested Python3.12 environment is recorded in the versioned profile.
+The validator checks canonical code before kernel creation, then runs all cells in a fresh kernel using the calling Python interpreter. A previously enabled native toggle or altered command is rejected. It verifies frozen hashes, CSV bytes and current report pixels. `--save` also refreshes cached notebook outputs. Install the analysis requirements first; a notebook/kernel environment is needed. The tested Python 3.12 environment is recorded in the versioned profile.
 
-The active generator is `create_main_notebook_current_paper_2026_11_09.py`. It selects the frozen current-paper cells, adapts the package/profile paths and retains two optional v6 cells using PROJECT_ROOT. It writes root `main.ipynb`; it does not execute the model. Its generated outputs require validation before publication.
+The active generator is `create_main_notebook_current_paper_2026_11_10.py`. It selects the frozen current-paper cells, adapts the package/profile paths and retains two optional v6 cells using PROJECT_ROOT. It writes root `main.ipynb`; it does not execute the model. Its generated outputs require validation before publication.
 
 After regenerating `main.ipynb`, restore its recorded-replay viewing help from a Terminal opened in the repository root:
 
@@ -23,3 +23,5 @@ This idempotent postprocessor changes only the introductory Markdown. It preserv
 All older `create_notebook*.py` files and `SNAPSHOT_REFRESH_HANDOFF.md` describe historical versions and must stay unchanged. Current-paper profile files, the old 8028 scientific inputs and 56 model-addon files are protected by additive manifests. Future paper revisions need a new versioned profile/generator, preserved history, a matching report pin and fresh default-cell/figure/table checks. Never edit sealed data in place: some immutable originals share storage.
 
 `main_2026-11-09_v6.ipynb` retains the earlier 21-code-cell full raw-evidence workflow. Open it with the repository root as cwd. Its report is under reports/snapshots/2026-11-09_v6_through18. No repository CI workflow exists at this revision; validation receipts are under validation/. Native Google Doc publication uses a fresh current-Doc revision and text guard, preserving human edits.
+
+Current profile: through 36,140 outcomes/96 schoolcontrasts/24 settings;53 compact frozen inputs plus the cumulative 9,335-file manifest. Rootmain retains ten code cells/six tables/four figures. `main_2026-11-09_through18.ipynb` and reports/snapshots/2026-11-09_current_through18 preserve the previous current-paper version. Optional v6 examples remain H1/G9 orH2/G12; they do not run the new H1/G36 setting.

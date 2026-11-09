@@ -1,0 +1,60 @@
+{
+  "schema": "fishsim_upper_count_extension_protocol_v1",
+  "study": "upper_count_regime_extension_2026-11-09",
+  "status": "prespecified_before_new_native_work",
+  "question": "Does adding still more birds improve or reduce per-animal partner benefit under the same dolphin rule?",
+  "retained_counts": [
+    0,
+    1,
+    3,
+    6,
+    9,
+    12,
+    18
+  ],
+  "new_counts": [
+    24,
+    36
+  ],
+  "herding_minima_T": [
+    1,
+    2,
+    3
+  ],
+  "school_seeds": [
+    39061001,
+    39061002,
+    39063501,
+    39063502
+  ],
+  "capture_seed": 61001,
+  "dt": 0.00125,
+  "duration_T": 36,
+  "dolphins": 12,
+  "fish": 160,
+  "capture_probability": 0.7,
+  "new_full_cases": 32,
+  "retained_cases": 108,
+  "combined_outcomes": 140,
+  "mixed_map_cells": 24,
+  "paired_school_rows": 96,
+  "smoke_cases": 5,
+  "smoke_duration_T": 4,
+  "full_maximum_native_steps": 921600,
+  "smoke_maximum_native_steps": 16000,
+  "all_stage_maximum_native_steps": 937600,
+  "pilot_cases": 8,
+  "pilot_maximum_native_steps": 230400,
+  "remainder_cases": 24,
+  "remainder_maximum_native_steps": 691200,
+  "workers": 8,
+  "numeric_threads": 1,
+  "smoke_workers": 5,
+  "task_lease": "/tmp/FishSim_Native_Execution_Lease_2026-11-09.lock",
+  "execution_order": "Five engineering smokes then fixed school39061001 pilot8; all2 G-only controls before6 mixed; after independent complete-pilot audit, remaining3 schools24 with6 controls before18 mixed. All32 mandatory regardless signs.",
+  "stopping": "Stop this count expansion after36 and review. No automatic48/72 expansion, replacements, failed-case retries or positive-cell omission.",
+  "layout": "Gi starts at original G(i modulo3); N24/36 has8/12 point birds per site. All original actors/readiness/private streams preserved. No collision/avoidance model. This changes count and local multiplicity within a fixed three-site footprint.",
+  "numerical_scope": "Original dt0.00125 exploratory model only; no new convergence claim.",
+  "design_authorization_sha256": "68e789daa07f8b63257df1e5649405c871ba74cace7accc608c3bcef98f9becc",
+  "independence": "Four previously observed school vectors, one capture stream. Retained controls reused; new cells are not independent schools."
+}

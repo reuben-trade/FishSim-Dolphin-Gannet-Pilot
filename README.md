@@ -31,7 +31,7 @@ python -m pip install -r requirements-analysis.txt
 python tools/watch_replays.py
 ```
 
-The script opens a local browser viewer covering **108 saved encounters**, including the 9/12/18-gannet extension. Select individual runs or compare A/B, inspect their settings and capture returns, then play, pause or scrub the shared clock. Switch between 3D, top and side views; drag the 3D view to rotate it. Dolphins, gannets and individual capture counters are shown together.
+The script opens a local browser viewer covering **108 saved encounters**, including the 9/12/18-gannet extension. This viewer catalogue remains that validated subset; the current paper and bundled raw data additionally include the completed 24/36-bird extension. Select individual runs or compare A/B, inspect their settings and capture returns, then play, pause or scrub the shared clock. Switch between 3D, top and side views; drag the 3D view to rotate it. Dolphins, gannets and individual capture counters are shown together.
 
 This reads bundled recordings and starts no simulation. It needs no native FishSim binary. For a remote/headless machine or a specific port, see the [viewing guide](docs/VISUALISATION.md).
 
@@ -47,7 +47,7 @@ The default ten code cells reproduce four figures and six summary tables from sa
 
 ## What this study currently shows
 
-The current paper includes a complete H × gannet-count map through eighteen gannets, using four previously observed schools. Some settings improve feeding returns for both species; others do not. Results from that discovery map, the original pilots and the separate timestep checks are distinguished in the [scientific overview](docs/STUDY_OVERVIEW.md), with every setting and sign retained.
+The current paper includes a complete H × gannet-count map through thirty-six gannets, using four previously observed schools. Some settings improve feeding returns for both species; others do not. Results from that discovery map, the original pilots and the separate timestep checks are distinguished in the [scientific overview](docs/STUDY_OVERVIEW.md), with every setting and sign retained.
 
 These are model results with exploratory uncertainty, unresolved timestep sensitivity and uncalibrated physical units. They do not establish general biological cooperation or numerical convergence.
 
