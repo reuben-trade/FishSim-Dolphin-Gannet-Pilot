@@ -1,7 +1,7 @@
 # Current working report
 
-This final overnight snapshot adds the completed timestep sensitivity: 24 finer-grid encounters on the same eight schools as the coarse study. At 36T the mean dolphin partner effect changes from +1 to 0 fish/school; the gannet effect changes from +5.125 to +2.5. Dolphin signs agree in only 3/8 schools and gannet signs in 6/8. The report does not claim convergence or stable dolphin facilitation.
+The published report covers one shared dolphin rule, the complete four-school 18-setting response map (gannet counts 1/3/6/9/12/18), and the separate earlier pilot and eight-school timestep cohorts. It has six body pages, four numbered figures and references on page seven.
 
-The notebook verifies 72 feeding encounters, preserving all earlier case seals and inventories. Its 22 default cells rebuild four figures and 14 tables without native simulation. The same eight schools are paired across grids; these are not sixteen independent schools. Three timing engineering checks remain separate.
+Open [main.ipynb](../../main.ipynb) from the repository root. Its 21 default code cells verify 180 feeding execution records, rebuild the four published report figures and export 19 CSV tables with zero native simulation steps. Shared controls, historical replays, grid repeats and horizons do not add independent schools. Optional short native examples remain disabled by default.
 
-The report has six body pages, four numbered figures and references on page 7. All authorized experiments are complete; no further tuning or native runs were performed for this update.
+The [upper-count preliminary panel](PRELIMINARY_UPPER_COUNT_PILOT.md) is a separate one-school description. It does not replace the completed 18-setting main report or establish an across-school effect. The explicit notebook profile identifies the exact report PDF in this folder; separately revised manuscripts require their own source reconciliation.

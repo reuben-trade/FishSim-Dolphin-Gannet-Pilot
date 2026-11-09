@@ -1,6 +1,6 @@
 # FishSim: dolphin–gannet pilot and regime map
 
-Open **FishSim_Professor_Notebook.ipynb** and choose **Run → Run All Cells**. The default notebook reconstructs the current report from sealed evidence, checks all protected inputs, rebuilds four figures, and exports 19 CSV tables. Its 21 code cells take **zero native simulation steps**. Saved outputs are included.
+Open [**main.ipynb**](main.ipynb) and choose **Run → Run All Cells**. The default notebook reconstructs the bundled published report from sealed evidence, checks all protected inputs, rebuilds four figures, and exports 19 CSV tables. Its 21 code cells take **zero native simulation steps**. Saved outputs are included. The newer manuscript revision is being source-reconciled separately; the explicit notebook profile currently targets the bundled 18-setting report.
 
 **Main finding:** original shared-rule pilots gave dolphin gains of **17.1% and 16.1%**. The completed balanced map has **14 positive, one zero and three negative** mean same-H dolphin responses across all 18 tested settings. The largest mixed dolphin total tied at **H=1T with nine or eighteen gannets: 91→127 captures (+39.6%)**, with dolphin gains in all four schools at both counts. Nine birds are reported by the fewer-birds tie convention, not as a confirmed optimum. At H=1T/G=9, gannets changed 34→52, with three school gains and one tie.
 
@@ -98,3 +98,5 @@ The original alternative-policy comparisons remain available in historical snaps
 The final publication receipt records execution of all 21 default cells from a fresh process and a relocated path containing spaces, with PYTHONPATH removed. Checks include all prior protected files, 108 retained/new case seals, eight inherited exact historical replays, all 48 new physical reviews, phase budgets/bridges, raw per-actor accounts and initial-state matching, the 18-cell/72-pair reconstruction and frozen whole-school bootstrap with within-draw best-H selection. All four generated figures must match the report reference pixels on the tested environment; the active report has six body pages and references on page seven.
 
 The 19 tables retain historical cohorts and new discovery settings separately. Default notebook execution imports no native simulator and advances zero native steps. The additive runtime manifest and source-built validation receipts are separate from the historical native binary and from the scientific feeding inventory. Analysis is designed for local Jupyter across platforms; actual environment and rendering limits are recorded in the validation receipts.
+
+The active notebook entry is `main.ipynb`. Maintainers should use [NOTEBOOK_MAINTENANCE.md](NOTEBOOK_MAINTENANCE.md); dated notebook generators and snapshots retain their original filenames.
