@@ -1,6 +1,8 @@
 # FishSim: dolphin–gannet pilot and regime map
 
-Open [**main.ipynb**](main.ipynb) and choose **Run → Run All Cells**. The default notebook reconstructs the bundled published report from sealed evidence, checks all protected inputs, rebuilds four figures, and exports 19 CSV tables. Its 21 code cells take **zero native simulation steps**. Saved outputs are included. The newer manuscript revision is being source-reconciled separately; the explicit notebook profile currently targets the bundled 18-setting report.
+Open [**main.ipynb**](main.ipynb) and choose **Run → Run All Cells** from the repository root. Its **10 code cells** verify preserved inputs, reconstruct the current paper’s saved results, display four matching figures and export six summary tables. Default execution takes **zero native steps and generates no new bootstrap draws**. Two optional bounded model-example cells remain off by default. Saved outputs are included.
+
+The default now matches the current “Who Benefits?” manuscript through eighteen gannets. The complete earlier raw-evidence workflow remains runnable as [main_2026-11-09_v6.ipynb](main_2026-11-09_v6.ipynb), with its 21 code cells, 19 tables and prior four-figure report archived separately.
 
 **Main finding:** original shared-rule pilots gave dolphin gains of **17.1% and 16.1%**. The completed balanced map has **14 positive, one zero and three negative** mean same-H dolphin responses across all 18 tested settings. The largest mixed dolphin total tied at **H=1T with nine or eighteen gannets: 91→127 captures (+39.6%)**, with dolphin gains in all four schools at both counts. Nine birds are reported by the fewer-birds tie convention, not as a confirmed optimum. At H=1T/G=9, gannets changed 34→52, with three school gains and one tie.
 
@@ -35,9 +37,9 @@ All 18 mixed settings are retained below. Captures sum the same four previously 
 | 3 | 12 | 73 → 73 | +0.0% | -19.8% | 31 → 66 | 2/4 |
 | 3 | 18 | 73 → 65 | -11.0% | -28.6% | 31 → 48 | 1/4 |
 
-## Local setup: analysis and figures
+## Local setup: current-paper analysis and figures
 
-Use Python 3.10 or newer. From a terminal opened in this folder:
+Python 3.12 was tested. The exact authoring environment is recorded in [the profile lock file](paper_profiles/current_through18_2026-11-09/requirements-analysis.lock); the general requirements below resolve compatible local dependencies. From a terminal opened in this folder:
 
 **macOS or Linux**
 
@@ -83,11 +85,11 @@ The unchanged historical `run_model.py` remains available separately for the ori
 
 ## Evidence snapshots and preservation
 
-The current notebook imports `notebook_support_v6.py`, with `DATASET_2026-11-09_high_counts.json` and `INPUT_MANIFEST_2026-11-09_high_counts.json`. All previous inventories, manifests, case seals, support modules and reference figures remain unchanged. Prior notebooks and report versions remain under `snapshots/` and `reports/snapshots/`.
+The current paper profile is [paper_profiles/current_through18_2026-11-09](paper_profiles/current_through18_2026-11-09/README.md). It checks 44 frozen scientific/departure/model-document inputs and all preserved package hashes, reconstructs 108 outcomes and 72 paired effects, and retains the original confidence endpoints without new resampling. Figure1 is archived; Figures2–4 are redrawn from completed exports. School-radius values are retained time means, rather than newly reconstructed trajectories. The 48-run departure diagnostic covers only the older 1/3/6-bird subset; the separate numerical check uses the same eight H2/G3 schools on both grids.
 
-Current plotting source is `paper_figure_source_v6.py`, with `reference_figures_v6/`. Current figures go to `outputs/high_count_figures/`; five complete-map tables go to `outputs/high_count_tables/`, while the 14 historical tables remain in their separate folders. The new `SOURCE_CLOSURE_2026-11-09_high_counts.json` maps all 2,100 scientific/dispatch source bindings, reusing already-protected byte-identical files where possible. The prior 422-entry closure and 211 immutable stopped-v1 provenance files remain intact. Stopped/partial cases contribute no feeding row. All 6,565 previously protected inputs are unchanged. The first-school preliminary tables remain separately available, with their original n=1 scope.
+The current default exports six CSVs under `paper_profiles/current_through18_2026-11-09/outputs/`. It does not rerun the full raw-event reconstruction. That earlier workflow remains in `main_2026-11-09_v6.ipynb`, `notebook_support_v6.py`, the preserved high-count inventory/manifest and `reference_figures_v6/`. Its report is archived under `reports/snapshots/2026-11-09_v6_through18/`. All 8,028 earlier scientific inputs and 56 additive model files remain byte-identical. Versioned manifests, earlier notebooks, case seals, the stopped-v1 provenance and all unfavourable settings remain included.
 
-The original alternative-policy comparisons remain available in historical snapshots. The current main report follows one fixed exposed-prey dolphin rule; it studies partner presence and parameters rather than a C-versus-S comparison. Native C++ fish dynamics are inherited from [yangyushi/FishSim](https://github.com/yangyushi/FishSim); this project adds predator controllers, experiment harnesses and analysis.
+The original alternative-policy comparisons remain historical. The current paper uses one fixed exposed-prey dolphin rule. Native C++ fish dynamics are inherited from [yangyushi/FishSim](https://github.com/yangyushi/FishSim); this project adds predator controllers, experiment harnesses and analysis.
 
 ## Supporting engineering evidence
 
@@ -95,8 +97,8 @@ The original alternative-policy comparisons remain available in historical snaps
 
 ## Validation
 
-The final publication receipt records execution of all 21 default cells from a fresh process and a relocated path containing spaces, with PYTHONPATH removed. Checks include all prior protected files, 108 retained/new case seals, eight inherited exact historical replays, all 48 new physical reviews, phase budgets/bridges, raw per-actor accounts and initial-state matching, the 18-cell/72-pair reconstruction and frozen whole-school bootstrap with within-draw best-H selection. All four generated figures must match the report reference pixels on the tested environment; the active report has six body pages and references on page seven.
+The current profile is checked in a fresh IPython kernel, from a relocated Git checkout with spaces in its path and PYTHONPATH removed. Canonical code is pinned before kernel creation, so an edited native toggle or subprocess command causes validation to stop. Checks cover preserved inputs, all 44 profile files,108 condition-school outcomes,72 paired contrasts, six deterministic CSV exports and four figure pixel comparisons against the current report. The current compiled paper has five body pages and ten references on page six.
 
-The 19 tables retain historical cohorts and new discovery settings separately. Default notebook execution imports no native simulator and advances zero native steps. The additive runtime manifest and source-built validation receipts are separate from the historical native binary and from the scientific feeding inventory. Analysis is designed for local Jupyter across platforms; actual environment and rendering limits are recorded in the validation receipts.
+The compact profile checks saved interval endpoints against an archived plot receipt; it does not create new bootstrap draws or rederive raw fish trajectories. The separately archived v6 notebook retains the broader raw-event/seal reconstruction and resampling checks. Neither workflow imports the native simulator by default. Passing saved-data reproduction establishes this execution path, not numerical convergence, biological validation or performance on untested platforms.
 
-The active notebook entry is `main.ipynb`. Maintainers should use [NOTEBOOK_MAINTENANCE.md](NOTEBOOK_MAINTENANCE.md); dated notebook generators and snapshots retain their original filenames.
+The active entry is `main.ipynb`. See [NOTEBOOK_MAINTENANCE.md](NOTEBOOK_MAINTENANCE.md) for the versioned generator and report profile. Historical generators and snapshots retain their original names.

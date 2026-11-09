@@ -72,6 +72,6 @@ The report presents one dolphin model, the separate positive pilots and replicat
 
 - [Current report PDF](https://github.com/reuben-trade/FishSim-Dolphin-Gannet-Pilot/blob/main/reports/current/Feeding_Frenzy_Working_Draft.pdf)
 - [Runnable analysis notebook](https://github.com/reuben-trade/FishSim-Dolphin-Gannet-Pilot/blob/main/main.ipynb)
-- [Complete discovery summary table](https://github.com/reuben-trade/FishSim-Dolphin-Gannet-Pilot/blob/main/data/research/pilot_regime_sweep_2026-11-09_v2/results/full_36T_v1/analysis_final/regime_summary.csv)
+- [Complete discovery summary table](https://github.com/reuben-trade/FishSim-Dolphin-Gannet-Pilot/blob/main/data/research/high_count_regime_extension_2026-11-09/results/full_36T_v1/analysis_final/regime_summary.csv)
 
-The notebook reproduces the saved evidence, four figures and 19 tables without running native simulations. Its optional model runner has a separate, narrower tested scope, documented in the repository.
+The current main.ipynb reproduces the revised paper’s four figures and six summary tables without running simulations. The archived v6 notebook retains the full raw-evidence workflow and 19 tables. Its optional model runner has a separate, narrower tested scope, documented in the repository.

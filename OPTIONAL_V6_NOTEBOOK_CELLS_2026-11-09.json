@@ -1,0 +1,127 @@
+[
+  {
+    "cell_type": "markdown",
+    "metadata": {},
+    "source": [
+      "## Reproduction scopes and optional new simulations\n",
+      "\n",
+      "The default analysis above reconstructs saved 36T evidence. The optional `run_v6_example.py` frontend below executes a short matched D-only/DG pair from the v6 model: H1/G9 for 4T (`headline`) or H2/G12 for 2T (`joint`). Both are engineering demonstrations, not feeding-effect estimates or full-ensemble reruns.\n",
+      "\n",
+      "Native execution is tested only on the documented Linux x86-64 CPython 3.12 environment. Docker/Windows/macOS/ARM invocation of this new interface is untested. See `V6_MODEL_SETUP.md` for setup and dated validation receipts. The unchanged `run_current_model.py` still covers its separate eight-school H2 coarse/fine scope; the historical runner and archive also remain unchanged.\n"
+    ],
+    "id": "v6-cell-28"
+  },
+  {
+    "cell_type": "markdown",
+    "metadata": {},
+    "source": [
+      "### Optional short model examples \u2014 execution disabled by default\n",
+      "\n",
+      "The plan verifies the exact source/package and reads no new feeding outcomes. Choose `headline` or `joint`. The following cell runs native simulation only when `RUN_V6_MODEL = True`; it creates outputs outside the protected repository and then displays a position snapshot. The frozen plan's original preparation-status strings are superseded by the separate dated validation status.\n"
+    ],
+    "id": "v6-cell-29"
+  },
+  {
+    "cell_type": "code",
+    "metadata": {},
+    "execution_count": 19,
+    "outputs": [
+      {
+        "output_type": "stream",
+        "name": "stdout",
+        "text": [
+          "{\n",
+          "  \"schema\": \"fishsim_regime_example_plan_v3\",\n",
+          "  \"status\": \"plan_only\",\n",
+          "  \"scientific_scope\": \"V6 frozen 108-start model on four schools, coarse dt=.00125; bounded examples H1/G9 and H2/G12\",\n",
+          "  \"example_setting\": \"headline\",\n",
+          "  \"example_cases\": [\n",
+          "    {\n",
+          "      \"school_seed\": 39061001,\n",
+          "      \"policy\": \"H1_G0\",\n",
+          "      \"presence\": \"D\",\n",
+          "      \"capture_seed\": 61001,\n",
+          "      \"duration_T\": 4.0\n",
+          "    },\n",
+          "    {\n",
+          "      \"school_seed\": 39061001,\n",
+          "      \"policy\": \"H1_G9\",\n",
+          "      \"presence\": \"DG\",\n",
+          "      \"capture_seed\": 61001,\n",
+          "      \"duration_T\": 4.0\n",
+          "    }\n",
+          "  ],\n",
+          "  \"actual_zero_step_check_cases\": 108,\n",
+          "  \"planned_integration_native_steps\": 6400,\n",
+          "  \"native_imports\": 0,\n",
+          "  \"native_constructions\": 0,\n",
+          "  \"native_steps\": 0,\n",
+          "  \"unchanged_model\": \"Exact archived scientific Python/checkpoints/native C++ sources; derived builder/execution AST replaces historical operational gates only\",\n",
+          "  \"execution_status\": \"Not yet initialization/integration validated for this new regime harness\",\n",
+          "  \"interpretation\": \"Bounded 0.5T/2T/4T illustrates model execution only and cannot estimate partner benefit. The saved 36T ensemble remains the analysis evidence.\",\n",
+          "  \"backend\": \"Linux CPython3.12; explicit separately rebuilt native artifact may be selected. Docker/other platform invocation not verified for this interface.\",\n",
+          "  \"frontend\": \"run_v6_example.py\",\n",
+          "  \"default_native_execution\": false,\n",
+          "  \"selected_native_kind\": \"explicit_separate_source_build\",\n",
+          "  \"selected_native_sha256\": \"cc21f00f355e1d25e8ecb48bd6aa50a7c9b63f909d921f4864a96e91d9ef2d4b\",\n",
+          "  \"native_compatibility\": \"Linux x86-64 CPython3.12 artifact; new-interface execution is unvalidated; other platforms need separately verified runtime support\"\n",
+          "}\n",
+          "\n",
+          "Later validation: both binaries passed 108 exact starts and 20,000 bounded steps in total.\n",
+          "Known Linux x86-64 / CPython 3.12 only; see V6_MODEL_SETUP.md and its dated receipts.\n"
+        ]
+      }
+    ],
+    "source": [
+      "# Plan only: no native import, construction or simulation steps.\n",
+      "import hashlib, json, subprocess, sys\n",
+      "addon = json.loads((ROOT/\"ADDITIVE_HEADLINE_MODEL_MANIFEST_2026-11-09.json\").read_text())\n",
+      "for relative, digest in addon[\"files\"].items():\n",
+      "    assert hashlib.sha256((ROOT/relative).read_bytes()).hexdigest() == digest, relative\n",
+      "EXAMPLE_SETTING = \"headline\"  # \"headline\": H1/G9/4T; \"joint\": H2/G12/2T.\n",
+      "assert EXAMPLE_SETTING in (\"headline\", \"joint\")\n",
+      "plan_result = subprocess.run([\n",
+      "    sys.executable, \"-B\", \"run_v6_example.py\", \"--plan\",\n",
+      "    \"--package-root\", str(ROOT), \"--setting\", EXAMPLE_SETTING\n",
+      "], check=True, cwd=ROOT, capture_output=True, text=True)\n",
+      "print(plan_result.stdout)\n",
+      "print(\"Later validation: both binaries passed 108 exact starts and 20,000 bounded steps in total.\")\n",
+      "print(\"Known Linux x86-64 / CPython 3.12 only; see V6_MODEL_SETUP.md and its dated receipts.\")\n"
+    ],
+    "id": "v6-cell-30"
+  },
+  {
+    "cell_type": "code",
+    "metadata": {},
+    "execution_count": 20,
+    "outputs": [
+      {
+        "output_type": "stream",
+        "name": "stdout",
+        "text": [
+          "Native execution is disabled. All saved-result analysis remains available.\n"
+        ]
+      }
+    ],
+    "source": [
+      "# Opt in only from the compatible model environment described in V6_MODEL_SETUP.md.\n",
+      "RUN_V6_MODEL = False\n",
+      "\n",
+      "if RUN_V6_MODEL:\n",
+      "    from datetime import datetime, timezone\n",
+      "    import tempfile\n",
+      "    example_output = (Path(tempfile.gettempdir())/\"fishsim_professor_examples\"/\n",
+      "                      datetime.now(timezone.utc).strftime(\"%Y%m%d_%H%M%S_%f\"))\n",
+      "    subprocess.run([\n",
+      "        sys.executable, \"-B\", \"run_v6_example.py\", \"--quick\",\n",
+      "        \"--package-root\", str(ROOT), \"--setting\", EXAMPLE_SETTING,\n",
+      "        \"--output\", str(example_output)\n",
+      "    ], check=True, cwd=ROOT)\n",
+      "    from model_example_view import show_position_snapshot\n",
+      "    show_position_snapshot(example_output)\n",
+      "else:\n",
+      "    print(\"Native execution is disabled. All saved-result analysis remains available.\")\n"
+    ],
+    "id": "v6-cell-31"
+  }
+]

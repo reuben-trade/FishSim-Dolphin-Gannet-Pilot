@@ -1,0 +1,87 @@
+{
+  "status": "passed",
+  "started_at": "2026-11-09T05:34:41.786981+00:00",
+  "plan_sha256": "eb859ebb6d03b2518abf9ccde352c654786401cfa0a9a46358ff6532bd69efa2",
+  "approval_sha256": "10d5cf043ca4293ebc40f1baa55e14a5d4f4e5156d70ba7b2d65b0c4cc9c657f",
+  "executor_sha256": "c930f3a95a82cb4e3fbf73453313f203298f8f94b8e59ef8d606edf1b4c28fe1",
+  "maximum_scientific_steps": 15200,
+  "actual_steps": 15200,
+  "command": [
+    "docker",
+    "buildx",
+    "build",
+    "--builder",
+    "fishsim-runtime-20261109",
+    "--platform",
+    "linux/amd64",
+    "--file",
+    "/tmp/FishSim_Runtime_Portable_Build_2026-11-09/validation_context_v2/Dockerfile.validation",
+    "--target",
+    "validation_receipt",
+    "--output",
+    "type=local,dest=/tmp/FishSim_Runtime_Portable_Build_2026-11-09/container_validation_artifacts_v2",
+    "--metadata-file",
+    "/tmp/FishSim_Runtime_Portable_Build_2026-11-09/container_validation_metadata_v2.json",
+    "--progress",
+    "plain",
+    "/tmp/FishSim_Runtime_Portable_Build_2026-11-09/validation_context_v2"
+  ],
+  "source_and_mount_guards": "passed",
+  "image_loaded": false,
+  "image_pushed": false,
+  "before": {
+    "root_free": 2187374592,
+    "tmp_free": 16819580928,
+    "host_mem_available": 26500505600
+  },
+  "heartbeat_at": "2026-11-09T05:41:22.157043+00:00",
+  "last": {
+    "root_free": 2166972416,
+    "tmp_free": 15278944256,
+    "host_mem_available": 25587146752
+  },
+  "build_returncode": 0,
+  "cancellation": null,
+  "log_sha256": "fa3957a797d57af3404530ec9fd80e3bc5e1957da4f07f18fa2da0956408cc4d",
+  "finished_at": "2026-11-09T05:41:41.935841+00:00",
+  "validation_sha256": "7eb9d586ee907dae0aea90a9e5b3337f410a56ab563e80ade9ba48cb6b142cd8",
+  "case_seals": [
+    {
+      "stage": "coarse_quick",
+      "presence": "D",
+      "completion_sha256": "c2edefb6872a7d6e5cf828c40704b8902f2a9bee5080ce13c533c78213a196f6"
+    },
+    {
+      "stage": "coarse_quick",
+      "presence": "DG",
+      "completion_sha256": "face2f3a91cec4f0d4736ada2aa3e4d63294ca0737922d861a5aa7ad3e5e97aa"
+    },
+    {
+      "stage": "fine_quick",
+      "presence": "D",
+      "completion_sha256": "eeb398e1819c870dd370b83b24f2b1d71d0c4a4c1257e381c791afa50be32d9f"
+    },
+    {
+      "stage": "fine_quick",
+      "presence": "DG",
+      "completion_sha256": "ca95c1b64ff1f072d642543e7366787f46cf594c7cd540428c136a662431ef27"
+    },
+    {
+      "stage": "fine_4T",
+      "presence": "D",
+      "completion_sha256": "25e9aa692fe13195585ccd99fa4228fc1911c52d36d0d29013b224b3edb2a0c7"
+    },
+    {
+      "stage": "fine_4T",
+      "presence": "DG",
+      "completion_sha256": "911e9f5bb7edd89b38b13f7e797044e0ee9f21bd9255d4e70c67b77df555272a"
+    }
+  ],
+  "after": {
+    "root_free": 2166972416,
+    "tmp_free": 15262355456,
+    "host_mem_available": 25616826368
+  },
+  "scope": "Linuxamd64 BuildKit validation target; packaged --backend docker bind-mount CLI not end-to-end tested",
+  "feeding_inference": false
+}
