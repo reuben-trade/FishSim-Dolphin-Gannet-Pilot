@@ -8,7 +8,7 @@ Figure reproduction and evidence analysis require no native library. This docume
 
 SHA-256: `eb8654a520304cc429aced67c7e3706db8d2ef1449c5e1327a682a479b10a558`
 
-This existing binary is pinned by the original model setup. It was used with CPython 3.12.13 on Linux x86-64. The ELF library requires glibc 2.43, GLIBCXX_3.4.32, CXXABI_1.3.15 and libgomp. Copying the file to macOS, Windows, or an older Linux installation does not make it executable there. No other operating system or rebuilt binary has been validated by this package.
+This existing binary is pinned by the original model setup. It was used with CPython 3.12.13 on Linux x86-64. The ELF library requires glibc 2.43, GLIBCXX_3.4.32, CXXABI_1.3.15 and libgomp. Copying the file to macOS, Windows, or an older Linux installation does not make it executable there. This document covers the historical `run_model.py` binary. Later bounded checks of a separately source-built Linux amd64 binary are documented in [CURRENT_MODEL_SETUP.md](CURRENT_MODEL_SETUP.md) and [V6_MODEL_SETUP.md](V6_MODEL_SETUP.md); other operating systems remain untested.
 
 On a compatible machine, create a separate CPython 3.12 environment and install `requirements-model-tested.txt`. The historical FishSim package eagerly imports NumPy, SciPy, NetworkX, Matplotlib and Numba; all are required even for the native-import check. JupyterLab can additionally be installed if this environment will run the notebook.
 
@@ -38,7 +38,7 @@ Output folders must be new. Every new case receives the original runner's audit 
 
 `frozen_model/src/`, `frozen_model/extern/pybind11/`, `frozen_model/extern/eigen3/` and `frozen_model/CMakeLists.txt` are copied from the research repository. Source hashes match the archived source manifest recorded beside the accepted binary. The original build cache and Ninja rules are preserved in `native_build_reference/`. They document a C++17 Release build with GCC 15, OpenMP, pybind11 and link-time optimization. The accepted extension and the original build output have identical SHA-256 hashes.
 
-These facts establish source provenance. They are **not** an attestation that another toolchain will reproduce the historical binary byte for byte. No cross-platform rebuild has been run or validated here.
+These facts establish source provenance. They are **not** an attestation that another toolchain will reproduce the historical binary byte for byte. The historical build was not reproduced byte for byte. Later bounded checks of a separately source-built Linux amd64 binary are documented in the setup guides linked above; macOS, Windows and ARM builds remain untested.
 
 An investigator can build a candidate in a separate workspace using CMake and an appropriate compiler. For example, from a copy of `frozen_model/` with the chosen Python development environment active:
 

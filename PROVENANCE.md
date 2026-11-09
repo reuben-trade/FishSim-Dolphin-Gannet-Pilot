@@ -12,4 +12,4 @@ Third-party source and license texts are included intact:
 - Eigen: frozen_model/extern/eigen3/COPYING.README and COPYING.MPL2, with additional COPYING.* texts for the third-party portions identified in their source headers. Eigen describes its primary license as MPL 2.0.
 - Additional attribution links/comments in the original FishSim Python source remain intact.
 
-The historical native binary is supplied with the complete corresponding frozen C++ source and vendored dependencies. NATIVE_SETUP.md explains its platform restrictions and distinguishes the validated existing binary from an unvalidated rebuild. Native build-reference files are provenance records, not portable installation settings.
+The historical native binary is supplied with the complete corresponding frozen C++ source and vendored dependencies. [NATIVE_SETUP.md](NATIVE_SETUP.md) describes the historical binary; [CURRENT_MODEL_SETUP.md](CURRENT_MODEL_SETUP.md) and [V6_MODEL_SETUP.md](V6_MODEL_SETUP.md) record later bounded checks of a separately source-built Linux amd64 binary. Native build-reference files are provenance records, not portable installation settings.

@@ -1,2 +1,11 @@
 # Evidence seals and archived source hashes require exact stored bytes.
 * -text
+
+# Keep generated evidence and third-party sources out of default code diffs.
+data/** linguist-generated=true
+archive/** linguist-generated=true
+snapshots/** linguist-generated=true
+runtime_validation/** linguist-generated=true
+study_sources/** linguist-vendored=true
+frozen_model/extern/** linguist-vendored=true
+*MANIFEST*.json linguist-generated=true
