@@ -1,0 +1,25 @@
+{
+  "status": "recorder_only_correction_candidate",
+  "old_run_sha256": "ecca3e7b4280e7a0f01189607a7c679b42e18c4a869ff03ef18f4f0f34750434",
+  "new_run_sha256": "121d5f7a349be53eae912f9bcc126a363b992ed842b5064bdb460c6663cb600e",
+  "run_diff": "--- stopped_v1/run.py\n+++ candidate_v2/run.py\n@@ -457,8 +457,8 @@\n                     sampled_free_feasible_T=available[who],\n                     sampled_opportunity_exposure_T=exposure[who],\n                     sampled_recent_gannet_event_T=with_recent_event[who],\n-                    sampled_no_recent_gannet_event_T=max(0.,observed_duration-with_recent_event[who]),\n-                    sampled_no_opportunity_T=max(0.,observed_duration-exposure[who]))\n+                    sampled_no_recent_gannet_event_T=(duration-with_recent_event[who] if depletion_elapsed is None else max(0.,observed_duration-with_recent_event[who])),\n+                    sampled_no_opportunity_T=(duration-exposure[who] if depletion_elapsed is None else max(0.,observed_duration-exposure[who])))\n         summary=dict(status='complete',at=stamp(),school_seed=seed,policy=policy,presence=presence,\n             capture_seed=capture_seed,dt=DT,actual_duration=final.time-origin,\n             planned_duration=duration,nominal_elapsed_T=duration,native_steps=actual_steps,\n",
+  "unchanged_scientific_files": {
+    "build.py": "6f8a5c88b7b1c20e437c22b747836c35e1067508916da39320b55d4b4b63b5f4",
+    "cases.py": "7fdea0f88687855deb4ec65f2e04d52819dff71673a5f65962380b044f3a11f9",
+    "regime_controller.py": "fb6dff6845cac50d689be332fff311745ddde412ae7872958f21eec86c928a96",
+    "gannet.py": "718942e1a02587da927a78410e0bde54219f265551f8e4e7755f9aefced1e086",
+    "cadence.py": "5554104e8304913844069b63ebea6e1323695f380df0ed5cc7af7e87047a7029",
+    "horizons.py": "48d28d217db3be2ae72e5d2a7dd7c7c14f072acf28a48dc2e873ae3b52ac32ff",
+    "preflight.py": "f1ef7925f3ddef38bb539066bea6158a750dd6fa23eb896f67f5045314437f8d",
+    "native_zero_step.py": "5e4bb8ac04b2c90ebb7f985abf54cf04068298ee65b80f123d4fc3e87884f7a0",
+    "review_actual.py": "91bec6b6967df151c36aa7e37eb82018dfff81b344084a471c24c24d9082a856",
+    "analyze.py": "18f7b9b5096a6db94fed423296597d1e608df8887dc611750d4fc265cc15aff1",
+    "runtime.json": "65a11c3c18b5a75011c6d06009fbfc09f96c4f957b8d239efebb424bfdfdd035"
+  },
+  "comparator": "Exact original H2 replay functions unchanged; evidence.py only additionally binds all immutable stopped-v1 files",
+  "prior_attempt_reuse": false,
+  "new_attempt_stepping_requires_separate_root_approval": true,
+  "previous_steps": 103362,
+  "new_maximum_steps": 1737600,
+  "combined_maximum_steps": 1840962
+}

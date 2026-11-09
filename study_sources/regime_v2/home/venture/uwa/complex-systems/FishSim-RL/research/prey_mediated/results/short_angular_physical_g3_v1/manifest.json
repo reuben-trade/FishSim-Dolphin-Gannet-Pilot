@@ -1,0 +1,405 @@
+{
+  "created_utc": "2026-10-29T00:49:34.661554+00:00",
+  "seed": 190001,
+  "duration": 20.0,
+  "sample_interval": 0.1,
+  "config": {
+    "n": 160,
+    "dt": 0.005,
+    "speed": 3.0,
+    "repulsion_radius": 1.0,
+    "alignment_radius": 10.0,
+    "attraction_radius": 14.0,
+    "perception_angle": 2.356194490192345,
+    "turn_rate": 1.5707963267948966,
+    "native_noise": 0.0,
+    "initial_shape": "elongated",
+    "elongated_semiaxes": [
+      12.0,
+      4.0,
+      3.0
+    ],
+    "initial_centre_xy": [
+      0.0,
+      0.0
+    ],
+    "initial_centre_depth": 6.0,
+    "initial_min_distance": 1.0,
+    "initial_heading_spread": 0.1,
+    "initial_max_draws": 200000,
+    "route_direction": [
+      1.0,
+      0.0,
+      0.0
+    ],
+    "migration_gain": 0.2,
+    "preferred_depth": 5.0,
+    "depth_gain": 0.1,
+    "depth_scale": 2.0,
+    "depth_deadband": 2.0,
+    "surface_z": 0.0,
+    "surface_layer": 3.0,
+    "surface_gain": 0.8,
+    "external_cap": 0.8,
+    "threat_radius": 4.5,
+    "threat_gain": 0.8,
+    "threat_turn_multiplier": 1.0
+  },
+  "candidate_sha256": "4aed27fa7b4178fd6f9cf51efe5bb9318ce4e854e79a532410f0a413620ddc73",
+  "source_sha256": {
+    "lib/fish_sim/__init__.py": "13e0f6d1c91dc32f9b46f2bc92542fb939aefb70b84b41faf7f9c4d24d980cd4",
+    "lib/fish_sim/force.py": "e4ccc3a983483e0374c367258e8034df38d48c281b0a420613e68479940b76d9",
+    "lib/fish_sim/model.py": "bba550bdf4200839523fc9d77dca6771b1d7946035aa6d585af47d5f08482e68",
+    "lib/fish_sim/noise_3d.py": "6b01ee9a4702b32db79ad91a91e131cd3af78e650cc4c5c1e9f9935ae685c332",
+    "lib/fish_sim/utility.py": "1cad411ab14490fa08ddd204a5e278a2da6c7add0df8bc1af627b788e22ee40e",
+    "research/prey_mediated/BASELINE_V1.json": "d182173fabb5cb6080f1d11aa339c778310276b37383b4c07de922a405372be8",
+    "research/prey_mediated/calibration/actor_planner_hook_v1/encounter_before.py": "9f535b73d8c6c84fcb3062b167769af067aebe68d3dda30649832578daaeeddd",
+    "research/prey_mediated/calibration/actor_planner_hook_v1/review.json": "1e3dbb6c88bbae95d012310894a07a577ec02acdf2ba7ab2de902e92440e079c",
+    "research/prey_mediated/calibration/actor_planner_hook_v1/source.diff": "b70c755a7ac8c7b37ced0191094075c72dfe644e8c68e8c3e4f959fd2420abdd",
+    "research/prey_mediated/calibration/actor_planner_hook_v1/verify_default.py": "83644286c1f309f69455e5ffdcc5a798d6301c6363d58707d70dd41f40e235e4",
+    "research/prey_mediated/calibration/cohesion_adapter_v1/proposal.json": "b94516a3fd6bb3ed445f79967b06f090c522d7dad57468debc76d07c37461415",
+    "research/prey_mediated/calibration/cohesion_adapter_v1/reactive_school_before.py": "eb891a422bcc8e715188fdfa7354e6520152b0a4c40ddbef79a92750d1cf5019",
+    "research/prey_mediated/calibration/cohesion_adapter_v1/review.json": "298adfe9509774cd0a4393d770f85c263711f8fd9694067cb89a67805429930d",
+    "research/prey_mediated/calibration/cohesion_adapter_v1/shared_changes.patch": "cf05de2b1b3b28ab1322c56977508c14540ba87746de465e9f02db10b7ab5439",
+    "research/prey_mediated/calibration/cohesion_adapter_v1/surface_safe_school_before.py": "5b94e12a13b2bde101d6b22d5298c6fa8cbefdbacb9a6278962c75d68a42ae03",
+    "research/prey_mediated/calibration/joint_g3_probe_v1/review.json": "62deca4a821fb6fb88e9d53d3995f79bcf6d508d915f838493802ecb9ed40a76",
+    "research/prey_mediated/calibration/joint_g3_probe_v1/source.diff": "7a5f467db2d0910e15ace1dc8eee18f50d60b54a49fd92c9e7fa955b4de77d47",
+    "research/prey_mediated/contacts.py": "10535162113e80793e50ff37fe433f6fa9321ed9172e1104900ab91c1791b15f",
+    "research/prey_mediated/encounter.py": "6eea425e2453f3df930b1321d8b4390038cd6ef1881a0f6b74091ac2179d7e3f",
+    "research/prey_mediated/local_axis_pressure.py": "2f2dda8567fa2e7d57a4360de43648f722163ab9c6798750d86657458f770117",
+    "research/prey_mediated/local_pressure.py": "915008b58e2fe6dd04dcb7a15b2822e40313126b77c6c2a4829bfaf9de9e07ab",
+    "research/prey_mediated/local_spreading.py": "4a286b3a523b53fd703a7a2163d5d28050c78dff194456749983477f0b62dffb",
+    "research/prey_mediated/metrics.py": "a40ca44f51c44f24e90d764f3389de136c7fe0ec506adeb29e0328c031b88865",
+    "research/prey_mediated/predators.py": "fea70d3e5df7086daa569feabfed45c52abc5959427aa9c62e868ab600d796e2",
+    "research/prey_mediated/pressure_encounter.py": "ddc6b9a6b53f3bbc2608a6b455747e7bee089353b61f20d655781e95de63641c",
+    "research/prey_mediated/pressure_feeding.py": "495b01d9cfd418432c3416768dca82b010e5b218b07b29d7b6d2155b330ccc15",
+    "research/prey_mediated/reactive_school.py": "0d0c1ee9e264ab50eae220f2c2cf8a46d13db0723b57e083546c67de4b659ed5",
+    "research/prey_mediated/results/habitat_recovery_v1/cases/elongated_b2_s190001/encounter.npz": "706ff8e3a1ae56ae15c8bac21f4049079893b61bd71d82806a2ead6c246ac504",
+    "research/prey_mediated/results/short_dg_feeding_probe_v1/sources/research/prey_mediated/short_dg_feeding_probe.py": "44143b0eae85b09fe4d14d861340efdb092695b751df3ccd8b91e0ffb86f7b25",
+    "research/prey_mediated/results/short_patch_axis_interaction_probe_v1/sources/research/prey_mediated/short_patch_axis_interaction_probe.py": "f354982ddea3fdc0394e8ff49bfb5076951ff407d58e11a6bbaef74c0a38c2a4",
+    "research/prey_mediated/scenario.py": "6b4bd3b1da96c01a6ace04b35782cc4204d7fcd1fe9cbec88cbe01549d9e3777",
+    "research/prey_mediated/short_axis_circulation_probe.py": "f2c40f25b09c8d1e346235e995f8081ae10f83a6310101ab3fdc550c92f746e3",
+    "research/prey_mediated/short_joint_dg_probe.py": "1146cbd3895d2f1b3fd42bcc15d6d6d68b8d095c6587989346c17f86efdecf17",
+    "research/prey_mediated/short_joint_g3_probe.py": "40814eb339a14a5dd6548a2a01856c701194e0551f5a4f6c398a503b6dd3dfed",
+    "research/prey_mediated/short_response_probe.py": "2257ca57f957038f3be5da9874a4dafe2f1f62a591550ccc0259b3c1d170b15e",
+    "research/prey_mediated/storage.py": "3b1d3edd5a1efb798a63a8d5a35c36ca5cc03ca8736e8d514bf8e2b00e20ad53",
+    "research/prey_mediated/surface_safe_school.py": "dd63941cad0833069a6404e9be31344128917ac446d12be01f1642678481570a",
+    "research/prey_mediated/test_encounter.py": "b240a9d0cc3c0c756827d84d6b3d28437c113d50d0bcabef19dc57c3c1f42011",
+    "research/prey_mediated/test_local_axis_pressure.py": "4d4f620f96edd0d9fc2540eadb72cdf7c180a478df1018390978ba36de8bd6f7",
+    "research/prey_mediated/test_pressure_feeding.py": "50385a65d593d9fba88a4acf7043daec573965acfa48f948a4c6cf454daa2571",
+    "research/prey_mediated/test_short_joint_dg_probe.py": "8a2679bb3d15f493ac2207887b7e551f2fbb95b0ef036cbb8345a89d0a25ad1d",
+    "research/prey_mediated/test_short_joint_g3_probe.py": "2a4d6b4b1c02d2a6276d653b325c32994a2a8ea2d3748cc0b62dd3948e19a671",
+    "research/prey_mediated/threat_cohesion.py": "f55a7fee620ebecf37bfae354840087554691f70057038ad2c46dc1e320aa7ad",
+    "research/prey_mediated/virtual_capture.py": "4369d3bedae73289e65c703410e049585d152148aaabf634939fecad14e7c54c",
+    "src/Makefile": "dc2bc3a200c8d7b25b2a23da253c5c42b012285bfc673451d5bcd013f44c9160",
+    "src/boundary.cpp": "1fe60d2f84d6c1956c1869104e83eca9c650638cbeb5410eaa4ec72f95932969",
+    "src/boundary.hpp": "80ce7b2e0f01585281e4df2fa3835a818dd8c427093f4d5d0ec1fa9867e85920",
+    "src/cmodel.cpp": "f44c303d57821b613353d6ed79464b5f271cf3286790a5fb54bea264fcd913d1",
+    "src/core.cpp": "117b7f0551d2f0c3ffd3d859fec4f88a24d52e97171fde4bb3ded808348e0fc0",
+    "src/core.hpp": "95fa69c89268eaad26f08a5da83d0f13abcb5769186d1620eddd239298643a1d",
+    "src/couzin.cpp": "c1784e7c5a2fc6b55b463c0e3b41b2d0180e16d53a380e469099a3293a60cdae",
+    "src/couzin.hpp": "2e734fd0256d9d1cd1539bacfc4813f00126fda0db24eb3583b46f557e6b513e",
+    "src/montecarlo.cpp": "473e0d88451ebf917ea4f9c10ac486f1bec6d6150bec2b1cdd2006f3d641c2e3",
+    "src/montecarlo.hpp": "f840da9c490bd490e80dd074550b53cc689460c7e66d55dea3b1817c8270cc41",
+    "src/neighbour_list.cpp": "4ad21e179ca5c46e4cc09160f5076c7c1b7029218815183e9c8c6ed7a9900285",
+    "src/neighbour_list.hpp": "5fdd4f053611c6acbf94a0cf2b4f0459aa6f05a3395ede2060910e66ff6c0367",
+    "src/network.cpp": "cea1fad2a685bbf8481dcd8a67c4b6c6c1e980dd2247d0524cfc85f63473ab1b",
+    "src/network.hpp": "ecb5a5bae84b1bb9f6e1b425365bd0ada0c368ac61daaa40d85917a9211429de",
+    "src/vicsek.cpp": "f08cbee9161d6b800368ecfcfb2ebeb906aaa18217695aa8c2a6e43766410cda",
+    "src/vicsek.hpp": "1bda4910a2fa6fd47b3750274099bf899ec4ad2b9fbb611d45b2aab6155ab91e",
+    "research/prey_mediated/short_angular_feeding_g3.py": "58aab8c48b226e16ea6bd6be370d6a2b48ae38c7fdb25893c0cbeb9898d3f83b",
+    "research/prey_mediated/local_angular_crowd.py": "b53c0b0e56811ff4c83649d1333675ad6c9deb106298f2a59bf05a6aba961a28",
+    "research/prey_mediated/angular_default_replay.py": "7b2a5338e06c00f5c86091baa583fcba13a941a0a440937472dc9b50c3fb1eeb",
+    "research/prey_mediated/short_angular_physical_g3.py": "450f0e2cb5318d31e264ef7272a6da35a2023a83c6afb12b3abe95562b1b7c98"
+  },
+  "input_sha256": {
+    "research/prey_mediated/FORMATION_CANDIDATE_V3.json": "4aed27fa7b4178fd6f9cf51efe5bb9318ce4e854e79a532410f0a413620ddc73",
+    "research/prey_mediated/ANGULAR_FEEDING_G3_DESIGN.md": "d1572bb8f5205d2d2a26d07fa5b11ef2add705aaa4c5be11344d91bd530febe0",
+    "research/prey_mediated/calibration/angular_default_replay_v1/receipt.json": "2ae86fb65265fe3244d668c3ea777bff92f9fc69d77201b99b185e0bd6f77472",
+    "research/prey_mediated/calibration/angular_crowd_adapter_v1/application.json": "61ccf5034ad33c870cac9273748a75cda879e3d8758b69bb6965233618e2fbcf",
+    "research/prey_mediated/results/short_joint_g3_probe_v1/manifest.json": "f5d524d07bd2c20caf131f3b76689d066815232c29e43e7172a0cc5f7d7e9f02",
+    "research/prey_mediated/results/short_joint_g3_probe_v1/status.json": "610d0de6f02e720d551b5a41130147912eab237607353bccaeec4301411a28b5",
+    "research/prey_mediated/results/short_joint_g3_probe_v1/artifact_manifest.json": "5d9bd3493b36beb29f5739e108dc6ecfab7cc3aa93d556083440e2af7b4bfecf",
+    "research/prey_mediated/results/short_joint_g3_probe_v1/native.json": "a0174e8896f869313c149f01b2edc0f7894a0f08d96a4b8275bfb13778dc12c1",
+    "research/prey_mediated/results/short_joint_g3_probe_v1/initial_state.npz": "706ff8e3a1ae56ae15c8bac21f4049079893b61bd71d82806a2ead6c246ac504",
+    "research/prey_mediated/results/short_joint_g3_probe_v1/comparison_reference/none_reused.npz": "0715b8c1adc72b296dcbf0666c529fbcd6fa270d1bf05f32939b40a8849fa2a1",
+    "research/prey_mediated/results/short_joint_g3_probe_v1/comparison_reference/none_reused_metrics.json": "d33e827ca444f36b5d663b09238060af8f0a430704aca1b8172d881c5e69c61a",
+    "research/prey_mediated/results/short_joint_g3_probe_v1/G3_only.npz": "e57976c0815573431af07719ef8fa751bd849a139a7fad5d457bd7388806e2f6",
+    "research/prey_mediated/results/short_joint_g3_probe_v1/G3_only_metrics.json": "503662d7d507b1ff827047e0c2c5ab8432560241dbef861e435ba686579a47c1",
+    "research/prey_mediated/results/short_joint_g3_probe_v1/G3_only_checks.json": "7f87eccdf98907a07ebc4bf6b0d8b8026312366f752cc505a375a3259d55a035",
+    "research/prey_mediated/results/short_joint_g3_probe_v1/G3_only_initial_engine.json": "bf93b24c5f13d3756abc1c99e86ea6078bf8b1f33cb3031c4be88b4a04d37004",
+    "research/prey_mediated/results/short_joint_g3_probe_v1/G3_only_final_engine.json": "f5fdb98ac053e4a07297bb28dec766ca3465e0612ed3258726635d15866bf88b",
+    "research/prey_mediated/results/short_joint_g3_probe_v1/G3_only_events.jsonl": "7043a9df7cc44543c12c44b608d83e9a47e68514369a46f870fa885136aca124",
+    "research/prey_mediated/results/short_joint_g3_probe_v1/D12_joint_feeding_G3_initial_engine.json": "eb6d6963955a8ee2ebcf4921d789dda9177e14238e1e9d84b0ec86b2271e8424",
+    "research/prey_mediated/ANGULAR_PHYSICAL_G3_DESIGN.md": "c0f203288a302d062ff2ae70f9f208c470a8f68e75695d0d51bc153d97b3b44f",
+    "research/prey_mediated/calibration/angular_physical_g3_v1/review.json": "bbf6671b64de192d9226b69de1ff5bac62a9144e2aa5fbd38643c80a145befd0"
+  },
+  "arms": {
+    "D12_angular_physical": {
+      "dolphins": 12,
+      "gannets": 0,
+      "feeding": true,
+      "remove_prey": true
+    },
+    "G3_physical": {
+      "dolphins": 0,
+      "gannets": 3,
+      "feeding": true,
+      "remove_prey": true
+    },
+    "D12_angular_physical_G3": {
+      "dolphins": 12,
+      "gannets": 3,
+      "feeding": true,
+      "remove_prey": true
+    }
+  },
+  "angular_config": {
+    "enabled": true,
+    "observation_radius": 25.0
+  },
+  "pressure_config": {
+    "sense_radius": 25.0,
+    "patch_radius": 12.0,
+    "stand_off": 2.5,
+    "tracking_gain": 1.0,
+    "tracking_speed": 3.0,
+    "tangent_speed": 2.0,
+    "orbit_sign": 1,
+    "spacing_radius": 5.0,
+    "spacing_speed": 2.0,
+    "max_speed": 6.0,
+    "turn_rate": 1.5707963267948966,
+    "search_speed": 3.0,
+    "surface_z": 0.0,
+    "surface_layer": 1.0,
+    "surface_margin": 0.3
+  },
+  "feeding_config": {
+    "enabled": true,
+    "launch_radius": 6.0,
+    "front_dot_min": 0.7,
+    "flow_epsilon": 1e-08
+  },
+  "predator_config": {
+    "species": "D",
+    "dolphin_policy": "direct",
+    "speed": 6.0,
+    "air_speed": 10.0,
+    "turn_rate": 1.5707963267948966,
+    "sense_radius": 25.0,
+    "patch_radius": 3.0,
+    "edge_margin": 1.0,
+    "edge_tolerance": 1.0,
+    "positioning_budget": 4.0,
+    "intercept_horizon": 3.0,
+    "bout_duration": 6.0,
+    "handling_duration": 2.0,
+    "miss_recovery_duration": 1.0,
+    "surface_z": 0.0,
+    "flight_height": 3.0,
+    "plunge_horizontal_radius": 6.0,
+    "detection_depth": 12.0,
+    "max_dive_depth": 12.0,
+    "ascent_margin": 0.25,
+    "spacing_enabled": false,
+    "spacing_radius": 5.0,
+    "spacing_gain": 0.5,
+    "max_motion_interval": 0.05
+  },
+  "dolphin_starts": [
+    [
+      46.0,
+      -4.0,
+      -5.0
+    ],
+    [
+      44.0,
+      -2.0,
+      -5.0
+    ],
+    [
+      42.0,
+      0.0,
+      -5.0
+    ],
+    [
+      46.0,
+      2.0,
+      -5.0
+    ],
+    [
+      44.0,
+      4.0,
+      -5.0
+    ],
+    [
+      42.0,
+      6.0,
+      -5.0
+    ],
+    [
+      43.0,
+      -3.0,
+      -5.0
+    ],
+    [
+      41.0,
+      -1.0,
+      -5.0
+    ],
+    [
+      39.0,
+      1.0,
+      -5.0
+    ],
+    [
+      43.0,
+      3.0,
+      -5.0
+    ],
+    [
+      41.0,
+      5.0,
+      -5.0
+    ],
+    [
+      39.0,
+      7.0,
+      -5.0
+    ]
+  ],
+  "orbit_axes": [
+    [
+      0.0,
+      0.0,
+      1.0
+    ],
+    [
+      0.0,
+      0.0,
+      1.0
+    ],
+    [
+      0.0,
+      0.0,
+      1.0
+    ],
+    [
+      0.0,
+      0.0,
+      1.0
+    ],
+    [
+      0.0,
+      0.0,
+      1.0
+    ],
+    [
+      0.0,
+      0.0,
+      1.0
+    ],
+    [
+      0.0,
+      1.0,
+      0.0
+    ],
+    [
+      0.0,
+      1.0,
+      0.0
+    ],
+    [
+      0.0,
+      1.0,
+      0.0
+    ],
+    [
+      0.0,
+      1.0,
+      0.0
+    ],
+    [
+      0.0,
+      1.0,
+      0.0
+    ],
+    [
+      0.0,
+      1.0,
+      0.0
+    ]
+  ],
+  "circulation_signs": [
+    1,
+    -1,
+    1,
+    -1,
+    1,
+    -1,
+    1,
+    -1,
+    1,
+    -1,
+    1,
+    -1
+  ],
+  "gannet_config": {
+    "species": "G",
+    "dolphin_policy": "direct",
+    "speed": 6.0,
+    "air_speed": 10.0,
+    "turn_rate": 1.5707963267948966,
+    "sense_radius": 25.0,
+    "patch_radius": 3.0,
+    "edge_margin": 1.0,
+    "edge_tolerance": 1.0,
+    "positioning_budget": 4.0,
+    "intercept_horizon": 3.0,
+    "bout_duration": 6.0,
+    "handling_duration": 2.0,
+    "miss_recovery_duration": 1.0,
+    "surface_z": 0.0,
+    "flight_height": 3.0,
+    "plunge_horizontal_radius": 6.0,
+    "detection_depth": 12.0,
+    "max_dive_depth": 12.0,
+    "ascent_margin": 0.25,
+    "spacing_enabled": false,
+    "spacing_radius": 2.0,
+    "spacing_gain": 0.5,
+    "max_motion_interval": 0.05
+  },
+  "gannet_starts": [
+    [
+      60.0,
+      0.0,
+      3.0
+    ],
+    [
+      60.0,
+      -6.0,
+      3.0
+    ],
+    [
+      60.0,
+      6.0,
+      3.0
+    ]
+  ],
+  "interpretation": "Fixed20-unit real-food diagnostic from travelling school. All three feeding conditions newly simulated. Whole-window rates include approach/formation. Same-survivor control geometry separates deletion from rearrangement; no causal communication identification.",
+  "storage": {
+    "free_bytes": 11083718656,
+    "reserve_bytes": 8589934592,
+    "anticipated_bytes": 150994944,
+    "anticipated_video_bytes": 0,
+    "video_allowance_bytes": 536870912,
+    "video_bytes": 0,
+    "required_free_reclaim": 0,
+    "required_video_trim": 0,
+    "available_reclaim_bytes": 0,
+    "deletions": [],
+    "can_proceed": true
+  }
+}

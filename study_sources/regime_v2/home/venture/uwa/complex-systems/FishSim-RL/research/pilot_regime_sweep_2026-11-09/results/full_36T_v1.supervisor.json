@@ -1,0 +1,34 @@
+{
+  "status": "failed",
+  "started_at": "2026-11-09T11:37:36.924382+08:00",
+  "supervisor_pid": 2,
+  "supervisor_source_sha256": "7773928cd910288e1c17ce693f081f1910c7e5c5f91025ae2be9c4e979f8b87c",
+  "protocol_sha256": "7d8b56417644090b8454a0badbda530c510f74b80712be41a2b7c12073134588",
+  "frozen_sources_sha256": "8c4839297c0958d34f5f9ea0e2698ee994de3de55edee18c91c26192bef9c8c5",
+  "full_approval_sha256": "8a3d71e10ba017e92e058157e121404ce8f0788477f60fb6ce2d6176ee964d6c",
+  "maximum_native_steps": 1728000,
+  "prior_smoke_steps": 9600,
+  "retries": 0,
+  "publication": false,
+  "stages": [
+    {
+      "stage": "feeding",
+      "started_at": "2026-11-09T11:37:36.924908+08:00",
+      "command": [
+        "/home/venture/uwa/complex-systems/FishSim-RL/.venv/bin/python",
+        "/home/venture/uwa/complex-systems/FishSim-RL/research/pilot_regime_sweep_2026-11-09/run.py",
+        "--execute",
+        "--workers",
+        "3",
+        "--output",
+        "/home/venture/uwa/complex-systems/FishSim-RL/research/pilot_regime_sweep_2026-11-09/results/full_36T_v1"
+      ],
+      "pid": 33,
+      "finished_at": "2026-11-09T11:48:58.098040+08:00",
+      "exit_code": -2
+    }
+  ],
+  "failed_stage": "feeding",
+  "finished_at": "2026-11-09T11:48:58.098046+08:00",
+  "interpretation": "Stopped after first failed stage; no retry, relaxed replay or expansion"
+}

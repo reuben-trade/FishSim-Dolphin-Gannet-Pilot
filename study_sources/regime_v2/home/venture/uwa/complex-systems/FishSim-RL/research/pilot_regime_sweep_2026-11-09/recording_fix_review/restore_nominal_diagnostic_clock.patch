@@ -1,0 +1,13 @@
+--- a/run.py
++++ b/run.py
+@@ -457,8 +457,8 @@
+                     sampled_free_feasible_T=available[who],
+                     sampled_opportunity_exposure_T=exposure[who],
+                     sampled_recent_gannet_event_T=with_recent_event[who],
+-                    sampled_no_recent_gannet_event_T=max(0.,observed_duration-with_recent_event[who]),
+-                    sampled_no_opportunity_T=max(0.,observed_duration-exposure[who]))
++                    sampled_no_recent_gannet_event_T=(duration-with_recent_event[who] if depletion_elapsed is None else max(0.,observed_duration-with_recent_event[who])),
++                    sampled_no_opportunity_T=(duration-exposure[who] if depletion_elapsed is None else max(0.,observed_duration-exposure[who])))
+         summary=dict(status='complete',at=stamp(),school_seed=seed,policy=policy,presence=presence,
+             capture_seed=capture_seed,dt=DT,actual_duration=final.time-origin,
+             planned_duration=duration,nominal_elapsed_T=duration,native_steps=actual_steps,

@@ -1,0 +1,61 @@
+{
+  "status": "complete",
+  "started_at": "2026-11-09T12:29:15.293442+08:00",
+  "supervisor_pid": 2,
+  "supervisor_source_sha256": "7773928cd910288e1c17ce693f081f1910c7e5c5f91025ae2be9c4e979f8b87c",
+  "protocol_sha256": "5948e35130e475c1367f7b878d67a9a39d63a20c67b61c3d09ad9bfeda51a1aa",
+  "frozen_sources_sha256": "0b9084ffeeb48de6952bd5a547d32694776b5f3f7215bd603ddfcbff5e128750",
+  "full_approval_sha256": "8e9831aafbec87f407c67340053c5e4ed7939f03949e24b84c297da238536814",
+  "maximum_native_steps": 1728000,
+  "prior_smoke_steps": 9600,
+  "retries": 0,
+  "publication": false,
+  "stages": [
+    {
+      "stage": "feeding",
+      "started_at": "2026-11-09T12:29:15.293985+08:00",
+      "command": [
+        "/home/venture/uwa/complex-systems/FishSim-RL/.venv/bin/python",
+        "/home/venture/uwa/complex-systems/FishSim-RL/research/pilot_regime_sweep_2026-11-09_v2/run.py",
+        "--execute",
+        "--workers",
+        "3",
+        "--output",
+        "/home/venture/uwa/complex-systems/FishSim-RL/research/pilot_regime_sweep_2026-11-09_v2/results/full_36T_v1"
+      ],
+      "pid": 33,
+      "finished_at": "2026-11-09T15:46:30.015357+08:00",
+      "exit_code": 0
+    },
+    {
+      "stage": "physical_review",
+      "started_at": "2026-11-09T15:46:30.015858+08:00",
+      "command": [
+        "/home/venture/uwa/complex-systems/FishSim-RL/.venv/bin/python",
+        "/home/venture/uwa/complex-systems/FishSim-RL/research/pilot_regime_sweep_2026-11-09_v2/review_actual.py",
+        "--output",
+        "/home/venture/uwa/complex-systems/FishSim-RL/research/pilot_regime_sweep_2026-11-09_v2/results/full_36T_v1"
+      ],
+      "pid": 59,
+      "finished_at": "2026-11-09T15:46:40.657104+08:00",
+      "exit_code": 0
+    },
+    {
+      "stage": "analysis",
+      "started_at": "2026-11-09T15:46:40.657520+08:00",
+      "command": [
+        "/home/venture/uwa/complex-systems/FishSim-RL/.venv/bin/python",
+        "/home/venture/uwa/complex-systems/FishSim-RL/research/pilot_regime_sweep_2026-11-09_v2/analyze.py",
+        "--input",
+        "/home/venture/uwa/complex-systems/FishSim-RL/research/pilot_regime_sweep_2026-11-09_v2/results/full_36T_v1"
+      ],
+      "pid": 75,
+      "finished_at": "2026-11-09T15:46:50.804009+08:00",
+      "exit_code": 0
+    }
+  ],
+  "finished_at": "2026-11-09T15:46:50.804149+08:00",
+  "wall_seconds": 11855.51077877602,
+  "physical_review_sha256": "94316c28c9d82b0b47c9c945843d4810c85bb2aa13991902d8a6946d5450691d",
+  "analysis_audit_sha256": "5bfc893562c1c583bb306737ffe25d2a6f665fd90fd1c478e22bdfabb0b01486"
+}

@@ -1,0 +1,49 @@
+{
+  "declared_at": "2026-11-09T11:23:42.716665+08:00",
+  "native_steps": 0,
+  "independent_unit": "Starting school; four complete paired whole-grid vectors, not60 independent samples",
+  "required_cells": 60,
+  "school_seeds": [
+    39061001,
+    39061002,
+    39063501,
+    39063502
+  ],
+  "capture_seed": 61001,
+  "herding_minima_T": [
+    1,
+    2,
+    3
+  ],
+  "gannet_counts": [
+    0,
+    1,
+    3,
+    6
+  ],
+  "primary": "Mixed D catches/(12*36) minus same-H D-only rate at G0",
+  "reciprocal": "Mixed G catches/(G*36) minus count-matched G-only rate; G-only shared across H",
+  "secondary": "All raw school captures/launches/eligible contacts, per-contact realised success, bird entries, remaining fish; all outcome signs displayed",
+  "best_Donly_comparison": {
+    "selection": "Highest across-school mean D-only per-animal36T rate among H1/2/3",
+    "ties": "Smallest H",
+    "scope": "Selected on this discovery bank; best tested, not global optimum",
+    "bootstrap": "Reselect best D-only mean H separately within each resampled whole-school vector draw",
+    "heldout": "Write best_tested_Donly.json after all60 complete; freeze H before held-out outcomes"
+  },
+  "bootstrap": {
+    "draws": 10000,
+    "seed": 88493009,
+    "generator": "NumPydefault_rng PCG64",
+    "resampling": "One common school-index matrix across all9mixed cells, both species and all shared controls",
+    "quantiles": [
+      0.025,
+      0.975
+    ],
+    "interpretation": "Exploratory pointwise95% intervals only; n4, no familywise correction, no confirmatory optimal-cell selection"
+  },
+  "incomplete": "No final whole-map primary analysis until all60 cells and physical reviews pass; failures retained, no replacement/omission",
+  "anchor": "The eight exact replay cells are prior outcomes; count each school once and keep original pilot/follow-up reports unchanged",
+  "numerical": "Existing finer-grid results remain in report; discovery map does not establish convergence",
+  "no_preselected_positive_cells": true
+}

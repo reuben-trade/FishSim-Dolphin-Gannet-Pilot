@@ -1,0 +1,117 @@
+{
+  "4.0": {
+    "status": "complete",
+    "nominal_horizon_T": 4.0,
+    "observed_native_duration_T": 3.999999999996362,
+    "native_steps": 3200,
+    "absorbing_no_food_continuation": false,
+    "termination": "observed_horizon",
+    "initial_count": 160,
+    "final_count": 160,
+    "species": {
+      "D": {
+        "count": 0,
+        "captures": 0,
+        "launches": 0,
+        "contacts": 0,
+        "captures_per_actor_per_nominal_T": null,
+        "observed_effort_T": 0.0,
+        "observed_distance": 0
+      },
+      "G": {
+        "count": 1,
+        "captures": 0,
+        "launches": 1,
+        "contacts": 1,
+        "captures_per_actor_per_nominal_T": 0.0,
+        "observed_effort_T": 3.999999999996362,
+        "observed_distance": 17.65982198784275
+      }
+    },
+    "per_actor": {
+      "G0": {
+        "time": {
+          "recovering": 1.4855365295555423,
+          "positioning": 2.5144634704408197
+        },
+        "distance": {
+          "recovering": 0.0,
+          "positioning": 17.65982198784275
+        },
+        "physical_mode_time": {
+          "recovery": 1.4855365295555423,
+          "plunge": 0.6449867616699265,
+          "pursuit": 0.9445757285247645,
+          "ascent": 0.9249009802461288
+        },
+        "phases": {
+          "not_dolphin": 3.999999999996362
+        },
+        "exposure_time": {
+          "water": 1.8694767087708932,
+          "air": 2.130523291225469,
+          "bite_window": 1.589562490194691,
+          "underwater_bite_window": 0.9445757285247645,
+          "water_recovery": 0.0,
+          "air_recovery": 1.4855365295555423,
+          "underwater_bite_recovery": 0.0,
+          "water_plunge": 0.0,
+          "air_plunge": 0.6449867616699265,
+          "underwater_bite_plunge": 0.0,
+          "water_pursuit": 0.9445757285247645,
+          "air_pursuit": 0.0,
+          "underwater_bite_pursuit": 0.9445757285247645,
+          "water_ascent": 0.9249009802461288,
+          "air_ascent": 0.0,
+          "underwater_bite_ascent": 0.0
+        },
+        "captures": 0,
+        "virtual_successes": 0,
+        "contacts": 1,
+        "launches": 1,
+        "reasons": {
+          "gannet_global_dense_target_selected": 1,
+          "recovery_complete": 1,
+          "local_prey_detected": 1,
+          "launch": 1,
+          "water_entry": 1,
+          "contact_miss": 1
+        }
+      }
+    },
+    "school_structure": {
+      "n_live": 160,
+      "survival_fraction": 1.0,
+      "envelope_retention": 1.0,
+      "largest_component_fraction": 0.99375,
+      "largest_component_retention": 0.99375,
+      "r90": 9.281276928601915,
+      "rg": 6.110150712239528,
+      "outward_fraction": 0.075,
+      "outward_p90": 0.21267174692527463,
+      "mean_depth": 5.743445897987528,
+      "centroid": [
+        71.73534134568878,
+        -0.2011747765181561,
+        -5.743445897987528
+      ],
+      "mean_velocity": [
+        2.9370195961079797,
+        0.10947568010306412,
+        0.1838774642266508
+      ],
+      "polarization": 0.9816018628472509,
+      "contained": true,
+      "time": 23.999999999996295,
+      "elapsed": 3.999999999996362
+    },
+    "effort_interpretation": "observed physical effort only; no post-depletion extrapolation",
+    "food_interpretation": "actual unique captures; all later counts fixed after complete prey depletion",
+    "physical_accounting_audit": {
+      "status": "passed",
+      "errors": [],
+      "scope": "independent time, event tally and removal conservation; no native re-simulation"
+    },
+    "private_capture_and_tie_replay": "passed"
+  }
+}

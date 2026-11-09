@@ -1,4 +1,4 @@
-"""Four paper figures from sealed FishSim encounters; no simulation is run."""
+"""One shared hunting rule: pilot evidence, complete regime map and diagnostics."""
 from __future__ import annotations
 
 import argparse
@@ -24,7 +24,11 @@ REPLICATION=RESEARCH/'exposed_replication_2026-11-08'
 LONGER=RESEARCH/'longer_replication_2026-11-09'
 FINE=RESEARCH/'fine_dt_replication_2026-11-09'
 DEPTH=RESEARCH/'gannet_depth_study_2026-11-08'
+SWEEP=RESEARCH/'pilot_regime_sweep_2026-11-09_v2'
+CLOSURE=None
+BUNDLE_ROOT=None
 OUT=HERE/'figures'
+import regime_evidence_v5 as evidence
 D='#087F8C'
 DG='#D98525'
 FISH='#8099AB'
@@ -38,15 +42,18 @@ plt.rcParams.update({'font.family':'DejaVu Sans','font.size':9.5,
 
 
 def read(path):return json.loads(path.read_text())
+
 def sha(path):return hashlib.sha256(path.read_bytes()).hexdigest()
+
 def table(path):
     with path.open(newline='') as handle:return list(csv.DictReader(handle))
+
 def source(path):return {'path':str(path.resolve()),'sha256':sha(path)}
+
 def require_sealed(directory, filenames):
     seal=read(directory/'completion.json')
     assert seal['status']=='complete'
     for name in filenames:assert seal['files'][name]==sha(directory/name),(directory,name)
-
 
 def save(fig, name, caption, inputs, data):
     OUT.mkdir(parents=True,exist_ok=True)
@@ -63,12 +70,10 @@ def save(fig, name, caption, inputs, data):
     (OUT/'captions.txt').write_text('\n\n'.join(f'{key}: {receipts[key]["caption"]}' for key in sorted(receipts))+'\n')
     print(name,flush=True)
 
-
 def panel(ax, letter, title):
     ax.set_title(f'({letter})  {title}',loc='left',pad=8)
     ax.set_axisbelow(True)
     ax.grid(axis='y',color='#E2E8ED',linewidth=.6)
-
 
 def model_figure():
     directory=DEVELOPMENT/'results/full_36T_v1/cases/s39061002_exposed_DG'
@@ -100,8 +105,8 @@ def model_figure():
     gs=fig.add_gridspec(1,3,width_ratios=[1.25,1.1,1.1],wspace=.45)
     diagram=fig.add_subplot(gs[0]);diagram.set_axis_off()
     diagram.set_title('(a)  Shared dolphin cycle',loc='left',pad=8)
-    labels=['Herd near prey\nfor 2T continuously',
-            'Select feasible prey\nnearest / exposed',
+    labels=['Near prey for H\ncontinuously',
+            'Select feasible prey\nfewest neighbours',
             'One bounded strike\nshared capture rule',
             'Handle or recover\nrestart herding']
     ys=[.84,.61,.38,.15]
@@ -143,94 +148,19 @@ def model_figure():
              Line2D([],[],marker='x',color=INK,lw=0,markersize=4,label='Capture, 6–12T')]
     fig.legend(handles=handles,loc='lower center',bbox_to_anchor=(.67,.005),ncol=4,
                frameon=False,columnspacing=.65,handletextpad=.3,fontsize=8)
-    caption=('Model rules and one recorded encounter. (a) Both dolphin target policies use the same '
-        '2T near-prey herding cycle, one feasible strike and normal handling/recovery. Gannets influence '
-        'dolphins through prey dynamics, without a dolphin response to a bird cue. (b,c) Actual top and '
-        'side views at 12T for development school 39061002, exposed targeting with gannets; lines show '
-        'predator paths over 6–12T and crosses mark actual captures in that interval. Horizontal coordinates '
-        'are relative to the surviving fish centroid at 12T; z=0 is the surface. Coordinates are model units. This snapshot illustrates '
-        'the model, not successful whole-school containment.')
+    caption=('One shared dolphin rule and one recorded encounter. (a) Continuous near-prey pressure for H, '
+        'a physically feasible strike preferring prey with fewer neighbours, then ordinary recovery. '
+        'The dolphin rule is unchanged by gannet presence. H does not certify completed herding; the target need not move outward. '
+        '(b,c) Recorded top and side views at12T for original development school39061002, with paths/captures over6–12T. '
+        'The fish centroid defines horizontal coordinates; z=0 is the surface, in model units. '
+        'This historical snapshot was fixed before the sweep and does not demonstrate whole-school containment or a causal mechanism.')
     save(fig,'fig1_model',caption,[directory/'trajectories.npz',directory/'events.jsonl.gz',
         directory/'initial_school.npz',directory/'completion.json',DEVELOPMENT/'controllers.py'],
         {'school_seed':39061002,'policy':'exposed','presence':'DG','frame_elapsed_T':float(trajectory['time'][index]),
          'path_interval_T':[6.,12.],'live_fish':len(live),'capture_count_in_path_interval':len(captures),
          'coordinate_reference_xyz':reference.tolist(),'trajectory_sampling_T':.1})
 
-
-def development_figure():
-    file=DEVELOPMENT/'results/analysis_final/paired_comparison.csv'
-    rows=table(file)
-    fig,axes=plt.subplots(1,2,figsize=(6.95,2.2),sharey=True)
-    fig.subplots_adjust(left=.085,right=.995,wspace=.2,bottom=.23,top=.78)
-    for ax,policy,title,letter in zip(axes,['nearest','exposed'],['Nearest feasible','Prefer exposed'],['a','b']):
-        selected=sorted([r for r in rows if r['policy']==policy],key=lambda r:r['school_seed'])
-        alone=[int(r['dolphin_food_alone']) for r in selected]
-        mixed=[int(r['dolphin_food_with_gannets']) for r in selected]
-        x=np.arange(2)
-        for offset,values,color,label in [(-.18,alone,D,'Dolphins only'),(.18,mixed,DG,'With gannets')]:
-            bars=ax.bar(x+offset,values,.32,color=color,label=label,zorder=3)
-            ax.bar_label(bars,padding=2,fontsize=9)
-        panel(ax,letter,title);ax.set_ylim(0,36);ax.set_yticks([0,10,20,30])
-        ax.set_xticks(x,[f'School {i+1}\n{r["school_seed"]}' for i,r in enumerate(selected)])
-    axes[0].set_ylabel('Dolphin captures / 36T')
-    fig.legend(*axes[0].get_legend_handles_labels(),loc='upper center',ncol=2,frameon=False,bbox_to_anchor=(.5,1.015))
-    caption=('Development comparison of the two dolphin target-selection rules. Bars show actual '
-        'dolphin captures in matched 36T encounters with 12 dolphins, with or without 3 gannets. '
-        'Each policy was tested on the same two development schools with one random-stream setting. '
-        'Nearest targeting changed from 55 to 53 captures in total; exposed targeting changed from '
-        '41 to 48. The exposed policy was selected for follow-up on this development evidence. '
-        'Individual school outcomes are shown without confidence intervals.')
-    save(fig,'fig2_development',caption,[file,DEVELOPMENT/'results/analysis_final/analysis_audit.json'],rows)
-
-
-def publication_figure(pairs,statistics,output,fine_pairs):
-    # Full reset keeps these pixels independent of whichever other paper figure
-    # was generated earlier, while preserving its caller's plotting style.
-    with matplotlib.rc_context(matplotlib.rcParamsDefault):
-        return _publication_figure(pairs,statistics,output,fine_pairs)
-
-
-def _publication_figure(pairs,statistics,output,fine_pairs):
-    plt.rcParams.update({'font.family':'DejaVu Sans','font.size':8.5,'axes.spines.top':False,
-        'axes.spines.right':False,'pdf.fonttype':42,'savefig.facecolor':'white'})
-    fig,axes=plt.subplots(1,2,figsize=(7.05,2.6),sharex=True)
-    for ax,species,color,title in zip(axes,('D','G'),('#087F8C','#D98525'),('Dolphin partner effect','Gannet partner effect')):
-        ax.axhline(0,color='#73818B',linewidth=.7)
-        groups=[sorted((r for r in pairs if float(r['horizon_T'])==36.),key=lambda r:int(r['school_seed'])),
-                sorted(fine_pairs,key=lambda r:int(r['school_seed'])),
-                sorted((r for r in pairs if float(r['horizon_T'])==72.),key=lambda r:int(r['school_seed']))]
-        offsets=np.linspace(-.12,.12,8)
-        for j in range(8):
-            ax.plot([offsets[j],1+offsets[j]],
-                    [float(groups[0][j][species+'_difference']),float(groups[1][j][species+'_difference'])],
-                    color=color,alpha=.32,lw=.6,zorder=1)
-        for index,group in enumerate(groups):
-            assert len(group)==8
-            y=np.asarray([float(r[species+'_difference']) for r in group]);x=index+offsets
-            ax.scatter(x,y,s=17,color=color,alpha=.8,zorder=3,label='School' if index==0 else None)
-            mean=float(y.mean());ax.scatter([index],[mean],marker='D',s=28,color='#263746',zorder=5,
-                label='Mean' if index==0 else None)
-            if index==0:
-                low,high=statistics[species]['interval']
-                ax.vlines(index,low,high,color='#263746',lw=1.4,zorder=4)
-                ax.hlines([low,high],index-.07,index+.07,color='#263746',lw=1.4,zorder=4)
-        ax.axvline(1.5,color='#B7C2C9',lw=.6,ls=':',zorder=0)
-        ax.set(xticks=[0,1,2],xticklabels=['36T coarse\nprimary','36T fine\nsensitivity','72T coarse\nsecondary'],xlim=(-.34,2.34),
-            title=title,ylabel='Mixed − alone captures')
-        ax.tick_params(axis='x',labelsize=7.5)
-        ax.grid(axis='y',alpha=.18)
-    fig.tight_layout(pad=.8)
-    for ext in ('png','pdf'):fig.savefig(output/('fig3_replication.'+ext),dpi=230,bbox_inches='tight',pad_inches=.035)
-    plt.close(fig)
-    return dict(D=axes_data(pairs,'D'),G=axes_data(pairs,'G'),fine_36T=fine_pairs,primary_statistics=statistics)
-
-
-def axes_data(pairs,species):
-    return {str(int(h)):[dict(school=int(r['school_seed']),difference=float(r[species+'_difference']))
-        for r in sorted(pairs,key=lambda r:int(r['school_seed'])) if float(r['horizon_T'])==h] for h in (36.,72.)}
-
-
-def replication_figure():
+def verified_replication():
     analysis=LONGER/'results/analysis_final'
     audit=read(analysis/'analysis_audit.json')
     assert audit['status']=='passed' and audit['sealed_horizon_records']==48 and not audit['pending']
@@ -294,127 +224,184 @@ def replication_figure():
             fine_row[species+'_difference']=m-a
             fine_row[species+'_alone']=a;fine_row[species+'_mixed']=m
         fine_pairs.append(fine_row)
-    OUT.mkdir(parents=True,exist_ok=True)
-    plotted=publication_figure(pairs,statistics,OUT,fine_pairs)
-    caption='Partner effects and numerical sensitivity on the same eight schools. Points show mixed-minus-alone captures; lines join each school across coarse (0.00125T) and fine (0.000625T) grids at 36T. Diamonds show equal-school means. Only the coarse 36T primary estimates have 97.5% marginal bootstrap intervals (approximate 95% familywise coverage, with small-sample limitations). Fine 36T and coarse 72T results are descriptive sensitivity and duration checks, not additional independent schools. Earlier cohorts are excluded.'
-    receipt_path=OUT/'figure_receipts.json';receipts=read(receipt_path) if receipt_path.exists() else {}
-    receipts['fig3_replication']=dict(caption=caption,sources=[source(p) for p in inputs],plotted_data=plotted,
-        created_at=datetime.now(ZoneInfo('Australia/Perth')).isoformat(),native_steps=0,
-        outputs={ext:source(OUT/('fig3_replication.'+ext)) for ext in ('pdf','png')},
-        uncertainty_intervals='97.5% marginal school-vector bootstrap at coarse36T only;fine36T/coarse72T descriptive')
-    receipt_path.write_text(json.dumps(receipts,indent=2,allow_nan=False)+'\n')
-    (OUT/'captions.txt').write_text('\n\n'.join(key+': '+receipts[key]['caption'] for key in sorted(receipts))+'\n')
-    print('fig3_replication: eight independent schools,coarse36Tprimary/fine36Tsensitivity/coarse72Tsecondary',flush=True)
-    return True
+    return pairs,statistics,fine_pairs,inputs
 
 
-
-def mechanism_figure():
-    """Updated Figure 4: joint controls and the initial-depth transient."""
-    depth_base=DEPTH/'results/full_36T_v1/cases'
-    prior_base=REPLICATION/'results/full_36T_v1/cases'
-    inputs=[];records={};pairs=[]
-    for seed in (39063501,39063502):
-        for treatment,cap in [('baseline',61001),('baseline',61002),('depth8',61001),('depth11',61001)]:
-            directory=depth_base/f's{seed}_{treatment}_G_c{cap}'
-            require_sealed(directory,['summary.json','audit.json','school_metrics.json'])
-            summary=read(directory/'summary.json');metrics=read(directory/'school_metrics.json')
-            assert read(directory/'audit.json')['status']=='passed'
-            assert summary['status']=='complete' and abs(summary['actual_duration']-36.)<1e-7
-            assert summary['species']['D']['count']==0 and summary['species']['G']['count']==3
-            records[(seed,treatment,cap)]={'summary':summary,'metrics':metrics}
-            inputs.extend(directory/name for name in ('summary.json','school_metrics.json','completion.json'))
-        for cap in (61001,61002):
-            summaries={}
-            for presence in ('D','DG'):
-                directory=prior_base/f's{seed}_exposed_{presence}_c{cap}'
-                require_sealed(directory,['summary.json','audit.json'])
-                summary=read(directory/'summary.json')
-                assert summary['status']=='complete' and abs(summary['actual_duration']-36.)<1e-7
-                assert read(directory/'audit.json')['status']=='passed'
-                summaries[presence]=summary
-                inputs.extend(directory/name for name in ('summary.json','completion.json'))
-            d=summaries['D']['species']['D']['captures']
-            md=summaries['DG']['species']['D']['captures']
-            g=records[(seed,'baseline',cap)]['summary']['species']['G']['captures']
-            mg=summaries['DG']['species']['G']['captures']
-            pairs.append({'school_seed':seed,'capture_seed':cap,'D_alone':d,'D_mixed':md,
-                          'G_alone':g,'G_mixed':mg,'D_difference':md-d,'G_difference':mg-g})
-    assert [p['D_difference'] for p in pairs]==[1,4,1,8]
-    assert [p['G_difference'] for p in pairs]==[-1,1,-1,7]
-    fig,axes=plt.subplots(1,3,figsize=(7.1,2.55),gridspec_kw={'width_ratios':[1.12,1.,1.12]})
-    fig.subplots_adjust(left=.065,right=.995,wspace=.58,bottom=.255,top=.84)
-    y=np.arange(4)[::-1]
-    axes[0].axvline(0,color='#74828E',lw=.8)
-    for key,offset,color,label,marker in [('D_difference',.11,D,'Dolphins','o'),
-                                         ('G_difference',-.11,DG,'Gannets','s')]:
-        for j,(yy,pair) in enumerate(zip(y,pairs)):
-            value=pair[key]
-            axes[0].plot([0,value],[yy+offset]*2,color=color,lw=1.1)
-            axes[0].scatter(value,yy+offset,color=color,marker=marker,s=22,zorder=3,
-                            label=label if j==0 else None)
-    panel(axes[0],'a','Paired joint changes')
-    axes[0].grid(False)
-    axes[0].set(yticks=y,yticklabels=['S1 / 1','S1 / 2','S2 / 1','S2 / 2'],
-                xlabel='Capture change / 36T',xlim=(-2,10),ylim=(-.5,4.35),xticks=[-2,0,4,8])
-    axes[0].legend(loc='upper left',frameon=False,fontsize=7.1,ncol=2,
-                   columnspacing=.55,handlelength=.7,handletextpad=.35,borderaxespad=0.)
-    depth_data=[]
-    for j,seed in enumerate((39063501,39063502)):
-        selected=[records[(seed,t,61001)] for t in ('baseline','depth8','depth11')]
-        x=[r['metrics'][0]['depth_mean'] for r in selected]
-        counts=[r['summary']['species']['G']['captures'] for r in selected]
-        axes[1].plot(x,counts,marker=['o','s'][j],ls=['-','--'][j],color=[D,INK][j],
-                     markersize=4,lw=1.,label=f'School {j+1}')
-        depth_data.append({'school_seed':seed,'capture_seed':61001,
-                           'initial_mean_depth':x,'gannet_captures':counts})
-    panel(axes[1],'b','Initial-depth feeding')
-    axes[1].set(xlabel='Initial mean depth',ylabel='Gannet captures / 36T',
-                xlim=(5.,11.7),ylim=(0,12.7),xticks=[5.57,8,11],yticks=[0,4,8,12])
-    axes[1].set_xticklabels(['5.57','8','11'])
-    axes[1].legend(loc='upper right',frameon=False,fontsize=7.2,handlelength=1.5,borderaxespad=.1)
-    curves=[]
-    colors={'baseline':D,'depth8':DG,'depth11':'#8C539A'}
-    labels={'baseline':'5.57','depth8':'8','depth11':'11'}
-    for treatment in ('baseline','depth8','depth11'):
-        for j,seed in enumerate((39063501,39063502)):
-            metrics=records[(seed,treatment,61001)]['metrics']
-            times=[r['elapsed'] for r in metrics]
-            fractions=[r['reference_accessible_fraction'] for r in metrics]
-            axes[2].plot(times,fractions,color=colors[treatment],ls=['-','--'][j],lw=.9,
-                         alpha=.85,label=labels[treatment] if j==0 else None)
-            curves.append({'school_seed':seed,'treatment':treatment,'capture_seed':61001,
-                           'elapsed_T':times,'reference_accessible_fraction':fractions})
-    panel(axes[2],'c','Realised accessibility')
-    axes[2].set(xlabel='Elapsed time (T)',ylabel='Fraction at depth ≤7.93',
-                xlim=(0,36),ylim=(-.03,1.28),xticks=[0,12,24,36],yticks=[0,.5,1.])
-    axes[2].legend(loc='upper right',title='Initial depth',title_fontsize=7.,fontsize=7.1,
-                   ncol=3,frameon=False,columnspacing=.4,handlelength=1.1,handletextpad=.3,
-                   borderaxespad=.05)
-    caption=('Matching gannet-only controls and initial-depth results. (a) Dolphin capture change '
-        '(DG minus D) and gannet change (DG minus G) for the same four fresh-school comparisons. '
-        'S1=39063501 and S2=39063502; repetitions 1 and 2 identify settings 61001 and 61002. '
-        'Both species improve in two repetitions; four comparisons represent two independent schools. '
-        '(b) Gannet-only captures over 36T across initial vertical translations, using setting 61001; '
-        'lines join the same school, not fitted response curves. (c) Fraction of surviving fish within '
-        'the reference target-depth envelope 7.93028, with colour identifying initial mean depth and '
-        'solid/dashed lines identifying schools 1/2. This is a geometric eligibility reference, '
-        'not guaranteed interception. Initial depth is not maintained; movement and selective removal '
-        'can alter the survivor fraction. No uncertainty intervals are shown.')
-    save(fig,'fig4_mechanism',caption,inputs+[DEPTH/'protocol.json',
-        DEPTH/'results/full_36T_v1/analysis_final/analysis_audit.json'],
-        {'paired_changes':pairs,'depth_captures':depth_data,'accessibility_curves':curves,
-         'independent_schools':2,'joint_positive_pairs':2,'total_pairs':4,
-         'reference_depth_envelope':7.93028,'initial_depth_is_maintained':False})
+def pilot_pairs(study):
+    """Read only the fixed exposed rule from original sealed oral events."""
+    records={};inputs=[]
+    for folder in sorted((study/'results/full_36T_v1/cases').iterdir()):
+        config=read(folder/'config.json')
+        summary=read(folder/'summary.json')
+        if summary['policy']!='exposed':continue
+        require_sealed(folder,['config.json','events.jsonl.gz','summary.json'])
+        assert summary['status']=='complete' and abs(summary['actual_duration']-36)<1e-7
+        with gzip.open(folder/'events.jsonl.gz','rt') as handle:
+            catches=[e for e in map(json.loads,handle) if e['kind']=='oral' and e['closes_bout'] and e['status']=='captured']
+        assert len(catches)==len({e['prey_id'] for e in catches})
+        d=sum(e['actor_id'].startswith('D') for e in catches)
+        assert d==summary['species']['D']['captures']
+        key=(summary['school_seed'],summary['capture_seed'],config['presence'])
+        assert key not in records
+        records[key]=d
+        inputs.extend(folder/name for name in ('config.json','events.jsonl.gz','summary.json','completion.json'))
+    pairs=[]
+    for school,stream in sorted({k[:2] for k in records}):
+        pairs.append(dict(school_seed=school,capture_seed=stream,D=records[school,stream,'D'],DG=records[school,stream,'DG']))
+    return pairs,inputs
 
 
-def main():
+def cohort_figure():
+    development,di=pilot_pairs(DEVELOPMENT);followup,fi=pilot_pairs(REPLICATION)
+    assert len(development)==2 and len(followup)==4
+    assert (sum(r['D'] for r in development),sum(r['DG'] for r in development))==(41,48)
+    assert (sum(r['D'] for r in followup),sum(r['DG'] for r in followup))==(87,101)
+    pairs,statistics,fine,ri=verified_replication()
+    coarse=sorted([r for r in pairs if float(r['horizon_T'])==36],key=lambda r:int(r['school_seed']))
+    fine=sorted(fine,key=lambda r:int(r['school_seed']))
+    fig,axes=plt.subplots(1,4,figsize=(7.05,2.45))
+    fig.subplots_adjust(left=.075,right=.99,bottom=.25,top=.74,wspace=.55)
+    colours=['#087F8C','#D98525']
+    for ax,group,letter,title in [(axes[0],development,'a','Pilot: 2 schools\n41 → 48 (+17.1%)'),
+                                  (axes[1],followup,'b','Follow-up: 2 schools\n87 → 101 (+16.1%)')]:
+        schools=sorted({r['school_seed'] for r in group})
+        for row in group:
+            color=colours[schools.index(row['school_seed'])]
+            marker='o' if row['capture_seed']==61001 else 's'
+            ax.plot([0,1],[row['D'],row['DG']],color=color,lw=.9,marker=marker,ms=3.5,alpha=.85)
+        ax.set_xticks([0,1],['D only','Mixed']);ax.set_xlim(-.2,1.2)
+        ax.set_ylabel('Dolphin captures',fontsize=8)
+        ax.set_title(f'({letter}) {title}',loc='left',fontsize=8.5,pad=8)
+        ax.grid(axis='y',color='#E2E8ED',lw=.6);ax.locator_params(axis='y',nbins=4)
+    values={}
+    for ax,species,letter in [(axes[2],'D','c'),(axes[3],'G','d')]:
+        a=np.array([int(r[species+'_difference']) for r in coarse]);b=np.array([r[species+'_difference'] for r in fine])
+        for j,(x,y) in enumerate(zip(a,b)):
+            ax.plot([0,1],[x,y],color='#8396A3',lw=.7,marker='o',ms=2.5,alpha=.65)
+        means=[float(a.mean()),float(b.mean())]
+        ax.scatter([0,1],means,color=INK,marker='D',s=22,zorder=5)
+        ci=statistics[species]['interval']
+        ax.errorbar(0,means[0],yerr=[[means[0]-ci[0]],[ci[1]-means[0]]],color=INK,lw=1.1,capsize=3,zorder=6)
+        ax.axhline(0,color='#566D7D',lw=.8,ls='--');ax.set_xticks([0,1],['Coarse','Fine']);ax.set_xlim(-.2,1.2)
+        ax.set_ylabel('Partner effect\n(captures)',fontsize=8)
+        ax.set_title(f'({letter}) New 8 schools: {species}\ncoarse → fine (36T)',loc='left',fontsize=8.5,pad=8)
+        ax.grid(axis='y',color='#E2E8ED',lw=.6);ax.locator_params(axis='y',nbins=5)
+        values[species]=dict(coarse=a.tolist(),fine=b.tolist(),coarse_interval=ci,mean=means)
+    caption=('Distinct cohorts under the same exposed-prey dolphin rule. (a) Two development schools, one capture-stream setting; '
+        '(b) two fresh follow-up schools, each under two stream settings (circles/squares), not four independent schools. '
+        'Colour identifies school within each two-school panel; circles/squares identify stream settings61001/61002. '
+        'Lines join D-only and mixed outcomes for each repetition; the headline totals are not additional samples. '
+        '(c,d) Partner effects on eight further schools at36T, with each school joined across coarse/fine grids. '
+        'Diamonds mark means; only coarse-primary means have97.5% marginal school-vector bootstrap intervals. '
+        'The fine check reused these eight schools, not the earlier positive cohorts. No convergence or universal dolphin benefit is established.')
+    save(fig,'fig2_cohorts',caption,di+fi+ri,
+         dict(development=development,followup=followup,eight_school_sensitivity=values))
+
+
+def complete_regime():
+    receipt=evidence.verify_complete(SWEEP,closure=CLOSURE,bundle_root=BUNDLE_ROOT)
+    frozen=read(SWEEP/'frozen_sources.json')
+    rows=[evidence.raw_row(SWEEP/'results/full_36T_v1/cases'/r['case_name'],r,frozen) for r in evidence.identities()]
+    pairs,summary=evidence.reconstruct_map(rows,read(SWEEP/'analysis_plan.json'))
+    diagnostics=evidence.diagnostic_rows(SWEEP)
+    return rows,pairs,summary,diagnostics,receipt
+
+
+def regime_figure(summary):
+    from matplotlib.colors import TwoSlopeNorm
+    from matplotlib.ticker import MaxNLocator
+    fields=[('D_mean_rate_change','D_pointwise95_low','D_pointwise95_high','D: mixed − same-H alone'),
+        ('G_mean_rate_change','G_pointwise95_low','G_pointwise95_high','G: mixed − same-count alone'),
+        ('D_mean_rate_change_vs_best_tested_Donly','D_vs_best_tested_pointwise95_low','D_vs_best_tested_pointwise95_high','D: mixed − best tested alone')]
+    fig,axes=plt.subplots(1,3,figsize=(7.05,2.65))
+    fig.subplots_adjust(left=.07,right=.99,bottom=.27,top=.81,wspace=.42)
+    for ax,(field,lower,upper,title),letter in zip(axes,fields,'abc'):
+        values=np.array([r[field]*36 for r in summary]).reshape(3,3)
+        bound=max(float(abs(values).max()),1e-8)
+        im=ax.imshow(values,origin='lower',cmap='RdBu_r',norm=TwoSlopeNorm(vmin=-bound,vcenter=0,vmax=bound),aspect='auto')
+        for i in range(3):
+            for j in range(3):
+                row=summary[i*3+j]
+                compact=lambda x:f'{x:.2f}'.replace('-0.','-.').removeprefix('0')
+                ax.text(j,i,f'{row[field]*36:+.2f}\n[{compact(row[lower]*36)},{compact(row[upper]*36)}]',
+                    ha='center',va='center',fontsize=7.2,color='white' if abs(values[i,j])>.65*bound else INK)
+        ax.set_xticks(range(3),[1,3,6]);ax.set_yticks(range(3),[1,2,3])
+        ax.set_xlabel('Gannets in mixed group',fontsize=8);ax.set_ylabel('H (T)',fontsize=8)
+        ax.set_title(f'({letter}) {title}',loc='left',fontsize=8,pad=8)
+        bar=fig.colorbar(im,ax=ax,orientation='horizontal',fraction=.07,pad=.35,aspect=25)
+        bar.ax.tick_params(labelsize=6.5);bar.locator=MaxNLocator(3);bar.update_ticks()
+    fig.suptitle(f'Four previously observed schools; best-tested D-only H = {summary[0]["best_tested_Donly_H"]:g}T',fontsize=9,y=.98)
+    caption=('The complete declared exploratory H×G map, with all nine mixed settings. Numbers show mean paired capture changes '
+        'per predator over the full36T encounter; brackets are pointwise95% four-school bootstrap intervals. '
+        '(a) Same-H dolphin-only baseline; (b) count-matched gannet-only baseline, shared across H; '
+        '(c) best-tested dolphin-only H selected across this discovery bank and reselected within each bootstrap draw. '
+        'Panels have separate symmetric colour ranges. All36school contrasts and absolute returns are supplied in the notebook. '
+        'Four known schools and reused controls do not provide60independent samples; eight executions exactly replay old outcomes. '
+        'No multiplicity-adjusted winner, unrestricted optimum or numerical convergence is claimed.')
+    base=SWEEP/'results/full_36T_v1'
+    inputs=[SWEEP/'protocol.json',SWEEP/'analysis_plan.json',SWEEP/'frozen_sources.json',base/'anchor_replay.json',
+        base/'physical_review.json',base/'analysis_final/analysis_audit.json',base/'analysis_final/regime_summary.csv',
+        base/'analysis_final/best_tested_Donly.json']
+    save(fig,'fig3_regime_map',caption,inputs,summary)
+
+
+def diagnostic_figure(rows,diagnostics):
+    counts={r['case_name']:r for r in rows}
+    records=[]
+    for r in diagnostics:
+        raw=counts[r['case_name']]
+        if not raw['dolphins']:continue
+        records.append(dict(r,D_contacts_per_dolphin_per36T=raw['D_contacts']/12,
+            D_captures_per_dolphin_per36T=raw['D_captures']/12))
+    assert len(records)==48
+    fields=[('time_mean_r90','Live-school radius r90'),('time_mean_outward_fraction','Outward-moving live-fish fraction'),
+        ('D_contacts_per_dolphin_per36T','Eligible contacts / dolphin / 36T'),
+        ('D_captures_per_dolphin_per36T','Captures / dolphin / 36T')]
+    fig,axes=plt.subplots(2,2,figsize=(7.05,2.8))
+    fig.subplots_adjust(left=.075,right=.99,bottom=.19,top=.83,wspace=.35,hspace=.65)
+    colours=['#087F8C','#D98525','#7B5E9C']
+    for ax,(field,label),letter in zip(axes.flat,fields,'abcd'):
+        for h,color,marker in zip(evidence.HS,colours,['o','s','^']):
+            means=[]
+            for x,g in enumerate(evidence.GS):
+                chosen=sorted([r for r in records if r['herding_minimum_T']==h and r['gannets']==g],key=lambda r:r['school_seed'])
+                assert len(chosen)==4
+                y=[r[field] for r in chosen];means.append(float(np.mean(y)))
+                ax.scatter(np.array([-.08,-.025,.025,.08])+x,y,s=7,marker=marker,color=color,alpha=.35,linewidths=0)
+            ax.plot(range(4),means,color=color,marker=marker,ms=3,lw=.9,label=f'H={h:g}T')
+        ax.set_xticks(range(4),[0,1,3,6])
+        if letter in 'cd':ax.set_xlabel('Gannets',fontsize=8)
+        ax.set_title(f'({letter}) {label}',loc='left',fontsize=8,pad=5)
+        ax.grid(axis='y',color='#E2E8ED',lw=.6);ax.locator_params(axis='y',nbins=4)
+    fig.legend(*axes.flat[0].get_legend_handles_labels(),loc='upper center',ncol=3,frameon=False,bbox_to_anchor=(.5,1),fontsize=8)
+    caption=('Descriptive collective-state and feeding diagnostics across every dolphin-bearing H×G setting, '
+        'including G=0. Faint points are all four previously observed schools; lines join equal-school means. '
+        'Saved live-fish r90 and outward fraction are time-averaged over the full observed nonempty trajectory, '
+        'without selected post-dive windows. Contacts and food come from complete raw events with the full36T denominator. '
+        'Prey consumption and survivor selection can change school-state summaries. These associations do not demonstrate '
+        'causal mediation, completed herding, biological calibration or deliberate cooperation.')
+    inputs=[]
+    for r in records:
+        folder=SWEEP/'results/full_36T_v1/cases'/r['case_name']
+        inputs.extend(folder/name for name in ('completion.json','school_metrics.json','events.jsonl.gz','summary.json'))
+    save(fig,'fig4_diagnostics',caption,inputs,records)
+
+
+def main(historical_preview=False):
+    if not historical_preview:
+        rows,pairs,summary,diagnostics,receipt=complete_regime()
+    model_figure();cohort_figure()
+    if not historical_preview:
+        regime_figure(summary);diagnostic_figure(rows,diagnostics)
+    assert 'fish_sim.cmodel' not in __import__('sys').modules
+    return dict(native_steps=0,complete_sweep=not historical_preview)
+
+
+if __name__=='__main__':
     parser=argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('--only',choices=['all','model','development','replication','mechanism'],default='all')
+    parser.add_argument('--historical-preview',action='store_true',help='Only existing cohorts; no sweep effects')
+    parser.add_argument('--output',type=Path)
     args=parser.parse_args()
-    for name,fn in [('model',model_figure),('development',development_figure),
-                    ('replication',replication_figure),('mechanism',mechanism_figure)]:
-        if args.only in ('all',name):fn()
+    if args.output:OUT=args.output
+    main(historical_preview=args.historical_preview)
 
-
-if __name__=='__main__':main()

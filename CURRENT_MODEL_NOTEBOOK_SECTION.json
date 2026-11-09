@@ -1,0 +1,68 @@
+{
+  "status": "private_notebook_section_for_publication_review",
+  "target_notebook": "FishSim_Professor_Notebook.ipynb",
+  "scope": "Existing eight-school coarse/fine replication, not H×G regime sweep",
+  "host_smoke_receipt": "KNOWN_HOST_SMOKE_2026-11-09.json",
+  "default_native_steps": 0,
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "## Run a new replication encounter (optional)\n",
+        "\n",
+        "The main notebook reproduces saved results. These optional cells run the eight-school H2 replication model from its saved starting schools; they do not run the newer H × G map.\n",
+        "\n",
+        "Follow `CURRENT_MODEL_SETUP.md` first. The original host passed its startup checks and short runs. A source-built Linux amd64 image passed 48 initial-state checks and six bounded encounters (15,200 steps). Those image checks ran through BuildKit; the local Docker bind-mount entry point and Windows/macOS hosts have not been tested end to end here.\n",
+        "\n",
+        "The default 0.5T check ends before the 2T herding interval. Set `DEMO_DURATION_T = 4` for a short demonstration of herding and strikes. Neither duration estimates feeding benefit; use the saved-data analysis for the reported results.\n"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "execution_count": null,
+      "outputs": [],
+      "source": [
+        "# Print the full 36T D/DG budget without importing or stepping the simulator.\n",
+        "import subprocess, sys\n",
+        "subprocess.run([\n",
+        "    sys.executable, \"run_current_model.py\", \"--plan\",\n",
+        "    \"--grid\", \"fine\", \"--school\", \"39064501\", \"--presences\", \"D\", \"DG\"\n",
+        "], check=True)\n"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "execution_count": null,
+      "outputs": [],
+      "source": [
+        "# Enable after building the image as described in CURRENT_MODEL_SETUP.md.\n",
+        "RUN_CURRENT_MODEL = False\n",
+        "MODEL_BACKEND = \"docker\"\n",
+        "MODEL_GRID = \"fine\"\n",
+        "DEMO_DURATION_T = 0.5  # Choose 0.5 (startup) or 4 (short demonstration).\n",
+        "\n",
+        "if RUN_CURRENT_MODEL:\n",
+        "    from datetime import datetime, timezone\n",
+        "    output = \"outputs/current_demo_\" + datetime.now(timezone.utc).strftime(\"%Y%m%d_%H%M%S\")\n",
+        "    command = [sys.executable, \"run_current_model.py\", \"--backend\", MODEL_BACKEND,\n",
+        "               \"--grid\", MODEL_GRID, \"--workers\", \"1\", \"--output\", output]\n",
+        "    if DEMO_DURATION_T == 0.5:\n",
+        "        command += [\"--quick\"]\n",
+        "    elif DEMO_DURATION_T == 4:\n",
+        "        command += [\"--run\", \"--duration\", \"4\", \"--school\", \"39064501\", \"--presences\", \"D\", \"DG\"]\n",
+        "    else:\n",
+        "        raise ValueError(\"Choose a 0.5T or 4T demonstration.\")\n",
+        "    subprocess.run(command, check=True)\n",
+        "else:\n",
+        "    print(\"Model execution is disabled. Saved-result analysis remains available.\")\n"
+      ]
+    }
+  ],
+  "linux_amd64_buildkit_validation": "passed",
+  "host_docker_cli_end_to_end_validation": "not_tested",
+  "container_native_steps": 15200,
+  "host_native_steps": 2400
+}

@@ -1,0 +1,64 @@
+{
+  "status": "requested",
+  "backend": "native",
+  "grid": "coarse",
+  "schools": [
+    39064501
+  ],
+  "presences": [
+    "D",
+    "DG"
+  ],
+  "capture_seed": 61001,
+  "duration_per_case_T": 0.5,
+  "dt": 0.00125,
+  "cases": 2,
+  "workers": 1,
+  "maximum_native_steps": 800,
+  "native_steps": 0,
+  "scientific_code": "unchanged current published sources",
+  "interpretation": "0.5T is integration only; full runs are new outputs, separate from saved evidence."
+}
+Completed current-model cases: 1/2
+Completed current-model cases: 2/2
+{
+  "status": "passed",
+  "current_model": true,
+  "mode": "quick_integration",
+  "grid": "coarse",
+  "dt": 0.00125,
+  "duration_per_case_T": 0.5,
+  "cases": [
+    {
+      "school_seed": 39064501,
+      "presence": "D",
+      "status": "passed",
+      "actual_native_steps": 400,
+      "completion_sha256": "c2edefb6872a7d6e5cf828c40704b8902f2a9bee5080ce13c533c78213a196f6"
+    },
+    {
+      "school_seed": 39064501,
+      "presence": "DG",
+      "status": "passed",
+      "actual_native_steps": 400,
+      "completion_sha256": "face2f3a91cec4f0d4736ada2aa3e4d63294ca0737922d861a5aa7ad3e5e97aa"
+    }
+  ],
+  "native_steps": 800,
+  "native_kind": "explicit_separate_source_build",
+  "actual_native_sha256": "cc21f00f355e1d25e8ecb48bd6aa50a7c9b63f909d921f4864a96e91d9ef2d4b",
+  "historical_actor_reference_native": {
+    "path": "/validation/work/current_model_1bbe61e9cde1be7ea70f/historical_native/cmodel.cpython-312-x86_64-linux-gnu.so",
+    "sha256": "eb8654a520304cc429aced67c7e3706db8d2ef1449c5e1327a682a479b10a558",
+    "role": "Historical pure actor-reference pin; not the active execution module"
+  },
+  "native_field_roles": "Case config.native is the historical pure actor reference; config.native_sha256 and actual_native_sha256 identify active execution",
+  "container_image_id": null,
+  "execution_wrapper_sha256": "06ed5b437eb6400b69188ee3db23470dfc60eebfa969cd4f14666e17c3be2ab0",
+  "worker_sha256": "e342614eb04a3597ecc3a711ed5871722d77c99793d56205b0bbba55b9fd571b",
+  "behavioral_code_modified": false,
+  "prepared_checkpoint_arrays_modified": false,
+  "derived_runtime_declaration": "/validation/work/current_model_1bbe61e9cde1be7ea70f/CURRENT_MODEL_DECLARATION.json",
+  "wall_seconds": 13.837321761995554,
+  "interpretation": "0.5T is integration only; full runs are new outputs, separate from saved evidence."
+}

@@ -1,0 +1,125 @@
+{
+  "status": "passed",
+  "at": "2026-11-09T11:33:49.253785+08:00",
+  "native_steps_executed": 9600,
+  "maximum_smoke_steps": 9600,
+  "remaining_full_step_budget": 1728000,
+  "protocol_sha256": "7d8b56417644090b8454a0badbda530c510f74b80712be41a2b7c12073134588",
+  "frozen_sources_sha256": "8c4839297c0958d34f5f9ea0e2698ee994de3de55edee18c91c26192bef9c8c5",
+  "physical_review_sha256": "18a97356d5437b70cc721b50cda91540023fc12ecba6cbf8d6e71a24c6937bd5",
+  "execution_status_sha256": "e02c3948a25fed8ea4ed6b220e432b3df07bd4940c292500b89f999da1994bce",
+  "cases": [
+    {
+      "case": {
+        "school_seed": 39061001,
+        "herding_minimum_T": 1.0,
+        "gannets": 0,
+        "dolphins": 12,
+        "policy": "H1_G0",
+        "presence": "D",
+        "capture_seed": 61001,
+        "dt": 0.00125,
+        "duration_T": 36.0,
+        "anchor_replay": false,
+        "case_name": "s39061001_H1_G0_D_c61001"
+      },
+      "completion_sha256": "c2992444f5866b350139a87cd5c669075031066def4f51d4b6bc30654003e1a1",
+      "native_steps": 3200,
+      "wall_seconds": 72.56956930400338,
+      "steps_per_wall_second": 44.0956179110666,
+      "linear_36T_wall_seconds": 653.1261237360304,
+      "species": {
+        "D": {
+          "count": 12,
+          "captures": 0,
+          "launches": 6,
+          "contacts": 0
+        },
+        "G": {
+          "count": 0,
+          "captures": 0,
+          "launches": 0,
+          "contacts": 0
+        }
+      }
+    },
+    {
+      "case": {
+        "school_seed": 39061001,
+        "herding_minimum_T": 3.0,
+        "gannets": 6,
+        "dolphins": 12,
+        "policy": "H3_G6",
+        "presence": "DG",
+        "capture_seed": 61001,
+        "dt": 0.00125,
+        "duration_T": 36.0,
+        "anchor_replay": false,
+        "case_name": "s39061001_H3_G6_DG_c61001"
+      },
+      "completion_sha256": "d61ada070070da0f5b6e99c78b579f03ca859354e8930828b5c30042b0aa7eaf",
+      "native_steps": 3200,
+      "wall_seconds": 95.18033403798472,
+      "steps_per_wall_second": 33.62039051809735,
+      "linear_36T_wall_seconds": 856.6230063418625,
+      "species": {
+        "D": {
+          "count": 12,
+          "captures": 0,
+          "launches": 0,
+          "contacts": 0
+        },
+        "G": {
+          "count": 6,
+          "captures": 1,
+          "launches": 6,
+          "contacts": 4
+        }
+      }
+    },
+    {
+      "case": {
+        "school_seed": 39061001,
+        "herding_minimum_T": null,
+        "gannets": 1,
+        "dolphins": 0,
+        "policy": "Gonly1",
+        "presence": "G",
+        "capture_seed": 61001,
+        "dt": 0.00125,
+        "duration_T": 36.0,
+        "anchor_replay": false,
+        "case_name": "s39061001_Gonly1_G_c61001"
+      },
+      "completion_sha256": "186e58e34199e8b31849431acf3a67ba45fb706de88ec5b78ca1e4fe93dee0db",
+      "native_steps": 3200,
+      "wall_seconds": 14.270882662036456,
+      "steps_per_wall_second": 224.23280155702435,
+      "linear_36T_wall_seconds": 128.4379439583281,
+      "species": {
+        "D": {
+          "count": 0,
+          "captures": 0,
+          "launches": 0,
+          "contacts": 0
+        },
+        "G": {
+          "count": 1,
+          "captures": 0,
+          "launches": 1,
+          "contacts": 1
+        }
+      }
+    }
+  ],
+  "coverage": {
+    "actual_H1_D_launches": 6,
+    "actual_G1_eligible_contacts": 1,
+    "actual_G6_eligible_contacts": 4,
+    "actual_new_G5_captures": 1,
+    "actual_H3_D_launches": 0,
+    "H3_successful_launch_boundary": "Exercised by native-free focused tests; not reached within the declared4T smoke"
+  },
+  "review": "Independent static peer review of gates found no blocker; physical audit uses the previously reviewed contact/RNG helper",
+  "full_execution_authorized": false
+}
