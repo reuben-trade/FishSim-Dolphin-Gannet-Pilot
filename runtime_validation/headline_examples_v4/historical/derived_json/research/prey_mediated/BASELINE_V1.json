@@ -1,0 +1,95 @@
+{
+  "version": 1,
+  "status": "Accepted engineering baseline for development predator trials; not ecological calibration",
+  "parent_batch": "research/prey_mediated/results/habitat_recovery_v1",
+  "parent_manifest_sha256": "17bbb1959172a21e957b3b74bcd451e347cb649adbe598318e0c11ecafa8f415",
+  "scenario": {
+    "n": 160,
+    "dt": 0.005,
+    "speed": 3.0,
+    "repulsion_radius": 1.0,
+    "alignment_radius": 10.0,
+    "attraction_radius": 14.0,
+    "perception_angle": 2.356194490192345,
+    "turn_rate": 1.5707963267948966,
+    "native_noise": 0.0,
+    "initial_shape": "elongated",
+    "elongated_semiaxes": [
+      12.0,
+      4.0,
+      3.0
+    ],
+    "initial_centre_xy": [
+      0.0,
+      0.0
+    ],
+    "initial_centre_depth": 6.0,
+    "initial_min_distance": 1.0,
+    "initial_heading_spread": 0.1,
+    "initial_max_draws": 200000,
+    "route_direction": [
+      1.0,
+      0.0,
+      0.0
+    ],
+    "migration_gain": 0.2,
+    "preferred_depth": 5.0,
+    "depth_gain": 0.1,
+    "depth_scale": 2.0,
+    "depth_deadband": 2.0,
+    "surface_z": 0.0,
+    "surface_layer": 3.0,
+    "surface_gain": 0.8,
+    "external_cap": 0.8,
+    "threat_radius": 4.5,
+    "threat_gain": 0.8,
+    "threat_turn_multiplier": 1.0
+  },
+  "development_checkpoints": [
+    {
+      "seed": 190000,
+      "case_id": "elongated_b2_s190000",
+      "checkpoint": "research/prey_mediated/results/habitat_recovery_v1/cases/elongated_b2_s190000/encounter.npz",
+      "sha256": "2b136950061ae4418ea17636733595e23cf06687c6733866773c8dfe4bead6ff"
+    },
+    {
+      "seed": 190001,
+      "case_id": "elongated_b2_s190001",
+      "checkpoint": "research/prey_mediated/results/habitat_recovery_v1/cases/elongated_b2_s190001/encounter.npz",
+      "sha256": "706ff8e3a1ae56ae15c8bac21f4049079893b61bd71d82806a2ead6c246ac504"
+    },
+    {
+      "seed": 190002,
+      "case_id": "elongated_b2_s190002",
+      "checkpoint": "research/prey_mediated/results/habitat_recovery_v1/cases/elongated_b2_s190002/encounter.npz",
+      "sha256": "aed57cb2e12f4f4c7b49f233be0c575e9bfb4876f0f657c0c011ac0d3181b36d"
+    },
+    {
+      "seed": 190003,
+      "case_id": "elongated_b2_s190003",
+      "checkpoint": "research/prey_mediated/results/habitat_recovery_v1/cases/elongated_b2_s190003/encounter.npz",
+      "sha256": "e92d50b8591bbb0ea230b72f3546604c7025dc48c887bacc5ee7fc0ae4e351ed"
+    }
+  ],
+  "encounter_start_absolute_time": 20.0,
+  "planned_elapsed_duration": 120.0,
+  "validated_control_absolute_horizon": 200.0,
+  "evidence": [
+    "ROUND_02_2026-10-28.md",
+    "research/prey_mediated/results/habitat_recovery_v1/recovery_v1/REPORT.md",
+    "research/prey_mediated/results/habitat_recovery_v1/screen_v1/screen.json"
+  ],
+  "state_definitions": {
+    "primary": "Continuous vector: R90/Rg, extents/core occupancy, polarization/orientation tensor, route speed, relative rotation with validity, fixed-radius connectivity, depth and retention.",
+    "bait_ball_classifier": null,
+    "travelling_engineering_screen": "Route speed >=0.6*swim_speed and LCC>=0.9 each for>=0.9 of declared window; not a biological bait-ball definition.",
+    "interpretation": "Compactness alone does not establish containment. Compare geometry and motion jointly against exact loaded-checkpoint controls. Shape may persist after travel recovers."
+  },
+  "constraints": [
+    "No native rebuild",
+    "No prey rule changed by threat-response audit",
+    "Fresh none arms start from the exact same loaded checkpoint as predators",
+    "No outcome-based exclusion of development seeds",
+    "No scalar metric enters predator decisions or capture probabilities"
+  ]
+}

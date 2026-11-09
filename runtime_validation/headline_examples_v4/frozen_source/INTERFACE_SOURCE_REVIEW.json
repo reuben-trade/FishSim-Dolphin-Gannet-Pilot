@@ -1,0 +1,36 @@
+{
+  "schema": "fishsim_regime_example_interface_source_review_v1",
+  "review_kind": "independent_source_review",
+  "status": "passed",
+  "at": "2026-11-09T12:49:58.507473+00:00",
+  "reviewer": "/root/sweep_design",
+  "interface_files": {
+    "regime_runtime.py": "847501320f1827e4978d4e21b877c9824a0afb9941a5ed4c173920ed4f8a71b4",
+    "regime_runtime_worker.py": "7fd76063909d84474e9254bfc03536080834285b593ae1c670f4193a6a1dd8c4",
+    "run_regime_model.py": "6692d61c2c54cf9869813909df1137a409539e8af7e707eb3e5b638206c0967c",
+    "regime_example_gate.py": "82b4620d8eba02369e46d8f1292141f9ad483c93739dfcde4bec047ec6dd6019",
+    "run_v6_example.py": "1655cb6de74bfb22c3036adc636b476b3f794c28cf6201ea2d7e8ec06b49bc60"
+  },
+  "package_manifests": {
+    "INPUT_MANIFEST_2026-11-09_high_counts.json": "32f71ad006183bcfda581af1e451e4274d1489515879c39d10c989c9f6964149",
+    "SOURCE_CLOSURE_2026-11-09_high_counts.json": "160f08937482f897e3c2c50f42a34ec053354e5e9ebd73499ce170a014599ddb",
+    "INPUT_MANIFEST_2026-11-09_regime_v2.json": "2ab7ddce41504aeef03d90bdd3ce0ad239cc45326b49fe3ad5860233e6ec566f",
+    "SOURCE_CLOSURE_2026-11-09_regime_v2.json": "352e4edffc18bb2368d80dba56a60f7c594bb763e39371cd9f28b8018c309c88"
+  },
+  "candidate_freeze_sha256": "143ae45ac98cb385cdba9567b6262e499d48859f06a19374eb0fbc2b5638b414",
+  "reviewed_files": 16,
+  "runtime_files_verified_per_binary": 4172,
+  "pure_tests_per_binary": 22,
+  "source_proofs": [
+    "All physical/accounting run_case AST nodes and helper functions unchanged; only historical operational gate preamble derived",
+    "Builder physical constructor and all other functions AST exact",
+    "Both108 protected golden initial files and pure receipts bound; strict actual array comparisons remain exact",
+    "Local request schema explicitly has independent_review false and rejects approved; static review kept separate",
+    "Bad output and request collisions are rejected before zero constructions; requests retained permanently",
+    "Default native-free; two bounded settings; no full study entrypoint",
+    "Both binaries explicitly bound; source-built traces need own physical audit, not historical trajectory-equivalence claim"
+  ],
+  "operational_lease": "/tmp/FishSim_Native_Execution_Lease_2026-11-09.lock",
+  "native_work_by_reviewer": 0,
+  "limitations": "Known Linux x86-64 CPython3.12; no other-platform/Docker execution verified; engineering examples are not feeding-benefit evidence"
+}

@@ -1,0 +1,205 @@
+{
+  "status": "complete",
+  "at": "2026-11-08T23:21:28.260484+08:00",
+  "scope": "bounded_exposed_policy_replication_preparation",
+  "school_seeds": [
+    39063501,
+    39063502
+  ],
+  "seeds": [
+    39063501,
+    39063502
+  ],
+  "scenario": {
+    "n": 160,
+    "dt": 0.00125,
+    "speed": 3.0,
+    "repulsion_radius": 1.0,
+    "alignment_radius": 10.0,
+    "attraction_radius": 14.0,
+    "perception_angle": 2.356194490192345,
+    "turn_rate": 1.5707963267948966,
+    "native_noise": 0.0,
+    "initial_shape": "elongated",
+    "elongated_semiaxes": [
+      12.0,
+      4.0,
+      3.0
+    ],
+    "initial_centre_xy": [
+      0.0,
+      0.0
+    ],
+    "initial_centre_depth": 6.0,
+    "initial_min_distance": 1.0,
+    "initial_heading_spread": 0.1,
+    "initial_max_draws": 200000,
+    "route_direction": [
+      1.0,
+      0.0,
+      0.0
+    ],
+    "migration_gain": 0.2,
+    "preferred_depth": 5.0,
+    "depth_gain": 0.1,
+    "depth_scale": 2.0,
+    "depth_deadband": 2.0,
+    "surface_z": 0.0,
+    "surface_layer": 3.0,
+    "surface_gain": 0.8,
+    "external_cap": 0.8,
+    "threat_radius": 4.5,
+    "threat_gain": 0.8,
+    "threat_turn_multiplier": 1.0
+  },
+  "preparation_dt": 0.00125,
+  "encounter_checkpoint_time": 20.0,
+  "stability_screen_duration": 36.0,
+  "preparation_horizon": 56.0,
+  "expected_steps_per_school": 44800,
+  "sample_interval": 0.5,
+  "sampler": "research.prey_mediated.scenario.make_initial_state",
+  "factory": "research.prey_mediated.scenario.TravellingSchool",
+  "original_algorithm": "/tmp/FishSim Paper Model v4 Rebuilt/model/research/herding_study_2026-11-06/run.py:prepare_schools",
+  "original_preparation": {
+    "duration": 20.0,
+    "stability_duration": 36.0,
+    "factory": "TravellingSchool",
+    "encounter_factory": "SurfaceSafeSchool",
+    "criteria": "all finite and submerged, all prey retained; route speed >=0.6*swim speed and LCC>=0.9 for >=90% of the fixed stability window; all candidates/dispositions retained; no predator-outcome exclusion",
+    "numerical_tolerances": {
+      "mean_depth": 0.1,
+      "rg": 0.1,
+      "polarization": 0.01,
+      "largest_component_fraction": 0.02,
+      "route_speed": 0.03
+    },
+    "numerical_rule": "All declared development seeds: endpoint and p95 matched absolute discrepancies over t20-56 within tolerances for two finest grids; identical raw starts. Surface reflections require separate review."
+  },
+  "workers": 2,
+  "numeric_threads_per_worker": 1,
+  "criteria": {
+    "finite_and_submerged": true,
+    "retained_fish": 160,
+    "minimum_route_speed_fraction": 0.6,
+    "minimum_route_interval_fraction": 0.9,
+    "minimum_largest_component_fraction": 0.9,
+    "minimum_connected_sample_fraction": 0.9
+  },
+  "replacement_rule": "none; retain both fixed candidate dispositions",
+  "calibration": "none",
+  "numerical_convergence": "not assessed; one unchanged preparation grid",
+  "no_predators": true,
+  "feeding_encounters": 0,
+  "native": {
+    "path": "/tmp/FishSim Paper Model v4 Rebuilt/model/lib/fish_sim/cmodel.cpython-312-x86_64-linux-gnu.so",
+    "sha256": "cc21f00f355e1d25e8ecb48bd6aa50a7c9b63f909d921f4864a96e91d9ef2d4b",
+    "bytes": 1245808,
+    "imported": false
+  },
+  "source_sha256": {
+    "/tmp/FishSim Paper Model v4 Rebuilt/model/research/exposed_replication_2026-11-08/prepare.py": "e6e8a7249992b4ab1631769dfded44b9e7fc25c7d1926db3e227b5b65542721c",
+    "/tmp/FishSim Paper Model v4 Rebuilt/model/research/prey_mediated/BASELINE_V1.json": "d182173fabb5cb6080f1d11aa339c778310276b37383b4c07de922a405372be8",
+    "/tmp/FishSim Paper Model v4 Rebuilt/model/research/prey_mediated/results/short_angular_physical_g3_v1/manifest.json": "a2612b118c31fa6f26d85e40d182aeee3e9bacab7ccee6d0288fed1a27fedd5f",
+    "/tmp/FishSim Paper Model v4 Rebuilt/model/research/herding_study_2026-11-06/protocol.json": "9757bd1c714ba73d9c1c617fe25e9bc0d4ce18213b50ee1a8db2d3b64f7c4b88",
+    "/tmp/FishSim Paper Model v4 Rebuilt/model/research/herding_study_2026-11-06/run.py": "6ea7947276d716b0ffc71e9f5259c7b25b3f94cdd0bc9730f1ef198e73ceae67",
+    "/tmp/FishSim Paper Model v4 Rebuilt/model/research/herding_study_2026-11-07/v2_numeric_execution_v1.json": "c0ac69da535059d5b820679cdb019cd6312c7bf06eaf406a669f7ce1d520894a",
+    "/tmp/FishSim Paper Model v4 Rebuilt/model/research/prey_mediated/scenario.py": "6b4bd3b1da96c01a6ace04b35782cc4204d7fcd1fe9cbec88cbe01549d9e3777",
+    "/tmp/FishSim Paper Model v4 Rebuilt/model/research/prey_mediated/metrics.py": "a40ca44f51c44f24e90d764f3389de136c7fe0ec506adeb29e0328c031b88865",
+    "/tmp/FishSim Paper Model v4 Rebuilt/model/research/multispecies_feeding_study_2026-11-05/model_setup.py": "092be02e62a9cd1e19197ad0c985e2bdbe8df0c74553d844f68f637f2b7e48f4"
+  },
+  "preparation_gate_passed": true,
+  "candidates": [
+    {
+      "status": "complete",
+      "at": "2026-11-08T23:21:27.787734+08:00",
+      "school_seed": 39063501,
+      "accepted": true,
+      "checkpoint": {
+        "path": "/tmp/FishSim Paper Model v4 Rebuilt/model/research/exposed_replication_2026-11-08/checkpoints/s39063501/encounter.npz",
+        "sha256": "495d9e45b609064ccaffadca406d8f7fb6c164bf1929e9cb90fbb9365157e7f9",
+        "preparation_dt": 0.00125,
+        "time": 19.999999999999932
+      },
+      "construction_sha256": "b0c1b3028938c475015c650ac79693a9e89a47271f9479e0499384ffa8f31052",
+      "initial_array_sha256": "6cfa9b62d9beda0d347eb095c5f8eaa5acd88e7d0748994a53faa8837c86f887",
+      "screen_final_sha256": "05ce9203c6d746b831a8104db39a0920ed758bca56f4a05ca49ab716cd6bcf93",
+      "native_steps": 44800,
+      "checkpoint_metrics": {
+        "time": 20.0,
+        "rg": 5.781149295245958,
+        "polarization": 0.9998431732240544,
+        "largest_component_fraction": 1.0,
+        "centroid_x": 59.74134682545891,
+        "centroid_y": -0.1413943410687333,
+        "centroid_z": -5.556327970103155
+      },
+      "acceptance_checks": {
+        "finite_submerged": true,
+        "retained_fish": 160,
+        "route_speed_passing_fraction": 1.0,
+        "connectivity_passing_fraction": 1.0
+      },
+      "stability_min_route_speed": 2.9994397258391814,
+      "surface_reflections_at_checkpoint": 0,
+      "surface_reflections_at_screen_end": 0,
+      "wall_seconds": 39.375940033991355
+    },
+    {
+      "status": "complete",
+      "at": "2026-11-08T23:21:28.252217+08:00",
+      "school_seed": 39063502,
+      "accepted": true,
+      "checkpoint": {
+        "path": "/tmp/FishSim Paper Model v4 Rebuilt/model/research/exposed_replication_2026-11-08/checkpoints/s39063502/encounter.npz",
+        "sha256": "9e9c78c42908c051d585802ddf16ca1da5fb83905ca6a6529d386b57dd78ad3d",
+        "preparation_dt": 0.00125,
+        "time": 19.999999999999932
+      },
+      "construction_sha256": "4aa3ca34bda29486d8f20a04ec0ddcb743708a17905ee37d6470203affe7d64e",
+      "initial_array_sha256": "9c5457275fb8b1f3f978c986bd2aa42370274783faf9657e0bbb47ac98a0f28f",
+      "screen_final_sha256": "f77c6336a71eaa62e7e930bd7d7946baba679654faf52f4ef6145ef6fb980665",
+      "native_steps": 44800,
+      "checkpoint_metrics": {
+        "time": 20.0,
+        "rg": 5.640937003980036,
+        "polarization": 0.9998370939265028,
+        "largest_component_fraction": 1.0,
+        "centroid_x": 59.8726502722368,
+        "centroid_y": -0.19227108844288984,
+        "centroid_z": -5.582276179340372
+      },
+      "acceptance_checks": {
+        "finite_submerged": true,
+        "retained_fish": 160,
+        "route_speed_passing_fraction": 1.0,
+        "connectivity_passing_fraction": 1.0
+      },
+      "stability_min_route_speed": 2.9994007277872754,
+      "surface_reflections_at_checkpoint": 0,
+      "surface_reflections_at_screen_end": 0,
+      "wall_seconds": 39.84029963397188
+    }
+  ],
+  "checkpoints": {
+    "39063501": {
+      "path": "/tmp/FishSim Paper Model v4 Rebuilt/model/research/exposed_replication_2026-11-08/checkpoints/s39063501/encounter.npz",
+      "sha256": "495d9e45b609064ccaffadca406d8f7fb6c164bf1929e9cb90fbb9365157e7f9",
+      "preparation_dt": 0.00125,
+      "time": 19.999999999999932,
+      "accepted": true,
+      "screen_status": "passed"
+    },
+    "39063502": {
+      "path": "/tmp/FishSim Paper Model v4 Rebuilt/model/research/exposed_replication_2026-11-08/checkpoints/s39063502/encounter.npz",
+      "sha256": "9e9c78c42908c051d585802ddf16ca1da5fb83905ca6a6529d386b57dd78ad3d",
+      "preparation_dt": 0.00125,
+      "time": 19.999999999999932,
+      "accepted": true,
+      "screen_status": "passed"
+    }
+  },
+  "total_native_steps": 89600,
+  "total_model_time_T": 112.0,
+  "wall_seconds": 39.985110178007744
+}

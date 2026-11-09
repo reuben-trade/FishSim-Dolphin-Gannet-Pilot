@@ -1,0 +1,104 @@
+{
+  "approved": true,
+  "at": "2026-11-09T12:49:58.507724+00:00",
+  "reviewer": "/root/sweep_design",
+  "scope": "headline_model_engineering_validation_only",
+  "source_freeze_sha256": "143ae45ac98cb385cdba9567b6262e499d48859f06a19374eb0fbc2b5638b414",
+  "plan_sha256": "458c09932f8712005c450c0b09dd0547c7375cd993f14bc6181ceb540a43de8d",
+  "driver_sha256": "2508f2c13b50b2692cc7ad61e743cd2c8a364d549025b911347a076b3c27c521",
+  "maximum_zero_constructions": 216,
+  "maximum_native_steps": 20000,
+  "workers": 1,
+  "numeric_threads": 1,
+  "execution_root": "/tmp/FishSim_Headline_Model_Execution_2026-11-09",
+  "task_lease": "/tmp/FishSim_Native_Execution_Lease_2026-11-09.lock",
+  "sequence": [
+    {
+      "name": "historical_zero108",
+      "kind": "historical",
+      "mode": "--check",
+      "setting": null,
+      "duration_T": 0.0,
+      "native_steps": 0,
+      "native_zero_constructions": 108,
+      "output": null
+    },
+    {
+      "name": "source-built_zero108",
+      "kind": "source-built",
+      "mode": "--check",
+      "setting": null,
+      "duration_T": 0.0,
+      "native_steps": 0,
+      "native_zero_constructions": 108,
+      "output": null
+    },
+    {
+      "name": "historical_headline_4p0T",
+      "kind": "historical",
+      "mode": "--quick",
+      "setting": "headline",
+      "duration_T": 4.0,
+      "native_steps": 6400,
+      "native_zero_constructions": 0,
+      "output": "/tmp/FishSim_Headline_Model_Execution_2026-11-09/historical_headline_4p0T",
+      "role": "headline_core"
+    },
+    {
+      "name": "historical_joint_2p0T",
+      "kind": "historical",
+      "mode": "--quick",
+      "setting": "joint",
+      "duration_T": 2.0,
+      "native_steps": 3200,
+      "native_zero_constructions": 0,
+      "output": "/tmp/FishSim_Headline_Model_Execution_2026-11-09/historical_joint_2p0T",
+      "role": "headline_core"
+    },
+    {
+      "name": "source-built_headline_4p0T",
+      "kind": "source-built",
+      "mode": "--quick",
+      "setting": "headline",
+      "duration_T": 4.0,
+      "native_steps": 6400,
+      "native_zero_constructions": 0,
+      "output": "/tmp/FishSim_Headline_Model_Execution_2026-11-09/source-built_headline_4p0T",
+      "role": "headline_core"
+    },
+    {
+      "name": "source-built_joint_2p0T",
+      "kind": "source-built",
+      "mode": "--quick",
+      "setting": "joint",
+      "duration_T": 2.0,
+      "native_steps": 3200,
+      "native_zero_constructions": 0,
+      "output": "/tmp/FishSim_Headline_Model_Execution_2026-11-09/source-built_joint_2p0T",
+      "role": "headline_core"
+    },
+    {
+      "name": "source-built_frontend_reuse_0p5T",
+      "kind": "source-built",
+      "mode": "--quick",
+      "setting": "headline",
+      "duration_T": 0.5,
+      "native_steps": 800,
+      "native_zero_constructions": 0,
+      "output": "/tmp/FishSim_Headline_Model_Execution_2026-11-09/source-built_frontend_reuse_0p5T",
+      "role": "frontend_reuse_path"
+    }
+  ],
+  "interface_source_review_sha256": "7fd3c80752534708a488578116810611be65cf797214e680bc459b71e1190fa7",
+  "runtime_declarations": {
+    "historical": "ddf9cf3ad67834eb066deca1199cd25fcaf17612de31f699fc7ff72acee40fc5",
+    "source-built": "d6c78c5860ba0aaacfb8c8ff03d5dcf6f499028d9580281386a2bb9d826ebeca"
+  },
+  "required_order": "Both exact108-start zero checks pass before any integration; all quick commands reuse zero seals; no automatic retries",
+  "stage_condition": "19200 core integration and800 frontend reuse steps only; total20000; any mismatch stops and preserves partial outputs",
+  "interpretation": "Engineering validation only; no new feeding-benefit estimate or independent schools",
+  "independent_final_auditor": {
+    "path": "/tmp/FishSim_Headline_Model_Independent_Execution_Audit_2026-11-09.py",
+    "sha256": "f6a95373450b8843b09647a3dee3a8b9834d6e9c6473dde20f9f4fb744a30a89"
+  }
+}
