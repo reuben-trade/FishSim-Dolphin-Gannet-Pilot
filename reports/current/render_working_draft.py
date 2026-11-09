@@ -132,6 +132,9 @@ for i,page in enumerate(d['pages']):
   parts.append(r'\end{minipage}')
 parts += [r'\twocolumn\bibliographystyle{unsrtnat}\bibliography{references}',r'\end{document}']
 (ROOT/'main.tex').write_text('\n'.join(parts)+'\n')
-for name in ['references.bib']:(ROOT/name).write_bytes((ROOT/'original_downloads'/name).read_bytes())
+for name in ['references.bib']:
+ original=ROOT/'original_downloads'/name
+ if original.is_file():(ROOT/name).write_bytes(original.read_bytes())
+ elif not (ROOT/name).is_file():raise FileNotFoundError(name)
 (ROOT/'build_validation.json').write_text(json.dumps(dict(at=datetime.now(ZoneInfo('Australia/Perth')).isoformat(),body_pages=6,reference_pages=1,numbered_figures=4,body_font_points=10,margins_mm=18,columns=2,renderer='matplotlib vector PDF; editable DOCX companion',latex_compiler_network_unavailable=True,replication_captures_alone=d['replication_counts']['D_alone'],replication_captures_with_gannets=d['replication_counts']['D_mixed'],word_count=sum(len(t.split()) for p in d['pages'] for h,t in p['paragraphs'])),indent=2))
 print(pdf)

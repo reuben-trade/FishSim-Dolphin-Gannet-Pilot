@@ -1,0 +1,2216 @@
+{
+  "school_seed": 39063501,
+  "herding_minimum_T": 2.0,
+  "gannets": 9,
+  "dolphins": 12,
+  "policy": "H2_G9",
+  "presence": "DG",
+  "capture_seed": 61001,
+  "dt": 0.00125,
+  "duration_T": 36.0,
+  "anchor_replay": false,
+  "case_name": "s39063501_H2_G9_DG_c61001",
+  "study": "high_count_regime_extension_2026-11-09",
+  "duration": 36.0,
+  "minimum_herding_duration": 2.0,
+  "dolphin_target_policy": "exposed",
+  "dolphin_policy_version": "simple_continuous_proximity_herdH_one_strike_regime_v1",
+  "dolphin_policy_parameters": {
+    "tracker": {
+      "link_radius": 2.0,
+      "minimum_patch_size": 4,
+      "overlap_fraction": 0.5,
+      "visibility_grace": 0.5,
+      "lateral_scale": 3.0
+    },
+    "geometry": {
+      "link_radius": 2.0,
+      "minimum_patch_size": 4,
+      "core_quantile": 0.9,
+      "stand_off": 2.5,
+      "below_offset": 2.5,
+      "lateral_scale": 3.0,
+      "tracking_gain": 1.0,
+      "surface_margin": 0.3,
+      "entry_tolerance": 1.0,
+      "threat_radius": 4.5,
+      "sensing_radius": 25.0
+    },
+    "approach_budget": 16.0,
+    "pressure_minimum": 2.0,
+    "maintenance_maximum": 4.0,
+    "withdrawal_duration": 1.0,
+    "release_tolerance": 2.0,
+    "launch_radius": 6.0
+  },
+  "shared_gannet_policy": "global_dbscan_size_weighted_gannet_target_v1",
+  "capture_probability": 0.7,
+  "geometry": "point",
+  "contact_model": "point",
+  "counts": {
+    "fish": 160,
+    "D": 12,
+    "G": 9
+  },
+  "native_sha256": "eb8654a520304cc429aced67c7e3706db8d2ef1449c5e1327a682a479b10a558",
+  "native": {
+    "path": "/home/venture/uwa/complex-systems/FishSim-RL/lib/fish_sim/cmodel.cpython-312-x86_64-linux-gnu.so",
+    "sha256": "eb8654a520304cc429aced67c7e3706db8d2ef1449c5e1327a682a479b10a558",
+    "bytes": 1350264,
+    "imported": false
+  },
+  "checkpoint_path": "/home/venture/uwa/complex-systems/FishSim-RL/research/exposed_replication_2026-11-08/checkpoints/s39063501/encounter.npz",
+  "checkpoint_sha256": "495d9e45b609064ccaffadca406d8f7fb6c164bf1929e9cb90fbb9365157e7f9",
+  "original_declaration_sha256": "c0ac69da535059d5b820679cdb019cd6312c7bf06eaf406a669f7ce1d520894a",
+  "preparation_manifest_path": "/home/venture/uwa/complex-systems/FishSim-RL/research/exposed_replication_2026-11-08/checkpoints/manifest.json",
+  "preparation_manifest_sha256": "2a90921c49deeb74377df4a501a189c0057b842c4f5623bbe8949084c0fe1d49",
+  "start_shift": [
+    -0.03742415483217343,
+    -0.30474442166511906,
+    0.0
+  ],
+  "readiness_delays": {
+    "D00": 0.15565099566319218,
+    "D01": 0.16039590050737584,
+    "D02": 1.1063050673978954,
+    "D03": 1.338743033548918,
+    "D04": 1.876923275437084,
+    "D05": 0.15585551064730985,
+    "D06": 1.5349278194107319,
+    "D07": 0.3132345295933483,
+    "D08": 0.45850552073575024,
+    "D09": 1.2413850442069687,
+    "D10": 1.2567768885379191,
+    "D11": 0.10510292677770772,
+    "G0": 1.183489989040382,
+    "G1": 0.918463478001412,
+    "G2": 0.7320653721299359,
+    "G3": 0.6145890129750806,
+    "G4": 1.1205776891008852,
+    "G5": 0.6292119306380117,
+    "G6": 1.9564966947031266,
+    "G7": 0.1574026806214741,
+    "G8": 0.8968069204134588
+  },
+  "engine_seed": 3563025110,
+  "cycle_rule": "continuous local pressure proximity for H, one feasible exposed-prey strike, ordinary recovery, herd again",
+  "coupling_scheduler": "none; no gannet-event or count input to dolphin controllers",
+  "target_selection": "lowest visible neighbour count, interception difficulty, distance and prey ID; dense fish eligible",
+  "exposure_neighbour_radius": 2.0,
+  "monitoring_interval": 0.1,
+  "bird_observation": "all current underwater fish within unchanged detection depth",
+  "bird_targeting": "unchanged DBSCAN eps2/min_samples4; accessible-count weighted patch, densest accessible fish",
+  "bird_roster": "nested stable IDs G0 through G(N-1); actor Gi uses original launch site G(i modulo3); counts9/12/18 give3/4/6 per site",
+  "bird_count_scope": "number and local multiplicity in a fixed three-location point-body layout; no collision or avoidance model",
+  "stochastic_initialization": "original stable-ID readiness/private capture/tie/target formulas; no additional timing parameter",
+  "remove_prey": true,
+  "predator_cues": true,
+  "units": "uncalibrated model units",
+  "developmental": true,
+  "numerical_convergence": "not established; original coarse-grid exploratory map",
+  "controller_initial_state": {
+    "D00": {
+      "schema_version": 1,
+      "version": "local_patch_pressure_v2",
+      "tactic": "pressure",
+      "legacy_sha256": "b0a2ad6f570d0dc7d1d0a80bf3ac148fd26c180a98b288b5fae8af1fed5f291d",
+      "parameters": {
+        "tracker": {
+          "link_radius": 2.0,
+          "minimum_patch_size": 4,
+          "overlap_fraction": 0.5,
+          "visibility_grace": 0.5,
+          "lateral_scale": 3.0
+        },
+        "geometry": {
+          "link_radius": 2.0,
+          "minimum_patch_size": 4,
+          "core_quantile": 0.9,
+          "stand_off": 2.5,
+          "below_offset": 2.5,
+          "lateral_scale": 3.0,
+          "tracking_gain": 1.0,
+          "surface_margin": 0.3,
+          "entry_tolerance": 1.0,
+          "threat_radius": 4.5,
+          "sensing_radius": 25.0
+        },
+        "approach_budget": 16.0,
+        "pressure_minimum": 2.0,
+        "maintenance_maximum": 4.0,
+        "withdrawal_duration": 1.0,
+        "release_tolerance": 2.0,
+        "launch_radius": 6.0
+      },
+      "memory": {
+        "phase": "acquire",
+        "phase_started": 0.0,
+        "attempt_started": null,
+        "attempt_deadline": null,
+        "maintenance_started": null,
+        "opportunity_target": null,
+        "withdrawal_direction": null,
+        "tracker": {
+          "schema_version": 1,
+          "epoch": 0,
+          "member_ids": [],
+          "last_seen_time": null,
+          "last_centre": null,
+          "last_velocity": null,
+          "last_forward": null,
+          "last_forward_time": null,
+          "side_coefficient": 0.0
+        }
+      },
+      "committed": null,
+      "pending": null,
+      "last_diagnostics": null,
+      "simple": {
+        "version": "simple_continuous_proximity_herdH_one_strike_regime_v1",
+        "policy": "exposed",
+        "herding_minimum": 2.0,
+        "opportunity_events": []
+      }
+    },
+    "D01": {
+      "schema_version": 1,
+      "version": "local_patch_pressure_v2",
+      "tactic": "pressure",
+      "legacy_sha256": "b0a2ad6f570d0dc7d1d0a80bf3ac148fd26c180a98b288b5fae8af1fed5f291d",
+      "parameters": {
+        "tracker": {
+          "link_radius": 2.0,
+          "minimum_patch_size": 4,
+          "overlap_fraction": 0.5,
+          "visibility_grace": 0.5,
+          "lateral_scale": 3.0
+        },
+        "geometry": {
+          "link_radius": 2.0,
+          "minimum_patch_size": 4,
+          "core_quantile": 0.9,
+          "stand_off": 2.5,
+          "below_offset": 2.5,
+          "lateral_scale": 3.0,
+          "tracking_gain": 1.0,
+          "surface_margin": 0.3,
+          "entry_tolerance": 1.0,
+          "threat_radius": 4.5,
+          "sensing_radius": 25.0
+        },
+        "approach_budget": 16.0,
+        "pressure_minimum": 2.0,
+        "maintenance_maximum": 4.0,
+        "withdrawal_duration": 1.0,
+        "release_tolerance": 2.0,
+        "launch_radius": 6.0
+      },
+      "memory": {
+        "phase": "acquire",
+        "phase_started": 0.0,
+        "attempt_started": null,
+        "attempt_deadline": null,
+        "maintenance_started": null,
+        "opportunity_target": null,
+        "withdrawal_direction": null,
+        "tracker": {
+          "schema_version": 1,
+          "epoch": 0,
+          "member_ids": [],
+          "last_seen_time": null,
+          "last_centre": null,
+          "last_velocity": null,
+          "last_forward": null,
+          "last_forward_time": null,
+          "side_coefficient": 0.0
+        }
+      },
+      "committed": null,
+      "pending": null,
+      "last_diagnostics": null,
+      "simple": {
+        "version": "simple_continuous_proximity_herdH_one_strike_regime_v1",
+        "policy": "exposed",
+        "herding_minimum": 2.0,
+        "opportunity_events": []
+      }
+    },
+    "D02": {
+      "schema_version": 1,
+      "version": "local_patch_pressure_v2",
+      "tactic": "pressure",
+      "legacy_sha256": "b0a2ad6f570d0dc7d1d0a80bf3ac148fd26c180a98b288b5fae8af1fed5f291d",
+      "parameters": {
+        "tracker": {
+          "link_radius": 2.0,
+          "minimum_patch_size": 4,
+          "overlap_fraction": 0.5,
+          "visibility_grace": 0.5,
+          "lateral_scale": 3.0
+        },
+        "geometry": {
+          "link_radius": 2.0,
+          "minimum_patch_size": 4,
+          "core_quantile": 0.9,
+          "stand_off": 2.5,
+          "below_offset": 2.5,
+          "lateral_scale": 3.0,
+          "tracking_gain": 1.0,
+          "surface_margin": 0.3,
+          "entry_tolerance": 1.0,
+          "threat_radius": 4.5,
+          "sensing_radius": 25.0
+        },
+        "approach_budget": 16.0,
+        "pressure_minimum": 2.0,
+        "maintenance_maximum": 4.0,
+        "withdrawal_duration": 1.0,
+        "release_tolerance": 2.0,
+        "launch_radius": 6.0
+      },
+      "memory": {
+        "phase": "acquire",
+        "phase_started": 0.0,
+        "attempt_started": null,
+        "attempt_deadline": null,
+        "maintenance_started": null,
+        "opportunity_target": null,
+        "withdrawal_direction": null,
+        "tracker": {
+          "schema_version": 1,
+          "epoch": 0,
+          "member_ids": [],
+          "last_seen_time": null,
+          "last_centre": null,
+          "last_velocity": null,
+          "last_forward": null,
+          "last_forward_time": null,
+          "side_coefficient": 0.0
+        }
+      },
+      "committed": null,
+      "pending": null,
+      "last_diagnostics": null,
+      "simple": {
+        "version": "simple_continuous_proximity_herdH_one_strike_regime_v1",
+        "policy": "exposed",
+        "herding_minimum": 2.0,
+        "opportunity_events": []
+      }
+    },
+    "D03": {
+      "schema_version": 1,
+      "version": "local_patch_pressure_v2",
+      "tactic": "pressure",
+      "legacy_sha256": "b0a2ad6f570d0dc7d1d0a80bf3ac148fd26c180a98b288b5fae8af1fed5f291d",
+      "parameters": {
+        "tracker": {
+          "link_radius": 2.0,
+          "minimum_patch_size": 4,
+          "overlap_fraction": 0.5,
+          "visibility_grace": 0.5,
+          "lateral_scale": 3.0
+        },
+        "geometry": {
+          "link_radius": 2.0,
+          "minimum_patch_size": 4,
+          "core_quantile": 0.9,
+          "stand_off": 2.5,
+          "below_offset": 2.5,
+          "lateral_scale": 3.0,
+          "tracking_gain": 1.0,
+          "surface_margin": 0.3,
+          "entry_tolerance": 1.0,
+          "threat_radius": 4.5,
+          "sensing_radius": 25.0
+        },
+        "approach_budget": 16.0,
+        "pressure_minimum": 2.0,
+        "maintenance_maximum": 4.0,
+        "withdrawal_duration": 1.0,
+        "release_tolerance": 2.0,
+        "launch_radius": 6.0
+      },
+      "memory": {
+        "phase": "acquire",
+        "phase_started": 0.0,
+        "attempt_started": null,
+        "attempt_deadline": null,
+        "maintenance_started": null,
+        "opportunity_target": null,
+        "withdrawal_direction": null,
+        "tracker": {
+          "schema_version": 1,
+          "epoch": 0,
+          "member_ids": [],
+          "last_seen_time": null,
+          "last_centre": null,
+          "last_velocity": null,
+          "last_forward": null,
+          "last_forward_time": null,
+          "side_coefficient": 0.0
+        }
+      },
+      "committed": null,
+      "pending": null,
+      "last_diagnostics": null,
+      "simple": {
+        "version": "simple_continuous_proximity_herdH_one_strike_regime_v1",
+        "policy": "exposed",
+        "herding_minimum": 2.0,
+        "opportunity_events": []
+      }
+    },
+    "D04": {
+      "schema_version": 1,
+      "version": "local_patch_pressure_v2",
+      "tactic": "pressure",
+      "legacy_sha256": "b0a2ad6f570d0dc7d1d0a80bf3ac148fd26c180a98b288b5fae8af1fed5f291d",
+      "parameters": {
+        "tracker": {
+          "link_radius": 2.0,
+          "minimum_patch_size": 4,
+          "overlap_fraction": 0.5,
+          "visibility_grace": 0.5,
+          "lateral_scale": 3.0
+        },
+        "geometry": {
+          "link_radius": 2.0,
+          "minimum_patch_size": 4,
+          "core_quantile": 0.9,
+          "stand_off": 2.5,
+          "below_offset": 2.5,
+          "lateral_scale": 3.0,
+          "tracking_gain": 1.0,
+          "surface_margin": 0.3,
+          "entry_tolerance": 1.0,
+          "threat_radius": 4.5,
+          "sensing_radius": 25.0
+        },
+        "approach_budget": 16.0,
+        "pressure_minimum": 2.0,
+        "maintenance_maximum": 4.0,
+        "withdrawal_duration": 1.0,
+        "release_tolerance": 2.0,
+        "launch_radius": 6.0
+      },
+      "memory": {
+        "phase": "acquire",
+        "phase_started": 0.0,
+        "attempt_started": null,
+        "attempt_deadline": null,
+        "maintenance_started": null,
+        "opportunity_target": null,
+        "withdrawal_direction": null,
+        "tracker": {
+          "schema_version": 1,
+          "epoch": 0,
+          "member_ids": [],
+          "last_seen_time": null,
+          "last_centre": null,
+          "last_velocity": null,
+          "last_forward": null,
+          "last_forward_time": null,
+          "side_coefficient": 0.0
+        }
+      },
+      "committed": null,
+      "pending": null,
+      "last_diagnostics": null,
+      "simple": {
+        "version": "simple_continuous_proximity_herdH_one_strike_regime_v1",
+        "policy": "exposed",
+        "herding_minimum": 2.0,
+        "opportunity_events": []
+      }
+    },
+    "D05": {
+      "schema_version": 1,
+      "version": "local_patch_pressure_v2",
+      "tactic": "pressure",
+      "legacy_sha256": "b0a2ad6f570d0dc7d1d0a80bf3ac148fd26c180a98b288b5fae8af1fed5f291d",
+      "parameters": {
+        "tracker": {
+          "link_radius": 2.0,
+          "minimum_patch_size": 4,
+          "overlap_fraction": 0.5,
+          "visibility_grace": 0.5,
+          "lateral_scale": 3.0
+        },
+        "geometry": {
+          "link_radius": 2.0,
+          "minimum_patch_size": 4,
+          "core_quantile": 0.9,
+          "stand_off": 2.5,
+          "below_offset": 2.5,
+          "lateral_scale": 3.0,
+          "tracking_gain": 1.0,
+          "surface_margin": 0.3,
+          "entry_tolerance": 1.0,
+          "threat_radius": 4.5,
+          "sensing_radius": 25.0
+        },
+        "approach_budget": 16.0,
+        "pressure_minimum": 2.0,
+        "maintenance_maximum": 4.0,
+        "withdrawal_duration": 1.0,
+        "release_tolerance": 2.0,
+        "launch_radius": 6.0
+      },
+      "memory": {
+        "phase": "acquire",
+        "phase_started": 0.0,
+        "attempt_started": null,
+        "attempt_deadline": null,
+        "maintenance_started": null,
+        "opportunity_target": null,
+        "withdrawal_direction": null,
+        "tracker": {
+          "schema_version": 1,
+          "epoch": 0,
+          "member_ids": [],
+          "last_seen_time": null,
+          "last_centre": null,
+          "last_velocity": null,
+          "last_forward": null,
+          "last_forward_time": null,
+          "side_coefficient": 0.0
+        }
+      },
+      "committed": null,
+      "pending": null,
+      "last_diagnostics": null,
+      "simple": {
+        "version": "simple_continuous_proximity_herdH_one_strike_regime_v1",
+        "policy": "exposed",
+        "herding_minimum": 2.0,
+        "opportunity_events": []
+      }
+    },
+    "D06": {
+      "schema_version": 1,
+      "version": "local_patch_pressure_v2",
+      "tactic": "pressure",
+      "legacy_sha256": "b0a2ad6f570d0dc7d1d0a80bf3ac148fd26c180a98b288b5fae8af1fed5f291d",
+      "parameters": {
+        "tracker": {
+          "link_radius": 2.0,
+          "minimum_patch_size": 4,
+          "overlap_fraction": 0.5,
+          "visibility_grace": 0.5,
+          "lateral_scale": 3.0
+        },
+        "geometry": {
+          "link_radius": 2.0,
+          "minimum_patch_size": 4,
+          "core_quantile": 0.9,
+          "stand_off": 2.5,
+          "below_offset": 2.5,
+          "lateral_scale": 3.0,
+          "tracking_gain": 1.0,
+          "surface_margin": 0.3,
+          "entry_tolerance": 1.0,
+          "threat_radius": 4.5,
+          "sensing_radius": 25.0
+        },
+        "approach_budget": 16.0,
+        "pressure_minimum": 2.0,
+        "maintenance_maximum": 4.0,
+        "withdrawal_duration": 1.0,
+        "release_tolerance": 2.0,
+        "launch_radius": 6.0
+      },
+      "memory": {
+        "phase": "acquire",
+        "phase_started": 0.0,
+        "attempt_started": null,
+        "attempt_deadline": null,
+        "maintenance_started": null,
+        "opportunity_target": null,
+        "withdrawal_direction": null,
+        "tracker": {
+          "schema_version": 1,
+          "epoch": 0,
+          "member_ids": [],
+          "last_seen_time": null,
+          "last_centre": null,
+          "last_velocity": null,
+          "last_forward": null,
+          "last_forward_time": null,
+          "side_coefficient": 0.0
+        }
+      },
+      "committed": null,
+      "pending": null,
+      "last_diagnostics": null,
+      "simple": {
+        "version": "simple_continuous_proximity_herdH_one_strike_regime_v1",
+        "policy": "exposed",
+        "herding_minimum": 2.0,
+        "opportunity_events": []
+      }
+    },
+    "D07": {
+      "schema_version": 1,
+      "version": "local_patch_pressure_v2",
+      "tactic": "pressure",
+      "legacy_sha256": "b0a2ad6f570d0dc7d1d0a80bf3ac148fd26c180a98b288b5fae8af1fed5f291d",
+      "parameters": {
+        "tracker": {
+          "link_radius": 2.0,
+          "minimum_patch_size": 4,
+          "overlap_fraction": 0.5,
+          "visibility_grace": 0.5,
+          "lateral_scale": 3.0
+        },
+        "geometry": {
+          "link_radius": 2.0,
+          "minimum_patch_size": 4,
+          "core_quantile": 0.9,
+          "stand_off": 2.5,
+          "below_offset": 2.5,
+          "lateral_scale": 3.0,
+          "tracking_gain": 1.0,
+          "surface_margin": 0.3,
+          "entry_tolerance": 1.0,
+          "threat_radius": 4.5,
+          "sensing_radius": 25.0
+        },
+        "approach_budget": 16.0,
+        "pressure_minimum": 2.0,
+        "maintenance_maximum": 4.0,
+        "withdrawal_duration": 1.0,
+        "release_tolerance": 2.0,
+        "launch_radius": 6.0
+      },
+      "memory": {
+        "phase": "acquire",
+        "phase_started": 0.0,
+        "attempt_started": null,
+        "attempt_deadline": null,
+        "maintenance_started": null,
+        "opportunity_target": null,
+        "withdrawal_direction": null,
+        "tracker": {
+          "schema_version": 1,
+          "epoch": 0,
+          "member_ids": [],
+          "last_seen_time": null,
+          "last_centre": null,
+          "last_velocity": null,
+          "last_forward": null,
+          "last_forward_time": null,
+          "side_coefficient": 0.0
+        }
+      },
+      "committed": null,
+      "pending": null,
+      "last_diagnostics": null,
+      "simple": {
+        "version": "simple_continuous_proximity_herdH_one_strike_regime_v1",
+        "policy": "exposed",
+        "herding_minimum": 2.0,
+        "opportunity_events": []
+      }
+    },
+    "D08": {
+      "schema_version": 1,
+      "version": "local_patch_pressure_v2",
+      "tactic": "pressure",
+      "legacy_sha256": "b0a2ad6f570d0dc7d1d0a80bf3ac148fd26c180a98b288b5fae8af1fed5f291d",
+      "parameters": {
+        "tracker": {
+          "link_radius": 2.0,
+          "minimum_patch_size": 4,
+          "overlap_fraction": 0.5,
+          "visibility_grace": 0.5,
+          "lateral_scale": 3.0
+        },
+        "geometry": {
+          "link_radius": 2.0,
+          "minimum_patch_size": 4,
+          "core_quantile": 0.9,
+          "stand_off": 2.5,
+          "below_offset": 2.5,
+          "lateral_scale": 3.0,
+          "tracking_gain": 1.0,
+          "surface_margin": 0.3,
+          "entry_tolerance": 1.0,
+          "threat_radius": 4.5,
+          "sensing_radius": 25.0
+        },
+        "approach_budget": 16.0,
+        "pressure_minimum": 2.0,
+        "maintenance_maximum": 4.0,
+        "withdrawal_duration": 1.0,
+        "release_tolerance": 2.0,
+        "launch_radius": 6.0
+      },
+      "memory": {
+        "phase": "acquire",
+        "phase_started": 0.0,
+        "attempt_started": null,
+        "attempt_deadline": null,
+        "maintenance_started": null,
+        "opportunity_target": null,
+        "withdrawal_direction": null,
+        "tracker": {
+          "schema_version": 1,
+          "epoch": 0,
+          "member_ids": [],
+          "last_seen_time": null,
+          "last_centre": null,
+          "last_velocity": null,
+          "last_forward": null,
+          "last_forward_time": null,
+          "side_coefficient": 0.0
+        }
+      },
+      "committed": null,
+      "pending": null,
+      "last_diagnostics": null,
+      "simple": {
+        "version": "simple_continuous_proximity_herdH_one_strike_regime_v1",
+        "policy": "exposed",
+        "herding_minimum": 2.0,
+        "opportunity_events": []
+      }
+    },
+    "D09": {
+      "schema_version": 1,
+      "version": "local_patch_pressure_v2",
+      "tactic": "pressure",
+      "legacy_sha256": "b0a2ad6f570d0dc7d1d0a80bf3ac148fd26c180a98b288b5fae8af1fed5f291d",
+      "parameters": {
+        "tracker": {
+          "link_radius": 2.0,
+          "minimum_patch_size": 4,
+          "overlap_fraction": 0.5,
+          "visibility_grace": 0.5,
+          "lateral_scale": 3.0
+        },
+        "geometry": {
+          "link_radius": 2.0,
+          "minimum_patch_size": 4,
+          "core_quantile": 0.9,
+          "stand_off": 2.5,
+          "below_offset": 2.5,
+          "lateral_scale": 3.0,
+          "tracking_gain": 1.0,
+          "surface_margin": 0.3,
+          "entry_tolerance": 1.0,
+          "threat_radius": 4.5,
+          "sensing_radius": 25.0
+        },
+        "approach_budget": 16.0,
+        "pressure_minimum": 2.0,
+        "maintenance_maximum": 4.0,
+        "withdrawal_duration": 1.0,
+        "release_tolerance": 2.0,
+        "launch_radius": 6.0
+      },
+      "memory": {
+        "phase": "acquire",
+        "phase_started": 0.0,
+        "attempt_started": null,
+        "attempt_deadline": null,
+        "maintenance_started": null,
+        "opportunity_target": null,
+        "withdrawal_direction": null,
+        "tracker": {
+          "schema_version": 1,
+          "epoch": 0,
+          "member_ids": [],
+          "last_seen_time": null,
+          "last_centre": null,
+          "last_velocity": null,
+          "last_forward": null,
+          "last_forward_time": null,
+          "side_coefficient": 0.0
+        }
+      },
+      "committed": null,
+      "pending": null,
+      "last_diagnostics": null,
+      "simple": {
+        "version": "simple_continuous_proximity_herdH_one_strike_regime_v1",
+        "policy": "exposed",
+        "herding_minimum": 2.0,
+        "opportunity_events": []
+      }
+    },
+    "D10": {
+      "schema_version": 1,
+      "version": "local_patch_pressure_v2",
+      "tactic": "pressure",
+      "legacy_sha256": "b0a2ad6f570d0dc7d1d0a80bf3ac148fd26c180a98b288b5fae8af1fed5f291d",
+      "parameters": {
+        "tracker": {
+          "link_radius": 2.0,
+          "minimum_patch_size": 4,
+          "overlap_fraction": 0.5,
+          "visibility_grace": 0.5,
+          "lateral_scale": 3.0
+        },
+        "geometry": {
+          "link_radius": 2.0,
+          "minimum_patch_size": 4,
+          "core_quantile": 0.9,
+          "stand_off": 2.5,
+          "below_offset": 2.5,
+          "lateral_scale": 3.0,
+          "tracking_gain": 1.0,
+          "surface_margin": 0.3,
+          "entry_tolerance": 1.0,
+          "threat_radius": 4.5,
+          "sensing_radius": 25.0
+        },
+        "approach_budget": 16.0,
+        "pressure_minimum": 2.0,
+        "maintenance_maximum": 4.0,
+        "withdrawal_duration": 1.0,
+        "release_tolerance": 2.0,
+        "launch_radius": 6.0
+      },
+      "memory": {
+        "phase": "acquire",
+        "phase_started": 0.0,
+        "attempt_started": null,
+        "attempt_deadline": null,
+        "maintenance_started": null,
+        "opportunity_target": null,
+        "withdrawal_direction": null,
+        "tracker": {
+          "schema_version": 1,
+          "epoch": 0,
+          "member_ids": [],
+          "last_seen_time": null,
+          "last_centre": null,
+          "last_velocity": null,
+          "last_forward": null,
+          "last_forward_time": null,
+          "side_coefficient": 0.0
+        }
+      },
+      "committed": null,
+      "pending": null,
+      "last_diagnostics": null,
+      "simple": {
+        "version": "simple_continuous_proximity_herdH_one_strike_regime_v1",
+        "policy": "exposed",
+        "herding_minimum": 2.0,
+        "opportunity_events": []
+      }
+    },
+    "D11": {
+      "schema_version": 1,
+      "version": "local_patch_pressure_v2",
+      "tactic": "pressure",
+      "legacy_sha256": "b0a2ad6f570d0dc7d1d0a80bf3ac148fd26c180a98b288b5fae8af1fed5f291d",
+      "parameters": {
+        "tracker": {
+          "link_radius": 2.0,
+          "minimum_patch_size": 4,
+          "overlap_fraction": 0.5,
+          "visibility_grace": 0.5,
+          "lateral_scale": 3.0
+        },
+        "geometry": {
+          "link_radius": 2.0,
+          "minimum_patch_size": 4,
+          "core_quantile": 0.9,
+          "stand_off": 2.5,
+          "below_offset": 2.5,
+          "lateral_scale": 3.0,
+          "tracking_gain": 1.0,
+          "surface_margin": 0.3,
+          "entry_tolerance": 1.0,
+          "threat_radius": 4.5,
+          "sensing_radius": 25.0
+        },
+        "approach_budget": 16.0,
+        "pressure_minimum": 2.0,
+        "maintenance_maximum": 4.0,
+        "withdrawal_duration": 1.0,
+        "release_tolerance": 2.0,
+        "launch_radius": 6.0
+      },
+      "memory": {
+        "phase": "acquire",
+        "phase_started": 0.0,
+        "attempt_started": null,
+        "attempt_deadline": null,
+        "maintenance_started": null,
+        "opportunity_target": null,
+        "withdrawal_direction": null,
+        "tracker": {
+          "schema_version": 1,
+          "epoch": 0,
+          "member_ids": [],
+          "last_seen_time": null,
+          "last_centre": null,
+          "last_velocity": null,
+          "last_forward": null,
+          "last_forward_time": null,
+          "side_coefficient": 0.0
+        }
+      },
+      "committed": null,
+      "pending": null,
+      "last_diagnostics": null,
+      "simple": {
+        "version": "simple_continuous_proximity_herdH_one_strike_regime_v1",
+        "policy": "exposed",
+        "herding_minimum": 2.0,
+        "opportunity_events": []
+      }
+    },
+    "G0": {
+      "version": "global_dbscan_size_weighted_gannet_target_v1",
+      "need_selection": true,
+      "target_rng_state": {
+        "bit_generator": "PCG64",
+        "state": {
+          "state": 325884566459866671520119951179910686847,
+          "inc": 75123339226997731892663338762856264023
+        },
+        "has_uint32": 0,
+        "uinteger": 0
+      },
+      "committed": null,
+      "pending": null,
+      "last_diagnostics": {}
+    },
+    "G1": {
+      "version": "global_dbscan_size_weighted_gannet_target_v1",
+      "need_selection": true,
+      "target_rng_state": {
+        "bit_generator": "PCG64",
+        "state": {
+          "state": 337143087113127184868451459564596843985,
+          "inc": 68117875406460022143089780395587585281
+        },
+        "has_uint32": 0,
+        "uinteger": 0
+      },
+      "committed": null,
+      "pending": null,
+      "last_diagnostics": {}
+    },
+    "G2": {
+      "version": "global_dbscan_size_weighted_gannet_target_v1",
+      "need_selection": true,
+      "target_rng_state": {
+        "bit_generator": "PCG64",
+        "state": {
+          "state": 333350448621434012504969867043403019266,
+          "inc": 24587861730754947619261644741118287657
+        },
+        "has_uint32": 0,
+        "uinteger": 0
+      },
+      "committed": null,
+      "pending": null,
+      "last_diagnostics": {}
+    },
+    "G3": {
+      "version": "global_dbscan_size_weighted_gannet_target_v1",
+      "need_selection": true,
+      "target_rng_state": {
+        "bit_generator": "PCG64",
+        "state": {
+          "state": 85348788707892146575858764695732522357,
+          "inc": 108727766261890346990644167880815232569
+        },
+        "has_uint32": 0,
+        "uinteger": 0
+      },
+      "committed": null,
+      "pending": null,
+      "last_diagnostics": {}
+    },
+    "G4": {
+      "version": "global_dbscan_size_weighted_gannet_target_v1",
+      "need_selection": true,
+      "target_rng_state": {
+        "bit_generator": "PCG64",
+        "state": {
+          "state": 308231563649885879969177759711655921249,
+          "inc": 230283777003798216949149288979056423359
+        },
+        "has_uint32": 0,
+        "uinteger": 0
+      },
+      "committed": null,
+      "pending": null,
+      "last_diagnostics": {}
+    },
+    "G5": {
+      "version": "global_dbscan_size_weighted_gannet_target_v1",
+      "need_selection": true,
+      "target_rng_state": {
+        "bit_generator": "PCG64",
+        "state": {
+          "state": 318800549921517023889116804965262646076,
+          "inc": 290627941735561609463601907699638953151
+        },
+        "has_uint32": 0,
+        "uinteger": 0
+      },
+      "committed": null,
+      "pending": null,
+      "last_diagnostics": {}
+    },
+    "G6": {
+      "version": "global_dbscan_size_weighted_gannet_target_v1",
+      "need_selection": true,
+      "target_rng_state": {
+        "bit_generator": "PCG64",
+        "state": {
+          "state": 145142964495310337561649724473455416054,
+          "inc": 338124448601762328993382650045594191099
+        },
+        "has_uint32": 0,
+        "uinteger": 0
+      },
+      "committed": null,
+      "pending": null,
+      "last_diagnostics": {}
+    },
+    "G7": {
+      "version": "global_dbscan_size_weighted_gannet_target_v1",
+      "need_selection": true,
+      "target_rng_state": {
+        "bit_generator": "PCG64",
+        "state": {
+          "state": 172178937880227739181787623145340651540,
+          "inc": 210305196703231570841601073806918627207
+        },
+        "has_uint32": 0,
+        "uinteger": 0
+      },
+      "committed": null,
+      "pending": null,
+      "last_diagnostics": {}
+    },
+    "G8": {
+      "version": "global_dbscan_size_weighted_gannet_target_v1",
+      "need_selection": true,
+      "target_rng_state": {
+        "bit_generator": "PCG64",
+        "state": {
+          "state": 306158173812116006440768631123275756421,
+          "inc": 24121749386247998257845276587039025763
+        },
+        "has_uint32": 0,
+        "uinteger": 0
+      },
+      "committed": null,
+      "pending": null,
+      "last_diagnostics": {}
+    }
+  },
+  "actors": [
+    {
+      "state": {
+        "actor_id": "D00",
+        "species": "D",
+        "position": [
+          45.96257584516783,
+          -4.304744421665119,
+          -5.0
+        ],
+        "heading": [
+          1.0,
+          0.0,
+          0.0
+        ],
+        "time": 19.999999999999932,
+        "mode": "recovery",
+        "mode_since": 19.999999999999932,
+        "target_id": null,
+        "bout_id": 0,
+        "bout_start": null,
+        "bout_deadline": null,
+        "ready_at": 20.155650995663123,
+        "last_outcome": null
+      },
+      "config": {
+        "species": "D",
+        "dolphin_policy": "direct",
+        "speed": 6.0,
+        "air_speed": 10.0,
+        "turn_rate": 1.5707963267948966,
+        "sense_radius": 25.0,
+        "patch_radius": 3.0,
+        "edge_margin": 1.0,
+        "edge_tolerance": 1.0,
+        "positioning_budget": 4.0,
+        "intercept_horizon": 3.0,
+        "bout_duration": 6.0,
+        "handling_duration": 2.0,
+        "miss_recovery_duration": 0.75,
+        "surface_z": 0.0,
+        "flight_height": 3.0,
+        "plunge_horizontal_radius": 6.0,
+        "detection_depth": 12.0,
+        "max_dive_depth": 12.0,
+        "ascent_margin": 0.25,
+        "spacing_enabled": false,
+        "spacing_radius": 5.0,
+        "spacing_gain": 0.5,
+        "max_motion_interval": 0.05
+      },
+      "mouth": {
+        "radius": 0.4,
+        "forward_offset": 0.3,
+        "surface_z": 0.0
+      },
+      "capture_probability": 0.7
+    },
+    {
+      "state": {
+        "actor_id": "D01",
+        "species": "D",
+        "position": [
+          43.96257584516783,
+          -2.304744421665119,
+          -5.0
+        ],
+        "heading": [
+          1.0,
+          0.0,
+          0.0
+        ],
+        "time": 19.999999999999932,
+        "mode": "recovery",
+        "mode_since": 19.999999999999932,
+        "target_id": null,
+        "bout_id": 0,
+        "bout_start": null,
+        "bout_deadline": null,
+        "ready_at": 20.160395900507307,
+        "last_outcome": null
+      },
+      "config": {
+        "species": "D",
+        "dolphin_policy": "direct",
+        "speed": 6.0,
+        "air_speed": 10.0,
+        "turn_rate": 1.5707963267948966,
+        "sense_radius": 25.0,
+        "patch_radius": 3.0,
+        "edge_margin": 1.0,
+        "edge_tolerance": 1.0,
+        "positioning_budget": 4.0,
+        "intercept_horizon": 3.0,
+        "bout_duration": 6.0,
+        "handling_duration": 2.0,
+        "miss_recovery_duration": 0.75,
+        "surface_z": 0.0,
+        "flight_height": 3.0,
+        "plunge_horizontal_radius": 6.0,
+        "detection_depth": 12.0,
+        "max_dive_depth": 12.0,
+        "ascent_margin": 0.25,
+        "spacing_enabled": false,
+        "spacing_radius": 5.0,
+        "spacing_gain": 0.5,
+        "max_motion_interval": 0.05
+      },
+      "mouth": {
+        "radius": 0.4,
+        "forward_offset": 0.3,
+        "surface_z": 0.0
+      },
+      "capture_probability": 0.7
+    },
+    {
+      "state": {
+        "actor_id": "D02",
+        "species": "D",
+        "position": [
+          41.96257584516783,
+          -0.30474442166511906,
+          -5.0
+        ],
+        "heading": [
+          1.0,
+          0.0,
+          0.0
+        ],
+        "time": 19.999999999999932,
+        "mode": "recovery",
+        "mode_since": 19.999999999999932,
+        "target_id": null,
+        "bout_id": 0,
+        "bout_start": null,
+        "bout_deadline": null,
+        "ready_at": 21.106305067397827,
+        "last_outcome": null
+      },
+      "config": {
+        "species": "D",
+        "dolphin_policy": "direct",
+        "speed": 6.0,
+        "air_speed": 10.0,
+        "turn_rate": 1.5707963267948966,
+        "sense_radius": 25.0,
+        "patch_radius": 3.0,
+        "edge_margin": 1.0,
+        "edge_tolerance": 1.0,
+        "positioning_budget": 4.0,
+        "intercept_horizon": 3.0,
+        "bout_duration": 6.0,
+        "handling_duration": 2.0,
+        "miss_recovery_duration": 0.75,
+        "surface_z": 0.0,
+        "flight_height": 3.0,
+        "plunge_horizontal_radius": 6.0,
+        "detection_depth": 12.0,
+        "max_dive_depth": 12.0,
+        "ascent_margin": 0.25,
+        "spacing_enabled": false,
+        "spacing_radius": 5.0,
+        "spacing_gain": 0.5,
+        "max_motion_interval": 0.05
+      },
+      "mouth": {
+        "radius": 0.4,
+        "forward_offset": 0.3,
+        "surface_z": 0.0
+      },
+      "capture_probability": 0.7
+    },
+    {
+      "state": {
+        "actor_id": "D03",
+        "species": "D",
+        "position": [
+          45.96257584516783,
+          1.6952555783348808,
+          -5.0
+        ],
+        "heading": [
+          1.0,
+          0.0,
+          0.0
+        ],
+        "time": 19.999999999999932,
+        "mode": "recovery",
+        "mode_since": 19.999999999999932,
+        "target_id": null,
+        "bout_id": 0,
+        "bout_start": null,
+        "bout_deadline": null,
+        "ready_at": 21.33874303354885,
+        "last_outcome": null
+      },
+      "config": {
+        "species": "D",
+        "dolphin_policy": "direct",
+        "speed": 6.0,
+        "air_speed": 10.0,
+        "turn_rate": 1.5707963267948966,
+        "sense_radius": 25.0,
+        "patch_radius": 3.0,
+        "edge_margin": 1.0,
+        "edge_tolerance": 1.0,
+        "positioning_budget": 4.0,
+        "intercept_horizon": 3.0,
+        "bout_duration": 6.0,
+        "handling_duration": 2.0,
+        "miss_recovery_duration": 0.75,
+        "surface_z": 0.0,
+        "flight_height": 3.0,
+        "plunge_horizontal_radius": 6.0,
+        "detection_depth": 12.0,
+        "max_dive_depth": 12.0,
+        "ascent_margin": 0.25,
+        "spacing_enabled": false,
+        "spacing_radius": 5.0,
+        "spacing_gain": 0.5,
+        "max_motion_interval": 0.05
+      },
+      "mouth": {
+        "radius": 0.4,
+        "forward_offset": 0.3,
+        "surface_z": 0.0
+      },
+      "capture_probability": 0.7
+    },
+    {
+      "state": {
+        "actor_id": "D04",
+        "species": "D",
+        "position": [
+          43.96257584516783,
+          3.695255578334881,
+          -5.0
+        ],
+        "heading": [
+          1.0,
+          0.0,
+          0.0
+        ],
+        "time": 19.999999999999932,
+        "mode": "recovery",
+        "mode_since": 19.999999999999932,
+        "target_id": null,
+        "bout_id": 0,
+        "bout_start": null,
+        "bout_deadline": null,
+        "ready_at": 21.876923275437015,
+        "last_outcome": null
+      },
+      "config": {
+        "species": "D",
+        "dolphin_policy": "direct",
+        "speed": 6.0,
+        "air_speed": 10.0,
+        "turn_rate": 1.5707963267948966,
+        "sense_radius": 25.0,
+        "patch_radius": 3.0,
+        "edge_margin": 1.0,
+        "edge_tolerance": 1.0,
+        "positioning_budget": 4.0,
+        "intercept_horizon": 3.0,
+        "bout_duration": 6.0,
+        "handling_duration": 2.0,
+        "miss_recovery_duration": 0.75,
+        "surface_z": 0.0,
+        "flight_height": 3.0,
+        "plunge_horizontal_radius": 6.0,
+        "detection_depth": 12.0,
+        "max_dive_depth": 12.0,
+        "ascent_margin": 0.25,
+        "spacing_enabled": false,
+        "spacing_radius": 5.0,
+        "spacing_gain": 0.5,
+        "max_motion_interval": 0.05
+      },
+      "mouth": {
+        "radius": 0.4,
+        "forward_offset": 0.3,
+        "surface_z": 0.0
+      },
+      "capture_probability": 0.7
+    },
+    {
+      "state": {
+        "actor_id": "D05",
+        "species": "D",
+        "position": [
+          41.96257584516783,
+          5.695255578334881,
+          -5.0
+        ],
+        "heading": [
+          1.0,
+          0.0,
+          0.0
+        ],
+        "time": 19.999999999999932,
+        "mode": "recovery",
+        "mode_since": 19.999999999999932,
+        "target_id": null,
+        "bout_id": 0,
+        "bout_start": null,
+        "bout_deadline": null,
+        "ready_at": 20.155855510647243,
+        "last_outcome": null
+      },
+      "config": {
+        "species": "D",
+        "dolphin_policy": "direct",
+        "speed": 6.0,
+        "air_speed": 10.0,
+        "turn_rate": 1.5707963267948966,
+        "sense_radius": 25.0,
+        "patch_radius": 3.0,
+        "edge_margin": 1.0,
+        "edge_tolerance": 1.0,
+        "positioning_budget": 4.0,
+        "intercept_horizon": 3.0,
+        "bout_duration": 6.0,
+        "handling_duration": 2.0,
+        "miss_recovery_duration": 0.75,
+        "surface_z": 0.0,
+        "flight_height": 3.0,
+        "plunge_horizontal_radius": 6.0,
+        "detection_depth": 12.0,
+        "max_dive_depth": 12.0,
+        "ascent_margin": 0.25,
+        "spacing_enabled": false,
+        "spacing_radius": 5.0,
+        "spacing_gain": 0.5,
+        "max_motion_interval": 0.05
+      },
+      "mouth": {
+        "radius": 0.4,
+        "forward_offset": 0.3,
+        "surface_z": 0.0
+      },
+      "capture_probability": 0.7
+    },
+    {
+      "state": {
+        "actor_id": "D06",
+        "species": "D",
+        "position": [
+          42.96257584516783,
+          -3.304744421665119,
+          -5.0
+        ],
+        "heading": [
+          1.0,
+          0.0,
+          0.0
+        ],
+        "time": 19.999999999999932,
+        "mode": "recovery",
+        "mode_since": 19.999999999999932,
+        "target_id": null,
+        "bout_id": 0,
+        "bout_start": null,
+        "bout_deadline": null,
+        "ready_at": 21.534927819410665,
+        "last_outcome": null
+      },
+      "config": {
+        "species": "D",
+        "dolphin_policy": "direct",
+        "speed": 6.0,
+        "air_speed": 10.0,
+        "turn_rate": 1.5707963267948966,
+        "sense_radius": 25.0,
+        "patch_radius": 3.0,
+        "edge_margin": 1.0,
+        "edge_tolerance": 1.0,
+        "positioning_budget": 4.0,
+        "intercept_horizon": 3.0,
+        "bout_duration": 6.0,
+        "handling_duration": 2.0,
+        "miss_recovery_duration": 0.75,
+        "surface_z": 0.0,
+        "flight_height": 3.0,
+        "plunge_horizontal_radius": 6.0,
+        "detection_depth": 12.0,
+        "max_dive_depth": 12.0,
+        "ascent_margin": 0.25,
+        "spacing_enabled": false,
+        "spacing_radius": 5.0,
+        "spacing_gain": 0.5,
+        "max_motion_interval": 0.05
+      },
+      "mouth": {
+        "radius": 0.4,
+        "forward_offset": 0.3,
+        "surface_z": 0.0
+      },
+      "capture_probability": 0.7
+    },
+    {
+      "state": {
+        "actor_id": "D07",
+        "species": "D",
+        "position": [
+          40.96257584516783,
+          -1.3047444216651192,
+          -5.0
+        ],
+        "heading": [
+          1.0,
+          0.0,
+          0.0
+        ],
+        "time": 19.999999999999932,
+        "mode": "recovery",
+        "mode_since": 19.999999999999932,
+        "target_id": null,
+        "bout_id": 0,
+        "bout_start": null,
+        "bout_deadline": null,
+        "ready_at": 20.31323452959328,
+        "last_outcome": null
+      },
+      "config": {
+        "species": "D",
+        "dolphin_policy": "direct",
+        "speed": 6.0,
+        "air_speed": 10.0,
+        "turn_rate": 1.5707963267948966,
+        "sense_radius": 25.0,
+        "patch_radius": 3.0,
+        "edge_margin": 1.0,
+        "edge_tolerance": 1.0,
+        "positioning_budget": 4.0,
+        "intercept_horizon": 3.0,
+        "bout_duration": 6.0,
+        "handling_duration": 2.0,
+        "miss_recovery_duration": 0.75,
+        "surface_z": 0.0,
+        "flight_height": 3.0,
+        "plunge_horizontal_radius": 6.0,
+        "detection_depth": 12.0,
+        "max_dive_depth": 12.0,
+        "ascent_margin": 0.25,
+        "spacing_enabled": false,
+        "spacing_radius": 5.0,
+        "spacing_gain": 0.5,
+        "max_motion_interval": 0.05
+      },
+      "mouth": {
+        "radius": 0.4,
+        "forward_offset": 0.3,
+        "surface_z": 0.0
+      },
+      "capture_probability": 0.7
+    },
+    {
+      "state": {
+        "actor_id": "D08",
+        "species": "D",
+        "position": [
+          38.96257584516783,
+          0.6952555783348809,
+          -5.0
+        ],
+        "heading": [
+          1.0,
+          0.0,
+          0.0
+        ],
+        "time": 19.999999999999932,
+        "mode": "recovery",
+        "mode_since": 19.999999999999932,
+        "target_id": null,
+        "bout_id": 0,
+        "bout_start": null,
+        "bout_deadline": null,
+        "ready_at": 20.458505520735685,
+        "last_outcome": null
+      },
+      "config": {
+        "species": "D",
+        "dolphin_policy": "direct",
+        "speed": 6.0,
+        "air_speed": 10.0,
+        "turn_rate": 1.5707963267948966,
+        "sense_radius": 25.0,
+        "patch_radius": 3.0,
+        "edge_margin": 1.0,
+        "edge_tolerance": 1.0,
+        "positioning_budget": 4.0,
+        "intercept_horizon": 3.0,
+        "bout_duration": 6.0,
+        "handling_duration": 2.0,
+        "miss_recovery_duration": 0.75,
+        "surface_z": 0.0,
+        "flight_height": 3.0,
+        "plunge_horizontal_radius": 6.0,
+        "detection_depth": 12.0,
+        "max_dive_depth": 12.0,
+        "ascent_margin": 0.25,
+        "spacing_enabled": false,
+        "spacing_radius": 5.0,
+        "spacing_gain": 0.5,
+        "max_motion_interval": 0.05
+      },
+      "mouth": {
+        "radius": 0.4,
+        "forward_offset": 0.3,
+        "surface_z": 0.0
+      },
+      "capture_probability": 0.7
+    },
+    {
+      "state": {
+        "actor_id": "D09",
+        "species": "D",
+        "position": [
+          42.96257584516783,
+          2.695255578334881,
+          -5.0
+        ],
+        "heading": [
+          1.0,
+          0.0,
+          0.0
+        ],
+        "time": 19.999999999999932,
+        "mode": "recovery",
+        "mode_since": 19.999999999999932,
+        "target_id": null,
+        "bout_id": 0,
+        "bout_start": null,
+        "bout_deadline": null,
+        "ready_at": 21.2413850442069,
+        "last_outcome": null
+      },
+      "config": {
+        "species": "D",
+        "dolphin_policy": "direct",
+        "speed": 6.0,
+        "air_speed": 10.0,
+        "turn_rate": 1.5707963267948966,
+        "sense_radius": 25.0,
+        "patch_radius": 3.0,
+        "edge_margin": 1.0,
+        "edge_tolerance": 1.0,
+        "positioning_budget": 4.0,
+        "intercept_horizon": 3.0,
+        "bout_duration": 6.0,
+        "handling_duration": 2.0,
+        "miss_recovery_duration": 0.75,
+        "surface_z": 0.0,
+        "flight_height": 3.0,
+        "plunge_horizontal_radius": 6.0,
+        "detection_depth": 12.0,
+        "max_dive_depth": 12.0,
+        "ascent_margin": 0.25,
+        "spacing_enabled": false,
+        "spacing_radius": 5.0,
+        "spacing_gain": 0.5,
+        "max_motion_interval": 0.05
+      },
+      "mouth": {
+        "radius": 0.4,
+        "forward_offset": 0.3,
+        "surface_z": 0.0
+      },
+      "capture_probability": 0.7
+    },
+    {
+      "state": {
+        "actor_id": "D10",
+        "species": "D",
+        "position": [
+          40.96257584516783,
+          4.695255578334881,
+          -5.0
+        ],
+        "heading": [
+          1.0,
+          0.0,
+          0.0
+        ],
+        "time": 19.999999999999932,
+        "mode": "recovery",
+        "mode_since": 19.999999999999932,
+        "target_id": null,
+        "bout_id": 0,
+        "bout_start": null,
+        "bout_deadline": null,
+        "ready_at": 21.25677688853785,
+        "last_outcome": null
+      },
+      "config": {
+        "species": "D",
+        "dolphin_policy": "direct",
+        "speed": 6.0,
+        "air_speed": 10.0,
+        "turn_rate": 1.5707963267948966,
+        "sense_radius": 25.0,
+        "patch_radius": 3.0,
+        "edge_margin": 1.0,
+        "edge_tolerance": 1.0,
+        "positioning_budget": 4.0,
+        "intercept_horizon": 3.0,
+        "bout_duration": 6.0,
+        "handling_duration": 2.0,
+        "miss_recovery_duration": 0.75,
+        "surface_z": 0.0,
+        "flight_height": 3.0,
+        "plunge_horizontal_radius": 6.0,
+        "detection_depth": 12.0,
+        "max_dive_depth": 12.0,
+        "ascent_margin": 0.25,
+        "spacing_enabled": false,
+        "spacing_radius": 5.0,
+        "spacing_gain": 0.5,
+        "max_motion_interval": 0.05
+      },
+      "mouth": {
+        "radius": 0.4,
+        "forward_offset": 0.3,
+        "surface_z": 0.0
+      },
+      "capture_probability": 0.7
+    },
+    {
+      "state": {
+        "actor_id": "D11",
+        "species": "D",
+        "position": [
+          38.96257584516783,
+          6.695255578334881,
+          -5.0
+        ],
+        "heading": [
+          1.0,
+          0.0,
+          0.0
+        ],
+        "time": 19.999999999999932,
+        "mode": "recovery",
+        "mode_since": 19.999999999999932,
+        "target_id": null,
+        "bout_id": 0,
+        "bout_start": null,
+        "bout_deadline": null,
+        "ready_at": 20.10510292677764,
+        "last_outcome": null
+      },
+      "config": {
+        "species": "D",
+        "dolphin_policy": "direct",
+        "speed": 6.0,
+        "air_speed": 10.0,
+        "turn_rate": 1.5707963267948966,
+        "sense_radius": 25.0,
+        "patch_radius": 3.0,
+        "edge_margin": 1.0,
+        "edge_tolerance": 1.0,
+        "positioning_budget": 4.0,
+        "intercept_horizon": 3.0,
+        "bout_duration": 6.0,
+        "handling_duration": 2.0,
+        "miss_recovery_duration": 0.75,
+        "surface_z": 0.0,
+        "flight_height": 3.0,
+        "plunge_horizontal_radius": 6.0,
+        "detection_depth": 12.0,
+        "max_dive_depth": 12.0,
+        "ascent_margin": 0.25,
+        "spacing_enabled": false,
+        "spacing_radius": 5.0,
+        "spacing_gain": 0.5,
+        "max_motion_interval": 0.05
+      },
+      "mouth": {
+        "radius": 0.4,
+        "forward_offset": 0.3,
+        "surface_z": 0.0
+      },
+      "capture_probability": 0.7
+    },
+    {
+      "state": {
+        "actor_id": "G0",
+        "species": "G",
+        "position": [
+          59.96257584516783,
+          -0.30474442166511906,
+          3.0
+        ],
+        "heading": [
+          1.0,
+          0.0,
+          0.0
+        ],
+        "time": 19.999999999999932,
+        "mode": "recovery",
+        "mode_since": 19.999999999999932,
+        "target_id": null,
+        "bout_id": 0,
+        "bout_start": null,
+        "bout_deadline": null,
+        "ready_at": 21.183489989040314,
+        "last_outcome": null
+      },
+      "config": {
+        "species": "G",
+        "dolphin_policy": "direct",
+        "speed": 6.0,
+        "air_speed": 10.0,
+        "turn_rate": 1.5707963267948966,
+        "sense_radius": 1000000000.0,
+        "patch_radius": 3.0,
+        "edge_margin": 1.0,
+        "edge_tolerance": 1.0,
+        "positioning_budget": 4.0,
+        "intercept_horizon": 3.0,
+        "bout_duration": 6.0,
+        "handling_duration": 2.0,
+        "miss_recovery_duration": 1.0,
+        "surface_z": 0.0,
+        "flight_height": 3.0,
+        "plunge_horizontal_radius": 6.0,
+        "detection_depth": 12.0,
+        "max_dive_depth": 12.0,
+        "ascent_margin": 0.25,
+        "spacing_enabled": false,
+        "spacing_radius": 2.0,
+        "spacing_gain": 0.5,
+        "max_motion_interval": 0.05
+      },
+      "mouth": {
+        "radius": 0.4,
+        "forward_offset": 0.3,
+        "surface_z": 0.0
+      },
+      "capture_probability": 0.7
+    },
+    {
+      "state": {
+        "actor_id": "G1",
+        "species": "G",
+        "position": [
+          59.96257584516783,
+          -6.304744421665119,
+          3.0
+        ],
+        "heading": [
+          1.0,
+          0.0,
+          0.0
+        ],
+        "time": 19.999999999999932,
+        "mode": "recovery",
+        "mode_since": 19.999999999999932,
+        "target_id": null,
+        "bout_id": 0,
+        "bout_start": null,
+        "bout_deadline": null,
+        "ready_at": 20.918463478001346,
+        "last_outcome": null
+      },
+      "config": {
+        "species": "G",
+        "dolphin_policy": "direct",
+        "speed": 6.0,
+        "air_speed": 10.0,
+        "turn_rate": 1.5707963267948966,
+        "sense_radius": 1000000000.0,
+        "patch_radius": 3.0,
+        "edge_margin": 1.0,
+        "edge_tolerance": 1.0,
+        "positioning_budget": 4.0,
+        "intercept_horizon": 3.0,
+        "bout_duration": 6.0,
+        "handling_duration": 2.0,
+        "miss_recovery_duration": 1.0,
+        "surface_z": 0.0,
+        "flight_height": 3.0,
+        "plunge_horizontal_radius": 6.0,
+        "detection_depth": 12.0,
+        "max_dive_depth": 12.0,
+        "ascent_margin": 0.25,
+        "spacing_enabled": false,
+        "spacing_radius": 2.0,
+        "spacing_gain": 0.5,
+        "max_motion_interval": 0.05
+      },
+      "mouth": {
+        "radius": 0.4,
+        "forward_offset": 0.3,
+        "surface_z": 0.0
+      },
+      "capture_probability": 0.7
+    },
+    {
+      "state": {
+        "actor_id": "G2",
+        "species": "G",
+        "position": [
+          59.96257584516783,
+          5.695255578334881,
+          3.0
+        ],
+        "heading": [
+          1.0,
+          0.0,
+          0.0
+        ],
+        "time": 19.999999999999932,
+        "mode": "recovery",
+        "mode_since": 19.999999999999932,
+        "target_id": null,
+        "bout_id": 0,
+        "bout_start": null,
+        "bout_deadline": null,
+        "ready_at": 20.732065372129867,
+        "last_outcome": null
+      },
+      "config": {
+        "species": "G",
+        "dolphin_policy": "direct",
+        "speed": 6.0,
+        "air_speed": 10.0,
+        "turn_rate": 1.5707963267948966,
+        "sense_radius": 1000000000.0,
+        "patch_radius": 3.0,
+        "edge_margin": 1.0,
+        "edge_tolerance": 1.0,
+        "positioning_budget": 4.0,
+        "intercept_horizon": 3.0,
+        "bout_duration": 6.0,
+        "handling_duration": 2.0,
+        "miss_recovery_duration": 1.0,
+        "surface_z": 0.0,
+        "flight_height": 3.0,
+        "plunge_horizontal_radius": 6.0,
+        "detection_depth": 12.0,
+        "max_dive_depth": 12.0,
+        "ascent_margin": 0.25,
+        "spacing_enabled": false,
+        "spacing_radius": 2.0,
+        "spacing_gain": 0.5,
+        "max_motion_interval": 0.05
+      },
+      "mouth": {
+        "radius": 0.4,
+        "forward_offset": 0.3,
+        "surface_z": 0.0
+      },
+      "capture_probability": 0.7
+    },
+    {
+      "state": {
+        "actor_id": "G3",
+        "species": "G",
+        "position": [
+          59.96257584516783,
+          -0.30474442166511906,
+          3.0
+        ],
+        "heading": [
+          1.0,
+          0.0,
+          0.0
+        ],
+        "time": 19.999999999999932,
+        "mode": "recovery",
+        "mode_since": 19.999999999999932,
+        "target_id": null,
+        "bout_id": 0,
+        "bout_start": null,
+        "bout_deadline": null,
+        "ready_at": 20.614589012975014,
+        "last_outcome": null
+      },
+      "config": {
+        "species": "G",
+        "dolphin_policy": "direct",
+        "speed": 6.0,
+        "air_speed": 10.0,
+        "turn_rate": 1.5707963267948966,
+        "sense_radius": 1000000000.0,
+        "patch_radius": 3.0,
+        "edge_margin": 1.0,
+        "edge_tolerance": 1.0,
+        "positioning_budget": 4.0,
+        "intercept_horizon": 3.0,
+        "bout_duration": 6.0,
+        "handling_duration": 2.0,
+        "miss_recovery_duration": 1.0,
+        "surface_z": 0.0,
+        "flight_height": 3.0,
+        "plunge_horizontal_radius": 6.0,
+        "detection_depth": 12.0,
+        "max_dive_depth": 12.0,
+        "ascent_margin": 0.25,
+        "spacing_enabled": false,
+        "spacing_radius": 2.0,
+        "spacing_gain": 0.5,
+        "max_motion_interval": 0.05
+      },
+      "mouth": {
+        "radius": 0.4,
+        "forward_offset": 0.3,
+        "surface_z": 0.0
+      },
+      "capture_probability": 0.7
+    },
+    {
+      "state": {
+        "actor_id": "G4",
+        "species": "G",
+        "position": [
+          59.96257584516783,
+          -6.304744421665119,
+          3.0
+        ],
+        "heading": [
+          1.0,
+          0.0,
+          0.0
+        ],
+        "time": 19.999999999999932,
+        "mode": "recovery",
+        "mode_since": 19.999999999999932,
+        "target_id": null,
+        "bout_id": 0,
+        "bout_start": null,
+        "bout_deadline": null,
+        "ready_at": 21.120577689100816,
+        "last_outcome": null
+      },
+      "config": {
+        "species": "G",
+        "dolphin_policy": "direct",
+        "speed": 6.0,
+        "air_speed": 10.0,
+        "turn_rate": 1.5707963267948966,
+        "sense_radius": 1000000000.0,
+        "patch_radius": 3.0,
+        "edge_margin": 1.0,
+        "edge_tolerance": 1.0,
+        "positioning_budget": 4.0,
+        "intercept_horizon": 3.0,
+        "bout_duration": 6.0,
+        "handling_duration": 2.0,
+        "miss_recovery_duration": 1.0,
+        "surface_z": 0.0,
+        "flight_height": 3.0,
+        "plunge_horizontal_radius": 6.0,
+        "detection_depth": 12.0,
+        "max_dive_depth": 12.0,
+        "ascent_margin": 0.25,
+        "spacing_enabled": false,
+        "spacing_radius": 2.0,
+        "spacing_gain": 0.5,
+        "max_motion_interval": 0.05
+      },
+      "mouth": {
+        "radius": 0.4,
+        "forward_offset": 0.3,
+        "surface_z": 0.0
+      },
+      "capture_probability": 0.7
+    },
+    {
+      "state": {
+        "actor_id": "G5",
+        "species": "G",
+        "position": [
+          59.96257584516783,
+          5.695255578334881,
+          3.0
+        ],
+        "heading": [
+          1.0,
+          0.0,
+          0.0
+        ],
+        "time": 19.999999999999932,
+        "mode": "recovery",
+        "mode_since": 19.999999999999932,
+        "target_id": null,
+        "bout_id": 0,
+        "bout_start": null,
+        "bout_deadline": null,
+        "ready_at": 20.629211930637943,
+        "last_outcome": null
+      },
+      "config": {
+        "species": "G",
+        "dolphin_policy": "direct",
+        "speed": 6.0,
+        "air_speed": 10.0,
+        "turn_rate": 1.5707963267948966,
+        "sense_radius": 1000000000.0,
+        "patch_radius": 3.0,
+        "edge_margin": 1.0,
+        "edge_tolerance": 1.0,
+        "positioning_budget": 4.0,
+        "intercept_horizon": 3.0,
+        "bout_duration": 6.0,
+        "handling_duration": 2.0,
+        "miss_recovery_duration": 1.0,
+        "surface_z": 0.0,
+        "flight_height": 3.0,
+        "plunge_horizontal_radius": 6.0,
+        "detection_depth": 12.0,
+        "max_dive_depth": 12.0,
+        "ascent_margin": 0.25,
+        "spacing_enabled": false,
+        "spacing_radius": 2.0,
+        "spacing_gain": 0.5,
+        "max_motion_interval": 0.05
+      },
+      "mouth": {
+        "radius": 0.4,
+        "forward_offset": 0.3,
+        "surface_z": 0.0
+      },
+      "capture_probability": 0.7
+    },
+    {
+      "state": {
+        "actor_id": "G6",
+        "species": "G",
+        "position": [
+          59.96257584516783,
+          -0.30474442166511906,
+          3.0
+        ],
+        "heading": [
+          1.0,
+          0.0,
+          0.0
+        ],
+        "time": 19.999999999999932,
+        "mode": "recovery",
+        "mode_since": 19.999999999999932,
+        "target_id": null,
+        "bout_id": 0,
+        "bout_start": null,
+        "bout_deadline": null,
+        "ready_at": 21.95649669470306,
+        "last_outcome": null
+      },
+      "config": {
+        "species": "G",
+        "dolphin_policy": "direct",
+        "speed": 6.0,
+        "air_speed": 10.0,
+        "turn_rate": 1.5707963267948966,
+        "sense_radius": 1000000000.0,
+        "patch_radius": 3.0,
+        "edge_margin": 1.0,
+        "edge_tolerance": 1.0,
+        "positioning_budget": 4.0,
+        "intercept_horizon": 3.0,
+        "bout_duration": 6.0,
+        "handling_duration": 2.0,
+        "miss_recovery_duration": 1.0,
+        "surface_z": 0.0,
+        "flight_height": 3.0,
+        "plunge_horizontal_radius": 6.0,
+        "detection_depth": 12.0,
+        "max_dive_depth": 12.0,
+        "ascent_margin": 0.25,
+        "spacing_enabled": false,
+        "spacing_radius": 2.0,
+        "spacing_gain": 0.5,
+        "max_motion_interval": 0.05
+      },
+      "mouth": {
+        "radius": 0.4,
+        "forward_offset": 0.3,
+        "surface_z": 0.0
+      },
+      "capture_probability": 0.7
+    },
+    {
+      "state": {
+        "actor_id": "G7",
+        "species": "G",
+        "position": [
+          59.96257584516783,
+          -6.304744421665119,
+          3.0
+        ],
+        "heading": [
+          1.0,
+          0.0,
+          0.0
+        ],
+        "time": 19.999999999999932,
+        "mode": "recovery",
+        "mode_since": 19.999999999999932,
+        "target_id": null,
+        "bout_id": 0,
+        "bout_start": null,
+        "bout_deadline": null,
+        "ready_at": 20.157402680621406,
+        "last_outcome": null
+      },
+      "config": {
+        "species": "G",
+        "dolphin_policy": "direct",
+        "speed": 6.0,
+        "air_speed": 10.0,
+        "turn_rate": 1.5707963267948966,
+        "sense_radius": 1000000000.0,
+        "patch_radius": 3.0,
+        "edge_margin": 1.0,
+        "edge_tolerance": 1.0,
+        "positioning_budget": 4.0,
+        "intercept_horizon": 3.0,
+        "bout_duration": 6.0,
+        "handling_duration": 2.0,
+        "miss_recovery_duration": 1.0,
+        "surface_z": 0.0,
+        "flight_height": 3.0,
+        "plunge_horizontal_radius": 6.0,
+        "detection_depth": 12.0,
+        "max_dive_depth": 12.0,
+        "ascent_margin": 0.25,
+        "spacing_enabled": false,
+        "spacing_radius": 2.0,
+        "spacing_gain": 0.5,
+        "max_motion_interval": 0.05
+      },
+      "mouth": {
+        "radius": 0.4,
+        "forward_offset": 0.3,
+        "surface_z": 0.0
+      },
+      "capture_probability": 0.7
+    },
+    {
+      "state": {
+        "actor_id": "G8",
+        "species": "G",
+        "position": [
+          59.96257584516783,
+          5.695255578334881,
+          3.0
+        ],
+        "heading": [
+          1.0,
+          0.0,
+          0.0
+        ],
+        "time": 19.999999999999932,
+        "mode": "recovery",
+        "mode_since": 19.999999999999932,
+        "target_id": null,
+        "bout_id": 0,
+        "bout_start": null,
+        "bout_deadline": null,
+        "ready_at": 20.89680692041339,
+        "last_outcome": null
+      },
+      "config": {
+        "species": "G",
+        "dolphin_policy": "direct",
+        "speed": 6.0,
+        "air_speed": 10.0,
+        "turn_rate": 1.5707963267948966,
+        "sense_radius": 1000000000.0,
+        "patch_radius": 3.0,
+        "edge_margin": 1.0,
+        "edge_tolerance": 1.0,
+        "positioning_budget": 4.0,
+        "intercept_horizon": 3.0,
+        "bout_duration": 6.0,
+        "handling_duration": 2.0,
+        "miss_recovery_duration": 1.0,
+        "surface_z": 0.0,
+        "flight_height": 3.0,
+        "plunge_horizontal_radius": 6.0,
+        "detection_depth": 12.0,
+        "max_dive_depth": 12.0,
+        "ascent_margin": 0.25,
+        "spacing_enabled": false,
+        "spacing_radius": 2.0,
+        "spacing_gain": 0.5,
+        "max_motion_interval": 0.05
+      },
+      "mouth": {
+        "radius": 0.4,
+        "forward_offset": 0.3,
+        "surface_z": 0.0
+      },
+      "capture_probability": 0.7
+    }
+  ],
+  "controller_monitor_interval": 0.1,
+  "trajectory_interval": 0.1,
+  "reference_capture_probability": 0.7,
+  "acceleration": "reviewed_exact_helper_acceleration_v2"
+}

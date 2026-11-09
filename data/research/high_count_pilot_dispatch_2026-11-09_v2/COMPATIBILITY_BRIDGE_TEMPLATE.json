@@ -1,0 +1,22 @@
+{
+  "approved": true,
+  "at": "2026-11-09T17:24:35.119174+08:00",
+  "reviewer": "/root/brief_audit",
+  "stage": "full",
+  "protocol_sha256": "014a1784a3caa674085c25cba666684507ca07f0bc1d87d4ad63eabeb8b72d55",
+  "freeze_sha256": "573a30e4860cb36176140352c5d64be2c42de61c2456e0d1955f9ac8a5edf831",
+  "maximum_native_steps": 1382400,
+  "smoke_review_sha256": "e04675fa9e0216a6b1b5bd1b3292b7a4d273346c1d0435d4fb9f0e2b8310d0fd",
+  "compatibility_only": true,
+  "standalone_execution_authorized": false,
+  "dispatch_freeze_sha256": "0aec537f7f382a84dc851fe46f468187aa3083ec891ab23d8586311f6a1a23e4",
+  "amendment_sha256": "88401b2fe98fd4323b19d776d5993b24a261cccdb60f960aa5abb763bcc5d817",
+  "independent_dispatch_review_sha256": "306dfa61b8462a102141331caf943761bd7ef96fbfe7fe9c2878149c8ae75557",
+  "root_parallelism_authorization_sha256": "da73f42bed135884ceaf2f8a6b8e29fe008f9e1cc1466a3f7986728f45278e91",
+  "conditions": [
+    "Compatibility ceiling only for unchanged frozen require_approval(full);this flag grantsno standalonefull48dispatch",
+    "Actualpermission is separately bounded byPILOT_RUN_APPROVED orfreshREMAINDER_RUN_APPROVED",
+    "Materialize only inside exclusive existing nativelease;archiveandremoveonphaseexitincludingfailure",
+    "Only reviewerapproveddispatch.py maydriveper-case runs;nevercalloldrun.mainwiththisbridge"
+  ]
+}

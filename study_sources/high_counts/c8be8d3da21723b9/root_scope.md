@@ -1,0 +1,3 @@
+High-count priority scope, fixed before any new native construction or stepping.
+
+Root authorized balanced G9/12/18 at H1/2/3 on the four existing discovery schools, with matched-count G-only controls and reused same-H D-only controls. Retain all previous G1/3/6 outcomes. Five declared4T smokes plus48full36T encounters, maximum1,398,400 steps, three workers, numeric threads1. Ascending count blocks9→12→18; complete each16-case block before describing it, all48 mandatory regardless sign, no winner selection before complete map. Fresh native gates remain required. Held-out predator feeding is on hold after already-completed predator-free preparation.

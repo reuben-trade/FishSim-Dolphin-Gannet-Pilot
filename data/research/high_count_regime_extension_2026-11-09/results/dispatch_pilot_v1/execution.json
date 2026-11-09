@@ -1,0 +1,55 @@
+{
+  "status": "complete",
+  "phase": "pilot",
+  "at": "2026-11-09T17:25:19.269102+08:00",
+  "pid": 2,
+  "maximum_native_steps": 345600,
+  "dispatch_freeze_sha256": "0aec537f7f382a84dc851fe46f468187aa3083ec891ab23d8586311f6a1a23e4",
+  "phase_approval_sha256": "3243168b8b8f75dc4bd5ec01702eeab2cee3073f73e3eea86112990d8c802683",
+  "case_names": [
+    "s39061001_H1_G9_DG_c61001",
+    "s39061001_H1_G12_DG_c61001",
+    "s39061001_H1_G18_DG_c61001",
+    "s39061001_H2_G9_DG_c61001",
+    "s39061001_H2_G12_DG_c61001",
+    "s39061001_H2_G18_DG_c61001",
+    "s39061001_H3_G9_DG_c61001",
+    "s39061001_H3_G12_DG_c61001",
+    "s39061001_H3_G18_DG_c61001",
+    "s39061001_Gonly9_G_c61001",
+    "s39061001_Gonly12_G_c61001",
+    "s39061001_Gonly18_G_c61001"
+  ],
+  "maximum_workers": 8,
+  "numeric_threads_per_worker": 1,
+  "stages": [
+    {
+      "stage": "all_three_G_only",
+      "status": "complete",
+      "at": "2026-11-09T17:38:57.528757+08:00",
+      "cases": [
+        "s39061001_Gonly9_G_c61001",
+        "s39061001_Gonly12_G_c61001",
+        "s39061001_Gonly18_G_c61001"
+      ]
+    },
+    {
+      "stage": "all_nine_mixed",
+      "status": "complete",
+      "at": "2026-11-09T18:11:17.003550+08:00",
+      "cases": [
+        "s39061001_H1_G9_DG_c61001",
+        "s39061001_H2_G9_DG_c61001",
+        "s39061001_H3_G9_DG_c61001",
+        "s39061001_H1_G12_DG_c61001",
+        "s39061001_H2_G12_DG_c61001",
+        "s39061001_H3_G12_DG_c61001",
+        "s39061001_H1_G18_DG_c61001",
+        "s39061001_H2_G18_DG_c61001",
+        "s39061001_H3_G18_DG_c61001"
+      ]
+    }
+  ],
+  "finished_at": "2026-11-09T18:11:22.370478+08:00",
+  "native_steps": 345600
+}

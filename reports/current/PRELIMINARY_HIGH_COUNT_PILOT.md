@@ -6,6 +6,8 @@ These are descriptive results from **one previously observed school (39061001, n
 
 Counts below are fish captured by the whole pod or bird group. Every dolphin-bearing encounter has 12 dolphins and begins with 160 fish. Time is an uncalibrated model unit. Dolphin effects use the same-H dolphin-only control; gannet effects use the same-count gannet-only control. The six-bird dolphin reference uses this same school and capture setting, rather than the four-school aggregate.
 
+**Completion update:** the full four-school extension is now complete. The current report and notebook include all 18 mixed settings. Tables below preserve the original one-school pilot and retain n=1; they are not an additional cohort.
+
 ## Nine gannets: all four encounters complete
 
 | H (T) | Dolphins alone | Dolphins with 6 birds | Dolphins with 9 birds | Dolphin change | Gannets alone → mixed | Both species gain here |
@@ -36,11 +38,11 @@ All three bird counts produced dolphin gains at H=1 and H=2 and losses at H=3 on
 
 There is no across-school SD or confidence interval for this pilot. The H settings, individual predators and shared controls are not independent school replicates. A single capture setting cannot separate starting-state/readiness effects from stochastic capture and target-choice effects. More birds share the original three launch sites; point-represented predators have no body-spacing avoidance, so these are idealised model conditions.
 
-All 12 first-school encounters finished at 18:11 Perth. These pilot encounters are a subset of the planned **48-case, four-school** extension; the remaining 36 encounters are still required. The remaining encounters and complete map will be assessed separately; all settings, including losses, will be retained. The [main report](https://github.com/reuben-trade/FishSim-Dolphin-Gannet-Pilot/blob/main/reports/current/Feeding_Frenzy_Working_Draft.pdf) and [analysis notebook](https://github.com/reuben-trade/FishSim-Dolphin-Gannet-Pilot/blob/main/FishSim_Professor_Notebook.ipynb) continue to present the completed four-school 1/3/6-bird study and its separate earlier cohorts. Their numerical-sensitivity caveat remains applicable; the higher-count pilot has not been tested on the finer timestep.
+All 12 first-school encounters finished at 18:11 Perth. These pilot encounters are a subset of the planned **48-case, four-school** extension; the remaining 36 encounters have also completed. The complete map has now been assessed separately; all settings, including losses, are retained. The [main report](https://github.com/reuben-trade/FishSim-Dolphin-Gannet-Pilot/blob/main/reports/current/Feeding_Frenzy_Working_Draft.pdf) and [analysis notebook](https://github.com/reuben-trade/FishSim-Dolphin-Gannet-Pilot/blob/main/FishSim_Professor_Notebook.ipynb) now present the completed four-school 1/3/6/9/12/18-bird map and its separate earlier cohorts. Their numerical-sensitivity caveat remains applicable; the higher-count pilot has not been tested on the finer timestep.
 
 ## Validation record
 
-Two independent readers reconciled raw capture/contact/launch events, unique prey removals, per-actor totals, time budgets and sealed summaries. Case/source/dispatch bindings, physical checks, and matched initial fish/predator/controller/private-stream states passed for every encounter and control. Neither reader ran native simulation steps. The new raw evidence will be packaged with the completed extension rather than mixed into the current notebook prematurely.
+Two independent readers reconciled raw capture/contact/launch events, unique prey removals, per-actor totals, time budgets and sealed summaries. Case/source/dispatch bindings, physical checks, and matched initial fish/predator/controller/private-stream states passed for every encounter and control. Neither reader ran native simulation steps. The complete extension now bundles the raw evidence and source receipts; these pilot outcomes remain a subset of that ensemble.
 
 - G9 physical/descriptive receipt SHA256: `b59cb77b6a60c25f935bb04120138faa2da508e39f7b13acc67f13a8c318a53d`; independent reader receipt: `1e445f4f59746078c31c4f3c602fa6532449ecce6e7e3ec7a16734e95d006f78`.
 - G12 physical/descriptive receipt SHA256: `000fbe77a886bd8aac5f239a3ba9d2a314d10677d0b144e8f4c9adc60142022c`; independent reader receipt: `ebfffbdcc97fcb19d0c8b3b6f5a011e53e4f2c0fb2a55f74194800e3ba30da73`.

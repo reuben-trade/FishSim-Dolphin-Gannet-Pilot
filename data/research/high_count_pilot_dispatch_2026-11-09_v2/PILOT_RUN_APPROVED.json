@@ -1,0 +1,41 @@
+{
+  "approved": true,
+  "at": "2026-11-09T17:24:35.119948+08:00",
+  "reviewer": "/root/brief_audit",
+  "phase": "pilot",
+  "dispatch_freeze_sha256": "0aec537f7f382a84dc851fe46f468187aa3083ec891ab23d8586311f6a1a23e4",
+  "amendment_sha256": "88401b2fe98fd4323b19d776d5993b24a261cccdb60f960aa5abb763bcc5d817",
+  "maximum_native_steps": 345600,
+  "maximum_cases": 12,
+  "duration_T": 36.0,
+  "dt": 0.00125,
+  "maximum_worker_processes": 8,
+  "numeric_threads_per_worker": 1,
+  "bridge_template_sha256": "f5c0e96a3c59658b9d654c321faf3a404f075668ed0ba4c477c0a9a48cc871b0",
+  "independent_dispatch_review_sha256": "306dfa61b8462a102141331caf943761bd7ef96fbfe7fe9c2878149c8ae75557",
+  "root_design_authorization_sha256": "86acbd0c7e066b7366aa3379b6f195c4c700f995770a24f4fbc4db966b2c8b9e",
+  "root_parallelism_authorization_sha256": "da73f42bed135884ceaf2f8a6b8e29fe008f9e1cc1466a3f7986728f45278e91",
+  "independent_smoke_review_sha256": "e1bb13e50d1628152b1880fee2111e8f85633dd2975eceda506bf1912d26a29e",
+  "case_names": [
+    "s39061001_H1_G9_DG_c61001",
+    "s39061001_H1_G12_DG_c61001",
+    "s39061001_H1_G18_DG_c61001",
+    "s39061001_H2_G9_DG_c61001",
+    "s39061001_H2_G12_DG_c61001",
+    "s39061001_H2_G18_DG_c61001",
+    "s39061001_H3_G9_DG_c61001",
+    "s39061001_H3_G12_DG_c61001",
+    "s39061001_H3_G18_DG_c61001",
+    "s39061001_Gonly9_G_c61001",
+    "s39061001_Gonly12_G_c61001",
+    "s39061001_Gonly18_G_c61001"
+  ],
+  "conditions": [
+    "Only fixedschool39061001 twelve36Tpilotcases;no additionalnativeinitializationorsmoke",
+    "All3G-only controls first,thenall9mixed in8workerqueue;allsettings regardless signs",
+    "ObserveactualworkerRSS/Threads/CPUandhostavailablememory;preserve1GiBroot/2GiBoutputreserve",
+    "Describeacountonlyafterall3HplusmatchedGcontrolraw/physicalaccountscomplete;n1descriptiveonly",
+    "Stopafterall12forindependentraw/physicalauditandfreshremainderapproval;noautomaticcasechangesorretries",
+    "Preserveallfailedoutputsandpriorfrozenbytes;holdfresh-school/repeatfeeding"
+  ]
+}

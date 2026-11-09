@@ -1,0 +1,30 @@
+{
+  "approved": true,
+  "at": "2026-11-09T17:03:34.873396+08:00",
+  "reviewer": "/root/brief_audit",
+  "stage": "smoke",
+  "root_authorization_sha256": "86acbd0c7e066b7366aa3379b6f195c4c700f995770a24f4fbc4db966b2c8b9e",
+  "protocol_sha256": "014a1784a3caa674085c25cba666684507ca07f0bc1d87d4ad63eabeb8b72d55",
+  "freeze_sha256": "573a30e4860cb36176140352c5d64be2c42de61c2456e0d1955f9ac8a5edf831",
+  "independent_initialization_review_sha256": "3f067e858cde08c35c97c634f17f75c942d134765df5e2dd42992a47963fe12e",
+  "actual_zero_step_sha256": "0da72f38a2e85eb5322feff9c8c511db46f73ce72c2f705a5a480100e63f96aa",
+  "maximum_native_steps": 16000,
+  "maximum_cases": 5,
+  "duration_T": 4.0,
+  "maximum_workers": 3,
+  "numeric_threads_per_worker": 1,
+  "case_names": [
+    "s39061001_Gonly9_G_c61001",
+    "s39061001_Gonly18_G_c61001",
+    "s39061001_H1_G9_DG_c61001",
+    "s39061001_H2_G12_DG_c61001",
+    "s39061001_H3_G18_DG_c61001"
+  ],
+  "conditions": [
+    "Only fixed five4Tsmokes;nofullencountersorautomaticretry",
+    "Preserve1GiBroot/2GiBoutputreserve andfailedoutputs",
+    "Allfive physical/RNG/accounting/cadence reviews must pass before newfullapproval",
+    "Measure G18throughput beforefullactivation",
+    "All held-outfeeding remains onhold"
+  ]
+}
