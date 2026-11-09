@@ -1,6 +1,6 @@
 # FishSim dolphin–gannet pilot: executive summary
 
-**9 November 2026 — completed discovery sweep; higher-gannet feeding pilot running**
+**9 November 2026 — completed discovery sweep; higher-gannet first-school pilot complete**
 
 ## Main finding
 
@@ -62,9 +62,9 @@ The current priority is a balanced extension to **9, 12 and 18 gannets at all th
 
 Counts 9/12/18 place 3/4/6 birds at each of the same three launch sites. This preserves the launch footprint while testing greater local multiplicity. Predators are point-represented and have no body-spacing avoidance, so high-count outcomes describe idealised pressure and competition rather than calibrated real crowding.
 
-The extension is running with **eight single-thread workers**, with a first feeding pilot on one school at every new setting before the remaining schools. By 18:00 Perth, complete nine- and twelve-gannet panels had passed two independent raw/physical reviews; the eighteen-gannet panel remained pending. The [separate preliminary pilot tables](https://github.com/reuben-trade/FishSim-Dolphin-Gannet-Pilot/blob/main/reports/current/PRELIMINARY_HIGH_COUNT_PILOT.md) include all three H settings, matched controls and the same-school six-bird reference. These are n=1 point outcomes with no across-school error bars, not replacements for the four-school discovery results above. The provisional estimate is **about 2–3 hours for all 48 feeding encounters with eight workers**, plus final checks; it will be updated from measured throughput. All settings will be retained regardless of outcome. Six birds is the upper boundary of the completed four-school sweep, not an established optimum.
+Using **eight single-thread workers**, the first feeding pilot covered one school at every new setting before the remaining schools. All 12 pilot encounters finished at 18:11 Perth, and all three count panels passed two independent raw/physical reviews. The remaining 36 encounters are still required for the four-school extension. The [separate preliminary pilot tables](https://github.com/reuben-trade/FishSim-Dolphin-Gannet-Pilot/blob/main/reports/current/PRELIMINARY_HIGH_COUNT_PILOT.md) include all three H settings, matched controls and the same-school six-bird reference. These are n=1 point outcomes with no across-school error bars, not replacements for the four-school discovery results above. The provisional estimate is **about 2–3 hours for all 48 feeding encounters with eight workers**, plus final checks; it will be updated from measured throughput. All settings will be retained regardless of outcome. Six birds is the upper boundary of the completed four-school sweep, not an established optimum.
 
-Fresh-school feeding and stochastic-repeat runs are on hold in favour of this expansion. The eight-school predator-free preparation that had already begun was retained to completion; it produced no feeding outcomes. Complete one-school pilot panels are available separately; the full higher-count four-school results remain pending.
+Fresh-school feeding and stochastic-repeat runs are on hold in favour of this expansion. The eight-school predator-free preparation that had already begun was retained to completion; it produced no feeding outcomes. All nine one-school mixed-setting results are available separately; the full higher-count four-school results remain pending.
 
 ## Report and reproducibility
 
