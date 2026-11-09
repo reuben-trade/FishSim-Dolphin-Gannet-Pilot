@@ -23,8 +23,19 @@ for b in blocks[4:]:
  k,t=b['kind'],b['text']
  if k=='section':parts.append(r'\section{'+tex(t)+'}')
  elif k=='subsection':parts.append(r'\subsection{'+tex(t)+'}')
- elif k=='p':parts.append(tex(t)+'\n')
- elif k=='figure':parts.append(r'\begin{figure*}[!t]\centering\includegraphics[width=\textwidth]{figures/'+b['name']+r'.pdf}\caption{'+tex(b['caption'])+r'}\label{fig:'+str(b['number'])+r'}\end{figure*}')
+ elif k=='p':
+  # Keep the future-work paragraph together instead of leaving its first
+  # hyphenated line at the foot of the preceding page's right column.
+  if t.startswith('The next study should vary'):parts.append(r'\newpage')
+  parts.append(tex(t)+'\n')
+ elif k=='figure':
+  # Queue the unchanged result plots together: the two full-map plots share
+  # a page and the sensitivity plot follows. Native-Doc/source paragraph
+  # order is retained in manuscript.json.
+  if b['number'] in (3,4):continue
+  queued=[b]
+  if b['number']==2:queued.extend(next(x for x in blocks if x['kind']=='figure' and x['number']==n) for n in (3,4))
+  for q in queued:parts.append(r'\begin{figure*}[!t]\centering\includegraphics[width=\textwidth]{figures/'+q['name']+r'.pdf}\caption{'+tex(q['caption'])+r'}\label{fig:'+str(q['number'])+r'}\end{figure*}')
 parts.append(r'\begin{thebibliography}{10}')
 for i,ref in enumerate(refs,1):parts.append(r'\bibitem{'+KEYS[i]+'} '+tex(re.sub(r'^\[\d+\] ','',ref)))
 parts.extend([r'\end{thebibliography}',r'\end{document}'])

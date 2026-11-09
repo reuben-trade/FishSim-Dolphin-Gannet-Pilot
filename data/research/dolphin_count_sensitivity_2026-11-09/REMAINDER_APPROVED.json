@@ -1,0 +1,51 @@
+{
+  "approved": true,
+  "stage": "remainder",
+  "at": "2026-11-09T17:10:39.077722+00:00",
+  "reviewer": "/root/brief_audit",
+  "authority": "Root delegated focused D24 design; all complete selected pilot cases independently reread before the mandatory remaining three-school phase.",
+  "protocol_sha256": "fde9fd2caff20f0539e7cfc663ba77daec3bf476f13afebeff4a1b839364c92a",
+  "freeze_sha256": "6b404be6af4760c04349c4d48f722fc2b9eff5242d5897ff45df9424d633592b",
+  "independent_review_sha256": "d85e601bb58cd6e1d2e7cd6baf575cbcc58c56a78e3b78575a338dca2f7991bb",
+  "maximum_native_steps": 172800,
+  "workers": 8,
+  "case_names": [
+    "s39061002_D24_H1_G0_D_c61001",
+    "s39061002_D24_H1_G36_DG_c61001",
+    "s39063501_D24_H1_G0_D_c61001",
+    "s39063501_D24_H1_G36_DG_c61001",
+    "s39063502_D24_H1_G0_D_c61001",
+    "s39063502_D24_H1_G36_DG_c61001"
+  ],
+  "smoke_review_sha256": "b0639cf5e94bbcef64a215fc0764f515c9e8e5f0f51cfc4c466b52c0efc83eef",
+  "independent_smoke_review_sha256": "592edbc41c68edcb03cbb46071987d0fe4eab17cf3322241177d4b79b06a1108",
+  "pilot_review_sha256": "b8b3c6415c2b851b161d6fa2228434f2c9c2c6b83d2333fec21c444de7ede817",
+  "independent_pilot_review_sha256": "77cd3d2bc409206eb5d43a56cf7c0fe81925fd035388e694c6cb0dd065150756",
+  "pilot_description_sha256": "622a750339544be0c3692659401d4df614f62a023896703458010008d76bbdb0",
+  "pilot_execution_sha256": "9e8ef1a5ecc9ae27cd552dc02a5d103f33ae82a85b113c211b8d65a0f916e778",
+  "pilot_supervisor_sha256": "c6883262b586f2cba536007d9a7ef5cd2fb43b9f13cd87a4c5dc93d94212d265",
+  "selected_regimes_sha256": "6b2974e3ddffabf68c98262d2b259b61d74a1f496a3ae0c36dc974bc825fe582",
+  "design_authorization": {
+    "path": "/tmp/FishSim_D24_Study_Design_Authorization_2026-11-09.json",
+    "sha256": "7db3e241e1a8ae3c5d42089622999c4ce25e1bb0bcfad042e9ff6e3334e0d783"
+  },
+  "task_lease": "/tmp/FishSim_Native_Execution_Lease_2026-11-09.lock",
+  "lease_order": "Acquire shared task lease outermost, then legacy/study lease; retain across all child native work and joins.",
+  "execution_order": "All three remaining-school D24-only controls finish and pools join before the three D24+G36 mixed cases.",
+  "duration_T": 36.0,
+  "dt": 0.00125,
+  "numeric_threads_per_worker": 1,
+  "actual_dynamic_all_stage_ceiling": 236800,
+  "maximum_remaining_native_steps": 172800,
+  "pilot_native_steps": 57600,
+  "smoke_native_steps": 6400,
+  "disk_free_bytes_before_gate": {
+    "home": 1343574016,
+    "tmp": 4825923584
+  },
+  "scope": "Exactly six remaining selected H1/G36 first-capture-label cases across39061002,39063501,39063502, matched new D24-only and D24+G36. No extra regimes, schools, capture labels, retries or changes to frozen scientific rules.",
+  "outcome_condition": "All six cases mandatory regardless of pilot signs or food; pilot n1 is descriptive, not validation.",
+  "no_automatic_retries": true,
+  "preserve_failures": true,
+  "final_independent_raw_endpoint_bootstrap_review_required": true
+}

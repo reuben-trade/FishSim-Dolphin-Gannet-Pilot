@@ -44,5 +44,9 @@ def main():
     assert analysis['status']=='passed' and analysis['native_simulation_steps']==analysis['native_model_imports']==analysis['new_bootstrap_draws']==0
     if a.save:nbformat.write(notebook,root/profile['notebook'])
     receipt=dict(status='passed',profile=profile['profile'],notebook=profile['notebook'],notebook_sha256=sha(root/profile['notebook']),report_sha256=profile['report_sha256'],total_cells=len(notebook.cells),code_cells=len(cells),csv_tables=len(profile['csv_tables']),all_csv_bytes_identical=True,figures=figures,protected_inputs_unchanged=len(protected),profile_input_files=analysis['input_files_verified'],map_outcomes=analysis['map_cases'],map_schools=analysis['map_schools'],paired_school_effects=analysis['paired_effects_checked'],departure_subset_runs=analysis['departure_runs'],fresh_kernel=True,native_steps=0,native_imported=False,new_bootstrap_draws=0,code_preflight_passed=True,source_root=str(root),python=sys.version.split()[0],seconds=time.monotonic()-started)
+    if profile.get('population_sensitivity'):
+        assert (analysis['population_new_cases'],analysis['population_reused_cases'],analysis['population_schools'],analysis['population_endpoints_checked'])==(8,12,4,6)
+        assert analysis['deterministic_csv_exports']==9
+        receipt.update(population_new_cases=8,population_reused_cases=12,population_schools=4,population_endpoints_checked=6)
     dest=a.receipt if a.receipt.is_absolute() else root/a.receipt;dest.parent.mkdir(parents=True,exist_ok=True);dest.write_text(json.dumps(receipt,indent=2)+'\n');print(json.dumps(receipt,indent=2))
 if __name__=='__main__':main()

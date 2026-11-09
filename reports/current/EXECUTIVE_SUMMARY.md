@@ -2,7 +2,7 @@
 
 The completed count extension finds **mutual feeding benefits within the model** at several settings, using an unchanged dolphin rule and matched single-species controls. The full map now contains 140 condition-school outcomes and 24 mixed settings on the same four previously observed schools.
 
-At **H=1T/G=36**, dolphins capture 132 fish versus 91 without birds (+45.1%), and gannets 94 versus 16 without dolphins. Both species gain in every school. This is the largest dolphin total observed, but only five fish above the 127 reached at G9 and G18. The comparison does not establish 36 as an optimum.
+At **H=1T/G=36**, dolphins capture 132 fish versus 91 without birds (+45.1%), and gannets 94 versus 16 without dolphins. Both species gain in every school. This is the largest dolphin total observed in the twelve-dolphin map, but only five fish above the 127 reached at G9 and G18. The comparison does not establish 36 as an optimum.
 
 At **H=2T/G=12**, dolphins 86→110 (+27.9%) and gannets 31→57 (+83.9%), again with both species gaining in all four schools. Dolphins also exceed the best-tested H1 bird-free benchmark 91→110 (+20.9%). A smaller flock therefore supports mutual benefit too, with a different distribution of food.
 
@@ -61,10 +61,10 @@ The departure diagnostic remains the older 48 bird-bearing G1/3/6 encounters, no
 
 ## Current artifacts and next tests
 
-The six-page paper has four figures and ten references. [main.ipynb](https://github.com/reuben-trade/FishSim-Dolphin-Gannet-Pilot/blob/main/main.ipynb) reproduces its figures and six summary tables with ten code cells, zero model steps and no new bootstrap draws. The full raw-data inventory has 212 feeding execution records; replays, horizons and engineering checks add no independent schools. Earlier notebooks/manifests and the through 18 report remain preserved.
+The six-page paper has four figures and ten references. [main.ipynb](https://github.com/reuben-trade/FishSim-Dolphin-Gannet-Pilot/blob/main/main.ipynb) reproduces its figures and nine summary tables with ten code cells, zero model steps and no new bootstrap draws. The full raw-data inventory has 220 feeding execution records; replays, horizons and engineering checks add no independent schools. Earlier notebooks/manifests and the through 18 report remain preserved.
 
 The interactive 3D viewer retains its validated 108-encounter through 18 catalogue. New upper-count raw cases are bundled separately. Optional native examples remain the bounded earlier H1/G9 and H2/G12 settings, disabled by default; they do not execute the entire new map.
 
-The D24 comparison remains planned here until all its outcomes are audited, with matched D24-only controls and per-animal returns. Attack synchronisation is a future controlled test, not a demonstrated mechanism or completed experiment.
+The completed D24 check uses H1/G36 on the same four schools, with one extra dolphin placed at each original slot and matched D24-only controls. Dolphin group food rises from 183 alone to 229 with birds (+25.1%), with gains in every school; pooled bird catches rise from 16 alone to 80, with one school loss. Mixed food per dolphin is 2.385 at D24 versus 2.750 at D12, lower in all four schools. The per-dolphin partner gain falls from 0.854 to 0.479 fish per 36T; its paired difference is −0.375 (exploratory pointwise 95% interval −0.8125 to −0.0208). More group food therefore does not mean greater individual return. This selected, coarse-grid check identifies neither an optimal pod size nor an isolated competition mechanism. Attack synchronisation remains a future controlled test.
 
 [Current report](https://github.com/reuben-trade/FishSim-Dolphin-Gannet-Pilot/blob/main/reports/current/Feeding_Frenzy_Working_Draft.pdf) · [All current study details](https://github.com/reuben-trade/FishSim-Dolphin-Gannet-Pilot/blob/main/docs/STUDY_OVERVIEW.md)

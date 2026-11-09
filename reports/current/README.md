@@ -1,7 +1,7 @@
 # Current working report
 
-The current V3-style paper now covers the full four-school 1/3/6/9/12/18/24/36-gannet bank:140 outcomes,96 paired contrasts and 24 mixed settings. It has five body pages, four figures and ten references on page six. The older 48-run departure subset and separate eight-school timestep check remain distinct.
+This V3-style paper retains the full D12 map through36gannets:140 outcomes,96 paired contrasts and24 mixed settings on four known schools. A compact additional paragraph reports the completed selected-regime D24 sensitivity:8 new cases,12 reused comparators and six endpoints on those same four schools. The compiled paper has six total pages, four unchanged figures and ten references; body text stays within six pages.
 
-Open [main.ipynb](../../main.ipynb) from the repository root. Ten default code cells reproduce four figures and six tables with zero native steps and no new bootstrap draws. Two older bounded model examples remain disabled. The through 18 paper/notebook is archived separately; the original full raw-evidence v6 notebook and all previous sealed inputs are preserved.
+Root [main.ipynb](../../main.ipynb) reproduces four figures and nine tables with ten default code cells, zero native steps and no new bootstrap draws. Older bounded native examples remain disabled and do not runH1/G36/D24. The previous through36 paper/notebook is archived under reports/snapshots/2026-11-10_through36_before_D24 and main_2026-11-10_through36.ipynb. The historical full raw-evidence workflow remains separate.
 
-The first-school upper-count preliminary panel remains n=1 historical evidence and is a subset of the completed 32-case addition. D24 and synchronisation have no result claims here.
+The older48-run departure subset, eight-school numerical check and first-school preliminary tables retain their original scope. No optimal pod size, causal competition mechanism, numerical convergence or fresh-school confirmation is established.

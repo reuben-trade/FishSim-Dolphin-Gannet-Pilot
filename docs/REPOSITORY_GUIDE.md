@@ -3,14 +3,14 @@
 For ordinary use, start with [main.ipynb](../main.ipynb), the
 [3D viewer](VISUALISATION.md) and the [current paper](../reports/current/).
 The root contains historical names as well as current entry points because
-the notebook verifies 9,335 exact input paths and hashes. A file that looks
+the notebook verifies 9,797 exact input paths and hashes. A file that looks
 old is not necessarily disposable.
 
 | Area | Purpose |
 | --- | --- |
 | `main.ipynb` | Current paper analysis; native execution disabled by default |
 | `tools/watch_replays.py` | Local saved-run 3D viewer |
-| `paper_profiles/current_through36_2026-11-10/` | Current analysis inputs, figures and six output tables |
+| `paper_profiles/current_through36_D24_2026-11-10/` | Current analysis inputs, figures and nine output tables |
 | `reports/current/` | Current manuscript and figures |
 | `run_v6_example.py`, `regime_runtime*.py` | Optional bounded parameter-map model examples |
 | `run_current_model.py`, `current_runtime*.py` | Separate coarse/fine replication runner |
@@ -36,7 +36,7 @@ parameter map uses one fixed exposed-prey dolphin rule.
   identify every original path and unchanged byte sequence.
 - Root `outputs/` is ignored for future regenerated exports. Current-paper
   outputs remain in their versioned profile; regenerated figures, logs and
-  caches there are ignored while the six tracked CSVs stay tracked. Generated evidence and vendor
+  caches there are ignored while the nine tracked CSVs stay tracked. Generated evidence and vendor
   code are marked for GitHub’s diff/language classification.
 - Frozen data, runtime binaries, model rules, manifests and third-party
   licenses have not been removed or rewritten.
@@ -52,4 +52,6 @@ the current analysis and historical reproduction paths.
 See [NOTEBOOK_MAINTENANCE.md](../NOTEBOOK_MAINTENANCE.md) before rebuilding
 the active notebook, and [PROVENANCE.md](../PROVENANCE.md) for source notices.
 
-The full current inventory has 212 feeding execution records; its discovery map has 140 outcomes on four known schools. `upper_count_evidence_v7.py --diagnostics` separately reconstructs raw events, seals, starts, phases, r90 and the fixed whole-school bootstrap without model execution. The compact main notebook generates no new bootstrap draws. The3D catalogue remains the validated 108-encounter through 18 subset.
+The full current inventory has 220 feeding execution records; its discovery map has 140 outcomes on four known schools. `upper_count_evidence_v7.py --diagnostics` separately reconstructs raw events, seals, starts, phases, r90 and the fixed whole-school bootstrap without model execution. The compact main notebook generates no new bootstrap draws. The3D catalogue remains the validated 108-encounter through 18 subset.
+
+The additive `dolphin_count_evidence_v8.py` reconstructs the completed8-case D24 sensitivity with12 reused comparators, six population endpoints and the fixed whole-school bootstrap. Main notebook analysis retains those audited endpoints without new draws. Optional native examples remain D12/H1/G9 orD12/H2/G12.

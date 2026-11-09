@@ -1,6 +1,6 @@
 # Active notebook entry
 
-Open `main.ipynb` from the repository root. `MAIN_NOTEBOOK_PROFILE.json` pins the exact current report, ten default code cells, six summary tables and four matching figure files. Optional native execution remains off.
+Open `main.ipynb` from the repository root. `MAIN_NOTEBOOK_PROFILE.json` pins the exact current report, ten default code cells, nine summary tables and four matching figure files. Optional native execution remains off.
 
 ```bash
 python refresh_main_notebook.py
@@ -9,7 +9,7 @@ python refresh_main_notebook.py --save
 
 The validator checks canonical code before kernel creation, then runs all cells in a fresh kernel using the calling Python interpreter. A previously enabled native toggle or altered command is rejected. It verifies frozen hashes, CSV bytes and current report pixels. `--save` also refreshes cached notebook outputs. Install the analysis requirements first; a notebook/kernel environment is needed. The tested Python 3.12 environment is recorded in the versioned profile.
 
-The active generator is `create_main_notebook_current_paper_2026_11_10.py`. It selects the frozen current-paper cells, adapts the package/profile paths and retains two optional v6 cells using PROJECT_ROOT. It writes root `main.ipynb`; it does not execute the model. Its generated outputs require validation before publication.
+The active generator is `create_main_notebook_current_paper_2026_11_10_D24.py`. It selects the frozen current-paper cells, adapts the package/profile paths and retains two optional v6 cells using PROJECT_ROOT. It writes root `main.ipynb`; it does not execute the model. Its generated outputs require validation before publication.
 
 After regenerating `main.ipynb`, restore its recorded-replay viewing help from a Terminal opened in the repository root:
 
@@ -24,4 +24,4 @@ All older `create_notebook*.py` files and `SNAPSHOT_REFRESH_HANDOFF.md` describe
 
 `main_2026-11-09_v6.ipynb` retains the earlier 21-code-cell full raw-evidence workflow. Open it with the repository root as cwd. Its report is under reports/snapshots/2026-11-09_v6_through18. No repository CI workflow exists at this revision; validation receipts are under validation/. Native Google Doc publication uses a fresh current-Doc revision and text guard, preserving human edits.
 
-Current profile: through 36,140 outcomes/96 schoolcontrasts/24 settings;53 compact frozen inputs plus the cumulative 9,335-file manifest. Rootmain retains ten code cells/six tables/four figures. `main_2026-11-09_through18.ipynb` and reports/snapshots/2026-11-09_current_through18 preserve the previous current-paper version. Optional v6 examples remain H1/G9 orH2/G12; they do not run the new H1/G36 setting.
+Current profile: through36 plus the selected D24 check;140 D12 map outcomes/96 school contrasts/24 settings and8 new D24 cases/12 reused comparators/six endpoints;66 compact frozen inputs plus the cumulative 9,797-file manifest. Root main retains ten code cells/nine tables/four figures. `main_2026-11-09_through18.ipynb` and reports/snapshots/2026-11-09_current_through18 preserve the previous current-paper version. Optional v6 examples remain H1/G9 orH2/G12; they do not run H1/G36 or D24.

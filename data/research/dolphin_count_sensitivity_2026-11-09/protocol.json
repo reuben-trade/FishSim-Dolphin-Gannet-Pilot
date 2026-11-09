@@ -1,0 +1,98 @@
+{
+  "study": "dolphin_count_sensitivity_2026-11-09",
+  "status": "native_free_candidate_not_selected_or_frozen",
+  "school_seeds": [
+    39061001,
+    39061002,
+    39063501,
+    39063502
+  ],
+  "capture_seed": 61001,
+  "dt": 0.00125,
+  "duration_T": 36.0,
+  "fish": 160,
+  "dolphins_reference": 12,
+  "dolphins_new": 24,
+  "maximum_regimes": 2,
+  "actual_regimes": null,
+  "fixtures_only": [
+    [
+      1,
+      9
+    ],
+    [
+      2,
+      12
+    ]
+  ],
+  "selection_A": "Highest pooled D12 mixed dolphin return over complete 24-cell upper map; ties fewer birds then lower H",
+  "selection_B": "Same ranking restricted to both species having strictly positive partner effect in all four schools; absent B if none qualifies",
+  "selection_controls": "Deduplicate identical regimes and same-H D24-only controls; reuse exact count-matched G-only and D12 comparisons by SHA; no extra replication",
+  "new_full_cases_maximum": 16,
+  "full_native_steps_maximum": 460800,
+  "smoke_cases_maximum": 4,
+  "smoke_duration_T": 4,
+  "smoke_native_steps_maximum": 12800,
+  "all_stage_native_steps_maximum": 473600,
+  "pilot": "Fixed first school 39061001, then the remaining three; all selected cases mandatory regardless sign",
+  "new_roster": "D00-D11 unchanged; D12-D23 use original D(i modulo12) positions and original generic stable-ID readiness/private stream formula; fixed 12-slot point-body footprint",
+  "primary_endpoints": [
+    "per-dolphin partner rate change at D24",
+    "D24 minus D12 per-dolphin partner rate change"
+  ],
+  "secondary_endpoints": [
+    "D12 partner effect",
+    "D24 minus D12 mixed per-dolphin feeding rate",
+    "group captures separately",
+    "per-gannet partner rate change at each dolphin population"
+  ],
+  "bootstrap": {
+    "unit": "whole-school vector paired across all populations/settings/species",
+    "independent_schools": 4,
+    "draws": 10000,
+    "seed": 88493024,
+    "quantiles": [
+      0.025,
+      0.975
+    ],
+    "interpretation": "exploratory pointwise intervals; prior observed schools; no independent validation or multiplicity correction"
+  },
+  "native_gate": "All phases currently closed because complete-map selection and fresh independent phase reviews/approvals are absent; prepared gate code does not issue approvals",
+  "native_constructions": 0,
+  "native_steps": 0,
+  "execution_order": "Upper 24/36 gannet extension finishes and is independently audited before D24 selection/freeze/native phases",
+  "shared_lease": "/tmp/FishSim_Native_Execution_Lease_2026-11-09.lock",
+  "lease_order": "Shared outer lease before any legacy study lock; parent retains until all children joined",
+  "workers_maximum": 8,
+  "numerical_threads": 1,
+  "root_reserve_bytes": 1073741824,
+  "output_reserve_bytes": 2147483648,
+  "output": "/tmp/FishSim_Dolphin_Count_Sensitivity_2026-11-09",
+  "preservation": "No original code or data changed; no raw banks duplicated; all signs and partial failures retained",
+  "design_authorization": {
+    "path": "/tmp/FishSim_D24_Study_Design_Authorization_2026-11-09.json",
+    "sha256": "7db3e241e1a8ae3c5d42089622999c4ce25e1bb0bcfad042e9ff6e3334e0d783"
+  },
+  "baseline_order": "Within every smoke/pilot/remainder phase, finish and join every same-H D24-only control pool before submitting any mixed D24+G case",
+  "prepared_execution_modules": [
+    "run.py",
+    "physical_run.py",
+    "evidence.py",
+    "freeze.py",
+    "native_zero_step.py",
+    "review_phase.py",
+    "review_actual.py",
+    "supervise.py",
+    "describe_pilot.py",
+    "reference.py",
+    "analyze.py"
+  ],
+  "arithmetic": "Integer capture contrasts before division; exact-zero interaction/sign/bootstrap regression; no epsilon sign threshold",
+  "approval_files": [
+    "INITIALIZATION_APPROVED.json",
+    "SMOKE_APPROVED.json",
+    "PILOT_APPROVED.json",
+    "REMAINDER_APPROVED.json"
+  ],
+  "gates_created_by_preparation": []
+}

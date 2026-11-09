@@ -1,0 +1,25 @@
+{
+  "independent_unit": "Four previously observed whole schools; paired across populations, regimes and species; no actor pseudoreplication",
+  "primary": [
+    "D24 same-H partner effect: (mixed D24 captures - D24-only captures)/(24*36T)",
+    "Population interaction: (D24 capture difference - 2*D12 capture difference)/(24*36T)"
+  ],
+  "secondary": [
+    "D12 same-H partner effect from integer capture difference/(12*36T)",
+    "Mixed per-dolphin D24-D12 difference: (mixed D24 captures - 2*mixed D12 captures)/(24*36T)",
+    "G_with_D12 and G_with_D24 partner effects from integer mixed-minus-G-only capture differences/(G*36T)",
+    "Group capture totals separately from per-animal return; all signs and school points retained"
+  ],
+  "arithmetic": "Integer count contrasts before division, exact zeros without epsilon sign thresholds",
+  "bootstrap": {
+    "draws": 10000,
+    "seed": 88493024,
+    "quantiles": [0.025, 0.975],
+    "resampling": "One common four-school index matrix across every regime, population and species endpoint",
+    "interpretation": "Exploratory pointwise intervals, sample SD, sign counts; no multiplicity adjustment or independent validation"
+  },
+  "selection": "Roles A/B chosen by integer D12 captures from all 24 complete upper-map settings before any D24 outcome; no D24-dependent regime or seed selection",
+  "controls": "New same-H D24-only controls finish before mixed submissions within every phase; completed D12 and count-matched G-only references reused by exact SHA, with no extra independent units",
+  "depletion": "Actual unique captures divided by fixed nominal36T; effort observed only to complete depletion; no empty-school extrapolation",
+  "native_steps": 0
+}

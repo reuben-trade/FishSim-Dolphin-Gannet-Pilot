@@ -43,11 +43,11 @@ Open **[main.ipynb](main.ipynb)** in JupyterLab and choose **Run → Run All Cel
 python -m jupyterlab
 ```
 
-The default ten code cells reproduce four figures and six summary tables from saved results. They take zero native simulation steps and generate no new bootstrap draws. Optional model examples remain disabled. [Detailed setup and platform notes](docs/STUDY_OVERVIEW.md#local-setup-current-paper-analysis-and-figures).
+The default ten code cells reproduce four figures and nine summary tables from saved results. They take zero native simulation steps and generate no new bootstrap draws. Optional model examples remain disabled. [Detailed setup and platform notes](docs/STUDY_OVERVIEW.md#local-setup-current-paper-analysis-and-figures).
 
 ## What this study currently shows
 
-The current paper includes a complete H × gannet-count map through thirty-six gannets, using four previously observed schools. Some settings improve feeding returns for both species; others do not. Results from that discovery map, the original pilots and the separate timestep checks are distinguished in the [scientific overview](docs/STUDY_OVERVIEW.md), with every setting and sign retained.
+The current paper includes a complete H × gannet-count map through thirty-six gannets, using four previously observed schools. Some settings improve feeding returns for both species; others do not. A separate selected-regime check with 24 dolphins retains positive mean partner benefits but lowers catches per dolphin compared with 12 dolphins. Results from that discovery map, the original pilots and the separate timestep checks are distinguished in the [scientific overview](docs/STUDY_OVERVIEW.md), with every setting and sign retained.
 
 These are model results with exploratory uncertainty, unresolved timestep sensitivity and uncalibrated physical units. They do not establish general biological cooperation or numerical convergence.
 
