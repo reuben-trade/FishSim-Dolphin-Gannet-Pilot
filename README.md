@@ -57,6 +57,8 @@ Active validation: the [frozen pre-analysis plan and 192 planned case identities
 
 A [prospective H2/G12 follow-up and four-endpoint programme addendum](reports/supplements/LOWER_COUNT_FOLLOWUP_PLAN.md) uses the same 16 schools. It is planned but not authorised for native execution and leaves the active H1/G36 primary analysis unchanged.
 
+A [prospective crossed follow-up](reports/supplements/CROSSED_FOLLOWUP_PLAN.md) proposes H1/G12 and H2/G36 to separate the two tested herding durations and bird counts. Its 128 new mixed encounters would reuse exact controls on the same 16 schools; execution waits for both complete 192-case audits and fresh authority.
+
 ## Model execution and repository history
 
 New simulations are separate from replay and default notebook analysis. Read [V6_MODEL_SETUP.md](V6_MODEL_SETUP.md) for bounded parameter-map examples, [CURRENT_MODEL_SETUP.md](CURRENT_MODEL_SETUP.md) for the coarse/fine replication runner, or [NATIVE_SETUP.md](NATIVE_SETUP.md) for the historical runner.

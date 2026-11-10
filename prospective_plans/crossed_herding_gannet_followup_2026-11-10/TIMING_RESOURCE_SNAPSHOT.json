@@ -1,0 +1,46 @@
+{
+  "status": "operational_timing_and_resource_snapshot_only",
+  "source_heartbeat": {
+    "path": "/home/venture/FishSim_Independent_Validation_2026-11-10/feeding_heartbeat.json",
+    "observed_sha256": "b567b6adf8f1b90e18856d219d09186e943eb8578ba43c81ea7fe968709b6ae2",
+    "at": "2026-11-10T19:09:33.032017+08:00",
+    "mutable_original_reference": true
+  },
+  "captured_fields": "Only timestamp, RAM/thread and filesystem-capacity telemetry; no case counts/captures/effects copied",
+  "root_free_GiB": 50.01035690307617,
+  "tmp_free_GiB": 4.22760009765625,
+  "maximum_observed_worker_RSS_KiB": 169684,
+  "maximum_observed_worker_HWM_KiB": 174016,
+  "maximum_observed_worker_threads": 1,
+  "eight_workers_observed_HWM_sum_GiB": 1.32763671875,
+  "completed_eight_case_wave_seconds": {
+    "coarse_D": 651.0,
+    "coarse_G36": 1794.496,
+    "coarse_DG36": 1729.795,
+    "fine_D": 1298.737
+  },
+  "wave_timing_provenance": "Verified completed timing-only facts supplied by /root in task message; no case summaries, events or effect tables opened",
+  "observed_fine_D_to_coarse_D_ratio": 1.9949877112135177,
+  "new_schedule_waves_at_eight_workers": {
+    "coarse": 8,
+    "fine": 8
+  },
+  "reference_full_hours": 11.512699484263525,
+  "reference_assumptions": "Both new mixed conditions assigned the observed coarseDG36 wave cost; fine cost scaled by observed fineD/coarseD ratio, approximately2. This is a throughput scenario, not a measuredG12 or fine-mixed forecast.",
+  "planning_allowance_hours": [
+    12,
+    18
+  ],
+  "planning_allowance_role": "Broad provisional scheduling allowance with overhead/variation; not an empirical confidence or guaranteed upper bound. Calibrate after authorised engineering runs.",
+  "G12_timing_calibration": null,
+  "G12_timing_note": "No clean timing-onlyG12 calibration used; actor counts alone are not a valid throughput scaling rule.",
+  "new_case_file_guard_MiB": 100,
+  "proposed_new_full_and_smoke_output_guard_GiB": 12.890625,
+  "recommended_output_allocation_GiB": 15,
+  "minimum_root_free_at_crossed_start_GiB": 23,
+  "minimum_root_reserve_GiB": 8,
+  "minimum_tmp_reserve_GiB": 2,
+  "resource_gate": "Recheck after BOTH queued studies finish; current free space is not a future commitment. Use/home/venture output, no raw-bank/control duplication.",
+  "native_steps_executed": 0,
+  "feeding_outcomes_read": 0
+}
