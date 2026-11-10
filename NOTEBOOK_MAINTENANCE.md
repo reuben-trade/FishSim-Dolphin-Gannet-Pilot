@@ -31,3 +31,12 @@ Paper/Doc publication uses the same current 13w Google Doc, fresh full text and
 revision guard, and stable Drive PDF. Current Figures 1–3 are preserved; Figure4
 is the accepted 16-school coarse/fine comparison. No synthetic proof output is
 part of the actual scientific tables or figures.
+
+
+## Ordinary notebook saves and current template
+
+The active entry is verified by `replay_tools/primary_192/notebook_template.py`. Cell identities, markdown and normalized code must match the versioned template; only the four typed leading settings may vary. Outputs, execution counts and notebook/kernel metadata are transient. Do not place the active raw-file SHA into an immutable input manifest.
+
+`PACKAGE_INPUTS.json` and all old inputs remain unchanged. The new Session wrapper projects only its old main.ipynb entry onto the immutable archived763 file and verifies the other466 entries normally; every saved-analysis method is inherited unchanged. `NOTEBOOK_RELEASE_BINDINGS.json` is a mutable current binding alias, with the current pending version preserved under `notebook_profiles/usability_2026-11-11/`. Future certification must add a versioned accepted binding/proof archive and update that alias without modifying old immutable templates or sources.
+
+The native optional cell follows the saved-analysis completion receipt. It remains False by default and rejects a missing native release before subprocess execution. Any later activation requires actual artifact-specific zero/4T/36T proofs and fresh approval/review; a source argument plan is not a release.

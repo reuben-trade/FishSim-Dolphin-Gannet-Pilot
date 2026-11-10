@@ -43,7 +43,7 @@ Open **[main.ipynb](main.ipynb)** in JupyterLab and choose **Run → Run All Cel
 python -m jupyterlab
 ```
 
-The default seven code cells reproduce four figures and thirteen canonical summary tables from saved results. They take zero native model steps and generate no new bootstrap draws. Actual full-study reproduction passed in fresh kernels and a separate space-containing checkout. [Detailed setup and platform notes](docs/LOCAL_ANALYSIS_SETUP.md). Optional native replay remains disabled and its release is separate.
+The default seven code cells reproduce four figures and thirteen canonical summary tables from saved results. They take zero native model steps and generate no new bootstrap draws. Actual full-study reproduction passed in fresh kernels and a separate space-containing checkout. Saving outputs/kernel metadata and repeating Run All in the same kernel also passes; the four optional settings are checked by type. [Detailed setup and platform notes](docs/LOCAL_ANALYSIS_SETUP.md). Optional native replay remains disabled and its release is separate. [Notebook and replay setup](docs/PRIMARY_REPLAY_SETUP.md).
 
 ## What this study shows
 

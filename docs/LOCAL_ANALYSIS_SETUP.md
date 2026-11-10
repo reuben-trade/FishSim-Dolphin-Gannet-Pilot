@@ -18,7 +18,7 @@ canonical CSV tables, and starts no simulator or new bootstrap draws.
 For a fresh headless kernel in the same environment:
 
 ```sh
-python execute_notebook.py
+python -m replay_tools.primary_192.execute_notebook
 ```
 
 Actual production checks passed on Linux/Python3.12, including an independent
@@ -36,3 +36,7 @@ notebook's native toggle is off. Older short examples have different scope.
 Frozen input hashes are intentional. Preserve the canonical notebook/package
 for reproduction; make a separate copy for exploratory edits. The prior
 notebook and profile are archived under archive/notebooks/.
+
+Saving execution outputs and selecting a different kernel does not invalidate the current notebook. The fixed logical cells and typed optional settings are checked against an immutable template. See [PRIMARY_REPLAY_SETUP.md](PRIMARY_REPLAY_SETUP.md); native execution remains closed until its separate release.
+
+The recommended headless driver is analysis-only: it rejects `RUN_NATIVE=True` before starting a kernel and writes a fresh proof under ignored `outputs/headless_*/`. The original root `execute_notebook.py` is preserved for historical provenance; use the versioned command above for current headless analysis.
