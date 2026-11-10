@@ -3,7 +3,7 @@
 **This is a public configuration archive posted after feeding began, not formal preregistration.** The protocol and analysis rules were fixed before the full validation launch at **16:44:36 Perth /08:44:36 UTC on 10 November 2026**. Public posting occurs later, after some single-species control encounters had completed. No claim is made that this plan was publicly available before data collection.
 
 <!-- PUBLIC_POSTING_LINE -->
-First public push confirmation: pending publication; the confirmed later time and first commit will be recorded here and in [POSTING_RECORD.json](../../prospective_plans/independent_validation_2026-11-10/POSTING_RECORD.json).
+First public push confirmed: **10 November 2026,09:39:53 UTC /17:39:53 Perth**, first archive commit `3f2222adaef5301c1a2453b684cf90069431d545`. This is the observed successful-push confirmation time, not a backdated claim of pre-data posting. The machine-readable [posting record](../../prospective_plans/independent_validation_2026-11-10/POSTING_RECORD.json) preserves both times.
 <!-- END_PUBLIC_POSTING_LINE -->
 
 The [current paper](../current/Feeding_Frenzy_Working_Draft.pdf) remains the earlier discovery report on four previously examined schools. This archive contains **no validation feeding effects**. The new validation will not be pooled with those discovery schools.
