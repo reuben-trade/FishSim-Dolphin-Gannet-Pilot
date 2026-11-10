@@ -1,0 +1,31 @@
+{
+  "primary": "Both fine-grid matched per-individual capture effects; average2labels within eachschool then average16schools; fish perindividual per36T",
+  "independent_unit": "school;16, not32labels or192cases",
+  "interval": {
+    "method": "paired school mean Student t",
+    "confidence": 0.975,
+    "df": 15,
+    "critical": 2.4898797034798923,
+    "family": "two co-primary species endpoints; Bonferroni approximate95% familywise",
+    "decision": "both lower bounds strictly above0 at fulln16 only"
+  },
+  "bootstrap": {
+    "role": "prespecified sensitivity only; never select method",
+    "draws": 50000,
+    "seed": 8611030,
+    "quantiles": [
+      0.0125,
+      0.9875
+    ],
+    "unit": "whole school vector preserving2labels/species/bothgrids"
+  },
+  "secondary": [
+    "Coarse paired effects",
+    "Within-school fine-minus-coarse effect differences; do not infer convergence from nonsignificance",
+    "All16 raw school effects and2nestedlabel points",
+    "Within-school stochastic-world W and conditional MCSE=sqrt(W/32), separate fromsamplingSE, never added twice"
+  ],
+  "interims": "Descriptive complete-block counts/label andschool means only; no confirmatorydecision until192complete",
+  "no_selection": true,
+  "no_dropping": true
+}

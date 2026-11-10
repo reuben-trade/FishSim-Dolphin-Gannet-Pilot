@@ -1,0 +1,113 @@
+{
+  "status": "prespecified_before_validation_feeding",
+  "authority": {
+    "path": "/tmp/FishSim_Independent_Validation_Design_Authorization_2026-11-10.json",
+    "sha256": "af34f879f7bf2969c5e11d73276308d77a998729e8e21fbaf89fb019c3162ad5"
+  },
+  "regime": {
+    "H": 1.0,
+    "gannets": 36,
+    "dolphins": 12,
+    "fish": 160,
+    "q_eligible_contact": 0.7
+  },
+  "schools": [
+    39065501,
+    39065502,
+    39065503,
+    39065504,
+    39065505,
+    39065506,
+    39065507,
+    39065508,
+    39065509,
+    39065510,
+    39065511,
+    39065512,
+    39065513,
+    39065514,
+    39065515,
+    39065516
+  ],
+  "capture_labels": [
+    71001,
+    71002
+  ],
+  "grids": {
+    "coarse": 0.00125,
+    "fine": 0.000625
+  },
+  "primary_grid": "fine",
+  "duration_T": 36.0,
+  "full_cases": 192,
+  "full_step_ceiling": 8294400,
+  "new_preparation_step_ceiling": 588800,
+  "smoke_step_ceiling": 28800,
+  "all_new_step_ceiling": 8912000,
+  "workers": 8,
+  "numeric_threads": 1,
+  "blocks": [
+    [
+      39065501,
+      39065502,
+      39065503,
+      39065504
+    ],
+    [
+      39065505,
+      39065506,
+      39065507,
+      39065508
+    ],
+    [
+      39065509,
+      39065510,
+      39065511,
+      39065512
+    ],
+    [
+      39065513,
+      39065514,
+      39065515,
+      39065516
+    ]
+  ],
+  "ordering": "Four-school blocks, coarse then fine, D-only then G-only then mixed per grid; all cases mandatory regardless signs",
+  "preparation": {
+    "encounter_T": 20.0,
+    "original_inclusion_screen": [
+      20.0,
+      56.0
+    ],
+    "additional_diagnostic_only": [
+      56.0,
+      92.0
+    ],
+    "dt": 0.00125,
+    "first8_archive": "/home/venture/FishSim_Independent_Validation_2026-11-10/archived_preparation_first8",
+    "first8_origin_manifest_sha256": "6c97185f4e7ccde82644a5d082ae0974ec28cbd202df1f5238bcd1f08bfa35ef",
+    "new8": [
+      39065509,
+      39065510,
+      39065511,
+      39065512,
+      39065513,
+      39065514,
+      39065515,
+      39065516
+    ],
+    "replacement_rule": "none; technical preparation failures retained and stop for review"
+  },
+  "randomness": "Original school-inclusive private capture/tie/Gtarget arithmetic; readiness school+stableID only. Two labels are stochastic-world repeats, not new schools or pure q randomness.",
+  "selection": {
+    "fixed_before_validation": true,
+    "source_review_sha256": "54331dbc2430a6f6660cea3aedbf37c45bb7a224c8303ff5bebf03647b9c20d3",
+    "criterion": "H1/G36 fixed from completed D12 discovery; no validation reselection"
+  },
+  "same_model": true,
+  "footprint": "Original12D slots and3G sites,12 point birds/site; no collision/avoidance; no added coverage",
+  "grid_scope": "Encounter-grid sensitivity conditional on same20T coarse-prepared starts, not preparation convergence",
+  "resumption": "Case-granularity only: completed sealed outcomes may be resumed without rerun; partial/unsealed cases stop for technical review, no automatic retry",
+  "compact_outputs": "Existing compressed npz trajectories at0.1T, gzip event logs, and exact receipts; no raw-bank duplication",
+  "bulk": "/home/venture/FishSim_Independent_Validation_2026-11-10"
+}
