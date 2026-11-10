@@ -18,7 +18,7 @@ def tex(t):
  t=re.sub(r'Figure ([1-4])([a-d](?:,[a-d])?)?',lambda m:r'Figure~\ref{fig:'+m[1]+'}'+(m[2] or ''),t)
  for k,v in urls.items():t=t.replace(k,v)
  return t
-parts=[r'\documentclass[10pt,a4paper,twocolumn]{article}',r'\usepackage[margin=18mm,columnsep=6mm]{geometry}',r'\usepackage[T1]{fontenc}\usepackage[utf8]{inputenc}',r'\usepackage{mathptmx,microtype,graphicx,amsmath,caption}',r'\usepackage[numbers,sort&compress]{natbib}\usepackage[hidelinks]{hyperref}\usepackage{xurl}',r'\setlength{\parindent}{0pt}\setlength{\parskip}{4pt}\setlength{\bibsep}{3pt}',r'\captionsetup{font=small,labelfont=bf,skip=4pt}',r'\renewcommand{\dbltopfraction}{.9}\renewcommand{\textfraction}{.05}\renewcommand{\dblfloatpagefraction}{.8}\setcounter{dbltopnumber}{2}',r'\title{'+tex(title)+'}',r'\author{Reuben Stanley\\University of Western Australia}',r'\date{10 November 2026 | Working draft V3 (updated)}',r'\begin{document}\raggedbottom',r'\twocolumn[\maketitle\begin{center}\begin{minipage}{0.97\textwidth}\textbf{Abstract.} '+tex(blocks[3]['text'])+r'\par\vspace{8pt}\end{minipage}\end{center}]']
+parts=[r'\documentclass[10pt,a4paper,twocolumn]{article}',r'\usepackage[margin=18mm,columnsep=6mm]{geometry}',r'\usepackage[T1]{fontenc}\usepackage[utf8]{inputenc}',r'\usepackage{mathptmx,microtype,graphicx,amsmath,caption}',r'\usepackage[numbers,sort&compress]{natbib}\usepackage[hidelinks]{hyperref}\usepackage{xurl}',r'\setlength{\parindent}{0pt}\setlength{\parskip}{4pt}\setlength{\bibsep}{3pt}',r'\captionsetup{font=small,labelfont=bf,skip=4pt}',r'\renewcommand{\dbltopfraction}{.9}\renewcommand{\textfraction}{.05}\renewcommand{\dblfloatpagefraction}{.8}\setcounter{dbltopnumber}{2}',r'\title{'+tex(title)+'}',r'\author{Reuben Stanley\\University of Western Australia}',r'\date{11 November 2026 | Independent-school validation}',r'\begin{document}\raggedbottom',r'\twocolumn[{\maketitle\begin{center}\begin{minipage}{0.97\textwidth}\textbf{Abstract.} '+tex(blocks[3]['text'])+r'\par\vspace{8pt}\end{minipage}\end{center}}]']
 for b in blocks[4:]:
  k,t=b['kind'],b['text']
  if k=='section':parts.append(r'\section{'+tex(t)+'}')
@@ -26,7 +26,7 @@ for b in blocks[4:]:
  elif k=='p':
   # Keep the future-work paragraph together instead of leaving its first
   # hyphenated line at the foot of the preceding page's right column.
-  if t.startswith('The next study should vary'):parts.append(r'\newpage')
+  # Let the shorter final figure/prose flow naturally; no inherited column break.
   parts.append(tex(t)+'\n')
  elif k=='figure':
   # Queue the unchanged result plots together: the two full-map plots share

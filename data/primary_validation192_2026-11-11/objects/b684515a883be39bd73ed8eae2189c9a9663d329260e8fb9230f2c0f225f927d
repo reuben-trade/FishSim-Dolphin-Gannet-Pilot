@@ -1,0 +1,2859 @@
+{
+  "status": "complete",
+  "nominal_horizon_T": 36.0,
+  "observed_native_duration_T": 35.99999999996726,
+  "native_steps": 57600,
+  "absorbing_no_food_continuation": false,
+  "termination": "observed_horizon",
+  "initial_count": 160,
+  "final_count": 114,
+  "species": {
+    "D": {
+      "count": 12,
+      "captures": 39,
+      "launches": 69,
+      "contacts": 54,
+      "captures_per_actor_per_nominal_T": 0.09027777777777778,
+      "observed_effort_T": 431.9999999996071,
+      "observed_distance": 1915.8025942800543
+    },
+    "G": {
+      "count": 36,
+      "captures": 7,
+      "launches": 229,
+      "contacts": 9,
+      "captures_per_actor_per_nominal_T": 0.005401234567901234,
+      "observed_effort_T": 1295.9999999988213,
+      "observed_distance": 9521.704394735947
+    }
+  },
+  "per_actor": {
+    "D00": {
+      "time": {
+        "recovering": 11.686382129140192,
+        "positioning": 1.9704928708553453,
+        "herding": 7.802377262297767,
+        "hunting": 14.540747737673957
+      },
+      "distance": {
+        "recovering": 0.0,
+        "positioning": 11.822957225132189,
+        "herding": 45.47215642891552,
+        "hunting": 87.24448642604285
+      },
+      "physical_mode_time": {
+        "recovery": 11.686382129140192,
+        "search": 1.9704928708553453,
+        "position": 7.802377262297767,
+        "attack": 14.540747737673957
+      },
+      "phases": {
+        "acquire": 0.0006249999999994316,
+        "recovery": 11.685757129140192,
+        "approach": 1.9704928708553453,
+        "maintain": 7.802377262297767,
+        "attack": 14.540747737673957
+      },
+      "exposure_time": {
+        "water": 35.99999999996726,
+        "air": 0.0,
+        "bite_window": 14.540747737673957,
+        "underwater_bite_window": 14.540747737673957,
+        "water_recovery": 11.686382129140192,
+        "air_recovery": 0.0,
+        "underwater_bite_recovery": 0.0,
+        "water_search": 1.9704928708553453,
+        "air_search": 0.0,
+        "underwater_bite_search": 0.0,
+        "water_position": 7.802377262297767,
+        "air_position": 0.0,
+        "underwater_bite_position": 0.0,
+        "water_attack": 14.540747737673957,
+        "air_attack": 0.0,
+        "underwater_bite_attack": 14.540747737673957
+      },
+      "captures": 4,
+      "virtual_successes": 0,
+      "contacts": 5,
+      "launches": 7,
+      "reasons": {
+        "controller_v2_recovery_complete": 8,
+        "controller_v2_cycle_search": 3,
+        "controller_v2_cycle_pressure_start": 9,
+        "launch": 7,
+        "target_not_visible": 2,
+        "controller_v2_cycle_pressure_reset": 2,
+        "capture": 4,
+        "contact_miss": 1
+      },
+      "behaviour_time": {
+        "recovery": 3.686382129140192,
+        "approach": 1.972416565571507,
+        "containment": 7.800453567581606,
+        "attack": 14.540747737673957,
+        "handling": 8.0
+      }
+    },
+    "D01": {
+      "time": {
+        "recovering": 7.416073927175145,
+        "positioning": 2.126334795253989,
+        "herding": 5.201249999996179,
+        "hunting": 21.25634127754195
+      },
+      "distance": {
+        "recovering": 0.0,
+        "positioning": 12.758008771523983,
+        "herding": 31.207499999976484,
+        "hunting": 127.53804766525191
+      },
+      "physical_mode_time": {
+        "recovery": 7.416073927175145,
+        "search": 2.126334795253989,
+        "position": 5.201249999996179,
+        "attack": 21.25634127754195
+      },
+      "phases": {
+        "acquire": 0.0006249999999994316,
+        "recovery": 7.415448927175145,
+        "approach": 2.126334795253989,
+        "maintain": 5.201249999996179,
+        "attack": 21.25634127754195
+      },
+      "exposure_time": {
+        "water": 35.99999999996726,
+        "air": 0.0,
+        "bite_window": 21.25634127754195,
+        "underwater_bite_window": 21.25634127754195,
+        "water_recovery": 7.416073927175145,
+        "air_recovery": 0.0,
+        "underwater_bite_recovery": 0.0,
+        "water_search": 2.126334795253989,
+        "air_search": 0.0,
+        "underwater_bite_search": 0.0,
+        "water_position": 5.201249999996179,
+        "air_position": 0.0,
+        "underwater_bite_position": 0.0,
+        "water_attack": 21.25634127754195,
+        "air_attack": 0.0,
+        "underwater_bite_attack": 21.25634127754195
+      },
+      "captures": 2,
+      "virtual_successes": 0,
+      "contacts": 2,
+      "launches": 5,
+      "reasons": {
+        "controller_v2_recovery_complete": 6,
+        "controller_v2_cycle_search": 4,
+        "controller_v2_cycle_pressure_start": 6,
+        "launch": 5,
+        "target_not_visible": 2,
+        "capture": 2,
+        "timeout": 1
+      },
+      "behaviour_time": {
+        "recovery": 3.4160739271751446,
+        "approach": 2.126959795247849,
+        "containment": 5.200625000002319,
+        "attack": 21.25634127754195,
+        "handling": 4.0
+      }
+    },
+    "D02": {
+      "time": {
+        "recovering": 10.727557565883004,
+        "positioning": 2.0875541664799684,
+        "herding": 6.818047684682554,
+        "hunting": 16.366840582921736
+      },
+      "distance": {
+        "recovering": 0.0,
+        "positioning": 12.524895544256553,
+        "herding": 37.88267755383605,
+        "hunting": 93.37911964260594
+      },
+      "physical_mode_time": {
+        "recovery": 10.727557565883004,
+        "search": 2.0875541664799684,
+        "position": 6.818047684682554,
+        "attack": 16.366840582921736
+      },
+      "phases": {
+        "acquire": 0.0006249999999994316,
+        "recovery": 10.726932565883004,
+        "approach": 2.0875541664799684,
+        "maintain": 6.818047684682554,
+        "attack": 16.366840582921736
+      },
+      "exposure_time": {
+        "water": 35.99999999996726,
+        "air": 0.0,
+        "bite_window": 16.366840582921736,
+        "underwater_bite_window": 16.366840582921736,
+        "water_recovery": 10.727557565883004,
+        "air_recovery": 0.0,
+        "underwater_bite_recovery": 0.0,
+        "water_search": 2.0875541664799684,
+        "air_search": 0.0,
+        "underwater_bite_search": 0.0,
+        "water_position": 6.818047684682554,
+        "air_position": 0.0,
+        "underwater_bite_position": 0.0,
+        "water_attack": 16.366840582921736,
+        "air_attack": 0.0,
+        "underwater_bite_attack": 16.366840582921736
+      },
+      "captures": 5,
+      "virtual_successes": 0,
+      "contacts": 6,
+      "launches": 6,
+      "reasons": {
+        "controller_v2_recovery_complete": 6,
+        "controller_v2_cycle_search": 2,
+        "controller_v2_cycle_pressure_start": 8,
+        "launch": 6,
+        "habitat_boundary_hold": 1286,
+        "capture": 5,
+        "contact_miss": 1,
+        "controller_v2_cycle_pressure_reset": 2
+      },
+      "behaviour_time": {
+        "recovery": 0.8113673213004446,
+        "approach": 2.088430312767482,
+        "containment": 6.817171538395041,
+        "attack": 16.366840582921736,
+        "handling": 9.916190244582559
+      }
+    },
+    "D03": {
+      "time": {
+        "recovering": 8.080183383729416,
+        "herding": 7.9999999999972715,
+        "hunting": 17.263272156765595,
+        "positioning": 2.656544459474979
+      },
+      "distance": {
+        "recovering": 0.0,
+        "herding": 45.21521734361157,
+        "hunting": 103.57963294059363,
+        "positioning": 15.926325907470456
+      },
+      "physical_mode_time": {
+        "recovery": 8.080183383729416,
+        "position": 7.9999999999972715,
+        "attack": 17.263272156765595,
+        "search": 2.656544459474979
+      },
+      "phases": {
+        "acquire": 0.0006249999999994316,
+        "recovery": 8.079558383729417,
+        "maintain": 7.9999999999972715,
+        "attack": 17.263272156765595,
+        "approach": 2.656544459474979
+      },
+      "exposure_time": {
+        "water": 35.99999999996726,
+        "air": 0.0,
+        "bite_window": 17.263272156765595,
+        "underwater_bite_window": 17.263272156765595,
+        "water_recovery": 8.080183383729416,
+        "air_recovery": 0.0,
+        "underwater_bite_recovery": 0.0,
+        "water_position": 7.9999999999972715,
+        "air_position": 0.0,
+        "underwater_bite_position": 0.0,
+        "water_attack": 17.263272156765595,
+        "air_attack": 0.0,
+        "underwater_bite_attack": 17.263272156765595,
+        "water_search": 2.656544459474979,
+        "air_search": 0.0,
+        "underwater_bite_search": 0.0
+      },
+      "captures": 2,
+      "virtual_successes": 0,
+      "contacts": 6,
+      "launches": 8,
+      "reasons": {
+        "controller_v2_recovery_complete": 8,
+        "controller_v2_cycle_pressure_start": 8,
+        "launch": 8,
+        "contact_miss": 4,
+        "target_not_visible": 1,
+        "capture": 2,
+        "controller_v2_cycle_search": 2
+      },
+      "behaviour_time": {
+        "recovery": 4.080183383729416,
+        "approach": 2.6588049600402535,
+        "containment": 7.997739499431997,
+        "attack": 17.263272156765595,
+        "handling": 4.0
+      }
+    },
+    "D04": {
+      "time": {
+        "recovering": 9.30760725663539,
+        "positioning": 3.9284731172552547,
+        "herding": 5.999999999998181,
+        "hunting": 16.763919626078437
+      },
+      "distance": {
+        "recovering": 0.0,
+        "positioning": 23.570838703531667,
+        "herding": 35.99999999998896,
+        "hunting": 100.58351775647061
+      },
+      "physical_mode_time": {
+        "recovery": 9.30760725663539,
+        "search": 3.9284731172552547,
+        "position": 5.999999999998181,
+        "attack": 16.763919626078437
+      },
+      "phases": {
+        "acquire": 0.0006249999999994316,
+        "recovery": 9.30698225663539,
+        "approach": 3.9284731172552547,
+        "maintain": 5.999999999998181,
+        "attack": 16.763919626078437
+      },
+      "exposure_time": {
+        "water": 35.99999999996726,
+        "air": 0.0,
+        "bite_window": 16.763919626078437,
+        "underwater_bite_window": 16.763919626078437,
+        "water_recovery": 9.30760725663539,
+        "air_recovery": 0.0,
+        "underwater_bite_recovery": 0.0,
+        "water_search": 3.9284731172552547,
+        "air_search": 0.0,
+        "underwater_bite_search": 0.0,
+        "water_position": 5.999999999998181,
+        "air_position": 0.0,
+        "underwater_bite_position": 0.0,
+        "water_attack": 16.763919626078437,
+        "air_attack": 0.0,
+        "underwater_bite_attack": 16.763919626078437
+      },
+      "captures": 3,
+      "virtual_successes": 0,
+      "contacts": 5,
+      "launches": 6,
+      "reasons": {
+        "controller_v2_recovery_complete": 7,
+        "controller_v2_cycle_search": 2,
+        "controller_v2_cycle_pressure_start": 6,
+        "launch": 6,
+        "contact_miss": 2,
+        "capture": 3,
+        "target_not_visible": 1
+      },
+      "behaviour_time": {
+        "recovery": 3.3076072566353893,
+        "approach": 3.9287428630814603,
+        "containment": 5.9997302541719755,
+        "attack": 16.763919626078437,
+        "handling": 6.0
+      }
+    },
+    "D05": {
+      "time": {
+        "recovering": 8.027102153600875,
+        "positioning": 5.520083514408537,
+        "herding": 3.9999999999972715,
+        "hunting": 18.452814331960578
+      },
+      "distance": {
+        "recovering": 0.0,
+        "positioning": 33.12050108645163,
+        "herding": 23.999999999983846,
+        "hunting": 110.71688599176369
+      },
+      "physical_mode_time": {
+        "recovery": 8.027102153600875,
+        "search": 5.520083514408537,
+        "position": 3.9999999999972715,
+        "attack": 18.452814331960578
+      },
+      "phases": {
+        "acquire": 0.0006249999999994316,
+        "recovery": 8.026477153600876,
+        "approach": 5.520083514408537,
+        "maintain": 3.9999999999972715,
+        "attack": 18.452814331960578
+      },
+      "exposure_time": {
+        "water": 35.99999999996726,
+        "air": 0.0,
+        "bite_window": 18.452814331960578,
+        "underwater_bite_window": 18.452814331960578,
+        "water_recovery": 8.027102153600875,
+        "air_recovery": 0.0,
+        "underwater_bite_recovery": 0.0,
+        "water_search": 5.520083514408537,
+        "air_search": 0.0,
+        "underwater_bite_search": 0.0,
+        "water_position": 3.9999999999972715,
+        "air_position": 0.0,
+        "underwater_bite_position": 0.0,
+        "water_attack": 18.452814331960578,
+        "air_attack": 0.0,
+        "underwater_bite_attack": 18.452814331960578
+      },
+      "captures": 3,
+      "virtual_successes": 0,
+      "contacts": 3,
+      "launches": 4,
+      "reasons": {
+        "controller_v2_recovery_complete": 4,
+        "controller_v2_cycle_search": 3,
+        "controller_v2_cycle_pressure_start": 4,
+        "launch": 4,
+        "capture": 3,
+        "timeout": 1
+      },
+      "behaviour_time": {
+        "recovery": 2.6182737176694992,
+        "approach": 5.520431747668585,
+        "containment": 3.999651766737223,
+        "attack": 18.452814331960578,
+        "handling": 5.408828435931376
+      }
+    },
+    "D06": {
+      "time": {
+        "recovering": 10.237785546570478,
+        "positioning": 3.3936845072108355,
+        "herding": 6.501551419837547,
+        "hunting": 15.866978526348401
+      },
+      "distance": {
+        "recovering": 0.0,
+        "positioning": 20.362107043265006,
+        "herding": 38.46867654575823,
+        "hunting": 95.20187115809021
+      },
+      "physical_mode_time": {
+        "recovery": 10.237785546570478,
+        "search": 3.3936845072108355,
+        "position": 6.501551419837547,
+        "attack": 15.866978526348401
+      },
+      "phases": {
+        "acquire": 0.0006249999999994316,
+        "recovery": 10.237160546570479,
+        "approach": 3.3936845072108355,
+        "maintain": 6.501551419837547,
+        "attack": 15.866978526348401
+      },
+      "exposure_time": {
+        "water": 35.99999999996726,
+        "air": 0.0,
+        "bite_window": 15.866978526348401,
+        "underwater_bite_window": 15.866978526348401,
+        "water_recovery": 10.237785546570478,
+        "air_recovery": 0.0,
+        "underwater_bite_recovery": 0.0,
+        "water_search": 3.3936845072108355,
+        "air_search": 0.0,
+        "underwater_bite_search": 0.0,
+        "water_position": 6.501551419837547,
+        "air_position": 0.0,
+        "underwater_bite_position": 0.0,
+        "water_attack": 15.866978526348401,
+        "air_attack": 0.0,
+        "underwater_bite_attack": 15.866978526348401
+      },
+      "captures": 4,
+      "virtual_successes": 0,
+      "contacts": 5,
+      "launches": 6,
+      "reasons": {
+        "controller_v2_recovery_complete": 7,
+        "controller_v2_cycle_search": 2,
+        "controller_v2_cycle_pressure_start": 7,
+        "launch": 6,
+        "target_not_visible": 1,
+        "capture": 4,
+        "contact_miss": 1
+      },
+      "behaviour_time": {
+        "recovery": 2.2377855465704783,
+        "approach": 3.3942779858149272,
+        "containment": 6.500957941233455,
+        "attack": 15.866978526348401,
+        "handling": 8.0
+      }
+    },
+    "D07": {
+      "time": {
+        "recovering": 6.814612015063659,
+        "positioning": 5.865032097820844,
+        "herding": 5.029293708286524,
+        "hunting": 18.291062178796235
+      },
+      "distance": {
+        "recovering": 0.0,
+        "positioning": 35.02398470129883,
+        "herding": 28.67917264298908,
+        "hunting": 109.74637307277756
+      },
+      "physical_mode_time": {
+        "recovery": 6.814612015063659,
+        "search": 5.865032097820844,
+        "position": 5.029293708286524,
+        "attack": 18.291062178796235
+      },
+      "phases": {
+        "acquire": 0.0006249999999994316,
+        "recovery": 6.81398701506366,
+        "approach": 5.865032097820844,
+        "maintain": 5.029293708286524,
+        "attack": 18.291062178796235
+      },
+      "exposure_time": {
+        "water": 35.99999999996726,
+        "air": 0.0,
+        "bite_window": 18.291062178796235,
+        "underwater_bite_window": 18.291062178796235,
+        "water_recovery": 6.814612015063659,
+        "air_recovery": 0.0,
+        "underwater_bite_recovery": 0.0,
+        "water_search": 5.865032097820844,
+        "air_search": 0.0,
+        "underwater_bite_search": 0.0,
+        "water_position": 5.029293708286524,
+        "air_position": 0.0,
+        "underwater_bite_position": 0.0,
+        "water_attack": 18.291062178796235,
+        "air_attack": 0.0,
+        "underwater_bite_attack": 18.291062178796235
+      },
+      "captures": 2,
+      "virtual_successes": 0,
+      "contacts": 4,
+      "launches": 5,
+      "reasons": {
+        "controller_v2_recovery_complete": 6,
+        "controller_v2_cycle_search": 2,
+        "controller_v2_cycle_pressure_start": 6,
+        "launch": 5,
+        "capture": 2,
+        "timeout": 1,
+        "contact_miss": 2
+      },
+      "behaviour_time": {
+        "recovery": 2.814612015063659,
+        "approach": 5.866007682734409,
+        "containment": 5.028318123372959,
+        "attack": 18.291062178796235,
+        "handling": 4.0
+      }
+    },
+    "D08": {
+      "time": {
+        "recovering": 10.459648054594762,
+        "positioning": 4.69831075798065,
+        "herding": 6.4437499999968715,
+        "hunting": 14.398291187394978
+      },
+      "distance": {
+        "recovering": 0.0,
+        "positioning": 28.189864547883666,
+        "herding": 38.66249999998175,
+        "hunting": 86.38974712436979
+      },
+      "physical_mode_time": {
+        "recovery": 10.459648054594762,
+        "search": 4.69831075798065,
+        "position": 6.4437499999968715,
+        "attack": 14.398291187394978
+      },
+      "phases": {
+        "acquire": 0.0006249999999994316,
+        "recovery": 10.459023054594763,
+        "approach": 4.69831075798065,
+        "maintain": 6.4437499999968715,
+        "attack": 14.398291187394978
+      },
+      "exposure_time": {
+        "water": 35.99999999996726,
+        "air": 0.0,
+        "bite_window": 14.398291187394978,
+        "underwater_bite_window": 14.398291187394978,
+        "water_recovery": 10.459648054594762,
+        "air_recovery": 0.0,
+        "underwater_bite_recovery": 0.0,
+        "water_search": 4.69831075798065,
+        "air_search": 0.0,
+        "underwater_bite_search": 0.0,
+        "water_position": 6.4437499999968715,
+        "air_position": 0.0,
+        "underwater_bite_position": 0.0,
+        "water_attack": 14.398291187394978,
+        "air_attack": 0.0,
+        "underwater_bite_attack": 14.398291187394978
+      },
+      "captures": 4,
+      "virtual_successes": 0,
+      "contacts": 5,
+      "launches": 6,
+      "reasons": {
+        "controller_v2_recovery_complete": 7,
+        "controller_v2_cycle_search": 4,
+        "controller_v2_cycle_pressure_start": 7,
+        "launch": 6,
+        "capture": 4,
+        "contact_miss": 1,
+        "target_not_visible": 1
+      },
+      "behaviour_time": {
+        "recovery": 2.459648054594762,
+        "approach": 4.699893733723002,
+        "containment": 6.44216702425452,
+        "attack": 14.398291187394978,
+        "handling": 8.0
+      }
+    },
+    "D09": {
+      "time": {
+        "recovering": 7.687241064912918,
+        "positioning": 1.8157388936542418,
+        "herding": 4.9999999999990905,
+        "hunting": 21.49702004140101
+      },
+      "distance": {
+        "recovering": 0.0,
+        "positioning": 10.894433361925483,
+        "herding": 29.999999999994625,
+        "hunting": 128.98212024840555
+      },
+      "physical_mode_time": {
+        "recovery": 7.687241064912918,
+        "search": 1.8157388936542418,
+        "position": 4.9999999999990905,
+        "attack": 21.49702004140101
+      },
+      "phases": {
+        "acquire": 0.0006249999999994316,
+        "recovery": 7.6866160649129185,
+        "approach": 1.8157388936542418,
+        "maintain": 4.9999999999990905,
+        "attack": 21.49702004140101
+      },
+      "exposure_time": {
+        "water": 35.99999999996726,
+        "air": 0.0,
+        "bite_window": 21.49702004140101,
+        "underwater_bite_window": 21.49702004140101,
+        "water_recovery": 7.687241064912918,
+        "air_recovery": 0.0,
+        "underwater_bite_recovery": 0.0,
+        "water_search": 1.8157388936542418,
+        "air_search": 0.0,
+        "underwater_bite_search": 0.0,
+        "water_position": 4.9999999999990905,
+        "air_position": 0.0,
+        "underwater_bite_position": 0.0,
+        "water_attack": 21.49702004140101,
+        "air_attack": 0.0,
+        "underwater_bite_attack": 21.49702004140101
+      },
+      "captures": 3,
+      "virtual_successes": 0,
+      "contacts": 5,
+      "launches": 5,
+      "reasons": {
+        "controller_v2_recovery_complete": 5,
+        "controller_v2_cycle_search": 1,
+        "controller_v2_cycle_pressure_start": 5,
+        "launch": 5,
+        "contact_miss": 2,
+        "capture": 3
+      },
+      "behaviour_time": {
+        "recovery": 2.7936361063429302,
+        "approach": 1.817387407115735,
+        "containment": 4.998351486537597,
+        "attack": 21.49702004140101,
+        "handling": 4.893604958569988
+      }
+    },
+    "D10": {
+      "time": {
+        "recovering": 10.85703531398022,
+        "positioning": 5.16178040114692,
+        "herding": 6.161874999997124,
+        "hunting": 13.819309284842998
+      },
+      "distance": {
+        "recovering": 0.0,
+        "positioning": 30.970682406881355,
+        "herding": 36.97124999998277,
+        "hunting": 82.91585570905806
+      },
+      "physical_mode_time": {
+        "recovery": 10.85703531398022,
+        "search": 5.16178040114692,
+        "position": 6.161874999997124,
+        "attack": 13.819309284842998
+      },
+      "phases": {
+        "acquire": 0.0006249999999994316,
+        "recovery": 10.85641031398022,
+        "approach": 5.16178040114692,
+        "maintain": 6.161874999997124,
+        "attack": 13.819309284842998
+      },
+      "exposure_time": {
+        "water": 35.99999999996726,
+        "air": 0.0,
+        "bite_window": 13.819309284842998,
+        "underwater_bite_window": 13.819309284842998,
+        "water_recovery": 10.85703531398022,
+        "air_recovery": 0.0,
+        "underwater_bite_recovery": 0.0,
+        "water_search": 5.16178040114692,
+        "air_search": 0.0,
+        "underwater_bite_search": 0.0,
+        "water_position": 6.161874999997124,
+        "air_position": 0.0,
+        "underwater_bite_position": 0.0,
+        "water_attack": 13.819309284842998,
+        "air_attack": 0.0,
+        "underwater_bite_attack": 13.819309284842998
+      },
+      "captures": 4,
+      "virtual_successes": 0,
+      "contacts": 4,
+      "launches": 6,
+      "reasons": {
+        "controller_v2_recovery_complete": 7,
+        "controller_v2_cycle_search": 3,
+        "controller_v2_cycle_pressure_start": 7,
+        "launch": 6,
+        "capture": 4,
+        "timeout": 1,
+        "target_not_visible": 1,
+        "controller_v2_cycle_pressure_reset": 1
+      },
+      "behaviour_time": {
+        "recovery": 2.8570353139802194,
+        "approach": 5.1627224491283386,
+        "containment": 6.160932952015706,
+        "attack": 13.819309284842998,
+        "handling": 8.0
+      }
+    },
+    "D11": {
+      "time": {
+        "recovering": 9.032696452206459,
+        "positioning": 4.593730336714756,
+        "herding": 5.763749999997486,
+        "hunting": 16.60982321104856
+      },
+      "distance": {
+        "recovering": 0.0,
+        "positioning": 27.562382020288492,
+        "herding": 34.579865443405176,
+        "hunting": 99.65893926629116
+      },
+      "physical_mode_time": {
+        "recovery": 9.032696452206459,
+        "search": 4.593730336714756,
+        "position": 5.763749999997486,
+        "attack": 16.60982321104856
+      },
+      "phases": {
+        "acquire": 0.0006249999999994316,
+        "recovery": 9.03207145220646,
+        "approach": 4.593730336714756,
+        "maintain": 5.763749999997486,
+        "attack": 16.60982321104856
+      },
+      "exposure_time": {
+        "water": 35.99999999996726,
+        "air": 0.0,
+        "bite_window": 16.60982321104856,
+        "underwater_bite_window": 16.60982321104856,
+        "water_recovery": 9.032696452206459,
+        "air_recovery": 0.0,
+        "underwater_bite_recovery": 0.0,
+        "water_search": 4.593730336714756,
+        "air_search": 0.0,
+        "underwater_bite_search": 0.0,
+        "water_position": 5.763749999997486,
+        "air_position": 0.0,
+        "underwater_bite_position": 0.0,
+        "water_attack": 16.60982321104856,
+        "air_attack": 0.0,
+        "underwater_bite_attack": 16.60982321104856
+      },
+      "captures": 3,
+      "virtual_successes": 0,
+      "contacts": 4,
+      "launches": 5,
+      "reasons": {
+        "controller_v2_recovery_complete": 6,
+        "controller_v2_cycle_search": 3,
+        "controller_v2_cycle_pressure_start": 6,
+        "launch": 5,
+        "capture": 3,
+        "contact_miss": 1,
+        "target_not_visible": 1
+      },
+      "behaviour_time": {
+        "recovery": 3.0326964522064586,
+        "approach": 4.594513850210397,
+        "containment": 5.7629664865018455,
+        "attack": 16.60982321104856,
+        "handling": 6.0
+      }
+    },
+    "G0": {
+      "time": {
+        "recovering": 2.313818389903556,
+        "positioning": 33.686181610063706
+      },
+      "distance": {
+        "recovering": 0.0,
+        "positioning": 257.90003887774736
+      },
+      "physical_mode_time": {
+        "recovery": 2.313818389903556,
+        "plunge": 9.718447051757842,
+        "pursuit": 7.082456832635213,
+        "ascent": 14.159128646929183,
+        "orient": 2.726149078741468
+      },
+      "phases": {
+        "not_dolphin": 35.99999999996726
+      },
+      "exposure_time": {
+        "water": 19.740444305722676,
+        "air": 16.259555694244586,
+        "bite_window": 16.800903884393055,
+        "underwater_bite_window": 7.082456832635213,
+        "water_recovery": 0.0,
+        "air_recovery": 2.313818389903556,
+        "underwater_bite_recovery": 0.0,
+        "water_plunge": 0.0,
+        "air_plunge": 9.718447051757842,
+        "underwater_bite_plunge": 0.0,
+        "water_pursuit": 7.082456832635213,
+        "air_pursuit": 0.0,
+        "underwater_bite_pursuit": 7.082456832635213,
+        "water_ascent": 12.657987473087463,
+        "air_ascent": 1.5011411738417202,
+        "underwater_bite_ascent": 0.0,
+        "water_orient": 0.0,
+        "air_orient": 2.726149078741468,
+        "underwater_bite_orient": 0.0
+      },
+      "captures": 0,
+      "virtual_successes": 0,
+      "contacts": 0,
+      "launches": 7,
+      "reasons": {
+        "gannet_global_dense_target_selected": 7,
+        "recovery_complete": 7,
+        "local_prey_detected": 7,
+        "launch": 7,
+        "water_entry": 6,
+        "target_not_visible": 2,
+        "flight_height_reached": 6,
+        "ascent_depth_margin": 4
+      }
+    },
+    "G1": {
+      "time": {
+        "recovering": 1.9560290123243718,
+        "positioning": 34.04397098764289
+      },
+      "distance": {
+        "recovering": 0.0,
+        "positioning": 263.7039035824266
+      },
+      "physical_mode_time": {
+        "recovery": 1.9560290123243718,
+        "orient": 5.781623531994999,
+        "plunge": 7.151083478067857,
+        "ascent": 13.84770302611761,
+        "pursuit": 7.1766859514625025,
+        "search": 0.08687499999992099
+      },
+      "phases": {
+        "not_dolphin": 35.99999999996726
+      },
+      "exposure_time": {
+        "water": 19.183951573500682,
+        "air": 16.81604842646658,
+        "bite_window": 14.32776942953036,
+        "underwater_bite_window": 7.1766859514625025,
+        "water_recovery": 0.0,
+        "air_recovery": 1.9560290123243718,
+        "underwater_bite_recovery": 0.0,
+        "water_orient": 0.0,
+        "air_orient": 5.781623531994999,
+        "underwater_bite_orient": 0.0,
+        "water_plunge": 0.0,
+        "air_plunge": 7.151083478067857,
+        "underwater_bite_plunge": 0.0,
+        "water_ascent": 12.00726562203818,
+        "air_ascent": 1.840437404079431,
+        "underwater_bite_ascent": 0.0,
+        "water_pursuit": 7.1766859514625025,
+        "air_pursuit": 0.0,
+        "underwater_bite_pursuit": 7.1766859514625025,
+        "water_search": 0.0,
+        "air_search": 0.08687499999992099,
+        "underwater_bite_search": 0.0
+      },
+      "captures": 0,
+      "virtual_successes": 0,
+      "contacts": 0,
+      "launches": 6,
+      "reasons": {
+        "gannet_global_dense_target_selected": 7,
+        "recovery_complete": 6,
+        "local_prey_detected": 7,
+        "launch": 6,
+        "target_not_visible": 2,
+        "flight_height_reached": 5,
+        "water_entry": 5,
+        "ascent_depth_margin": 4,
+        "no_local_target": 1
+      }
+    },
+    "G10": {
+      "time": {
+        "recovering": 1.666734929912078,
+        "positioning": 34.333265070055184
+      },
+      "distance": {
+        "recovering": 0.0,
+        "positioning": 264.02769384453666
+      },
+      "physical_mode_time": {
+        "recovery": 1.666734929912078,
+        "orient": 3.782710694473618,
+        "plunge": 8.847734274811788,
+        "pursuit": 6.54483543901636,
+        "ascent": 15.071109661753496,
+        "search": 0.08687499999992099
+      },
+      "phases": {
+        "not_dolphin": 35.99999999996726
+      },
+      "exposure_time": {
+        "water": 19.826239214003678,
+        "air": 16.173760785963584,
+        "bite_window": 15.392569713828149,
+        "underwater_bite_window": 6.54483543901636,
+        "water_recovery": 0.0,
+        "air_recovery": 1.666734929912078,
+        "underwater_bite_recovery": 0.0,
+        "water_orient": 0.0,
+        "air_orient": 3.782710694473618,
+        "underwater_bite_orient": 0.0,
+        "water_plunge": 0.0,
+        "air_plunge": 8.847734274811788,
+        "underwater_bite_plunge": 0.0,
+        "water_pursuit": 6.54483543901636,
+        "air_pursuit": 0.0,
+        "underwater_bite_pursuit": 6.54483543901636,
+        "water_ascent": 13.281403774987318,
+        "air_ascent": 1.7897058867661784,
+        "underwater_bite_ascent": 0.0,
+        "water_search": 0.0,
+        "air_search": 0.08687499999992099,
+        "underwater_bite_search": 0.0
+      },
+      "captures": 0,
+      "virtual_successes": 0,
+      "contacts": 0,
+      "launches": 6,
+      "reasons": {
+        "gannet_global_dense_target_selected": 7,
+        "recovery_complete": 6,
+        "local_prey_detected": 7,
+        "launch": 6,
+        "water_entry": 5,
+        "ascent_depth_margin": 4,
+        "flight_height_reached": 5,
+        "target_not_visible": 2,
+        "no_local_target": 1
+      }
+    },
+    "G11": {
+      "time": {
+        "recovering": 1.78683093098169,
+        "positioning": 34.21316906898557
+      },
+      "distance": {
+        "recovering": 0.0,
+        "positioning": 264.55143845522593
+      },
+      "physical_mode_time": {
+        "recovery": 1.78683093098169,
+        "orient": 4.801068904397731,
+        "plunge": 8.214308744076881,
+        "pursuit": 5.8082891861647,
+        "ascent": 15.38950223434626
+      },
+      "phases": {
+        "not_dolphin": 35.99999999996726
+      },
+      "exposure_time": {
+        "water": 19.395063058653594,
+        "air": 16.604936941313667,
+        "bite_window": 14.02259793024158,
+        "underwater_bite_window": 5.8082891861647,
+        "water_recovery": 0.0,
+        "air_recovery": 1.78683093098169,
+        "underwater_bite_recovery": 0.0,
+        "water_orient": 0.0,
+        "air_orient": 4.801068904397731,
+        "underwater_bite_orient": 0.0,
+        "water_plunge": 0.0,
+        "air_plunge": 8.214308744076881,
+        "underwater_bite_plunge": 0.0,
+        "water_pursuit": 5.8082891861647,
+        "air_pursuit": 0.0,
+        "underwater_bite_pursuit": 5.8082891861647,
+        "water_ascent": 13.586773872488894,
+        "air_ascent": 1.8027283618573655,
+        "underwater_bite_ascent": 0.0
+      },
+      "captures": 0,
+      "virtual_successes": 0,
+      "contacts": 0,
+      "launches": 6,
+      "reasons": {
+        "gannet_global_dense_target_selected": 7,
+        "recovery_complete": 7,
+        "local_prey_detected": 7,
+        "launch": 6,
+        "water_entry": 6,
+        "ascent_depth_margin": 3,
+        "flight_height_reached": 6,
+        "target_not_visible": 3
+      }
+    },
+    "G12": {
+      "time": {
+        "recovering": 1.2722828000170168,
+        "positioning": 34.72771719995025
+      },
+      "distance": {
+        "recovering": 0.0,
+        "positioning": 263.5367664921643
+      },
+      "physical_mode_time": {
+        "recovery": 1.2722828000170168,
+        "plunge": 8.538709884711235,
+        "pursuit": 7.25213231525623,
+        "ascent": 15.183089040073561,
+        "orient": 3.094049991489488,
+        "search": 0.6597359684197315
+      },
+      "phases": {
+        "not_dolphin": 35.99999999996726
+      },
+      "exposure_time": {
+        "water": 20.93510137683435,
+        "air": 15.064898623132912,
+        "bite_window": 15.790842199967464,
+        "underwater_bite_window": 7.25213231525623,
+        "water_recovery": 0.0,
+        "air_recovery": 1.2722828000170168,
+        "underwater_bite_recovery": 0.0,
+        "water_plunge": 0.0,
+        "air_plunge": 8.538709884711235,
+        "underwater_bite_plunge": 0.0,
+        "water_pursuit": 7.25213231525623,
+        "air_pursuit": 0.0,
+        "underwater_bite_pursuit": 7.25213231525623,
+        "water_ascent": 13.68296906157812,
+        "air_ascent": 1.5001199784954409,
+        "underwater_bite_ascent": 0.0,
+        "water_orient": 0.0,
+        "air_orient": 3.094049991489488,
+        "underwater_bite_orient": 0.0,
+        "water_search": 0.0,
+        "air_search": 0.6597359684197315,
+        "underwater_bite_search": 0.0
+      },
+      "captures": 0,
+      "virtual_successes": 0,
+      "contacts": 0,
+      "launches": 6,
+      "reasons": {
+        "gannet_global_dense_target_selected": 6,
+        "recovery_complete": 6,
+        "local_prey_detected": 6,
+        "launch": 6,
+        "water_entry": 6,
+        "target_not_visible": 2,
+        "flight_height_reached": 5,
+        "ascent_depth_margin": 4
+      }
+    },
+    "G13": {
+      "time": {
+        "recovering": 1.0873495604847072,
+        "positioning": 34.912650439482555
+      },
+      "distance": {
+        "recovering": 0.0,
+        "positioning": 265.4175595741293
+      },
+      "physical_mode_time": {
+        "recovery": 1.0873495604847072,
+        "orient": 2.737268416871,
+        "plunge": 9.62230823327641,
+        "pursuit": 6.837286177084906,
+        "ascent": 15.715787612250239
+      },
+      "phases": {
+        "not_dolphin": 35.99999999996726
+      },
+      "exposure_time": {
+        "water": 20.92723620517414,
+        "air": 15.072763794793122,
+        "bite_window": 16.459594410361316,
+        "underwater_bite_window": 6.837286177084906,
+        "water_recovery": 0.0,
+        "air_recovery": 1.0873495604847072,
+        "underwater_bite_recovery": 0.0,
+        "water_orient": 0.0,
+        "air_orient": 2.737268416871,
+        "underwater_bite_orient": 0.0,
+        "water_plunge": 0.0,
+        "air_plunge": 9.62230823327641,
+        "underwater_bite_plunge": 0.0,
+        "water_pursuit": 6.837286177084906,
+        "air_pursuit": 0.0,
+        "underwater_bite_pursuit": 6.837286177084906,
+        "water_ascent": 14.089950028089234,
+        "air_ascent": 1.6258375841610047,
+        "underwater_bite_ascent": 0.0
+      },
+      "captures": 0,
+      "virtual_successes": 0,
+      "contacts": 0,
+      "launches": 6,
+      "reasons": {
+        "gannet_global_dense_target_selected": 6,
+        "recovery_complete": 6,
+        "local_prey_detected": 6,
+        "launch": 6,
+        "water_entry": 5,
+        "ascent_depth_margin": 4,
+        "flight_height_reached": 5,
+        "target_not_visible": 2
+      }
+    },
+    "G14": {
+      "time": {
+        "recovering": 2.1530052400709003,
+        "positioning": 33.84699475989636
+      },
+      "distance": {
+        "recovering": 0.0,
+        "positioning": 263.3944717932982
+      },
+      "physical_mode_time": {
+        "recovery": 2.1530052400709003,
+        "orient": 3.4088994800493175,
+        "plunge": 9.964440752674445,
+        "ascent": 13.499773174779467,
+        "pursuit": 6.973881352393132
+      },
+      "phases": {
+        "not_dolphin": 35.99999999996726
+      },
+      "exposure_time": {
+        "water": 18.76886895141692,
+        "air": 17.231131048550342,
+        "bite_window": 16.938322105067577,
+        "underwater_bite_window": 6.973881352393132,
+        "water_recovery": 0.0,
+        "air_recovery": 2.1530052400709003,
+        "underwater_bite_recovery": 0.0,
+        "water_orient": 0.0,
+        "air_orient": 3.4088994800493175,
+        "underwater_bite_orient": 0.0,
+        "water_plunge": 0.0,
+        "air_plunge": 9.964440752674445,
+        "underwater_bite_plunge": 0.0,
+        "water_ascent": 11.794987599023788,
+        "air_ascent": 1.704785575755679,
+        "underwater_bite_ascent": 0.0,
+        "water_pursuit": 6.973881352393132,
+        "air_pursuit": 0.0,
+        "underwater_bite_pursuit": 6.973881352393132
+      },
+      "captures": 0,
+      "virtual_successes": 0,
+      "contacts": 0,
+      "launches": 6,
+      "reasons": {
+        "gannet_global_dense_target_selected": 6,
+        "recovery_complete": 6,
+        "local_prey_detected": 6,
+        "launch": 6,
+        "target_not_visible": 3,
+        "flight_height_reached": 5,
+        "water_entry": 5,
+        "ascent_depth_margin": 3
+      }
+    },
+    "G15": {
+      "time": {
+        "recovering": 2.6089301826579856,
+        "positioning": 33.39106981730927
+      },
+      "distance": {
+        "recovering": 0.0,
+        "positioning": 264.9591986332736
+      },
+      "physical_mode_time": {
+        "recovery": 2.6089301826579856,
+        "plunge": 11.079801349956217,
+        "ascent": 13.685352017139998,
+        "pursuit": 5.849707407941427,
+        "orient": 2.776209042271635
+      },
+      "phases": {
+        "not_dolphin": 35.99999999996726
+      },
+      "exposure_time": {
+        "water": 17.23787488495526,
+        "air": 18.762125115012,
+        "bite_window": 16.929508757897644,
+        "underwater_bite_window": 5.849707407941427,
+        "water_recovery": 0.0,
+        "air_recovery": 2.6089301826579856,
+        "underwater_bite_recovery": 0.0,
+        "water_plunge": 0.0,
+        "air_plunge": 11.079801349956217,
+        "underwater_bite_plunge": 0.0,
+        "water_ascent": 11.388167477013834,
+        "air_ascent": 2.297184540126164,
+        "underwater_bite_ascent": 0.0,
+        "water_pursuit": 5.849707407941427,
+        "air_pursuit": 0.0,
+        "underwater_bite_pursuit": 5.849707407941427,
+        "water_orient": 0.0,
+        "air_orient": 2.776209042271635,
+        "underwater_bite_orient": 0.0
+      },
+      "captures": 0,
+      "virtual_successes": 0,
+      "contacts": 0,
+      "launches": 7,
+      "reasons": {
+        "gannet_global_dense_target_selected": 8,
+        "recovery_complete": 8,
+        "local_prey_detected": 8,
+        "launch": 7,
+        "target_not_visible": 5,
+        "flight_height_reached": 7,
+        "water_entry": 5,
+        "uncommitted_water_entry": 1,
+        "ascent_depth_margin": 2
+      }
+    },
+    "G16": {
+      "time": {
+        "recovering": 1.3106047355300205,
+        "positioning": 34.68939526443724
+      },
+      "distance": {
+        "recovering": 0.0,
+        "positioning": 269.0058073613429
+      },
+      "physical_mode_time": {
+        "recovery": 1.3106047355300205,
+        "orient": 5.146464014816104,
+        "plunge": 8.303865843701324,
+        "pursuit": 5.593519948780944,
+        "ascent": 15.64554545713887
+      },
+      "phases": {
+        "not_dolphin": 35.99999999996726
+      },
+      "exposure_time": {
+        "water": 19.47203632075733,
+        "air": 16.527963679209932,
+        "bite_window": 13.897385792482268,
+        "underwater_bite_window": 5.593519948780944,
+        "water_recovery": 0.0,
+        "air_recovery": 1.3106047355300205,
+        "underwater_bite_recovery": 0.0,
+        "water_orient": 0.0,
+        "air_orient": 5.146464014816104,
+        "underwater_bite_orient": 0.0,
+        "water_plunge": 0.0,
+        "air_plunge": 8.303865843701324,
+        "underwater_bite_plunge": 0.0,
+        "water_pursuit": 5.593519948780944,
+        "air_pursuit": 0.0,
+        "underwater_bite_pursuit": 5.593519948780944,
+        "water_ascent": 13.878516371976385,
+        "air_ascent": 1.7670290851624841,
+        "underwater_bite_ascent": 0.0
+      },
+      "captures": 0,
+      "virtual_successes": 0,
+      "contacts": 0,
+      "launches": 7,
+      "reasons": {
+        "gannet_global_dense_target_selected": 7,
+        "recovery_complete": 7,
+        "local_prey_detected": 7,
+        "launch": 7,
+        "water_entry": 5,
+        "target_not_visible": 5,
+        "flight_height_reached": 6,
+        "ascent_depth_margin": 2
+      }
+    },
+    "G17": {
+      "time": {
+        "recovering": 1.492145152242621,
+        "positioning": 34.507854847724644
+      },
+      "distance": {
+        "recovering": 0.0,
+        "positioning": 266.3918162370925
+      },
+      "physical_mode_time": {
+        "recovery": 1.492145152242621,
+        "plunge": 7.793002264711863,
+        "pursuit": 5.81797758303178,
+        "ascent": 15.625260890391647,
+        "orient": 5.2716141095893505
+      },
+      "phases": {
+        "not_dolphin": 35.99999999996726
+      },
+      "exposure_time": {
+        "water": 19.671683060038212,
+        "air": 16.32831693992905,
+        "bite_window": 13.610979847743643,
+        "underwater_bite_window": 5.81797758303178,
+        "water_recovery": 0.0,
+        "air_recovery": 1.492145152242621,
+        "underwater_bite_recovery": 0.0,
+        "water_plunge": 0.0,
+        "air_plunge": 7.793002264711863,
+        "underwater_bite_plunge": 0.0,
+        "water_pursuit": 5.81797758303178,
+        "air_pursuit": 0.0,
+        "underwater_bite_pursuit": 5.81797758303178,
+        "water_ascent": 13.853705477006432,
+        "air_ascent": 1.7715554133852152,
+        "underwater_bite_ascent": 0.0,
+        "water_orient": 0.0,
+        "air_orient": 5.2716141095893505,
+        "underwater_bite_orient": 0.0
+      },
+      "captures": 0,
+      "virtual_successes": 0,
+      "contacts": 0,
+      "launches": 7,
+      "reasons": {
+        "gannet_global_dense_target_selected": 7,
+        "recovery_complete": 7,
+        "local_prey_detected": 7,
+        "launch": 7,
+        "water_entry": 5,
+        "target_not_visible": 5,
+        "flight_height_reached": 6,
+        "ascent_depth_margin": 2
+      }
+    },
+    "G18": {
+      "time": {
+        "recovering": 1.2636680671982354,
+        "positioning": 34.736331932769026
+      },
+      "distance": {
+        "recovering": 0.0,
+        "positioning": 263.5462335587987
+      },
+      "physical_mode_time": {
+        "recovery": 1.2636680671982354,
+        "plunge": 8.412680595500976,
+        "pursuit": 7.2548568133173035,
+        "ascent": 15.19940307490366,
+        "orient": 3.1579366514600906,
+        "search": 0.7114547975869954
+      },
+      "phases": {
+        "not_dolphin": 35.99999999996726
+      },
+      "exposure_time": {
+        "water": 20.954204656270708,
+        "air": 15.045795343696554,
+        "bite_window": 15.66753740881828,
+        "underwater_bite_window": 7.2548568133173035,
+        "water_recovery": 0.0,
+        "air_recovery": 1.2636680671982354,
+        "underwater_bite_recovery": 0.0,
+        "water_plunge": 0.0,
+        "air_plunge": 8.412680595500976,
+        "underwater_bite_plunge": 0.0,
+        "water_pursuit": 7.2548568133173035,
+        "air_pursuit": 0.0,
+        "underwater_bite_pursuit": 7.2548568133173035,
+        "water_ascent": 13.699347842953404,
+        "air_ascent": 1.500055231950256,
+        "underwater_bite_ascent": 0.0,
+        "water_orient": 0.0,
+        "air_orient": 3.1579366514600906,
+        "underwater_bite_orient": 0.0,
+        "water_search": 0.0,
+        "air_search": 0.7114547975869954,
+        "underwater_bite_search": 0.0
+      },
+      "captures": 1,
+      "virtual_successes": 0,
+      "contacts": 1,
+      "launches": 6,
+      "reasons": {
+        "gannet_global_dense_target_selected": 6,
+        "recovery_complete": 6,
+        "local_prey_detected": 6,
+        "launch": 6,
+        "water_entry": 6,
+        "target_not_visible": 1,
+        "flight_height_reached": 5,
+        "ascent_depth_margin": 4,
+        "capture": 1
+      }
+    },
+    "G19": {
+      "time": {
+        "recovering": 1.1418322927918467,
+        "positioning": 34.85816770717541
+      },
+      "distance": {
+        "recovering": 0.0,
+        "positioning": 270.76297678698154
+      },
+      "physical_mode_time": {
+        "recovery": 1.1418322927918467,
+        "orient": 5.6033557927764335,
+        "plunge": 7.978658559076379,
+        "pursuit": 5.696966440911183,
+        "ascent": 15.57918691441142
+      },
+      "phases": {
+        "not_dolphin": 35.99999999996726
+      },
+      "exposure_time": {
+        "water": 19.454675071193197,
+        "air": 16.545324928774065,
+        "bite_window": 13.675624999987562,
+        "underwater_bite_window": 5.696966440911183,
+        "water_recovery": 0.0,
+        "air_recovery": 1.1418322927918467,
+        "underwater_bite_recovery": 0.0,
+        "water_orient": 0.0,
+        "air_orient": 5.6033557927764335,
+        "underwater_bite_orient": 0.0,
+        "water_plunge": 0.0,
+        "air_plunge": 7.978658559076379,
+        "underwater_bite_plunge": 0.0,
+        "water_pursuit": 5.696966440911183,
+        "air_pursuit": 0.0,
+        "underwater_bite_pursuit": 5.696966440911183,
+        "water_ascent": 13.757708630282014,
+        "air_ascent": 1.8214782841294053,
+        "underwater_bite_ascent": 0.0
+      },
+      "captures": 0,
+      "virtual_successes": 0,
+      "contacts": 0,
+      "launches": 7,
+      "reasons": {
+        "gannet_global_dense_target_selected": 7,
+        "recovery_complete": 7,
+        "local_prey_detected": 7,
+        "launch": 7,
+        "water_entry": 5,
+        "target_not_visible": 5,
+        "flight_height_reached": 6,
+        "ascent_depth_margin": 2
+      }
+    },
+    "G2": {
+      "time": {
+        "recovering": 0.6068933980468216,
+        "positioning": 35.39310660192044
+      },
+      "distance": {
+        "recovering": 0.0,
+        "positioning": 269.3956635189076
+      },
+      "physical_mode_time": {
+        "recovery": 0.6068933980468216,
+        "plunge": 9.827291804013925,
+        "pursuit": 7.369458779829316,
+        "ascent": 15.264391845245424,
+        "orient": 2.9319641728317762
+      },
+      "phases": {
+        "not_dolphin": 35.99999999996726
+      },
+      "exposure_time": {
+        "water": 21.133850625074746,
+        "air": 14.866149374892515,
+        "bite_window": 17.19675058384324,
+        "underwater_bite_window": 7.369458779829316,
+        "water_recovery": 0.0,
+        "air_recovery": 0.6068933980468216,
+        "underwater_bite_recovery": 0.0,
+        "water_plunge": 0.0,
+        "air_plunge": 9.827291804013925,
+        "underwater_bite_plunge": 0.0,
+        "water_pursuit": 7.369458779829316,
+        "air_pursuit": 0.0,
+        "underwater_bite_pursuit": 7.369458779829316,
+        "water_ascent": 13.76439184524543,
+        "air_ascent": 1.499999999999993,
+        "underwater_bite_ascent": 0.0,
+        "water_orient": 0.0,
+        "air_orient": 2.9319641728317762,
+        "underwater_bite_orient": 0.0
+      },
+      "captures": 0,
+      "virtual_successes": 0,
+      "contacts": 0,
+      "launches": 6,
+      "reasons": {
+        "gannet_global_dense_target_selected": 6,
+        "recovery_complete": 6,
+        "local_prey_detected": 6,
+        "launch": 6,
+        "water_entry": 6,
+        "target_not_visible": 3,
+        "flight_height_reached": 5,
+        "ascent_depth_margin": 3
+      }
+    },
+    "G20": {
+      "time": {
+        "recovering": 1.1207812666099919,
+        "positioning": 34.87921873335727
+      },
+      "distance": {
+        "recovering": 0.0,
+        "positioning": 269.4097569031466
+      },
+      "physical_mode_time": {
+        "recovery": 1.1207812666099919,
+        "plunge": 8.182220705326195,
+        "pursuit": 6.154330628398146,
+        "ascent": 15.190641710626032,
+        "orient": 5.352025689006897
+      },
+      "phases": {
+        "not_dolphin": 35.99999999996726
+      },
+      "exposure_time": {
+        "water": 19.844972339024185,
+        "air": 16.155027660943077,
+        "bite_window": 14.33655133372434,
+        "underwater_bite_window": 6.154330628398146,
+        "water_recovery": 0.0,
+        "air_recovery": 1.1207812666099919,
+        "underwater_bite_recovery": 0.0,
+        "water_plunge": 0.0,
+        "air_plunge": 8.182220705326195,
+        "underwater_bite_plunge": 0.0,
+        "water_pursuit": 6.154330628398146,
+        "air_pursuit": 0.0,
+        "underwater_bite_pursuit": 6.154330628398146,
+        "water_ascent": 13.69064171062604,
+        "air_ascent": 1.499999999999993,
+        "underwater_bite_ascent": 0.0,
+        "water_orient": 0.0,
+        "air_orient": 5.352025689006897,
+        "underwater_bite_orient": 0.0
+      },
+      "captures": 1,
+      "virtual_successes": 0,
+      "contacts": 1,
+      "launches": 6,
+      "reasons": {
+        "gannet_global_dense_target_selected": 8,
+        "recovery_complete": 7,
+        "local_prey_detected": 7,
+        "launch": 6,
+        "water_entry": 5,
+        "capture": 1,
+        "flight_height_reached": 6,
+        "ascent_depth_margin": 2,
+        "target_not_visible": 3,
+        "uncommitted_water_entry": 1
+      }
+    },
+    "G21": {
+      "time": {
+        "recovering": 1.9083862782806662,
+        "positioning": 34.0916137216866
+      },
+      "distance": {
+        "recovering": 0.0,
+        "positioning": 259.9243083580397
+      },
+      "physical_mode_time": {
+        "recovery": 1.9083862782806662,
+        "plunge": 8.440864751608569,
+        "pursuit": 7.345650204280133,
+        "ascent": 14.535960151001891,
+        "orient": 3.7691386147960024
+      },
+      "phases": {
+        "not_dolphin": 35.99999999996726
+      },
+      "exposure_time": {
+        "water": 20.24795721470677,
+        "air": 15.752042785260493,
+        "bite_window": 15.786514955888702,
+        "underwater_bite_window": 7.345650204280133,
+        "water_recovery": 0.0,
+        "air_recovery": 1.9083862782806662,
+        "underwater_bite_recovery": 0.0,
+        "water_plunge": 0.0,
+        "air_plunge": 8.440864751608569,
+        "underwater_bite_plunge": 0.0,
+        "water_pursuit": 7.345650204280133,
+        "air_pursuit": 0.0,
+        "underwater_bite_pursuit": 7.345650204280133,
+        "water_ascent": 12.902307010426636,
+        "air_ascent": 1.6336531405752552,
+        "underwater_bite_ascent": 0.0,
+        "water_orient": 0.0,
+        "air_orient": 3.7691386147960024,
+        "underwater_bite_orient": 0.0
+      },
+      "captures": 0,
+      "virtual_successes": 0,
+      "contacts": 0,
+      "launches": 6,
+      "reasons": {
+        "gannet_global_dense_target_selected": 6,
+        "recovery_complete": 6,
+        "local_prey_detected": 6,
+        "launch": 6,
+        "water_entry": 5,
+        "target_not_visible": 2,
+        "flight_height_reached": 5,
+        "ascent_depth_margin": 4
+      }
+    },
+    "G22": {
+      "time": {
+        "recovering": 1.4964191262577131,
+        "positioning": 34.50358087370955
+      },
+      "distance": {
+        "recovering": 0.0,
+        "positioning": 267.43016038381404
+      },
+      "physical_mode_time": {
+        "recovery": 1.4964191262577131,
+        "orient": 4.559791385255181,
+        "plunge": 8.764385130912032,
+        "pursuit": 5.464448686626508,
+        "ascent": 15.714955670915828
+      },
+      "phases": {
+        "not_dolphin": 35.99999999996726
+      },
+      "exposure_time": {
+        "water": 19.40141208832041,
+        "air": 16.598587911646852,
+        "bite_window": 14.22883381753854,
+        "underwater_bite_window": 5.464448686626508,
+        "water_recovery": 0.0,
+        "air_recovery": 1.4964191262577131,
+        "underwater_bite_recovery": 0.0,
+        "water_orient": 0.0,
+        "air_orient": 4.559791385255181,
+        "underwater_bite_orient": 0.0,
+        "water_plunge": 0.0,
+        "air_plunge": 8.764385130912032,
+        "underwater_bite_plunge": 0.0,
+        "water_pursuit": 5.464448686626508,
+        "air_pursuit": 0.0,
+        "underwater_bite_pursuit": 5.464448686626508,
+        "water_ascent": 13.936963401693902,
+        "air_ascent": 1.7779922692219259,
+        "underwater_bite_ascent": 0.0
+      },
+      "captures": 0,
+      "virtual_successes": 0,
+      "contacts": 0,
+      "launches": 7,
+      "reasons": {
+        "gannet_global_dense_target_selected": 7,
+        "recovery_complete": 7,
+        "local_prey_detected": 7,
+        "launch": 7,
+        "water_entry": 5,
+        "target_not_visible": 5,
+        "flight_height_reached": 6,
+        "ascent_depth_margin": 2
+      }
+    },
+    "G23": {
+      "time": {
+        "recovering": 0.018378679600886016,
+        "positioning": 35.98162132036637
+      },
+      "distance": {
+        "recovering": 0.0,
+        "positioning": 271.20494057446246
+      },
+      "physical_mode_time": {
+        "recovery": 0.018378679600886016,
+        "plunge": 10.93623830246404,
+        "pursuit": 7.976697233046721,
+        "ascent": 15.67581525435866,
+        "orient": 1.3928705304969533
+      },
+      "phases": {
+        "not_dolphin": 35.99999999996726
+      },
+      "exposure_time": {
+        "water": 22.15251248740539,
+        "air": 13.847487512561873,
+        "bite_window": 18.912935535510762,
+        "underwater_bite_window": 7.976697233046721,
+        "water_recovery": 0.0,
+        "air_recovery": 0.018378679600886016,
+        "underwater_bite_recovery": 0.0,
+        "water_plunge": 0.0,
+        "air_plunge": 10.93623830246404,
+        "underwater_bite_plunge": 0.0,
+        "water_pursuit": 7.976697233046721,
+        "air_pursuit": 0.0,
+        "underwater_bite_pursuit": 7.976697233046721,
+        "water_ascent": 14.175815254358668,
+        "air_ascent": 1.499999999999993,
+        "underwater_bite_ascent": 0.0,
+        "water_orient": 0.0,
+        "air_orient": 1.3928705304969533,
+        "underwater_bite_orient": 0.0
+      },
+      "captures": 0,
+      "virtual_successes": 0,
+      "contacts": 1,
+      "launches": 6,
+      "reasons": {
+        "gannet_global_dense_target_selected": 6,
+        "recovery_complete": 6,
+        "local_prey_detected": 6,
+        "launch": 6,
+        "water_entry": 6,
+        "contact_miss": 1,
+        "flight_height_reached": 5,
+        "ascent_depth_margin": 3,
+        "target_not_visible": 2
+      }
+    },
+    "G24": {
+      "time": {
+        "recovering": 2.5870357631451846,
+        "positioning": 33.41296423682208
+      },
+      "distance": {
+        "recovering": 0.0,
+        "positioning": 265.33684689447284
+      },
+      "physical_mode_time": {
+        "recovery": 2.5870357631451846,
+        "plunge": 11.109013986525273,
+        "ascent": 14.537747738546475,
+        "pursuit": 4.83895948512043,
+        "orient": 2.927243026629899
+      },
+      "phases": {
+        "not_dolphin": 35.99999999996726
+      },
+      "exposure_time": {
+        "water": 17.198198868436698,
+        "air": 18.801801131530564,
+        "bite_window": 15.947973471645703,
+        "underwater_bite_window": 4.83895948512043,
+        "water_recovery": 0.0,
+        "air_recovery": 2.5870357631451846,
+        "underwater_bite_recovery": 0.0,
+        "water_plunge": 0.0,
+        "air_plunge": 11.109013986525273,
+        "underwater_bite_plunge": 0.0,
+        "water_ascent": 12.359239383316268,
+        "air_ascent": 2.178508355230207,
+        "underwater_bite_ascent": 0.0,
+        "water_pursuit": 4.83895948512043,
+        "air_pursuit": 0.0,
+        "underwater_bite_pursuit": 4.83895948512043,
+        "water_orient": 0.0,
+        "air_orient": 2.927243026629899,
+        "underwater_bite_orient": 0.0
+      },
+      "captures": 0,
+      "virtual_successes": 0,
+      "contacts": 0,
+      "launches": 7,
+      "reasons": {
+        "gannet_global_dense_target_selected": 8,
+        "recovery_complete": 8,
+        "local_prey_detected": 8,
+        "launch": 7,
+        "target_not_visible": 5,
+        "flight_height_reached": 7,
+        "water_entry": 5,
+        "ascent_depth_margin": 2,
+        "uncommitted_water_entry": 1
+      }
+    },
+    "G25": {
+      "time": {
+        "recovering": 1.2810425161547556,
+        "positioning": 34.7189574838125
+      },
+      "distance": {
+        "recovering": 0.0,
+        "positioning": 269.28476849181874
+      },
+      "physical_mode_time": {
+        "recovery": 1.2810425161547556,
+        "orient": 5.497506439473312,
+        "plunge": 7.973556561774359,
+        "pursuit": 5.6126934382132845,
+        "ascent": 15.63520104435155
+      },
+      "phases": {
+        "not_dolphin": 35.99999999996726
+      },
+      "exposure_time": {
+        "water": 19.47620158657715,
+        "air": 16.52379841339011,
+        "bite_window": 13.586249999987643,
+        "underwater_bite_window": 5.6126934382132845,
+        "water_recovery": 0.0,
+        "air_recovery": 1.2810425161547556,
+        "underwater_bite_recovery": 0.0,
+        "water_orient": 0.0,
+        "air_orient": 5.497506439473312,
+        "underwater_bite_orient": 0.0,
+        "water_plunge": 0.0,
+        "air_plunge": 7.973556561774359,
+        "underwater_bite_plunge": 0.0,
+        "water_pursuit": 5.6126934382132845,
+        "air_pursuit": 0.0,
+        "underwater_bite_pursuit": 5.6126934382132845,
+        "water_ascent": 13.863508148363866,
+        "air_ascent": 1.7716928959876839,
+        "underwater_bite_ascent": 0.0
+      },
+      "captures": 0,
+      "virtual_successes": 0,
+      "contacts": 0,
+      "launches": 7,
+      "reasons": {
+        "gannet_global_dense_target_selected": 7,
+        "recovery_complete": 7,
+        "local_prey_detected": 7,
+        "launch": 7,
+        "water_entry": 5,
+        "target_not_visible": 5,
+        "flight_height_reached": 6,
+        "ascent_depth_margin": 2
+      }
+    },
+    "G26": {
+      "time": {
+        "recovering": 1.1190810595493659,
+        "positioning": 34.8809189404179
+      },
+      "distance": {
+        "recovering": 0.0,
+        "positioning": 269.34491365921775
+      },
+      "physical_mode_time": {
+        "recovery": 1.1190810595493659,
+        "plunge": 8.186869509257594,
+        "pursuit": 6.1541926257484185,
+        "ascent": 15.211493678133838,
+        "orient": 5.328363127278045
+      },
+      "phases": {
+        "not_dolphin": 35.99999999996726
+      },
+      "exposure_time": {
+        "water": 19.865686303882264,
+        "air": 16.134313696084998,
+        "bite_window": 14.341062135006013,
+        "underwater_bite_window": 6.1541926257484185,
+        "water_recovery": 0.0,
+        "air_recovery": 1.1190810595493659,
+        "underwater_bite_recovery": 0.0,
+        "water_plunge": 0.0,
+        "air_plunge": 8.186869509257594,
+        "underwater_bite_plunge": 0.0,
+        "water_pursuit": 6.1541926257484185,
+        "air_pursuit": 0.0,
+        "underwater_bite_pursuit": 6.1541926257484185,
+        "water_ascent": 13.711493678133845,
+        "air_ascent": 1.499999999999993,
+        "underwater_bite_ascent": 0.0,
+        "water_orient": 0.0,
+        "air_orient": 5.328363127278045,
+        "underwater_bite_orient": 0.0
+      },
+      "captures": 0,
+      "virtual_successes": 0,
+      "contacts": 1,
+      "launches": 6,
+      "reasons": {
+        "gannet_global_dense_target_selected": 8,
+        "recovery_complete": 7,
+        "local_prey_detected": 7,
+        "launch": 6,
+        "water_entry": 5,
+        "contact_miss": 1,
+        "flight_height_reached": 6,
+        "ascent_depth_margin": 2,
+        "target_not_visible": 3,
+        "uncommitted_water_entry": 1
+      }
+    },
+    "G27": {
+      "time": {
+        "recovering": 0.42224234908135827,
+        "positioning": 35.5777576508859
+      },
+      "distance": {
+        "recovering": 0.0,
+        "positioning": 271.0869488283387
+      },
+      "physical_mode_time": {
+        "recovery": 0.42224234908135827,
+        "plunge": 8.140983339151973,
+        "pursuit": 7.418297653135134,
+        "ascent": 15.254349842172584,
+        "orient": 4.764126816426213
+      },
+      "phases": {
+        "not_dolphin": 35.99999999996726
+      },
+      "exposure_time": {
+        "water": 21.172647495307725,
+        "air": 14.827352504659537,
+        "bite_window": 15.559280992287107,
+        "underwater_bite_window": 7.418297653135134,
+        "water_recovery": 0.0,
+        "air_recovery": 0.42224234908135827,
+        "underwater_bite_recovery": 0.0,
+        "water_plunge": 0.0,
+        "air_plunge": 8.140983339151973,
+        "underwater_bite_plunge": 0.0,
+        "water_pursuit": 7.418297653135134,
+        "air_pursuit": 0.0,
+        "underwater_bite_pursuit": 7.418297653135134,
+        "water_ascent": 13.75434984217259,
+        "air_ascent": 1.499999999999993,
+        "underwater_bite_ascent": 0.0,
+        "water_orient": 0.0,
+        "air_orient": 4.764126816426213,
+        "underwater_bite_orient": 0.0
+      },
+      "captures": 1,
+      "virtual_successes": 0,
+      "contacts": 1,
+      "launches": 6,
+      "reasons": {
+        "gannet_global_dense_target_selected": 6,
+        "recovery_complete": 6,
+        "local_prey_detected": 6,
+        "launch": 6,
+        "water_entry": 6,
+        "capture": 1,
+        "flight_height_reached": 5,
+        "ascent_depth_margin": 2,
+        "target_not_visible": 2
+      }
+    },
+    "G28": {
+      "time": {
+        "recovering": 1.8501305890856905,
+        "positioning": 34.14986941088157
+      },
+      "distance": {
+        "recovering": 0.0,
+        "positioning": 262.7378977142635
+      },
+      "physical_mode_time": {
+        "recovery": 1.8501305890856905,
+        "orient": 3.779831730314264,
+        "plunge": 9.028787541422076,
+        "pursuit": 5.690733624931422,
+        "ascent": 15.650516514213809
+      },
+      "phases": {
+        "not_dolphin": 35.99999999996726
+      },
+      "exposure_time": {
+        "water": 19.689296391960355,
+        "air": 16.310703608006907,
+        "bite_window": 14.719521166353498,
+        "underwater_bite_window": 5.690733624931422,
+        "water_recovery": 0.0,
+        "air_recovery": 1.8501305890856905,
+        "underwater_bite_recovery": 0.0,
+        "water_orient": 0.0,
+        "air_orient": 3.779831730314264,
+        "underwater_bite_orient": 0.0,
+        "water_plunge": 0.0,
+        "air_plunge": 9.028787541422076,
+        "underwater_bite_plunge": 0.0,
+        "water_pursuit": 5.690733624931422,
+        "air_pursuit": 0.0,
+        "underwater_bite_pursuit": 5.690733624931422,
+        "water_ascent": 13.998562767028933,
+        "air_ascent": 1.6519537471848764,
+        "underwater_bite_ascent": 0.0
+      },
+      "captures": 1,
+      "virtual_successes": 0,
+      "contacts": 1,
+      "launches": 7,
+      "reasons": {
+        "gannet_global_dense_target_selected": 7,
+        "recovery_complete": 7,
+        "local_prey_detected": 7,
+        "launch": 7,
+        "water_entry": 5,
+        "target_not_visible": 4,
+        "flight_height_reached": 6,
+        "capture": 1,
+        "ascent_depth_margin": 2
+      }
+    },
+    "G29": {
+      "time": {
+        "recovering": 1.71556597393867,
+        "positioning": 34.28443402602859
+      },
+      "distance": {
+        "recovering": 0.0,
+        "positioning": 261.1753808448213
+      },
+      "physical_mode_time": {
+        "recovery": 1.71556597393867,
+        "orient": 2.052818449710724,
+        "plunge": 10.314281415032056,
+        "pursuit": 7.208540183589996,
+        "ascent": 14.708793977695816
+      },
+      "phases": {
+        "not_dolphin": 35.99999999996726
+      },
+      "exposure_time": {
+        "water": 20.417198216201065,
+        "air": 15.582801783766197,
+        "bite_window": 17.522821598622052,
+        "underwater_bite_window": 7.208540183589996,
+        "water_recovery": 0.0,
+        "air_recovery": 1.71556597393867,
+        "underwater_bite_recovery": 0.0,
+        "water_orient": 0.0,
+        "air_orient": 2.052818449710724,
+        "underwater_bite_orient": 0.0,
+        "water_plunge": 0.0,
+        "air_plunge": 10.314281415032056,
+        "underwater_bite_plunge": 0.0,
+        "water_pursuit": 7.208540183589996,
+        "air_pursuit": 0.0,
+        "underwater_bite_pursuit": 7.208540183589996,
+        "water_ascent": 13.20865803261107,
+        "air_ascent": 1.5001359450847467,
+        "underwater_bite_ascent": 0.0
+      },
+      "captures": 1,
+      "virtual_successes": 0,
+      "contacts": 1,
+      "launches": 6,
+      "reasons": {
+        "gannet_global_dense_target_selected": 6,
+        "recovery_complete": 6,
+        "local_prey_detected": 6,
+        "launch": 6,
+        "water_entry": 6,
+        "ascent_depth_margin": 3,
+        "flight_height_reached": 5,
+        "target_not_visible": 2,
+        "capture": 1
+      }
+    },
+    "G3": {
+      "time": {
+        "recovering": 3.8798650325108213,
+        "positioning": 32.12013496745644
+      },
+      "distance": {
+        "recovering": 0.0,
+        "positioning": 250.9184333198821
+      },
+      "physical_mode_time": {
+        "recovery": 3.8798650325108213,
+        "plunge": 7.596859869464627,
+        "pursuit": 5.547489110228945,
+        "ascent": 13.721239346459381,
+        "orient": 5.254546641303488
+      },
+      "phases": {
+        "not_dolphin": 35.99999999996726
+      },
+      "exposure_time": {
+        "water": 17.570537028506045,
+        "air": 18.429462971461216,
+        "bite_window": 13.144348979693572,
+        "underwater_bite_window": 5.547489110228945,
+        "water_recovery": 0.0,
+        "air_recovery": 3.8798650325108213,
+        "underwater_bite_recovery": 0.0,
+        "water_plunge": 0.0,
+        "air_plunge": 7.596859869464627,
+        "underwater_bite_plunge": 0.0,
+        "water_pursuit": 5.547489110228945,
+        "air_pursuit": 0.0,
+        "underwater_bite_pursuit": 5.547489110228945,
+        "water_ascent": 12.0230479182771,
+        "air_ascent": 1.6981914281822803,
+        "underwater_bite_ascent": 0.0,
+        "water_orient": 0.0,
+        "air_orient": 5.254546641303488,
+        "underwater_bite_orient": 0.0
+      },
+      "captures": 1,
+      "virtual_successes": 0,
+      "contacts": 1,
+      "launches": 7,
+      "reasons": {
+        "gannet_global_dense_target_selected": 8,
+        "recovery_complete": 8,
+        "local_prey_detected": 8,
+        "launch": 7,
+        "water_entry": 4,
+        "capture": 1,
+        "flight_height_reached": 7,
+        "ascent_depth_margin": 2,
+        "target_not_visible": 4,
+        "uncommitted_water_entry": 1
+      }
+    },
+    "G30": {
+      "time": {
+        "recovering": 0.9474810107798888,
+        "positioning": 35.05251898918738
+      },
+      "distance": {
+        "recovering": 0.0,
+        "positioning": 267.0192402821005
+      },
+      "physical_mode_time": {
+        "recovery": 0.9474810107798888,
+        "plunge": 9.12935381078789,
+        "pursuit": 7.310807225622732,
+        "ascent": 15.079487027211485,
+        "orient": 3.532870925565266
+      },
+      "phases": {
+        "not_dolphin": 35.99999999996726
+      },
+      "exposure_time": {
+        "water": 20.876487402443463,
+        "air": 15.1235125975238,
+        "bite_window": 16.440161036410622,
+        "underwater_bite_window": 7.310807225622732,
+        "water_recovery": 0.0,
+        "air_recovery": 0.9474810107798888,
+        "underwater_bite_recovery": 0.0,
+        "water_plunge": 0.0,
+        "air_plunge": 9.12935381078789,
+        "underwater_bite_plunge": 0.0,
+        "water_pursuit": 7.310807225622732,
+        "air_pursuit": 0.0,
+        "underwater_bite_pursuit": 7.310807225622732,
+        "water_ascent": 13.565680176820731,
+        "air_ascent": 1.513806850390754,
+        "underwater_bite_ascent": 0.0,
+        "water_orient": 0.0,
+        "air_orient": 3.532870925565266,
+        "underwater_bite_orient": 0.0
+      },
+      "captures": 0,
+      "virtual_successes": 0,
+      "contacts": 0,
+      "launches": 6,
+      "reasons": {
+        "gannet_global_dense_target_selected": 6,
+        "recovery_complete": 6,
+        "local_prey_detected": 6,
+        "launch": 6,
+        "water_entry": 5,
+        "ascent_depth_margin": 4,
+        "flight_height_reached": 5,
+        "target_not_visible": 2
+      }
+    },
+    "G31": {
+      "time": {
+        "recovering": 2.7904817474820547,
+        "positioning": 33.20951825248521
+      },
+      "distance": {
+        "recovering": 0.0,
+        "positioning": 256.7976533616708
+      },
+      "physical_mode_time": {
+        "recovery": 2.7904817474820547,
+        "orient": 4.544749986895056,
+        "plunge": 7.954518694116114,
+        "pursuit": 5.5532408837954925,
+        "ascent": 15.157008687678545
+      },
+      "phases": {
+        "not_dolphin": 35.99999999996726
+      },
+      "exposure_time": {
+        "water": 18.824382290795253,
+        "air": 17.17561770917201,
+        "bite_window": 13.507759577911607,
+        "underwater_bite_window": 5.5532408837954925,
+        "water_recovery": 0.0,
+        "air_recovery": 2.7904817474820547,
+        "underwater_bite_recovery": 0.0,
+        "water_orient": 0.0,
+        "air_orient": 4.544749986895056,
+        "underwater_bite_orient": 0.0,
+        "water_plunge": 0.0,
+        "air_plunge": 7.954518694116114,
+        "underwater_bite_plunge": 0.0,
+        "water_pursuit": 5.5532408837954925,
+        "air_pursuit": 0.0,
+        "underwater_bite_pursuit": 5.5532408837954925,
+        "water_ascent": 13.27114140699976,
+        "air_ascent": 1.8858672806787844,
+        "underwater_bite_ascent": 0.0
+      },
+      "captures": 0,
+      "virtual_successes": 0,
+      "contacts": 0,
+      "launches": 7,
+      "reasons": {
+        "gannet_global_dense_target_selected": 7,
+        "recovery_complete": 7,
+        "local_prey_detected": 7,
+        "launch": 7,
+        "water_entry": 4,
+        "ascent_depth_margin": 1,
+        "flight_height_reached": 6,
+        "target_not_visible": 6
+      }
+    },
+    "G32": {
+      "time": {
+        "recovering": 2.1313314638006737,
+        "positioning": 33.86866853616659
+      },
+      "distance": {
+        "recovering": 0.0,
+        "positioning": 263.8794227090678
+      },
+      "physical_mode_time": {
+        "recovery": 2.1313314638006737,
+        "orient": 2.756619827029695,
+        "plunge": 10.68868899488944,
+        "ascent": 13.149103187532372,
+        "pursuit": 7.274256526715082
+      },
+      "phases": {
+        "not_dolphin": 35.99999999996726
+      },
+      "exposure_time": {
+        "water": 18.701815663149358,
+        "air": 17.298184336817904,
+        "bite_window": 17.96294552160452,
+        "underwater_bite_window": 7.274256526715082,
+        "water_recovery": 0.0,
+        "air_recovery": 2.1313314638006737,
+        "underwater_bite_recovery": 0.0,
+        "water_orient": 0.0,
+        "air_orient": 2.756619827029695,
+        "underwater_bite_orient": 0.0,
+        "water_plunge": 0.0,
+        "air_plunge": 10.68868899488944,
+        "underwater_bite_plunge": 0.0,
+        "water_ascent": 11.427559136434276,
+        "air_ascent": 1.7215440510980962,
+        "underwater_bite_ascent": 0.0,
+        "water_pursuit": 7.274256526715082,
+        "air_pursuit": 0.0,
+        "underwater_bite_pursuit": 7.274256526715082
+      },
+      "captures": 0,
+      "virtual_successes": 0,
+      "contacts": 0,
+      "launches": 6,
+      "reasons": {
+        "gannet_global_dense_target_selected": 6,
+        "recovery_complete": 6,
+        "local_prey_detected": 6,
+        "launch": 6,
+        "target_not_visible": 1,
+        "flight_height_reached": 5,
+        "water_entry": 5,
+        "ascent_depth_margin": 5
+      }
+    },
+    "G33": {
+      "time": {
+        "recovering": 1.6702546986099094,
+        "positioning": 34.32974530135735
+      },
+      "distance": {
+        "recovering": 0.0,
+        "positioning": 266.11244522045024
+      },
+      "physical_mode_time": {
+        "recovery": 1.6702546986099094,
+        "plunge": 9.053970247694092,
+        "ascent": 14.633399149883441,
+        "orient": 3.7846702409466033,
+        "pursuit": 6.857705662833215
+      },
+      "phases": {
+        "not_dolphin": 35.99999999996726
+      },
+      "exposure_time": {
+        "water": 19.295644698057416,
+        "air": 16.704355301909846,
+        "bite_window": 15.911675910527308,
+        "underwater_bite_window": 6.857705662833215,
+        "water_recovery": 0.0,
+        "air_recovery": 1.6702546986099094,
+        "underwater_bite_recovery": 0.0,
+        "water_plunge": 0.0,
+        "air_plunge": 9.053970247694092,
+        "underwater_bite_plunge": 0.0,
+        "water_ascent": 12.4379390352242,
+        "air_ascent": 2.195460114659241,
+        "underwater_bite_ascent": 0.0,
+        "water_orient": 0.0,
+        "air_orient": 3.7846702409466033,
+        "underwater_bite_orient": 0.0,
+        "water_pursuit": 6.857705662833215,
+        "air_pursuit": 0.0,
+        "underwater_bite_pursuit": 6.857705662833215
+      },
+      "captures": 1,
+      "virtual_successes": 0,
+      "contacts": 1,
+      "launches": 6,
+      "reasons": {
+        "gannet_global_dense_target_selected": 6,
+        "recovery_complete": 6,
+        "local_prey_detected": 6,
+        "launch": 6,
+        "target_not_visible": 1,
+        "flight_height_reached": 5,
+        "water_entry": 5,
+        "ascent_depth_margin": 4,
+        "capture": 1
+      }
+    },
+    "G34": {
+      "time": {
+        "recovering": 1.810051936461921,
+        "positioning": 34.18994806350534
+      },
+      "distance": {
+        "recovering": 0.0,
+        "positioning": 261.45828859340423
+      },
+      "physical_mode_time": {
+        "recovery": 1.810051936461921,
+        "plunge": 9.574949477549513,
+        "pursuit": 5.650623585973072,
+        "ascent": 16.28335948453297,
+        "orient": 2.6810155154497863
+      },
+      "phases": {
+        "not_dolphin": 35.99999999996726
+      },
+      "exposure_time": {
+        "water": 20.11029801041203,
+        "air": 15.889701989555231,
+        "bite_window": 15.225573063522585,
+        "underwater_bite_window": 5.650623585973072,
+        "water_recovery": 0.0,
+        "air_recovery": 1.810051936461921,
+        "underwater_bite_recovery": 0.0,
+        "water_plunge": 0.0,
+        "air_plunge": 9.574949477549513,
+        "underwater_bite_plunge": 0.0,
+        "water_pursuit": 5.650623585973072,
+        "air_pursuit": 0.0,
+        "underwater_bite_pursuit": 5.650623585973072,
+        "water_ascent": 14.459674424438958,
+        "air_ascent": 1.8236850600940109,
+        "underwater_bite_ascent": 0.0,
+        "water_orient": 0.0,
+        "air_orient": 2.6810155154497863,
+        "underwater_bite_orient": 0.0
+      },
+      "captures": 0,
+      "virtual_successes": 0,
+      "contacts": 0,
+      "launches": 7,
+      "reasons": {
+        "gannet_global_dense_target_selected": 7,
+        "recovery_complete": 7,
+        "local_prey_detected": 7,
+        "launch": 7,
+        "water_entry": 5,
+        "ascent_depth_margin": 4,
+        "flight_height_reached": 6,
+        "target_not_visible": 3
+      }
+    },
+    "G35": {
+      "time": {
+        "recovering": 1.1334419998795724,
+        "positioning": 34.86655800008769
+      },
+      "distance": {
+        "recovering": 0.0,
+        "positioning": 265.50498180203397
+      },
+      "physical_mode_time": {
+        "recovery": 1.1334419998795724,
+        "plunge": 8.871927309815149,
+        "pursuit": 7.527133324399436,
+        "ascent": 14.76302155785417,
+        "orient": 3.704475808018934
+      },
+      "phases": {
+        "not_dolphin": 35.99999999996726
+      },
+      "exposure_time": {
+        "water": 20.790149549710517,
+        "air": 15.209850450256745,
+        "bite_window": 16.399060634214585,
+        "underwater_bite_window": 7.527133324399436,
+        "water_recovery": 0.0,
+        "air_recovery": 1.1334419998795724,
+        "underwater_bite_recovery": 0.0,
+        "water_plunge": 0.0,
+        "air_plunge": 8.871927309815149,
+        "underwater_bite_plunge": 0.0,
+        "water_pursuit": 7.527133324399436,
+        "air_pursuit": 0.0,
+        "underwater_bite_pursuit": 7.527133324399436,
+        "water_ascent": 13.26301622531108,
+        "air_ascent": 1.5000053325430898,
+        "underwater_bite_ascent": 0.0,
+        "water_orient": 0.0,
+        "air_orient": 3.704475808018934,
+        "underwater_bite_orient": 0.0
+      },
+      "captures": 0,
+      "virtual_successes": 0,
+      "contacts": 0,
+      "launches": 6,
+      "reasons": {
+        "gannet_global_dense_target_selected": 6,
+        "recovery_complete": 6,
+        "local_prey_detected": 6,
+        "launch": 6,
+        "water_entry": 6,
+        "ascent_depth_margin": 4,
+        "flight_height_reached": 5,
+        "target_not_visible": 2
+      }
+    },
+    "G4": {
+      "time": {
+        "recovering": 1.0914963497904253,
+        "positioning": 34.90850365017684
+      },
+      "distance": {
+        "recovering": 0.0,
+        "positioning": 271.7660917379369
+      },
+      "physical_mode_time": {
+        "recovery": 1.0914963497904253,
+        "orient": 5.5980692911576995,
+        "plunge": 8.026907059413684,
+        "pursuit": 5.725592940573808,
+        "ascent": 15.557934359031645
+      },
+      "phases": {
+        "not_dolphin": 35.99999999996726
+      },
+      "exposure_time": {
+        "water": 19.329736190958293,
+        "air": 16.67026380900897,
+        "bite_window": 13.752499999987492,
+        "underwater_bite_window": 5.725592940573808,
+        "water_recovery": 0.0,
+        "air_recovery": 1.0914963497904253,
+        "underwater_bite_recovery": 0.0,
+        "water_orient": 0.0,
+        "air_orient": 5.5980692911576995,
+        "underwater_bite_orient": 0.0,
+        "water_plunge": 0.0,
+        "air_plunge": 8.026907059413684,
+        "underwater_bite_plunge": 0.0,
+        "water_pursuit": 5.725592940573808,
+        "air_pursuit": 0.0,
+        "underwater_bite_pursuit": 5.725592940573808,
+        "water_ascent": 13.604143250384485,
+        "air_ascent": 1.9537911086471595,
+        "underwater_bite_ascent": 0.0
+      },
+      "captures": 0,
+      "virtual_successes": 0,
+      "contacts": 0,
+      "launches": 7,
+      "reasons": {
+        "gannet_global_dense_target_selected": 7,
+        "recovery_complete": 7,
+        "local_prey_detected": 7,
+        "launch": 7,
+        "water_entry": 5,
+        "target_not_visible": 5,
+        "flight_height_reached": 6,
+        "ascent_depth_margin": 2
+      }
+    },
+    "G5": {
+      "time": {
+        "recovering": 1.992980393080618,
+        "positioning": 34.007019606886644
+      },
+      "distance": {
+        "recovering": 0.0,
+        "positioning": 251.17417591752277
+      },
+      "physical_mode_time": {
+        "recovery": 1.992980393080618,
+        "orient": 3.453679579031384,
+        "plunge": 7.129334990019263,
+        "pursuit": 8.827595880709662,
+        "ascent": 14.596409157126335
+      },
+      "phases": {
+        "not_dolphin": 35.99999999996726
+      },
+      "exposure_time": {
+        "water": 22.224005037836005,
+        "air": 13.775994962131257,
+        "bite_window": 15.956930870728925,
+        "underwater_bite_window": 8.827595880709662,
+        "water_recovery": 0.0,
+        "air_recovery": 1.992980393080618,
+        "underwater_bite_recovery": 0.0,
+        "water_orient": 0.0,
+        "air_orient": 3.453679579031384,
+        "underwater_bite_orient": 0.0,
+        "water_plunge": 0.0,
+        "air_plunge": 7.129334990019263,
+        "underwater_bite_plunge": 0.0,
+        "water_pursuit": 8.827595880709662,
+        "air_pursuit": 0.0,
+        "underwater_bite_pursuit": 8.827595880709662,
+        "water_ascent": 13.396409157126342,
+        "air_ascent": 1.1999999999999922,
+        "underwater_bite_ascent": 0.0
+      },
+      "captures": 0,
+      "virtual_successes": 0,
+      "contacts": 0,
+      "launches": 5,
+      "reasons": {
+        "gannet_global_dense_target_selected": 5,
+        "recovery_complete": 5,
+        "local_prey_detected": 5,
+        "launch": 5,
+        "water_entry": 5,
+        "target_not_visible": 1,
+        "flight_height_reached": 4,
+        "ascent_depth_margin": 4
+      }
+    },
+    "G6": {
+      "time": {
+        "recovering": 1.8867543030073115,
+        "positioning": 34.11324569695995
+      },
+      "distance": {
+        "recovering": 0.0,
+        "positioning": 259.9692990333418
+      },
+      "physical_mode_time": {
+        "recovery": 1.8867543030073115,
+        "plunge": 8.39969262490155,
+        "pursuit": 7.378593715032686,
+        "ascent": 14.558899672600766,
+        "orient": 3.776059684424947
+      },
+      "phases": {
+        "not_dolphin": 35.99999999996726
+      },
+      "exposure_time": {
+        "water": 20.290789484064657,
+        "air": 15.709210515902605,
+        "bite_window": 15.778286339934237,
+        "underwater_bite_window": 7.378593715032686,
+        "water_recovery": 0.0,
+        "air_recovery": 1.8867543030073115,
+        "underwater_bite_recovery": 0.0,
+        "water_plunge": 0.0,
+        "air_plunge": 8.39969262490155,
+        "underwater_bite_plunge": 0.0,
+        "water_pursuit": 7.378593715032686,
+        "air_pursuit": 0.0,
+        "underwater_bite_pursuit": 7.378593715032686,
+        "water_ascent": 12.912195769031971,
+        "air_ascent": 1.6467039035687954,
+        "underwater_bite_ascent": 0.0,
+        "water_orient": 0.0,
+        "air_orient": 3.776059684424947,
+        "underwater_bite_orient": 0.0
+      },
+      "captures": 0,
+      "virtual_successes": 0,
+      "contacts": 0,
+      "launches": 6,
+      "reasons": {
+        "gannet_global_dense_target_selected": 6,
+        "recovery_complete": 6,
+        "local_prey_detected": 6,
+        "launch": 6,
+        "water_entry": 5,
+        "target_not_visible": 2,
+        "flight_height_reached": 5,
+        "ascent_depth_margin": 4
+      }
+    },
+    "G7": {
+      "time": {
+        "recovering": 1.2721635746799542,
+        "positioning": 34.72783642528731
+      },
+      "distance": {
+        "recovering": 0.0,
+        "positioning": 267.6152444769821
+      },
+      "physical_mode_time": {
+        "recovery": 1.2721635746799542,
+        "orient": 3.499872761236965,
+        "plunge": 9.627130245344034,
+        "ascent": 13.971649504852532,
+        "pursuit": 7.629183913853776
+      },
+      "phases": {
+        "not_dolphin": 35.99999999996726
+      },
+      "exposure_time": {
+        "water": 19.9157799439729,
+        "air": 16.08422005599436,
+        "bite_window": 17.25631415919781,
+        "underwater_bite_window": 7.629183913853776,
+        "water_recovery": 0.0,
+        "air_recovery": 1.2721635746799542,
+        "underwater_bite_recovery": 0.0,
+        "water_orient": 0.0,
+        "air_orient": 3.499872761236965,
+        "underwater_bite_orient": 0.0,
+        "water_plunge": 0.0,
+        "air_plunge": 9.627130245344034,
+        "underwater_bite_plunge": 0.0,
+        "water_ascent": 12.286596030119124,
+        "air_ascent": 1.685053474733408,
+        "underwater_bite_ascent": 0.0,
+        "water_pursuit": 7.629183913853776,
+        "air_pursuit": 0.0,
+        "underwater_bite_pursuit": 7.629183913853776
+      },
+      "captures": 0,
+      "virtual_successes": 0,
+      "contacts": 0,
+      "launches": 6,
+      "reasons": {
+        "gannet_global_dense_target_selected": 6,
+        "recovery_complete": 6,
+        "local_prey_detected": 6,
+        "launch": 6,
+        "target_not_visible": 1,
+        "flight_height_reached": 5,
+        "water_entry": 5,
+        "ascent_depth_margin": 4
+      }
+    },
+    "G8": {
+      "time": {
+        "recovering": 2.8832830291738816,
+        "positioning": 33.11671697079338
+      },
+      "distance": {
+        "recovering": 0.0,
+        "positioning": 256.2578401550086
+      },
+      "physical_mode_time": {
+        "recovery": 2.8832830291738816,
+        "orient": 4.702094843876338,
+        "plunge": 7.903686351129547,
+        "pursuit": 5.499438648858263,
+        "ascent": 15.011497126929232
+      },
+      "phases": {
+        "not_dolphin": 35.99999999996726
+      },
+      "exposure_time": {
+        "water": 18.727332388231428,
+        "air": 17.272667611735834,
+        "bite_window": 13.40312499998781,
+        "underwater_bite_window": 5.499438648858263,
+        "water_recovery": 0.0,
+        "air_recovery": 2.8832830291738816,
+        "underwater_bite_recovery": 0.0,
+        "water_orient": 0.0,
+        "air_orient": 4.702094843876338,
+        "underwater_bite_orient": 0.0,
+        "water_plunge": 0.0,
+        "air_plunge": 7.903686351129547,
+        "underwater_bite_plunge": 0.0,
+        "water_pursuit": 5.499438648858263,
+        "air_pursuit": 0.0,
+        "underwater_bite_pursuit": 5.499438648858263,
+        "water_ascent": 13.227893739373165,
+        "air_ascent": 1.7836033875560666,
+        "underwater_bite_ascent": 0.0
+      },
+      "captures": 0,
+      "virtual_successes": 0,
+      "contacts": 0,
+      "launches": 7,
+      "reasons": {
+        "gannet_global_dense_target_selected": 7,
+        "recovery_complete": 7,
+        "local_prey_detected": 7,
+        "launch": 7,
+        "water_entry": 4,
+        "ascent_depth_margin": 1,
+        "flight_height_reached": 6,
+        "target_not_visible": 6
+      }
+    },
+    "G9": {
+      "time": {
+        "recovering": 0.8382575036678723,
+        "positioning": 35.16174249629939
+      },
+      "distance": {
+        "recovering": 0.0,
+        "positioning": 269.70178675822456
+      },
+      "physical_mode_time": {
+        "recovery": 0.8382575036678723,
+        "plunge": 7.918053128026692,
+        "pursuit": 6.8868929831843,
+        "ascent": 15.092016568008088,
+        "orient": 5.26477981708031
+      },
+      "phases": {
+        "not_dolphin": 35.99999999996726
+      },
+      "exposure_time": {
+        "water": 20.478909551192395,
+        "air": 15.521090448774867,
+        "bite_window": 14.804946111210992,
+        "underwater_bite_window": 6.8868929831843,
+        "water_recovery": 0.0,
+        "air_recovery": 0.8382575036678723,
+        "underwater_bite_recovery": 0.0,
+        "water_plunge": 0.0,
+        "air_plunge": 7.918053128026692,
+        "underwater_bite_plunge": 0.0,
+        "water_pursuit": 6.8868929831843,
+        "air_pursuit": 0.0,
+        "underwater_bite_pursuit": 6.8868929831843,
+        "water_ascent": 13.592016568008095,
+        "air_ascent": 1.499999999999993,
+        "underwater_bite_ascent": 0.0,
+        "water_orient": 0.0,
+        "air_orient": 5.26477981708031,
+        "underwater_bite_orient": 0.0
+      },
+      "captures": 0,
+      "virtual_successes": 0,
+      "contacts": 0,
+      "launches": 6,
+      "reasons": {
+        "gannet_global_dense_target_selected": 6,
+        "recovery_complete": 6,
+        "local_prey_detected": 6,
+        "launch": 6,
+        "water_entry": 6,
+        "target_not_visible": 4,
+        "flight_height_reached": 5,
+        "ascent_depth_margin": 1
+      }
+    }
+  },
+  "school_structure": {
+    "n_live": 114,
+    "survival_fraction": 0.7125,
+    "envelope_retention": 0.0,
+    "largest_component_fraction": 0.8421052631578947,
+    "largest_component_retention": 0.6,
+    "r90": 6.8136947960108225,
+    "rg": 5.052090415662865,
+    "outward_fraction": 0.6052631578947368,
+    "outward_p90": 2.1947502031870165,
+    "mean_depth": 10.25840384813533,
+    "centroid": [
+      120.07804611658246,
+      1.5627545740645399,
+      -10.25840384813533
+    ],
+    "mean_velocity": [
+      0.9529054048453872,
+      -1.1901811255004915,
+      -0.5801266757224561
+    ],
+    "polarization": 0.5437633045080833,
+    "contained": false,
+    "time": 55.999999999967194,
+    "elapsed": 35.99999999996726
+  },
+  "effort_interpretation": "observed physical effort only; no post-depletion extrapolation",
+  "food_interpretation": "actual unique captures; all later counts fixed after complete prey depletion",
+  "physical_accounting_audit": {
+    "status": "passed",
+    "errors": [],
+    "scope": "independent time, event tally and removal conservation; no native re-simulation"
+  },
+  "private_capture_and_tie_replay": "passed"
+}

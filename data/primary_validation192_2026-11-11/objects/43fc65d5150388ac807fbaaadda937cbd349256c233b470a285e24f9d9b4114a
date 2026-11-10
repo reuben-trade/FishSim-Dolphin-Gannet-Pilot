@@ -1,0 +1,130 @@
+"""Independent, native-free count/statistics oracle for the frozen n16 design.
+
+Input rows are completed encounter counts, not simulation objects. The external
+execution auditor must establish source seals, actual starts and raw counts.
+All effects use captures per predator over the fixed nominal 36T encounter.
+"""
+from __future__ import annotations
+
+import math
+import numpy as np
+
+SCHOOLS = tuple(range(39065501, 39065517))
+LABELS = (71001, 71002)
+GRIDS = ("coarse", "fine")
+PRESENCES = ("D", "G", "DG")
+DENOMINATORS = {"D": 12, "G": 36}
+T_CRITICAL_9875_DF15 = 2.4898797034798923
+ENDPOINTS = ("D_fine", "G_fine", "D_coarse", "G_coarse",
+             "D_fine_minus_coarse", "G_fine_minus_coarse")
+
+
+def school_effects(rows):
+    """Validate all 192 unique identities and reconstruct exact-zero effects."""
+    bank = {}
+    for row in rows:
+        key = (int(row["school_seed"]), int(row["capture_label"]),
+               row["grid"], row["presence"])
+        if key in bank:
+            raise ValueError(f"Duplicate completed world/grid/treatment: {key}")
+        d, g = row["D_captures"], row["G_captures"]
+        if (type(d) is not int or type(g) is not int or min(d, g) < 0
+                or d + g > 160 or (key[3] == "D" and g)
+                or (key[3] == "G" and d)):
+            raise ValueError("Integer uniquely removed prey counts required")
+        bank[key] = row
+    expected = {(s, label, grid, presence) for s in SCHOOLS for label in LABELS
+                for grid in GRIDS for presence in PRESENCES}
+    if set(bank) != expected:
+        raise ValueError("Require the complete fixed 16-school/two-label/two-grid inventory")
+
+    output, vectors = [], []
+    for school in SCHOOLS:
+        raw, effect = {}, {}
+        for species, denominator in DENOMINATORS.items():
+            alone = species
+            for grid in GRIDS:
+                delta = [bank[school, label, grid, "DG"][species + "_captures"]
+                         - bank[school, label, grid, alone][species + "_captures"]
+                         for label in LABELS]
+                raw[species + "_" + grid] = delta
+                effect[species + "_" + grid] = sum(delta) / (2 * denominator)
+            fine, coarse = raw[species + "_fine"], raw[species + "_coarse"]
+            effect[species + "_fine_minus_coarse"] = (
+                sum(fine) - sum(coarse)) / (2 * denominator)
+        output.append(dict(school_seed=school, integer_world_deltas=raw, **effect))
+        vectors.append([effect[key] for key in ENDPOINTS])
+    return output, np.asarray(vectors, dtype=float)
+
+
+def summarize(rows, *, bootstrap_draws, bootstrap_seed):
+    """Use one common whole-school resampling matrix across all six endpoints.
+
+    The t intervals for the two fine species means determine the predeclared
+    approximate familywise success criterion. Bootstrap intervals are a
+    sensitivity analysis and cannot replace the criterion after seeing data.
+    """
+    if type(bootstrap_draws) is not int or bootstrap_draws < 10000:
+        raise ValueError("Predeclared bootstrap draw count >=10000 required")
+    schools, vectors = school_effects(rows)
+    n = len(SCHOOLS)
+    integer_vectors = []
+    for school in schools:
+        raw = school["integer_world_deltas"]
+        integer_vectors.append([
+            sum(raw[name]) if "minus" not in name else
+            sum(raw[name[0] + "_fine"]) - sum(raw[name[0] + "_coarse"])
+            for name in ENDPOINTS])
+    integer_vectors = np.asarray(integer_vectors, dtype=np.int64)
+    denominators = np.asarray([2 * DENOMINATORS[name[0]] for name in ENDPOINTS],
+                              dtype=np.int64)
+    draws = np.random.default_rng(bootstrap_seed).integers(0, n,
+                                                         (bootstrap_draws, n))
+    weights = np.zeros((bootstrap_draws, n), dtype=np.int64)
+    for index in range(n):
+        weights[:, index] = np.count_nonzero(draws == index, axis=1)
+    sampled = (weights @ integer_vectors) / (n * denominators)
+    limits = np.quantile(sampled, [.0125, .9875], axis=0)
+    endpoints = {}
+    for j, name in enumerate(ENDPOINTS):
+        values = vectors[:, j]
+        mean = int(integer_vectors[:, j].sum()) / (n * int(denominators[j]))
+        sd = float(np.std(values, ddof=1))
+        se = sd / math.sqrt(n)
+        record = dict(mean=mean, sample_sd_school_means=sd, sampling_se=se,
+                      school_t_975_low=mean - T_CRITICAL_9875_DF15 * se,
+                      school_t_975_high=mean + T_CRITICAL_9875_DF15 * se,
+                      bootstrap_975_low=float(limits[0, j]),
+                      bootstrap_975_high=float(limits[1, j]),
+                      positive_schools=int(np.count_nonzero(values > 0)),
+                      zero_schools=int(np.count_nonzero(values == 0)),
+                      negative_schools=int(np.count_nonzero(values < 0)))
+        denominator = DENOMINATORS[name[0]]
+        if "minus" in name:
+            repeat_deltas = [[fine - coarse for fine, coarse in zip(
+                row["integer_world_deltas"][name[0] + "_fine"],
+                row["integer_world_deltas"][name[0] + "_coarse"])]
+                for row in schools]
+        else:
+            repeat_deltas = [row["integer_world_deltas"][name] for row in schools]
+        within = [(delta[0] - delta[1]) ** 2 / (2 * denominator ** 2)
+                  for delta in repeat_deltas]
+        w = float(np.mean(within))
+        record.update(mean_within_school_repeat_variance=w,
+                      conditional_mcse=math.sqrt(w / (n * len(LABELS))))
+        endpoints[name] = record
+    return dict(independent_schools=n, capture_repeats_per_school=2,
+                encounter_rows=192, school_effects=schools, endpoints=endpoints,
+                fine_mutual_benefit_criterion_met=all(
+                    endpoints[name]["school_t_975_low"] > 0
+                    for name in ("D_fine", "G_fine")),
+                joint_positive_school_count=sum(
+                    row["D_fine"] > 0 and row["G_fine"] > 0 for row in schools),
+                bootstrap=dict(draws=bootstrap_draws, seed=bootstrap_seed,
+                               unit="whole school vector after averaging its two labels",
+                               quantiles=[.0125, .9875]),
+                interpretation=("Fine-grid co-primary means; approximate t/normal inference. "
+                                "Coarse and paired grid changes are secondary. Conditional MCSE "
+                                "is separate from, and must not be added to, total sampling SE. "
+                                "Repetition varies capture, ties and bird-target randomness. "
+                                "No new simulator calls; no independent validation of biology."))

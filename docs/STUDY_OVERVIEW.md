@@ -1,22 +1,29 @@
-<!-- Scientific overview preserved from the repository README, 9 November 2026. Relative links rebased for docs/. -->
+# FishSim: completed discovery and independent validation
 
-# FishSim: dolphin–gannet pilot and regime map
+Open [main.ipynb](../main.ipynb) from the repository root and Run All Cells. Its 14 logical cells contain 7 code cells; default execution rebuilds 4 numbered figures and 13 canonical CSVs (9 discovery/population, 4 validation) with zero model steps and no new bootstrap draws. [Local setup](LOCAL_ANALYSIS_SETUP.md).
 
-Open [**main.ipynb**](../main.ipynb) and choose **Run → Run All Cells** from the repository root. Its **10 code cells** verify preserved inputs, reconstruct the current paper’s saved results, display four matching figures and export nine summary tables. Default execution takes **zero native steps and generates no new bootstrap draws**. Two optional bounded model-example cells remain off by default. Saved outputs are included.
+## Primary sixteen-school result
 
-The default now matches the current “Who Benefits?” manuscript through thirty-six gannets. The complete earlier raw-evidence workflow remains runnable as [main_2026-11-09_v6.ipynb](../main_2026-11-09_v6.ipynb), with its 21 code cells, 19 tables and prior four-figure report archived separately.
+The fixed H1/G36 rule was tested on 16 new schools with 2 nested labels, D-only/G-only/DG arms and coarse/fine encounter grids: 192 completed cases. The fine grid is primary. Labels are averaged before the 16-school mean; neither 32 worlds nor 192 executions are treated as independent schools. Same 20T coarse-prepared starts are used on both encounter grids.
 
-**Main finding:** original shared-rule pilots gave dolphin gains of **17.1% and 16.1%**, in separate earlier cohorts. The complete 24-setting map has **18 positive, two zero and four negative** mean same-H dolphin responses. Its unique largest observed dolphin total in the twelve-dolphin map is **H=1T/G=36:91→132 captures (+45.1%)**. Gannets change 16→94; both species gain in all four schools. This adds only five dolphin catches over the 127 reached with nine or eighteen birds. It is an observed maximum in the tested bank, not a confirmed optimum.
+| Species | Fine alone→mixed captures | Relative change | Mean gain per individual over 36T | 97.5% t interval |
+|---|---:|---:|---:|---:|
+| Dolphins |719→905|+25.9%|+0.484375|[0.224689,0.744061]|
+| Gannets |292→536|+83.6%|+0.211806|[0.093497,0.330114]|
 
-Both species gain in every school at H1/G24, H1/G36, H2/G6, H2/G12, H2/G18 and H2/G36. **H2/G12 gives dolphins 86→110 and gannets 31→57** and also exceeds the stronger best-tested H1 D-only benchmark 91→110. Its smaller flock gives a different per-bird return from H1/G36. Group totals, individual returns and partner effects answer distinct questions.
+Both lower bounds exceed zero under the prespecified fine-grid criterion. These two marginal intervals target nominal 95% simultaneous coverage, subject to school independence and Student t assumptions (df 15). Bootstrap 50,000-draw endpoints are a separate cached sensitivity, not a replacement decision. Means include school losses: D 14 positive/1 tie/1 negative, G 14 positive/2 negative; joint gains 12/16. Individual labelled worlds include further losses.
 
-The full map uses **four previously observed schools and one capture-stream setting**, with exploratory pointwise intervals. It retains every setting and sign. The original positive follow-up used two fresh schools under two settings; those original totals have not been replaced by replay aggregates. The independent eight-school check remains separate: refining the timestep changed mean dolphin effects from +1 to 0 and gannet effects from +5.125 to +2.5 captures per school. The fine dolphin mean combines **four positive, three negative and one zero school effect**. The original positive cohorts and the new map were not rerun on the fine grid. Numerical convergence and general mutual facilitation remain unestablished.
+Coarse totals are D 708→889 and G 243→460. Paired fine-minus-coarse gains are D+0.0130 [−0.2208,0.2469] and G+0.0234 [−0.1349,0.1818] fish per individual over 36T. These wide secondary intervals are not an equivalence or convergence proof. All 32 labelled food totals, 16 school vectors and both grids remain in the notebook.
 
-Read the [current report](../reports/current/Feeding_Frenzy_Working_Draft.pdf) or [complete response map](../data/research/upper_count_regime_extension_2026-11-09/results/full_36T_v1/analysis_final/regime_map.png). The inventory contains **220 full feeding execution records**:212 preserved and eight new D24 encounters. The D24 follow-up is a separate selected-regime sensitivity; it adds no independent schools. The complete map uses 108 retained outcomes plus 32 new conditions on the SAME four schools. Eight exact historical replays remain within earlier records; the eight-case first-school pilot is a subset of the 32, not another cohort. Shared controls, replays, grids and horizons add no independent schools. Five upper-count 4T engineering checks are separate from feeding inference.
+The unchanged dolphin rule herds before striking; there is no bird-triggered bonus. Conditional oral-contact success remains q=0.7. The model result concerns captured fish, not energetic profit, fitness or deliberate coordination. All 192 and the original independent FINAL plus additional metadata proof passed before final publication. Older 48/96/144 snapshots and the public plan retain their actual posting chronology.
+
+## Discovery context
+
+The following complete map/population material concerns four previously observed schools. It is retained rather than pooled with the new sixteen-school estimate. Original shared-rule pilots (+17.1%/+16.1%) and the older eight-school H2/G3 check remain archived separately. In that older setting, halving the timestep changed mean dolphin gains from +1 to 0 fish/school; the new H1/G36 result does not validate every discovery setting.
 
 ## Complete discovery map
 
-All24 mixed settings are retained below. Totals cover the same four known schools and capture setting 61001. D controls match H; G controls match bird count. The stronger D-only benchmark is H1 with 91 captures. The notebook supplies all 96 school contrasts and pointwise uncertainty; selected settings have no independent confirmation.
+All24 mixed settings are retained below. Totals cover the same four known schools and capture setting 61001. D controls match H; G controls match bird count. The stronger D-only benchmark is H1 with 91 captures. The notebook supplies all 96 school contrasts and pointwise uncertainty; the outcome-selected intervals are not independent confirmation; H1/G36 now has a separate sixteen-school validation below.
 
 | H (T) | Gannets | D alone → mixed | Same-H D change | D change vs best H | G alone → mixed | Both gain |
 |---:|---:|---:|---:|---:|---:|---:|
@@ -51,68 +58,14 @@ At H1/G36, doubling the pod by placing one extra dolphin at each original slot i
 
 Mixed food per dolphin is **2.385 with D24 versus2.750 with D12**, lower in every school. Per-dolphin partner gain is0.479 versus0.854 fish per36T; the paired difference is−0.375, with exploratory pointwise95% interval[−0.8125,−0.0208]. Thus more group food does not imply greater individual return. These are the same four known schools, one discovery-selected regime and one coarse timestep. The check does not identify an optimal pod size or isolate competition as the cause. All six endpoint means, sample SDs, intervals and school signs are exported by the notebook.
 
-## Local setup: current-paper analysis and figures
+## Current setup and evidence
 
-Python 3.12 was tested. The exact authoring environment is recorded in [the profile lock file](../paper_profiles/current_through36_D24_2026-11-10/requirements-analysis.lock); the general requirements below resolve compatible local dependencies. From a terminal opened in this folder:
+[Local setup](LOCAL_ANALYSIS_SETUP.md) documents the default saved-data route. `FINAL_NOTEBOOK_PROFILE.json` binds the accepted portable 192 snapshot; `PACKAGE_INPUTS.json` pins the reviewed 467 analysis/model-source inputs. The snapshot contains all 192 raw seals, 6 engineering cases and 2,127 original source/input identities in relative content-addressed objects. It is a full inspection/reproduction bundle, not new simulation output generated by the notebook.
 
-**macOS or Linux**
+The current paper is [final_primary192_2026-11-11](../paper_profiles/final_primary192_2026-11-11/README.md). Old through36/D24 profiles and all prior protected inputs remain unchanged. Departure diagnostics cover only 48 older bird-bearing G1/3/6 encounters; the older grid check uses its own 8 schools. Detailed historical discussion is preserved in [the archived overview](../archive/docs/discovery_D24_2026-11-10/STUDY_OVERVIEW.md).
 
-```bash
-python3 -m venv .venv
-source .venv/bin/activate
-python -m pip install -r requirements-analysis.txt
-python -m jupyterlab
-```
+## Optional native model route
 
-**Windows PowerShell** (activation is unnecessary):
+The [primary H1/G36 frontend](../model_examples/primary_192/PRIMARY_MODEL_SETUP.md) is source-reviewed and provides distinct 4T/36T requests and the 192-case inventory. Its native release remains pending separate exact-artifact engineering. The default notebook keeps native execution off. A source review or short example does not establish a full-horizon replay. Historical H1/G9/H2/G12 examples and the eight-school H2/G3 runner remain separately documented; they do not reproduce this new full study.
 
-```powershell
-py -m venv .venv
-.\.venv\Scripts\python.exe -m pip install -r requirements-analysis.txt
-.\.venv\Scripts\python.exe -m jupyterlab
-```
-
-Open the notebook from JupyterLab's file browser. Keep the notebook beside its support files and data folder. The analysis path uses NumPy, Matplotlib and Python's standard library; JupyterLab supplies the interface, and tzdata supplies the Perth timezone on systems without an operating-system timezone database. No pandas, compiler, native FishSim binary or internet connection is required after installation. Installation follows the [official Jupyter instructions](https://jupyter.org/install).
-
-Analysis code is designed to work across operating systems. Validation receipts record the actual tested environment; macOS and Windows execution has not been tested here. Identical figure pixels are checked on the authoring environment. Other font or Matplotlib versions may produce small rendering differences while retaining the same data.
-
-## Optional execution of models
-
-For the older v6 parameter-map model, [short matched examples](../V6_MODEL_SETUP.md) are now available through `run_v6_example.py`: H1/G9 for 4T or H2/G12 for 2T. The notebook prints a native-free plan and leaves execution disabled. On the tested Linux x86-64 CPython 3.12 environment, both binaries passed 108 exact actual starts and ten bounded cases totalling 20,000 steps. The frozen preparation records retain their original pre-validation status strings; separate dated receipts record these completed checks. This frontend does not run H1/G36, D24, a full 36T ensemble or add feeding-effect evidence.
-
-The additive [current-model setup](../CURRENT_MODEL_SETUP.md) documents `run_current_model.py`. It executes the existing eight-school **H=2 coarse/fine replication**, rather than the newer H × G sweep. It does not execute the H×G sweep, including H=1T with nine or eighteen birds. That runner remains available independently; the notebook now prints the v6 example plan and leaves `RUN_V6_MODEL = False` by default. Its optional demonstration uses 0.5T or 4T; neither is a feeding-benefit experiment.
-
-The original Linux host passed 2,400 bounded integration steps. A separately source-built Linux amd 64 image passed compilation/import, 48 initial-state checks and six bounded encounters totalling 15,200 steps through BuildKit. The image checks had two failed bird contacts and no captures, so successful removal and a full feeding ensemble remain untested with that binary. The host Docker bind-mount command and Windows/macOS/ARM execution have not been tested end to end. Source/build instructions and compact receipts are included; the large private OCI image/cache is excluded.
-
-The unchanged historical `run_model.py` remains available separately for the original 36T D/DG pair or original two-school/two-setting eight-case replication. Its 0.5T quick pair checks integration and ends before the 2T herding interval. The supplied historical binary requires **CPython 3.12, Linux x86-64, glibc 2.43 or newer, compatible C++ runtime and OpenMP**. Read [NATIVE_SETUP.md](../NATIVE_SETUP.md) before using it. The historical source archive, binary, hash declarations and earlier instructions remain unchanged; a rebuilt binary has separate execution provenance.
-
-## Scientific interpretation
-
-- The dolphin baseline uses the **same rule and H without gannets**. H is continuous near-prey pressure, varied over 1, 2 and 3T; it does not certify completed herding or complementary pod coverage. All travel, herding, failures and recovery count in feeding return.
-- The exposed-prey preference ranks feasible fish by low neighbour count within radius 2. Dense fish remain eligible, and outward motion is not required. The dolphin controller has no bird-count/dive cue or post-dive capture bonus.
-- Gannets identify density clusters globally within depth limits, sample clusters by accessible fish count, and target a dense accessible location. Counts 1/3/6/9/12/18/24/36 use a nested roster at the original three launch locations. Counts9/12/18/24/36 place 3/4/6/8/12 birds at each site; count also changes coverage or local multiplicity. Predator body-spacing avoidance is absent.
-- Primary effects compare mixed dolphins with same-H D-only controls. Gannet effects use per-bird returns against count-matched G-only controls reused across H. A stronger secondary comparison selects the best-tested D-only H across the four-school bank and reselects it within each whole-school bootstrap draw. This is not a per-school oracle or an unrestricted optimum.
-- Pointwise 95% intervals for the 24-cell discovery map have n=4 and no multiplicity correction. Selection of a large cell does not provide independent confirmation. All96 school contrasts, absolute returns and negative cells are supplied.
-- The conditional eligible oral-contact probability 0.7 is uncalibrated; it is not success per launch/dive or first-versus-second field attacks. Model time/length, energetic profitability and biological cooperation are not calibrated by these food counts.
-- The coarse timestep is 0.00125T; the fine timestep is 0.000625T. A 36T encounter therefore uses 28,800 or 57,600 numerical updates without changing duration. Coarse 72T is a secondary continuation on the same eight schools, with no fine 72T counterpart.
-- Fish-state/contact/food diagnostics are descriptive associations. School identity also seeds readiness and private random streams; one stochastic setting per discovery school cannot separate a causal geometry effect from stochastic variation. A future held-out validation is a separate planned study, not a completed result here.
-
-## Evidence snapshots and preservation
-
-The current paper profile is [paper_profiles/current_through36_D24_2026-11-10](../paper_profiles/current_through36_D24_2026-11-10/README.md). It checks 66 frozen scientific/departure/model-document inputs and all preserved package hashes, reconstructs 140 outcomes and 96 paired effects, and retains the original confidence endpoints without new resampling. Figure1 is archived; Figures2–4 are redrawn from completed exports. School-radius values are retained time means, rather than newly reconstructed trajectories. The 48-run departure diagnostic covers only the older 1/3/6-bird subset; the separate numerical check uses the same eight H2/G3 schools on both grids.
-
-The current default exports nine CSVs under `paper_profiles/current_through36_D24_2026-11-10/outputs/`. It does not rerun the full raw-event reconstruction. That earlier workflow remains in `main_2026-11-09_v6.ipynb`, `notebook_support_v6.py`, the preserved high-count inventory/manifest and `reference_figures_v6/`. Its report is archived under `reports/snapshots/2026-11-09_v6_through18/`. All9,335 previously protected inputs, including both previous current-paper profiles and the56 additive model files, remain byte-identical. The new upper source closure maps3,336 bindings; the additive D24 closure maps3,597 bindings while reusing protected bytes. Eight new full raw D24 cases and two separate engineering cases are added without duplicating retained banks. Versioned manifests, earlier notebooks, case seals, the stopped-v1 provenance and all unfavourable settings remain included.
-
-The original alternative-policy comparisons remain historical. The current paper uses one fixed exposed-prey dolphin rule. Native C++ fish dynamics are inherited from [yangyushi/FishSim](https://github.com/yangyushi/FishSim); this project adds predator controllers, experiment harnesses and analysis.
-
-## Supporting engineering evidence
-
-[Timing engineering records](../supporting_evidence/timing/README.md) retain the original three sealed 4T, 8T and 36T checks. They are verified separately and excluded from feeding inference. The late timing check produced one partial hold with unchanged captures and does not establish a timing benefit. Regime integration checks, stopped-attempt records and the additive runtime's bounded tests also remain engineering/provenance evidence rather than independent feeding replicates.
-
-## Validation
-
-The current profile is checked in a fresh IPython kernel, from a relocated Git checkout with spaces in its path and PYTHONPATH removed. Canonical code is pinned before kernel creation, so an edited native toggle or subprocess command causes validation to stop. Checks cover preserved inputs, all66 profile files,140 D12 condition-school outcomes,96 map contrasts and the separate8-new/12-reused D24 check with six endpoints, nine deterministic CSV exports and four figure pixel comparisons against the current report. The current compiled paper has six total pages, including ten references; its body remains within the six-page limit.
-
-The compact profile checks all 24 saved interval endpoints against a hash-bound independent reconstruction; the old 18-point plot receipt is used only for its original subset; it does not create new bootstrap draws or rederive raw fish trajectories. The separately archived v6 notebook retains the broader raw-event/seal reconstruction and resampling checks. Neither workflow imports the native simulator by default. Passing saved-data reproduction establishes this execution path, not numerical convergence, biological validation or performance on untested platforms.
-
-The active entry is `main.ipynb`. See [NOTEBOOK_MAINTENANCE.md](../NOTEBOOK_MAINTENANCE.md) for the versioned generator and report profile. Historical generators and snapshots retain their original names.
+The inherited C++ fish engine is from [yangyushi/FishSim](https://github.com/yangyushi/FishSim); this project adds predator controllers, experimental protocols and analysis. No new model steps or bootstrap draws are taken by default reproduction. Linux/Python 3.12 actual analysis and space-path relocation passed; untested platforms are not certified.

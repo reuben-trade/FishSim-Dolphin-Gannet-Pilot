@@ -1,0 +1,68 @@
+{
+  "schema": "fishsim_final_paper_notebook_profile_v1",
+  "status": "PRODUCTION_DATA_BOUND_PENDING_PUBLICATION_REVIEW",
+  "notebook": "main.ipynb",
+  "discovery": {
+    "root": "discovery_profile",
+    "tables": {
+      "complete_default_before_after_windows.csv": "3e709b3b0d8e0b0e11f1d8dbd053f0413bcca71403ef3c6caf3fca4a5d9aa8d0",
+      "numerical_sensitivity.csv": "9e455066b8fced5f9e35eea2d62237581537301197154f9d12d4ab8e7f5fbd10",
+      "opportunity_decomposition.csv": "31e9c3aae02f5180ec1b56a87f52170ddb99eae1619f976195b1385e5db98a9e",
+      "population_endpoint_summary.csv": "bec6d28fbdd36f969dae8bf9263477bc31081b5fa686fdceef6e9a4a3681cbd9",
+      "population_group_returns.csv": "9c43455144ad8f916e69f4a4ef46c3b4751f002b7974069ca66fb624e4111f28",
+      "population_school_endpoints.csv": "ef9b77aad79195595e8e103fb1d0113c16eb93985178de15650f87df943dc2fb",
+      "reconstructed_response_means.csv": "2da98cd68f09cddb9bbea0e5c840cde1e94c21c4cbc8a5d10164409042d24487",
+      "reconstructed_school_effects.csv": "4cd6b4534a0652215ddce81b0781b7666d8d18204c82995d589b990646e1d063",
+      "terminal_contact_loss.csv": "583d062f0ecda5473b92d38ea2d65d94739f237290095cfa64aa9e6cb2d5dae9"
+    },
+    "figures": {
+      "fig1_model.png": "2924bbf6e6f31f2592513a447e05252bf9eb30b887c35f2dd6d7c63d65e55507",
+      "fig1_model.pdf": "d27fe2e22346f8eb9b13a5f5f064b6a32fc53890fa32338ab87abc368b9e27b2",
+      "fig2_returns.png": "9453784dbb063d6b2d541696edc8d56a8dc2d5e39a9a593d7f61be55999b6d80",
+      "fig2_returns.pdf": "f8331be7698e6d1669e787c553e9b54d64f86c0c8f60352c1332c8af18ff78ce",
+      "fig3_opportunities.png": "ca2e85f30bd04d35ef9c468f11e9a43256494f7bc86f83ef52f8728d244fc3a1",
+      "fig3_opportunities.pdf": "0df3027fc57a3c998154a513e4f33cb5c7548c5a9cc463391d614130d1460dff"
+    },
+    "scope": "Completed through36 D12 map, selected D24 follow-up, separate eight-school H2/G3 numerical check and older48 bird-bearing departure subset. Discovery is not pooled with validation."
+  },
+  "validation": {
+    "kind": "PRIMARY192_PRODUCTION",
+    "snapshot_manifest": "data/primary_validation192_2026-11-11/SNAPSHOT.json",
+    "snapshot_manifest_sha256": "1ab5c57ff5d6077f9239254c7f12b06249b1c23b34d5c5e37c695dd299864cd6",
+    "export_receipt_sha256": "c88ba37b1506416d12a87de9b7fee56264ee793cf663520cacee0cab80cd25ab",
+    "independent_final_sha256": "bcc0dcec0fceba8cba788dc96d5a5a9e6ed3c4a6d91433c65d1ca4a16b4ff026",
+    "metadata_sidecar_sha256": "38b5bdd06eb5a9dff14ff946edbd0b7f23f10a00a8c90f16adcf84350a1f901f",
+    "root_activation": "provenance/primary192_root_export_activation_2026-11-11.json",
+    "root_activation_sha256": "844a1225a7c833a39aab13dbdb04a0a9e456b1602ec59481197ca35f2cb15112",
+    "expected_cases": 192,
+    "independent_school_clusters": 16,
+    "nested_labels": 2,
+    "primary_grid": "fine",
+    "primary_intervals": "97.5% Student t, df15, critical2.4898797034798923",
+    "bootstrap": "cached50000 PCG64 seed8611030; zero new draws",
+    "W": "mean((effect_label1-effect_label2)^2/2)",
+    "conditional_MCSE": "sqrt(W/32); not added again to schoolSD/4",
+    "publication": "PENDING exact192+original8ff FINAL+5cc metadata PASS+root activation; no partial96/144 accepted"
+  },
+  "paper_figures": {
+    "figure1": "Archived PNG/PDF unchanged",
+    "figures2_to3": "Regenerated privately by unchanged discovery builder; archived assets remain byte-identical",
+    "figure4": "Future accepted192 paired_grid_effects from unchanged frozen renderer4040; absolute_and_partner remains supplemental only"
+  },
+  "optional_native": {
+    "enabled": false,
+    "stage": "PENDING_SEPARATE_ARTIFACT_ZERO_4T_36T_CERTIFICATION",
+    "entrypoint": "model_examples/primary_192/run_primary_model.py",
+    "setup": "model_examples/primary_192/PRIMARY_MODEL_SETUP.md",
+    "source_entry_sha256": "eb02a2e45258b120c86c082f4b750ebc49111c07a65a19f9f139a89e99c22f7e",
+    "combined_source_peer_sha256": "e6e163278d4f2476138acef4fa7cd9c6094d448805807bb58566adc22c742d67",
+    "release_certificate_sha256": null,
+    "route": "Reviewed primary-H1/G36 v2 source route installed; native release PENDING artifact-specific actual zero/4T/36T engineering"
+  },
+  "source_context": {
+    "discovery_profile_sha256": "bfc4dbdab2977062354b3eaa1579b5e2238f116dd348f0a0fe213199c246fbd3",
+    "old_paper_pdf_sha256": "690e4431abf69f76097a3e53e7940876b4df1256801fffb048d0aa28dc8d11bc",
+    "portable_reader_sha256": "3d08ad828a2bb64c93492a7181ba5351d66ae57d4118b4eee877c0126a7c95e3",
+    "renderer_sha256": "4040740e28a93cc2cea9bd2ec716506bf7086ad4fc6c245b3e571c3d822a4e7c"
+  }
+}

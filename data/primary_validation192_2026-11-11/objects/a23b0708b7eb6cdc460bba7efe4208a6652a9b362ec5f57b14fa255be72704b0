@@ -1,0 +1,45 @@
+"""Small native-free file, provenance and reserve helpers."""
+from datetime import datetime
+import hashlib,json,os,shutil,sys
+from pathlib import Path
+from zoneinfo import ZoneInfo
+import numpy as np
+
+HERE=Path(__file__).resolve().parent
+ROOT=HERE.parents[1]
+
+def read(path):return json.loads(Path(path).read_text())
+def sha(path):return hashlib.sha256(Path(path).read_bytes()).hexdigest()
+def stamp():return datetime.now(ZoneInfo('Australia/Perth')).isoformat()
+
+def clean(value):
+    if isinstance(value,dict):return {str(k):clean(v) for k,v in value.items()}
+    if isinstance(value,(list,tuple)):return [clean(v) for v in value]
+    if isinstance(value,np.ndarray):return clean(value.tolist())
+    if isinstance(value,np.generic):return value.item()
+    return value
+
+def write(path,value):
+    path=Path(path);path.parent.mkdir(parents=True,exist_ok=True)
+    temp=path.with_name(path.name+'.tmp')
+    temp.write_text(json.dumps(clean(value),indent=2,allow_nan=False)+'\n');os.replace(temp,path)
+
+def reserve(output):
+    if shutil.disk_usage('/home/venture').free<2**30:
+        raise RuntimeError('Retain at least1GiB root disk reserve')
+    ancestor=Path(output)
+    while not ancestor.exists():ancestor=ancestor.parent
+    if shutil.disk_usage(ancestor).free<2*2**30:
+        raise RuntimeError('Retain at least2GiB on held-out output filesystem')
+
+def require_unoptimized():
+    if sys.flags.optimize:raise RuntimeError('Scientific guards require unoptimized Python')
+
+def validate_seal(folder):
+    folder=Path(folder);receipt=read(folder/'completion.json')
+    if receipt.get('status')!='complete':raise RuntimeError('Incomplete case: '+str(folder))
+    for name,digest in receipt['files'].items():
+        target=folder/name
+        if not target.resolve().is_relative_to(folder.resolve()) or sha(target)!=digest:
+            raise RuntimeError('Sealed file changed: '+str(target))
+    return receipt

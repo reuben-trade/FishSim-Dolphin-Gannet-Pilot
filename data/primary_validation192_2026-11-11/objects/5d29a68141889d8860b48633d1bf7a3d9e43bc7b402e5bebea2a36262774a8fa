@@ -1,0 +1,13 @@
+"""One-shot source freezes; never issues a native permission."""
+import argparse
+from common import HERE,read,write,sha
+from evidence import prep_sources,input_sources,verify_input_freeze
+if __name__=='__main__':
+ p=argparse.ArgumentParser();p.add_argument('--stage',choices=('preparation','inputs','execution'),required=True);a=p.parse_args()
+ if a.stage=='preparation':name='PREPARATION_FREEZE.json';r=dict(source_sha256=prep_sources(),pure_sha256=sha(HERE/'PURE_PREPARATION.json'))
+ elif a.stage=='inputs':name='INPUT_FREEZE.json';r=dict(source_sha256=input_sources(),pure_sha256=sha(HERE/'PURE_PREFLIGHT.json'))
+ else:
+  name='frozen_sources.json';r=dict(source_sha256=dict(verify_input_freeze()['source_sha256']))
+  for n in ('INPUT_FREEZE.json','PURE_PREFLIGHT.json','ACTUAL_ZERO_STEP.json'):r['source_sha256'][str((HERE/n).resolve())]=sha(HERE/n)
+ if (HERE/name).exists():raise RuntimeError('Preserve prior source freeze')
+ write(HERE/name,r);print(name,sha(HERE/name),len(r['source_sha256']))

@@ -1,0 +1,54 @@
+"""Exactly192 guarded native constructions; all stepping entry points forbidden."""
+from dataclasses import asdict
+from unittest.mock import patch
+import gc,hashlib,json
+import numpy as np
+from common import HERE,read,write,sha,clean,native_lease
+from cases import *
+from evidence import require_approval
+from build import build,prepare_case
+from physical_run import snapshot
+from horizons import species_projection
+
+def digest(state):
+    h=hashlib.sha256()
+    for n,v in asdict(state).items():
+        a=np.asarray(v);h.update(n.encode());h.update(str(a.dtype).encode());h.update(str(a.shape).encode());h.update(a.tobytes())
+    return h.hexdigest()
+
+def validate():
+    from preparation_provenance import verify
+    verify()
+    require_approval('initialization')
+    if read(HERE/'INITIALIZATION_APPROVED.json')['workers']!=1:raise RuntimeError('Sequential192constructors only')
+    from research.prey_mediated.encounter import Encounter
+    from research.prey_mediated.scenario import TravellingSchool
+    from research.prey_mediated.surface_safe_school import SurfaceSafeSchool
+    def prohibited(*a,**k):raise RuntimeError('No stepping in initialization')
+    references={};states={};receipts={};rows=[];maximum_heading_delta=0.
+    with native_lease(),patch.object(Encounter,'step',prohibited),patch.object(TravellingSchool,'step',prohibited),patch.object(SurfaceSafeSchool,'step',prohibited):
+        for c in all_cases():
+            pure=prepare_case(c);engine,metadata=build(c,stage='initialization');actual=engine.school.state();r=snapshot(engine)
+            assert r==pure.receipt() and engine.scenario.dt==c.dt
+            assert actual.step_index==16000 and abs(actual.time-20)<1e-8 and len(actual.prey_ids)==160
+            assert np.array_equal(actual.positions,pure.initial.positions) and np.array_equal(actual.prey_ids,pure.initial.prey_ids)
+            delta=float(np.max(np.abs(actual.directions-pure.initial.directions)));maximum_heading_delta=max(maximum_heading_delta,delta);assert delta<=1e-12
+            if c.school_seed not in references:references[c.school_seed]=actual
+            else:
+                for k,v in asdict(actual).items():assert np.array_equal(np.asarray(v),np.asarray(asdict(references[c.school_seed])[k]))
+            states[c.name]=digest(actual);receipts[c.name]=r
+            rows.append(dict(**c.asdict(),actual_fish_sha256=states[c.name],actual_engine_receipt_sha256=hashlib.sha256(json.dumps(r,sort_keys=True).encode()).hexdigest()))
+            del engine;gc.collect()
+    for seed in SEEDS:
+        assert len({states[c.name] for c in all_cases() if c.school_seed==seed})==1
+        for label in CAPTURE_LABELS:
+            d=receipts[Case(seed,'coarse','D',label).name];g=receipts[Case(seed,'coarse','G',label).name]
+            for c in all_cases():
+                if c.school_seed!=seed or c.capture_seed!=label:continue
+                if c.dolphins:assert species_projection(receipts[c.name],'D')==species_projection(d,'D')
+                if c.gannets:assert species_projection(receipts[c.name],'G')==species_projection(g,'G')
+                assert receipts[c.name]['tie_rng']==d['tie_rng']
+    return dict(status='passed',native_constructions=192,native_steps=0,actual_cases=192,independent_schools=16,input_freeze_sha256=sha(HERE/'INPUT_FREEZE.json'),maximum_raw_checkpoint_to_native_heading_delta=maximum_heading_delta,actual_grid_label_start_equality='all arrays EXACT within eachschool; unchanged native load normalisation only versus raw archived headings',actual_school_references={str(s):clean(asdict(v)) for s,v in references.items()},rows=rows)
+if __name__=='__main__':
+    if (HERE/'ACTUAL_ZERO_STEP.json').exists():raise RuntimeError('Preserve actual-start receipt')
+    r=validate();write(HERE/'ACTUAL_ZERO_STEP.json',r);print({k:v for k,v in r.items() if k not in ('rows','actual_school_references')})

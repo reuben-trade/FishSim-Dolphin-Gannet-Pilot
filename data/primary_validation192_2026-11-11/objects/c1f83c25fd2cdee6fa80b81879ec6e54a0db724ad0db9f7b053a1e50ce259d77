@@ -1,0 +1,78 @@
+"""Resumable durable supervisor; strict8GiBroot/2GiBtmp and joined children."""
+import argparse,os,signal,subprocess,sys,time,shutil
+from pathlib import Path
+from common import HERE,read,write,sha,stamp
+from cases import *
+from evidence import require_approval
+
+def guard():
+    root=shutil.disk_usage('/home/venture').free;tmp=shutil.disk_usage('/tmp').free
+    if root<8*2**30+64*2**20 or tmp<2*2**30:raise RuntimeError('Preserve8GiBroot+64MiBbuffer and2GiBtmp')
+    return dict(root_free_bytes=root,tmp_free_bytes=tmp)
+
+def live(group):
+    out=[]
+    for p in Path('/proc').iterdir():
+        if p.name.isdigit():
+            try:
+                s=(p/'stat').read_text().rsplit(')',1)[1].split()
+                if int(s[2])==group and s[0] not in ('Z','X'):out.append(int(p.name))
+            except (OSError,ValueError,IndexError):pass
+    return out
+
+def stop(child):
+    for sig in (signal.SIGTERM,signal.SIGKILL):
+        try:os.killpg(child.pid,sig)
+        except ProcessLookupError:pass
+        try:child.wait(timeout=5)
+        except subprocess.TimeoutExpired:pass
+        if not live(child.pid):return
+    while live(child.pid):
+        try:os.killpg(child.pid,signal.SIGKILL)
+        except ProcessLookupError:pass
+        time.sleep(.1)
+
+def resources(pid):
+    out=dict(pid=pid)
+    try:
+        for line in (Path('/proc')/str(pid)/'status').read_text().splitlines():
+            if line.startswith(('VmRSS:','VmHWM:','Threads:')):
+                k,v=line.split(':',1);out[k]=v.strip()
+    except OSError:pass
+    return out
+
+if __name__=='__main__':
+    p=argparse.ArgumentParser();p.add_argument('--stage',choices=('initialization','smoke','feeding'),required=True);p.add_argument('--resume',action='store_true');a=p.parse_args()
+    require_approval(a.stage)
+    if read(HERE/(a.stage.upper()+'_APPROVED.json')).get('operational_supervisor_sha256')!=sha(__file__):raise RuntimeError('Approval must bind exact supervisor')
+    initial=guard();BULK.mkdir(exist_ok=True);record=BULK/(a.stage+'_supervisor.json');log=BULK/(a.stage+'_supervisor.log')
+    if (record.exists() or log.exists()) and not a.resume:raise RuntimeError('Use explicitresume; completedseals only, partialcases stillstop')
+    previous=read(record) if record.exists() else None
+    if previous and previous.get('status')=='complete':raise RuntimeError('Completed phase needs no rerun')
+    command=[sys.executable,'-B',str(HERE/('native_zero_step.py' if a.stage=='initialization' else 'run.py'))]
+    if a.stage!='initialization':command+=['--stage',a.stage,'--workers','8']
+    row=dict(status='running',stage=a.stage,at=stamp(),supervisor_sha256=sha(__file__),approval_sha256=sha(HERE/(a.stage.upper()+'_APPROVED.json')),resumed=bool(previous),prior_attempt=previous,**initial);write(record,row)
+    env=os.environ.copy();env['PYTHONDONTWRITEBYTECODE']='1';env.pop('PYTHONOPTIMIZE',None)
+    for k in ('OMP_NUM_THREADS','OPENBLAS_NUM_THREADS','MKL_NUM_THREADS','NUMEXPR_NUM_THREADS'):env[k]='1'
+    def interrupt(*args):raise KeyboardInterrupt('Stop and join own child group')
+    signal.signal(signal.SIGTERM,interrupt)
+    with log.open('a' if a.resume else 'x') as f:
+        child=subprocess.Popen(command,cwd=HERE.parents[1],env=env,stdout=f,stderr=subprocess.STDOUT,start_new_session=True);row['child_pid']=child.pid;write(record,row)
+        try:
+            while child.poll() is None:
+                active=read(BULK/'active_dispatch.json') if (BULK/'active_dispatch.json').exists() else None
+                progress=[]
+                cells=smoke_cases() if a.stage=='smoke' else all_cases()
+                output=phase_output('smoke' if a.stage=='smoke' else 'block1_coarse')
+                for c in cells:
+                    path=output/'cases'/c.name/'progress.json'
+                    if path.exists():
+                        j=read(path);progress.append(dict(case=c.name,native_steps=j.get('native_steps',0),elapsed=j.get('elapsed',0),complete=(path.parent/'completion.json').exists(),resource=resources(j.get('pid',-1))))
+                write(BULK/(a.stage+'_heartbeat.json'),dict(at=stamp(),active=active,complete=sum(x['complete'] for x in progress),planned=len(cells),cases=progress,**guard()))
+                try:child.wait(timeout=10)
+                except subprocess.TimeoutExpired:pass
+            if child.returncode or live(child.pid):raise RuntimeError('Child failure or unjoined process group')
+            final=guard()
+        except BaseException:
+            stop(child);row.update(status='failed_or_partial',finished_at=stamp(),exit_code=child.returncode);write(record,row);raise
+    row.update(status='complete',finished_at=stamp(),exit_code=0,**final);write(record,row);print({k:v for k,v in row.items() if k!='prior_attempt'})

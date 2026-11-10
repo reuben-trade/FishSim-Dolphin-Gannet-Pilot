@@ -1,0 +1,27 @@
+"""Unchanged physical auditor wrapped around exact prespecified blocks."""
+from common import HERE,read,write,sha,stamp
+from cases import *
+from evidence import validate_candidate_seal,verify_source_freeze
+from review_actual import audit_case
+
+def verify_completed(phase):
+    verify_source_freeze();record=phase_record(phase);s=read(record/'status.json');p=read(record/'physical_review.json');cells=phase_cases(phase)
+    if s['status']!='complete' or s['complete']!=len(cells) or s['planned']!=len(cells):raise RuntimeError('Incomplete phase')
+    if len(s['cases'])!=len(cells) or {r['case']['case_name'] for r in s['cases']}!={c.name for c in cells}:raise RuntimeError('Phase identity mismatch')
+    if p['status']!='passed' or p['status_sha256']!=sha(record/'status.json') or len(p['cases'])!=len(cells):raise RuntimeError('Phase physical review mismatch')
+    for c in cells:validate_candidate_seal(phase_output(phase)/'cases'/c.name,4. if phase=='smoke' else 36.)
+    return p
+
+def review(phase):
+    verify_source_freeze();record=phase_record(phase);s=read(record/'status.json');cells=phase_cases(phase)
+    if s['status']!='complete' or s['complete']!=len(cells) or s['planned']!=len(cells) or len(s['cases'])!=len(cells):raise RuntimeError('Complete exact phase required')
+    if {r['case']['case_name'] for r in s['cases']}!={c.name for c in cells}:raise RuntimeError('Exact phase roster required')
+    for name,group in execution_stages(phase):
+        r=read(record/(name+'_stage.json'))
+        if r['status']!='complete' or r['cases']!=[c.name for c in group]:raise RuntimeError('Controls-before-mixed barrier mismatch')
+    receipts=[audit_case(phase_output(phase)/'cases'/c.name) for c in cells]
+    steps=sum(r['native_steps'] for r in receipts)
+    if steps!=s['total_native_steps'] or steps>phase_limit(phase):raise RuntimeError('Step accounting mismatch')
+    out=dict(status='passed',phase=phase,at=stamp(),cases=receipts,native_steps=steps,native_steps_executed_by_review=0,status_sha256=sha(record/'status.json'),review_source_sha256=sha(HERE/'review_actual.py'),wrapper_source_sha256=sha(__file__))
+    if (record/'physical_review.json').exists():raise RuntimeError('Preserve prior physical review')
+    write(record/'physical_review.json',out);return out

@@ -1,27 +1,33 @@
-# Active notebook entry
+# Current notebook entry and maintenance
 
-Open `main.ipynb` from the repository root. `MAIN_NOTEBOOK_PROFILE.json` pins the exact current report, ten default code cells, nine summary tables and four matching figure files. Optional native execution remains off.
+Root main.ipynb now uses FINAL_NOTEBOOK_PROFILE.json and the reviewed
+integration.py saved-data session. It has 14 logical cells/7 code cells,
+reconstructs 9 discovery/population CSVs plus 4 complete-primary validation CSVs,
+and displays four numbered figures. The optional native route remains off.
 
-```bash
-python refresh_main_notebook.py
-python refresh_main_notebook.py --save
+```sh
+python execute_notebook.py
 ```
 
-The validator checks canonical code before kernel creation, then runs all cells in a fresh kernel using the calling Python interpreter. A previously enabled native toggle or altered command is rejected. It verifies frozen hashes, CSV bytes and current report pixels. `--save` also refreshes cached notebook outputs. Install the analysis requirements first; a notebook/kernel environment is needed. The tested Python 3.12 environment is recorded in the versioned profile.
+The immutable PACKAGE_INPUTS.json verifies 467 source/data inputs; the separate
+accepted primary snapshot verifies all raw/source objects and original FINAL
+plus metadata evidence. Reproduction checks cached 50,000-draw endpoints and
+takes zero new draws/native steps. Actual production fresh-kernel and relocated
+space-path receipts are under execution_proofs/.
 
-The active generator is `create_main_notebook_current_paper_2026_11_10_D24.py`. It selects the frozen current-paper cells, adapts the package/profile paths and retains two optional v6 cells using PROJECT_ROOT. It writes root `main.ipynb`; it does not execute the model. Its generated outputs require validation before publication.
+configure_backend.py is the data-only binder for a complete accepted 192-case
+snapshot and exact root export activation. Partial prefixes cannot enter this
+final profile. Preserve logical analysis cells and all older manifests; any
+future analysis-code change requires a reviewed version and fresh validation.
+Native release is a separate exact-artifact process, not an analysis binding.
 
-After regenerating `main.ipynb`, restore its recorded-replay viewing help from a Terminal opened in the repository root:
+The earlier refresh_main_notebook.py and create_main_notebook_* generators
+refer to preserved historical profiles. Do not use them to regenerate the new
+current entry. The exact previous root notebook/profile are retained under
+archive/notebooks/discovery_D24_2026-11-10; old versioned notebooks and report
+profiles remain intact. Sealed files are immutable and may share storage.
 
-```bash
-python tools/update_notebook_viewer_help.py
-python tools/update_notebook_viewer_help.py --check
-```
-
-This idempotent postprocessor changes only the introductory Markdown. It preserves the 21-cell structure, all 10 reviewed code cells and their pinned hash, cached outputs and metadata. The pinned generator and notebook profile remain unchanged. The help points to `python tools/watch_replays.py`, the [visualisation guide](docs/VISUALISATION.md) and the [README](README.md); playback reads saved data and starts no native simulation. Run the normal fresh-kernel validator after regeneration and postprocessing.
-
-All older `create_notebook*.py` files and `SNAPSHOT_REFRESH_HANDOFF.md` describe historical versions and must stay unchanged. Current-paper profile files, the old 8028 scientific inputs and 56 model-addon files are protected by additive manifests. Future paper revisions need a new versioned profile/generator, preserved history, a matching report pin and fresh default-cell/figure/table checks. Never edit sealed data in place: some immutable originals share storage.
-
-`main_2026-11-09_v6.ipynb` retains the earlier 21-code-cell full raw-evidence workflow. Open it with the repository root as cwd. Its report is under reports/snapshots/2026-11-09_v6_through18. No repository CI workflow exists at this revision; validation receipts are under validation/. Native Google Doc publication uses a fresh current-Doc revision and text guard, preserving human edits.
-
-Current profile: through36 plus the selected D24 check;140 D12 map outcomes/96 school contrasts/24 settings and8 new D24 cases/12 reused comparators/six endpoints;66 compact frozen inputs plus the cumulative 9,797-file manifest. Root main retains ten code cells/nine tables/four figures. `main_2026-11-09_through18.ipynb` and reports/snapshots/2026-11-09_current_through18 preserve the previous current-paper version. Optional v6 examples remain H1/G9 orH2/G12; they do not run H1/G36 or D24.
+Paper/Doc publication uses the same current 13w Google Doc, fresh full text and
+revision guard, and stable Drive PDF. Current Figures 1–3 are preserved; Figure4
+is the accepted 16-school coarse/fine comparison. No synthetic proof output is
+part of the actual scientific tables or figures.

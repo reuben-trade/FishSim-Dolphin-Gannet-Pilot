@@ -1,0 +1,270 @@
+"""Synthetic inference checks. These tests never import or run FishSim."""
+from copy import deepcopy
+import json
+import math
+import random
+
+import numpy as np
+import pytest
+
+import validation_statistics as stats
+
+
+def completed_rows(d_effect=None, g_effect=None, noisy=True, grid_shift=True):
+    """Balanced worlds with known integer effects and separately varying controls."""
+    rows = []
+    for i, school in enumerate(stats.SCHOOL_SEEDS):
+        for j, label in enumerate(stats.REPLICATE_LABELS):
+            for grid, dt in stats.GRID_DT.items():
+                da, ga = 20 + i % 3 + 2 * j, 12 + i % 2 + j
+                dd = (12 + i if d_effect is None else d_effect(i))
+                gd = (18 - i if g_effect is None else g_effect(i))
+                if noisy:
+                    dd += (2, -2)[j]
+                    gd += (-1, 1)[j]
+                if grid_shift and grid == "fine":
+                    dd += 3
+                    gd -= 2
+                outcomes = {"D": (da, 0), "G": (0, ga), "DG": (da + dd, ga + gd)}
+                for presence, (dc, gc) in outcomes.items():
+                    nd, ng = (12 if "D" in presence else 0), (36 if "G" in presence else 0)
+                    name = f"s{school}_r{label}_{grid}_{presence}"
+                    row = {"case_name": name, "school_seed": school, "replicate_label": label,
+                           "capture_seed": label, "grid": grid, "dt": float(dt), "presence": presence,
+                           "dolphins": nd, "gannets": ng, "D_captures": dc, "G_captures": gc,
+                           "duration_T": 36., "actual_duration_T": 36. - 3e-11,
+                           "native_steps": int(36 / float(dt)), "initial_fish": 160,
+                           "remaining_fish": 160 - dc - gc, "completion_sha256": "0" * 64}
+                    for species, count, captures in (("D", nd, dc), ("G", ng, gc)):
+                        row[f"{species}_contacts"] = captures + 2 if count else 0
+                        row[f"{species}_launches"] = captures + 4 if count else 0
+                    rows.append(row)
+    return rows
+
+
+@pytest.fixture(scope="module")
+def balanced():
+    rows = completed_rows()
+    return rows, stats.analyse(rows)
+
+
+def test_school_clustering_student_intervals_and_units(balanced):
+    _, result = balanced
+    d, g = [result["primary"]["species"][s] for s in ("D", "G")]
+    # Sample SD of0..15 is sqrt(16*17/12); the two opposite label offsets cancel.
+    school_sd = math.sqrt(16 * 17 / 12)
+    assert d["mean"] == pytest.approx(22.5 / 12)
+    assert g["mean"] == pytest.approx(8.5 / 36)
+    assert d["school_sd"] == pytest.approx(school_sd / 12)
+    assert g["school_sd"] == pytest.approx(school_sd / 36)
+    assert d["se"] == pytest.approx(school_sd / 48)
+    assert d["n_schools"] == 16 and d["n_worlds"] == 32 and d["df"] == 15
+    half_width = 2.4898797034798923 * school_sd / 48
+    assert d["student_t_97_5_ci"] == pytest.approx([22.5 / 12 - half_width, 22.5 / 12 + half_width])
+    assert d["mean_rate_change_per_individual_per_T"] == pytest.approx(d["mean"] / 36)
+    assert result["primary"]["joint_criterion_met"] is True
+    assert len(result["case_points"]) == 192
+    assert len(result["world_points"]) == 64
+    assert len(result["school_points"]) == 16
+    assert result["school_vector_columns"] == ["fine_D", "fine_G", "coarse_D", "coarse_G"]
+    json.dumps(result, allow_nan=False)
+
+
+def test_repeat_noise_is_separate_and_never_added_twice(balanced):
+    _, result = balanced
+    d, g = [result["primary"]["species"][s] for s in ("D", "G")]
+    assert d["within_school_variance_W"] == pytest.approx(1 / 18)
+    assert g["within_school_variance_W"] == pytest.approx(1 / 648)
+    assert d["conditional_mcse"] == pytest.approx(1 / 24)
+    assert g["conditional_mcse"] == pytest.approx(1 / 144)
+    assert d["se"] == pytest.approx(d["school_sd"] / 4)
+    assert d["se"] != pytest.approx(math.hypot(d["school_sd"] / 4, d["conditional_mcse"]))
+    assert result["uncertainty"]["mcse_added_to_total_se"] is False
+    # Treating32 world records as independent gives a different, invalid SE.
+    fine_worlds = [r["D_effect_per_individual_36T"] for r in result["world_points"] if r["grid"] == "fine"]
+    assert d["se"] != pytest.approx(float(np.std(fine_worlds, ddof=1)) / math.sqrt(32))
+
+
+def test_grid_difference_retains_matching_and_covariance(balanced):
+    _, result = balanced
+    d, g = [result["secondary"]["fine_minus_coarse"][s] for s in ("D", "G")]
+    # Fine is coarse+3D/-2G at every school and world. Independent-grid errors
+    # would invent uncertainty where the paired numerical effect is constant.
+    assert d["mean"] == .25 and d["se"] == 0
+    assert d["student_t_97_5_ci"] == [.25, .25]
+    assert d["bootstrap_97_5_ci"] == [.25, .25]
+    assert g["mean"] == pytest.approx(-2 / 36)
+    assert g["se"] == pytest.approx(0, abs=1e-16)
+    assert g["bootstrap_97_5_ci"] == pytest.approx([-2 / 36, -2 / 36])
+    assert len(result["paired_grid_world_points"]) == 32
+    assert {r["D_group_effect_fine_minus_coarse"] for r in result["paired_grid_world_points"]} == {3}
+
+
+def test_shared_school_vector_bootstrap_matches_independent_integer_reference(balanced):
+    _, result = balanced
+    # Compute directly from the fixture's known count contrasts, without using
+    # any returned school values or the implementation's bootstrap helper.
+    rng = np.random.Generator(np.random.PCG64(8611030))
+    draws = rng.integers(0, 16, (50_000, 16), dtype=np.int64)
+    d = (15 + draws).sum(axis=1) / (16 * 12)
+    g = (16 - draws).sum(axis=1) / (16 * 36)
+    expected_d = np.quantile(d, [.0125, .9875], method="linear")
+    expected_g = np.quantile(g, [.0125, .9875], method="linear")
+    assert result["primary"]["species"]["D"]["bootstrap_97_5_ci"] == pytest.approx(expected_d)
+    assert result["primary"]["species"]["G"]["bootstrap_97_5_ci"] == pytest.approx(expected_g)
+    assert result["bootstrap"]["draws"] == 50_000
+    assert result["bootstrap"]["common_draws_across_all_contrasts"] is True
+    # The species have a deterministic opposite relation within every draw.
+    assert expected_d[0] + 3 * expected_g[1] == pytest.approx(31 / 12)
+
+
+def test_row_order_and_csv_aliases_do_not_change_any_result(balanced):
+    rows, expected = balanced
+    shuffled = deepcopy(rows)
+    random.Random(921).shuffle(shuffled)
+    assert stats.analyse(shuffled) == expected
+    csv_rows = []
+    for row in rows:
+        converted = {key: str(value) for key, value in row.items()}
+        converted["case_id"] = converted.pop("case_name")
+        converted["capture_label"] = converted.pop("replicate_label")
+        csv_rows.append(converted)
+    assert stats.summarize(iter(csv_rows)) == expected
+
+
+def test_student_primary_cannot_be_replaced_by_passing_bootstrap():
+    # All effects are positive, but one large outlier makes the prespecified
+    # Student-t lower bound cross zero. Percentile resampling cannot invent
+    # an unseen negative school and therefore has a positive lower bound.
+    result = stats.analyse(completed_rows(d_effect=lambda i: 15 if i == 15 else 1,
+                                          g_effect=lambda i: 36, noisy=False, grid_shift=False))
+    d = result["primary"]["species"]["D"]
+    assert d["school_signs"] == {"positive": 16, "zero": 0, "negative": 0}
+    assert d["bootstrap_97_5_ci"][0] > 0
+    assert d["student_t_97_5_ci"][0] < 0
+    assert result["primary"]["joint_criterion_met"] is False
+
+
+def test_exact_zeros_and_strict_joint_lower_bound():
+    result = stats.analyse(completed_rows(d_effect=lambda i: 12, g_effect=lambda i: 0,
+                                          noisy=False, grid_shift=False))
+    g = result["primary"]["species"]["G"]
+    assert g["mean"] == 0 and g["school_sd"] == 0 and g["se"] == 0
+    assert g["student_t_97_5_ci"] == [0, 0] and g["bootstrap_97_5_ci"] == [0, 0]
+    assert g["school_signs"] == {"positive": 0, "zero": 16, "negative": 0}
+    assert result["primary"]["joint_criterion_met"] is False
+    # Alternating +/- one capture per school is an exact aggregate tie after
+    # normalisation by36; floating cancellation must not change its mean sign.
+    tied = stats.analyse(completed_rows(d_effect=lambda i: 12, g_effect=lambda i: 1 if i % 2 else -1,
+                                        noisy=False, grid_shift=False))
+    assert tied["primary"]["species"]["G"]["mean"] == 0
+
+
+def test_group_food_and_per_individual_food_are_distinct(balanced):
+    _, result = balanced
+    group = next(r for r in result["group_returns"] if r["grid"] == "fine" and r["presence"] == "DG")
+    assert group["n_worlds"] == 32 and group["n_schools"] == 16
+    assert group["D_mean_captures_per_individual_36T"] == pytest.approx(group["D_group_total_captures"] / (32 * 12))
+    assert group["G_mean_captures_per_individual_36T"] == pytest.approx(group["G_group_total_captures"] / (32 * 36))
+    assert group["D_mean_captures_per_individual_per_T"] == pytest.approx(group["D_mean_captures_per_individual_36T"] / 36)
+
+
+def test_matching_controls_changes_world_noise_without_inventing_schools(balanced):
+    rows, original = balanced
+    changed = deepcopy(rows)
+    for row in changed:
+        if row["school_seed"] == stats.SCHOOL_SEEDS[0] and row["grid"] == "fine" and row["presence"] == "D":
+            shift = 6 if row["replicate_label"] == 71001 else -6
+            row["D_captures"] += shift
+            row["D_contacts"] += shift
+            row["D_launches"] += shift
+            row["remaining_fish"] -= shift
+    result = stats.analyse(changed)
+    a, b = original["primary"]["species"]["D"], result["primary"]["species"]["D"]
+    assert a["mean"] == b["mean"] and a["school_sd"] == b["school_sd"]
+    assert b["within_school_variance_W"] > a["within_school_variance_W"]
+    assert b["n_schools"] == 16
+
+
+@pytest.mark.parametrize("arm", ["D", "G", "DG"])
+def test_duplicate_controls_or_mixed_rows_are_never_replications(arm):
+    rows = completed_rows()
+    duplicate = deepcopy(next(r for r in rows if r["presence"] == arm))
+    duplicate["case_name"] += "_replay"
+    with pytest.raises(ValueError, match="Duplicate design cell"):
+        stats.analyse(rows + [duplicate])
+
+
+def test_missing_and_early_blocks_have_no_final_decision():
+    rows = completed_rows()
+    with pytest.raises(ValueError, match="missing1|missing 1"):
+        stats.analyse(rows[:-1])
+    # The first four-school block has48 cases, not sixteen independent schools.
+    with pytest.raises(ValueError, match="No zero imputation or early decision"):
+        stats.analyse(rows[:48])
+
+
+def _declare_depleted(row):
+    row.update({"D_captures": 160, "G_captures": 0, "remaining_fish": 0,
+                "D_contacts": 160, "D_launches": 162, "actual_duration_T": 8. - 3e-11,
+                "native_steps": 6400, "native_absorbing_termination": True})
+
+
+def test_declared_absorbing_depletion_keeps_nominal36T_denominators():
+    rows = completed_rows()
+    _declare_depleted(rows[0])  # coarse, first school/label, D-only
+    result = stats.analyse(rows)
+    case = next(r for r in result["case_points"] if r["case_id"] == rows[0]["case_name"])
+    world = next(r for r in result["world_points"] if r["school_seed"] == rows[0]["school_seed"]
+                 and r["replicate_label"] == 71001 and r["grid"] == "coarse")
+    assert case["native_absorbing_termination"] is True
+    assert case["D_captures_per_individual_36T"] == pytest.approx(160 / 12)
+    assert case["D_captures_per_individual_per_T"] == pytest.approx(160 / (12 * 36))
+    assert world["D_effect_per_individual_36T"] == pytest.approx((34 - 160) / 12)
+    assert world["D_rate_change_per_individual_per_T"] == pytest.approx((34 - 160) / (12 * 36))
+    # CSV truth values must preserve the same coherent absorption declaration.
+    rows[0]["native_absorbing_termination"] = "True"
+    assert stats.analyse(rows) == result
+
+
+@pytest.mark.parametrize("change", [
+    {"native_absorbing_termination": False},  # depleted counts alone do not declare a valid early stop
+    {"actual_duration_T": 0},
+    {"actual_duration_T": 37},
+    {"actual_duration_T": 8.0002},  # wrong clock even though rounding gives6400 steps
+    {"native_steps": 6399},
+    {"D_captures": 159, "remaining_fish": 1},
+])
+def test_early_or_incoherent_depletion_is_rejected(change):
+    rows = completed_rows()
+    _declare_depleted(rows[0])
+    rows[0].update(change)
+    with pytest.raises(ValueError, match="complete36T|depletion"):
+        stats.analyse(rows)
+
+
+@pytest.mark.parametrize("field", ["native_absorbing_termination", "actual_duration_T", "native_steps", "remaining_fish"])
+def test_depletion_without_explicit_required_evidence_is_rejected(field):
+    rows = completed_rows()
+    _declare_depleted(rows[0])
+    del rows[0][field]
+    with pytest.raises(ValueError, match="complete36T|depletion"):
+        stats.analyse(rows)
+
+
+@pytest.mark.parametrize("field,value,error", [
+    ("school_seed", 39061001, "Unexpected school"),
+    ("capture_seed", 71003, "Conflicting aliases"),
+    ("grid", "fine", "Grid label"),
+    ("duration_T", 8, "complete36T|complete 36T"),
+    ("actual_duration_T", 35, "complete36T|complete 36T"),
+    ("native_steps", 14400, "Native-step"),
+    ("D_captures", 1.5, "integer"),
+    ("G_captures", 1, "absent species"),
+    ("dolphins", 24, "Unexpected dolphins"),
+])
+def test_invalid_or_mismatched_metadata_fail_closed(field, value, error):
+    rows = completed_rows()
+    rows[0][field] = value
+    with pytest.raises(ValueError, match=error):
+        stats.analyse(rows)

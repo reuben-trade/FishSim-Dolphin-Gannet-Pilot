@@ -1,0 +1,61 @@
+{
+  "status": "passed",
+  "schema": "primary_model_private_preparation_validation_v1",
+  "interface_files": {
+    "primary_runtime.py": "b9aae14485a1cf43d9d276ecb516a65c1f670884f7da2b626e64c132d70e0765",
+    "primary_gate.py": "917accc9217433ef53af205c52ff969d5c4b0daf63bc235614cfe73bf2d3e2a5",
+    "primary_worker.py": "ff85e99f5e00d949db3d88381325b105264f5e6940b08fac6f4ced92cb8dbfa3",
+    "run_primary_model.py": "eb02a2e45258b120c86c082f4b750ebc49111c07a65a19f9f139a89e99c22f7e",
+    "MODEL_INPUTS.json": "69f9ee49d1e9ff9831f0a5936bb96ad1b7eebdd55a9b625893592c70719d3f98",
+    "REFERENCE_MANIFEST.json": "d77424a0f01d90eaf5ed64166db73e062f28ea4cf39e9876ad0cc0a72b63512f"
+  },
+  "source_freeze_sha256": "253071467e55b4cdbe91f75ba1de3f1bb80d65344e9cba05aadb86bccb08da0b",
+  "parent_source_bindings_verified": 2127,
+  "prior_public_protected_files_verified": 9916,
+  "old_g36_v2_files_verified": 53,
+  "accepted_reference_files_verified": 303,
+  "accepted_full36T_reference_cases": 6,
+  "accepted_smoke4T_reference_cases": 6,
+  "actual_zero_reference_cases": 192,
+  "real_python_state_checks": {
+    "historical": {
+      "path": "validation/PURE192_historical.json",
+      "sha256": "19abb638eca2cbe42a673fb925df243ed12852a2355af79d556cba14395cf7ce",
+      "pure_cases": 192,
+      "active_native_sha256": "eb8654a520304cc429aced67c7e3706db8d2ef1449c5e1327a682a479b10a558",
+      "runtime_declaration_sha256": "25d63c27819c8f2c3819aa261cc51b940dcc36cb19ac4505db41187a1919bd93",
+      "maximum_raw_to_archived_normalized_heading_delta": 6.80566714095221e-13
+    },
+    "source-built": {
+      "path": "validation/PURE192_source-built.json",
+      "sha256": "7742fcc572b9dd263bf4c81ccb9f502db30ee443a73cf004fa5ccf8fc9aa6415",
+      "pure_cases": 192,
+      "active_native_sha256": "cc21f00f355e1d25e8ecb48bd6aa50a7c9b63f909d921f4864a96e91d9ef2d4b",
+      "runtime_declaration_sha256": "a785ace87f71f8e47f6d69b51c404255936dad8ba1a68711975e7d3aa0f12ae8",
+      "maximum_raw_to_archived_normalized_heading_delta": 6.80566714095221e-13
+    }
+  },
+  "native_free_pure_starts_per_artifact": 192,
+  "native_free_pure_starts_total": 384,
+  "targeted_tests": {
+    "status": "passed",
+    "tests": 18,
+    "elapsed_seconds": 2.506,
+    "test_source_sha256": "e6f0249b02ed54ebe3f9661600f462aaa7ecf03f34eea1f6be1dd354bd05b5b8",
+    "evidence": "Agent-recorded actual python -B -m unittest -v test_primary_model completion; no synthetic native execution"
+  },
+  "optional_cell_sources_compile": true,
+  "optional_native_toggle": false,
+  "native_imports": 0,
+  "native_constructions": 0,
+  "native_steps": 0,
+  "native_lease_acquisitions": 0,
+  "compiler_invocations": 0,
+  "unaccepted_primary_feeding_rows_read": 0,
+  "original_tree_renames_or_moves": 0,
+  "public_or_Doc_writes": 0,
+  "release_certificate_exists": false,
+  "production_snapshot_exists": false,
+  "future_engineering_proposed_native_steps": 576000,
+  "scope": "Private source and real Python-state preparation only. Actual native zeros, 4T and 36T replay remain unperformed and gated."
+}

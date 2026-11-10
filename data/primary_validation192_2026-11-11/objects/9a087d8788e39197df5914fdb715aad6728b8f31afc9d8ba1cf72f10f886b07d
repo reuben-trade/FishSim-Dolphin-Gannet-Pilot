@@ -1,0 +1,856 @@
+{
+  "status": "complete",
+  "nominal_horizon_T": 36.0,
+  "observed_native_duration_T": 35.99999999996726,
+  "native_steps": 28800,
+  "absorbing_no_food_continuation": false,
+  "termination": "observed_horizon",
+  "initial_count": 160,
+  "final_count": 144,
+  "species": {
+    "D": {
+      "count": 12,
+      "captures": 16,
+      "launches": 61,
+      "contacts": 32,
+      "captures_per_actor_per_nominal_T": 0.037037037037037035,
+      "observed_effort_T": 431.9999999996071,
+      "observed_distance": 2146.6702036469096
+    },
+    "G": {
+      "count": 0,
+      "captures": 0,
+      "launches": 0,
+      "contacts": 0,
+      "captures_per_actor_per_nominal_T": null,
+      "observed_effort_T": 0.0,
+      "observed_distance": 0
+    }
+  },
+  "per_actor": {
+    "D00": {
+      "time": {
+        "recovering": 6.427030942918407,
+        "positioning": 9.62867117849244,
+        "herding": 6.457499999995946,
+        "hunting": 13.48679787856047
+      },
+      "distance": {
+        "recovering": 0.0,
+        "positioning": 57.77202707095486,
+        "herding": 38.744999999975875,
+        "hunting": 77.42188220370936
+      },
+      "physical_mode_time": {
+        "recovery": 6.427030942918407,
+        "search": 9.62867117849244,
+        "position": 6.457499999995946,
+        "attack": 13.48679787856047
+      },
+      "phases": {
+        "acquire": 0.0012499999999988631,
+        "recovery": 6.425780942918408,
+        "approach": 9.62867117849244,
+        "maintain": 6.457499999995946,
+        "attack": 13.48679787856047
+      },
+      "exposure_time": {
+        "water": 35.99999999996726,
+        "air": 0.0,
+        "bite_window": 13.48679787856047,
+        "underwater_bite_window": 13.48679787856047,
+        "water_recovery": 6.427030942918407,
+        "air_recovery": 0.0,
+        "underwater_bite_recovery": 0.0,
+        "water_search": 9.62867117849244,
+        "air_search": 0.0,
+        "underwater_bite_search": 0.0,
+        "water_position": 6.457499999995946,
+        "air_position": 0.0,
+        "underwater_bite_position": 0.0,
+        "water_attack": 13.48679787856047,
+        "air_attack": 0.0,
+        "underwater_bite_attack": 13.48679787856047
+      },
+      "captures": 2,
+      "virtual_successes": 0,
+      "contacts": 4,
+      "launches": 6,
+      "reasons": {
+        "controller_v2_recovery_complete": 6,
+        "controller_v2_cycle_search": 4,
+        "controller_v2_cycle_pressure_start": 7,
+        "launch": 6,
+        "target_not_visible": 2,
+        "controller_v2_cycle_pressure_reset": 1,
+        "capture": 2,
+        "contact_miss": 2,
+        "habitat_boundary_hold": 467
+      },
+      "behaviour_time": {
+        "recovery": 3.794229895145172,
+        "approach": 9.628329878727598,
+        "containment": 6.457841299760787,
+        "attack": 13.48679787856047,
+        "handling": 2.632801047773235
+      }
+    },
+    "D01": {
+      "time": {
+        "recovering": 7.322576268833483,
+        "positioning": 10.168209716256843,
+        "herding": 5.711697248323198,
+        "hunting": 12.797516766553738
+      },
+      "distance": {
+        "recovering": 0.0,
+        "positioning": 61.00925829754129,
+        "herding": 34.270183489939214,
+        "hunting": 76.78510059932194
+      },
+      "physical_mode_time": {
+        "recovery": 7.322576268833483,
+        "search": 10.168209716256843,
+        "position": 5.711697248323198,
+        "attack": 12.797516766553738
+      },
+      "phases": {
+        "acquire": 0.0012499999999988631,
+        "recovery": 7.321326268833484,
+        "approach": 10.168209716256843,
+        "maintain": 5.711697248323198,
+        "attack": 12.797516766553738
+      },
+      "exposure_time": {
+        "water": 35.99999999996726,
+        "air": 0.0,
+        "bite_window": 12.797516766553738,
+        "underwater_bite_window": 12.797516766553738,
+        "water_recovery": 7.322576268833483,
+        "air_recovery": 0.0,
+        "underwater_bite_recovery": 0.0,
+        "water_search": 10.168209716256843,
+        "air_search": 0.0,
+        "underwater_bite_search": 0.0,
+        "water_position": 5.711697248323198,
+        "air_position": 0.0,
+        "underwater_bite_position": 0.0,
+        "water_attack": 12.797516766553738,
+        "air_attack": 0.0,
+        "underwater_bite_attack": 12.797516766553738
+      },
+      "captures": 3,
+      "virtual_successes": 0,
+      "contacts": 3,
+      "launches": 5,
+      "reasons": {
+        "controller_v2_recovery_complete": 5,
+        "controller_v2_cycle_search": 3,
+        "controller_v2_cycle_pressure_start": 7,
+        "launch": 5,
+        "target_not_visible": 1,
+        "controller_v2_cycle_pressure_reset": 2,
+        "capture": 3
+      },
+      "behaviour_time": {
+        "recovery": 1.3225762688334832,
+        "approach": 10.167838315978923,
+        "containment": 5.712068648601118,
+        "attack": 12.797516766553738,
+        "handling": 6.0
+      }
+    },
+    "D02": {
+      "time": {
+        "recovering": 4.236271244213899,
+        "positioning": 6.713203691500109,
+        "herding": 5.654999999995766,
+        "hunting": 19.395525064257487
+      },
+      "distance": {
+        "recovering": 0.0,
+        "positioning": 40.27922214900051,
+        "herding": 33.92999999997536,
+        "hunting": 113.37428187810711
+      },
+      "physical_mode_time": {
+        "recovery": 4.236271244213899,
+        "search": 6.713203691500109,
+        "position": 5.654999999995766,
+        "attack": 19.395525064257487
+      },
+      "phases": {
+        "acquire": 0.0012499999999988631,
+        "recovery": 4.2350212442139,
+        "approach": 6.713203691500109,
+        "maintain": 5.654999999995766,
+        "attack": 19.395525064257487
+      },
+      "exposure_time": {
+        "water": 35.99999999996726,
+        "air": 0.0,
+        "bite_window": 19.395525064257487,
+        "underwater_bite_window": 19.395525064257487,
+        "water_recovery": 4.236271244213899,
+        "air_recovery": 0.0,
+        "underwater_bite_recovery": 0.0,
+        "water_search": 6.713203691500109,
+        "air_search": 0.0,
+        "underwater_bite_search": 0.0,
+        "water_position": 5.654999999995766,
+        "air_position": 0.0,
+        "underwater_bite_position": 0.0,
+        "water_attack": 19.395525064257487,
+        "air_attack": 0.0,
+        "underwater_bite_attack": 19.395525064257487
+      },
+      "captures": 0,
+      "virtual_successes": 0,
+      "contacts": 2,
+      "launches": 5,
+      "reasons": {
+        "controller_v2_recovery_complete": 6,
+        "controller_v2_cycle_search": 4,
+        "controller_v2_cycle_pressure_start": 6,
+        "launch": 5,
+        "habitat_boundary_hold": 400,
+        "target_not_visible": 3,
+        "controller_v2_cycle_pressure_reset": 1,
+        "contact_miss": 2
+      },
+      "behaviour_time": {
+        "recovery": 4.236271244213899,
+        "approach": 6.712348114328389,
+        "containment": 5.655855577167486,
+        "attack": 19.395525064257487
+      }
+    },
+    "D03": {
+      "time": {
+        "recovering": 7.459280677712563,
+        "positioning": 6.559842590539535,
+        "herding": 5.441902941272428,
+        "hunting": 16.538973790442736
+      },
+      "distance": {
+        "recovering": 0.0,
+        "positioning": 39.35905554323732,
+        "herding": 32.651417647635185,
+        "hunting": 94.32040936189054
+      },
+      "physical_mode_time": {
+        "recovery": 7.459280677712563,
+        "search": 6.559842590539535,
+        "position": 5.441902941272428,
+        "attack": 16.538973790442736
+      },
+      "phases": {
+        "acquire": 0.0012499999999988631,
+        "recovery": 7.458030677712564,
+        "approach": 6.559842590539535,
+        "maintain": 5.441902941272428,
+        "attack": 16.538973790442736
+      },
+      "exposure_time": {
+        "water": 35.99999999996726,
+        "air": 0.0,
+        "bite_window": 16.538973790442736,
+        "underwater_bite_window": 16.538973790442736,
+        "water_recovery": 7.459280677712563,
+        "air_recovery": 0.0,
+        "underwater_bite_recovery": 0.0,
+        "water_search": 6.559842590539535,
+        "air_search": 0.0,
+        "underwater_bite_search": 0.0,
+        "water_position": 5.441902941272428,
+        "air_position": 0.0,
+        "underwater_bite_position": 0.0,
+        "water_attack": 16.538973790442736,
+        "air_attack": 0.0,
+        "underwater_bite_attack": 16.538973790442736
+      },
+      "captures": 3,
+      "virtual_successes": 0,
+      "contacts": 3,
+      "launches": 4,
+      "reasons": {
+        "controller_v2_recovery_complete": 5,
+        "controller_v2_cycle_search": 3,
+        "controller_v2_cycle_pressure_start": 7,
+        "launch": 4,
+        "habitat_boundary_hold": 656,
+        "capture": 3,
+        "timeout": 1,
+        "controller_v2_cycle_pressure_reset": 2
+      },
+      "behaviour_time": {
+        "recovery": 1.459280677712563,
+        "approach": 6.561745531816907,
+        "containment": 5.439999999995056,
+        "attack": 16.538973790442736,
+        "handling": 6.0
+      }
+    },
+    "D04": {
+      "time": {
+        "recovering": 6.717039863502791,
+        "positioning": 11.51780474642704,
+        "herding": 4.999999999997275,
+        "hunting": 12.765155390040157
+      },
+      "distance": {
+        "recovering": 0.0,
+        "positioning": 69.10682847856323,
+        "herding": 29.765824284990746,
+        "hunting": 74.87349272959209
+      },
+      "physical_mode_time": {
+        "recovery": 6.717039863502791,
+        "search": 11.51780474642704,
+        "position": 4.999999999997275,
+        "attack": 12.765155390040157
+      },
+      "phases": {
+        "acquire": 0.0012499999999988631,
+        "recovery": 6.715789863502792,
+        "approach": 11.51780474642704,
+        "maintain": 4.999999999997275,
+        "attack": 12.765155390040157
+      },
+      "exposure_time": {
+        "water": 35.99999999996726,
+        "air": 0.0,
+        "bite_window": 12.765155390040157,
+        "underwater_bite_window": 12.765155390040157,
+        "water_recovery": 6.717039863502791,
+        "air_recovery": 0.0,
+        "underwater_bite_recovery": 0.0,
+        "water_search": 11.51780474642704,
+        "air_search": 0.0,
+        "underwater_bite_search": 0.0,
+        "water_position": 4.999999999997275,
+        "air_position": 0.0,
+        "underwater_bite_position": 0.0,
+        "water_attack": 12.765155390040157,
+        "air_attack": 0.0,
+        "underwater_bite_attack": 12.765155390040157
+      },
+      "captures": 2,
+      "virtual_successes": 0,
+      "contacts": 3,
+      "launches": 5,
+      "reasons": {
+        "controller_v2_recovery_complete": 5,
+        "controller_v2_cycle_search": 3,
+        "controller_v2_cycle_pressure_start": 5,
+        "launch": 5,
+        "capture": 2,
+        "habitat_boundary_hold": 229,
+        "target_not_visible": 1,
+        "contact_miss": 1
+      },
+      "behaviour_time": {
+        "recovery": 2.717039863502791,
+        "approach": 11.519957183606593,
+        "containment": 4.9978475628177215,
+        "attack": 12.765155390040157,
+        "handling": 4.0
+      }
+    },
+    "D05": {
+      "time": {
+        "recovering": 5.557824879612898,
+        "positioning": 9.60842512037581,
+        "herding": 4.339318935681714,
+        "hunting": 16.49443106429684
+      },
+      "distance": {
+        "recovering": 0.0,
+        "positioning": 54.36566440197918,
+        "herding": 26.035913614090525,
+        "hunting": 98.96658638578134
+      },
+      "physical_mode_time": {
+        "recovery": 5.557824879612898,
+        "search": 9.60842512037581,
+        "position": 4.339318935681714,
+        "attack": 16.49443106429684
+      },
+      "phases": {
+        "acquire": 0.0012499999999988631,
+        "recovery": 5.556574879612899,
+        "approach": 9.60842512037581,
+        "maintain": 4.339318935681714,
+        "attack": 16.49443106429684
+      },
+      "exposure_time": {
+        "water": 35.99999999996726,
+        "air": 0.0,
+        "bite_window": 16.49443106429684,
+        "underwater_bite_window": 16.49443106429684,
+        "water_recovery": 5.557824879612898,
+        "air_recovery": 0.0,
+        "underwater_bite_recovery": 0.0,
+        "water_search": 9.60842512037581,
+        "air_search": 0.0,
+        "underwater_bite_search": 0.0,
+        "water_position": 4.339318935681714,
+        "air_position": 0.0,
+        "underwater_bite_position": 0.0,
+        "water_attack": 16.49443106429684,
+        "air_attack": 0.0,
+        "underwater_bite_attack": 16.49443106429684
+      },
+      "captures": 1,
+      "virtual_successes": 0,
+      "contacts": 1,
+      "launches": 4,
+      "reasons": {
+        "controller_v2_recovery_complete": 5,
+        "controller_v2_cycle_search": 3,
+        "controller_v2_cycle_pressure_start": 5,
+        "launch": 4,
+        "capture": 1,
+        "controller_v2_cycle_pressure_reset": 1,
+        "habitat_boundary_hold": 438,
+        "target_not_visible": 2,
+        "timeout": 1
+      },
+      "behaviour_time": {
+        "recovery": 3.557824879612898,
+        "approach": 9.610244056054416,
+        "containment": 4.337500000003107,
+        "attack": 16.49443106429684,
+        "handling": 2.0
+      }
+    },
+    "D06": {
+      "time": {
+        "recovering": 6.636321316797929,
+        "positioning": 5.616587512724443,
+        "herding": 4.558749999996763,
+        "hunting": 19.188341170448126
+      },
+      "distance": {
+        "recovering": 0.0,
+        "positioning": 33.69952507634663,
+        "herding": 27.35249999998067,
+        "hunting": 111.46487760024075
+      },
+      "physical_mode_time": {
+        "recovery": 6.636321316797929,
+        "search": 5.616587512724443,
+        "position": 4.558749999996763,
+        "attack": 19.188341170448126
+      },
+      "phases": {
+        "acquire": 0.0012499999999988631,
+        "recovery": 6.63507131679793,
+        "approach": 5.616587512724443,
+        "maintain": 4.558749999996763,
+        "attack": 19.188341170448126
+      },
+      "exposure_time": {
+        "water": 35.99999999996726,
+        "air": 0.0,
+        "bite_window": 19.188341170448126,
+        "underwater_bite_window": 19.188341170448126,
+        "water_recovery": 6.636321316797929,
+        "air_recovery": 0.0,
+        "underwater_bite_recovery": 0.0,
+        "water_search": 5.616587512724443,
+        "air_search": 0.0,
+        "underwater_bite_search": 0.0,
+        "water_position": 4.558749999996763,
+        "air_position": 0.0,
+        "underwater_bite_position": 0.0,
+        "water_attack": 19.188341170448126,
+        "air_attack": 0.0,
+        "underwater_bite_attack": 19.188341170448126
+      },
+      "captures": 2,
+      "virtual_successes": 0,
+      "contacts": 3,
+      "launches": 4,
+      "reasons": {
+        "controller_v2_recovery_complete": 4,
+        "controller_v2_cycle_search": 3,
+        "controller_v2_cycle_pressure_start": 5,
+        "controller_v2_cycle_pressure_reset": 1,
+        "launch": 4,
+        "habitat_boundary_hold": 489,
+        "capture": 2,
+        "target_not_visible": 1,
+        "contact_miss": 1
+      },
+      "behaviour_time": {
+        "recovery": 2.9738952742058977,
+        "approach": 5.6176624827492745,
+        "containment": 4.557675029971932,
+        "attack": 19.188341170448126,
+        "handling": 3.662426042592031
+      }
+    },
+    "D07": {
+      "time": {
+        "recovering": 5.7762450251047355,
+        "positioning": 8.850000427736713,
+        "herding": 4.9999999999972715,
+        "hunting": 16.37375454712854
+      },
+      "distance": {
+        "recovering": 0.0,
+        "positioning": 53.100002566420166,
+        "herding": 29.999999999983675,
+        "hunting": 98.24252728277126
+      },
+      "physical_mode_time": {
+        "recovery": 5.7762450251047355,
+        "search": 8.850000427736713,
+        "position": 4.9999999999972715,
+        "attack": 16.37375454712854
+      },
+      "phases": {
+        "acquire": 0.0012499999999988631,
+        "recovery": 5.774995025104737,
+        "approach": 8.850000427736713,
+        "maintain": 4.9999999999972715,
+        "attack": 16.37375454712854
+      },
+      "exposure_time": {
+        "water": 35.99999999996726,
+        "air": 0.0,
+        "bite_window": 16.37375454712854,
+        "underwater_bite_window": 16.37375454712854,
+        "water_recovery": 5.7762450251047355,
+        "air_recovery": 0.0,
+        "underwater_bite_recovery": 0.0,
+        "water_search": 8.850000427736713,
+        "air_search": 0.0,
+        "underwater_bite_search": 0.0,
+        "water_position": 4.9999999999972715,
+        "air_position": 0.0,
+        "underwater_bite_position": 0.0,
+        "water_attack": 16.37375454712854,
+        "air_attack": 0.0,
+        "underwater_bite_attack": 16.37375454712854
+      },
+      "captures": 1,
+      "virtual_successes": 0,
+      "contacts": 2,
+      "launches": 5,
+      "reasons": {
+        "controller_v2_recovery_complete": 5,
+        "controller_v2_cycle_search": 3,
+        "controller_v2_cycle_pressure_start": 5,
+        "launch": 5,
+        "target_not_visible": 1,
+        "capture": 1,
+        "timeout": 1,
+        "contact_miss": 1
+      },
+      "behaviour_time": {
+        "recovery": 3.7762450251047355,
+        "approach": 8.851745825807807,
+        "containment": 4.9982546019261775,
+        "attack": 16.37375454712854,
+        "handling": 2.0
+      }
+    },
+    "D08": {
+      "time": {
+        "recovering": 5.909223340945967,
+        "positioning": 12.78736441953287,
+        "herding": 5.9999999999972715,
+        "hunting": 11.303412239491152
+      },
+      "distance": {
+        "recovering": 0.0,
+        "positioning": 76.38904112893488,
+        "herding": 33.47517240948355,
+        "hunting": 67.82047343694724
+      },
+      "physical_mode_time": {
+        "recovery": 5.909223340945967,
+        "search": 12.78736441953287,
+        "position": 5.9999999999972715,
+        "attack": 11.303412239491152
+      },
+      "phases": {
+        "acquire": 0.0012499999999988631,
+        "recovery": 5.9079733409459685,
+        "approach": 12.78736441953287,
+        "maintain": 5.9999999999972715,
+        "attack": 11.303412239491152
+      },
+      "exposure_time": {
+        "water": 35.99999999996726,
+        "air": 0.0,
+        "bite_window": 11.303412239491152,
+        "underwater_bite_window": 11.303412239491152,
+        "water_recovery": 5.909223340945967,
+        "air_recovery": 0.0,
+        "underwater_bite_recovery": 0.0,
+        "water_search": 12.78736441953287,
+        "air_search": 0.0,
+        "underwater_bite_search": 0.0,
+        "water_position": 5.9999999999972715,
+        "air_position": 0.0,
+        "underwater_bite_position": 0.0,
+        "water_attack": 11.303412239491152,
+        "air_attack": 0.0,
+        "underwater_bite_attack": 11.303412239491152
+      },
+      "captures": 1,
+      "virtual_successes": 0,
+      "contacts": 4,
+      "launches": 6,
+      "reasons": {
+        "controller_v2_recovery_complete": 6,
+        "controller_v2_cycle_search": 3,
+        "controller_v2_cycle_pressure_start": 6,
+        "launch": 6,
+        "contact_miss": 3,
+        "target_not_visible": 1,
+        "capture": 1
+      },
+      "behaviour_time": {
+        "recovery": 3.9092233409459674,
+        "approach": 12.789541610417746,
+        "containment": 5.997822809112396,
+        "attack": 11.303412239491152,
+        "handling": 2.0
+      }
+    },
+    "D09": {
+      "time": {
+        "recovering": 3.172860058525977,
+        "positioning": 6.7433899414663685,
+        "herding": 6.894509624380184,
+        "hunting": 19.189240375594732
+      },
+      "distance": {
+        "recovering": 0.0,
+        "positioning": 40.460339648798175,
+        "herding": 41.36705774628128,
+        "hunting": 111.42805058159693
+      },
+      "physical_mode_time": {
+        "recovery": 3.172860058525977,
+        "search": 6.7433899414663685,
+        "position": 6.894509624380184,
+        "attack": 19.189240375594732
+      },
+      "phases": {
+        "acquire": 0.0012499999999988631,
+        "recovery": 3.171610058525978,
+        "approach": 6.7433899414663685,
+        "maintain": 6.894509624380184,
+        "attack": 19.189240375594732
+      },
+      "exposure_time": {
+        "water": 35.99999999996726,
+        "air": 0.0,
+        "bite_window": 19.189240375594732,
+        "underwater_bite_window": 19.189240375594732,
+        "water_recovery": 3.172860058525977,
+        "air_recovery": 0.0,
+        "underwater_bite_recovery": 0.0,
+        "water_search": 6.7433899414663685,
+        "air_search": 0.0,
+        "underwater_bite_search": 0.0,
+        "water_position": 6.894509624380184,
+        "air_position": 0.0,
+        "underwater_bite_position": 0.0,
+        "water_attack": 19.189240375594732,
+        "air_attack": 0.0,
+        "underwater_bite_attack": 19.189240375594732
+      },
+      "captures": 0,
+      "virtual_successes": 0,
+      "contacts": 2,
+      "launches": 5,
+      "reasons": {
+        "controller_v2_recovery_complete": 5,
+        "controller_v2_cycle_search": 2,
+        "controller_v2_cycle_pressure_start": 8,
+        "launch": 5,
+        "habitat_boundary_hold": 495,
+        "target_not_visible": 2,
+        "controller_v2_cycle_pressure_reset": 3,
+        "contact_miss": 2
+      },
+      "behaviour_time": {
+        "recovery": 3.172860058525977,
+        "approach": 6.742543317158187,
+        "containment": 6.8953562486883655,
+        "attack": 19.189240375594732
+      }
+    },
+    "D10": {
+      "time": {
+        "recovering": 5.228226737409464,
+        "positioning": 9.07930859729948,
+        "herding": 4.999999999997275,
+        "hunting": 16.692464665261042
+      },
+      "distance": {
+        "recovering": 0.0,
+        "positioning": 54.4758515837971,
+        "herding": 29.999999999983253,
+        "hunting": 100.15478799156654
+      },
+      "physical_mode_time": {
+        "recovery": 5.228226737409464,
+        "search": 9.07930859729948,
+        "position": 4.999999999997275,
+        "attack": 16.692464665261042
+      },
+      "phases": {
+        "acquire": 0.0012499999999988631,
+        "recovery": 5.226976737409466,
+        "approach": 9.07930859729948,
+        "maintain": 4.999999999997275,
+        "attack": 16.692464665261042
+      },
+      "exposure_time": {
+        "water": 35.99999999996726,
+        "air": 0.0,
+        "bite_window": 16.692464665261042,
+        "underwater_bite_window": 16.692464665261042,
+        "water_recovery": 5.228226737409464,
+        "air_recovery": 0.0,
+        "underwater_bite_recovery": 0.0,
+        "water_search": 9.07930859729948,
+        "air_search": 0.0,
+        "underwater_bite_search": 0.0,
+        "water_position": 4.999999999997275,
+        "air_position": 0.0,
+        "underwater_bite_position": 0.0,
+        "water_attack": 16.692464665261042,
+        "air_attack": 0.0,
+        "underwater_bite_attack": 16.692464665261042
+      },
+      "captures": 1,
+      "virtual_successes": 0,
+      "contacts": 3,
+      "launches": 5,
+      "reasons": {
+        "controller_v2_recovery_complete": 5,
+        "controller_v2_cycle_search": 3,
+        "controller_v2_cycle_pressure_start": 5,
+        "launch": 5,
+        "target_not_visible": 1,
+        "contact_miss": 2,
+        "capture": 1
+      },
+      "behaviour_time": {
+        "recovery": 3.2282267374094644,
+        "approach": 9.080521860914047,
+        "containment": 4.9987867363827085,
+        "attack": 16.692464665261042,
+        "handling": 2.0
+      }
+    },
+    "D11": {
+      "time": {
+        "recovering": 4.608856893788154,
+        "positioning": 6.661143106203639,
+        "herding": 9.261610057174387,
+        "hunting": 15.468389942801082
+      },
+      "distance": {
+        "recovering": 0.0,
+        "positioning": 38.22685863722347,
+        "herding": 53.170650163461566,
+        "hunting": 92.81033965680666
+      },
+      "physical_mode_time": {
+        "recovery": 4.608856893788154,
+        "search": 6.661143106203639,
+        "position": 9.261610057174387,
+        "attack": 15.468389942801082
+      },
+      "phases": {
+        "acquire": 0.0012499999999988631,
+        "recovery": 4.607606893788155,
+        "approach": 6.661143106203639,
+        "maintain": 9.261610057174387,
+        "attack": 15.468389942801082
+      },
+      "exposure_time": {
+        "water": 35.99999999996726,
+        "air": 0.0,
+        "bite_window": 15.468389942801082,
+        "underwater_bite_window": 15.468389942801082,
+        "water_recovery": 4.608856893788154,
+        "air_recovery": 0.0,
+        "underwater_bite_recovery": 0.0,
+        "water_search": 6.661143106203639,
+        "air_search": 0.0,
+        "underwater_bite_search": 0.0,
+        "water_position": 9.261610057174387,
+        "air_position": 0.0,
+        "underwater_bite_position": 0.0,
+        "water_attack": 15.468389942801082,
+        "air_attack": 0.0,
+        "underwater_bite_attack": 15.468389942801082
+      },
+      "captures": 0,
+      "virtual_successes": 0,
+      "contacts": 2,
+      "launches": 7,
+      "reasons": {
+        "controller_v2_recovery_complete": 7,
+        "controller_v2_cycle_search": 2,
+        "controller_v2_cycle_pressure_start": 11,
+        "controller_v2_cycle_pressure_reset": 4,
+        "launch": 7,
+        "timeout": 1,
+        "target_not_visible": 3,
+        "contact_miss": 2,
+        "habitat_boundary_hold": 552
+      },
+      "behaviour_time": {
+        "recovery": 4.608856893788154,
+        "approach": 6.663517452865108,
+        "containment": 9.259235710512918,
+        "attack": 15.468389942801082
+      }
+    }
+  },
+  "school_structure": {
+    "n_live": 144,
+    "survival_fraction": 0.9,
+    "envelope_retention": 0.75625,
+    "largest_component_fraction": 0.8819444444444444,
+    "largest_component_retention": 0.79375,
+    "r90": 7.6341339596770235,
+    "rg": 5.756266649310839,
+    "outward_fraction": 0.4305555555555556,
+    "outward_p90": 1.802453630343872,
+    "mean_depth": 10.586194718880451,
+    "centroid": [
+      158.42289001769592,
+      -8.491844834873596,
+      -10.586194718880451
+    ],
+    "mean_velocity": [
+      1.6544300971674584,
+      -1.242480660996634,
+      1.1443744577942572
+    ],
+    "polarization": 0.7881405711487468,
+    "contained": false,
+    "time": 55.999999999967194,
+    "elapsed": 35.99999999996726
+  },
+  "effort_interpretation": "observed physical effort only; no post-depletion extrapolation",
+  "food_interpretation": "actual unique captures; all later counts fixed after complete prey depletion",
+  "physical_accounting_audit": {
+    "status": "passed",
+    "errors": [],
+    "scope": "independent time, event tally and removal conservation; no native re-simulation"
+  },
+  "private_capture_and_tie_replay": "passed"
+}

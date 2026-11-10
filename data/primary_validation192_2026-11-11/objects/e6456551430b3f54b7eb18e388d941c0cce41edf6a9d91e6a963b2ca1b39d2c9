@@ -1,0 +1,128 @@
+{
+  "36.0": {
+    "status": "complete",
+    "nominal_horizon_T": 36.0,
+    "observed_native_duration_T": 35.99999999996726,
+    "native_steps": 28800,
+    "absorbing_no_food_continuation": false,
+    "termination": "observed_horizon",
+    "initial_count": 160,
+    "final_count": 157,
+    "species": {
+      "D": {
+        "count": 0,
+        "captures": 0,
+        "launches": 0,
+        "contacts": 0,
+        "captures_per_actor_per_nominal_T": null,
+        "observed_effort_T": 0.0,
+        "observed_distance": 0
+      },
+      "G": {
+        "count": 1,
+        "captures": 3,
+        "launches": 6,
+        "contacts": 4,
+        "captures_per_actor_per_nominal_T": 0.08333333333333333,
+        "observed_effort_T": 35.99999999996726,
+        "observed_distance": 292.6697755551422
+      }
+    },
+    "per_actor": {
+      "G0": {
+        "time": {
+          "recovering": 0.506366377128252,
+          "positioning": 35.49363362283901
+        },
+        "distance": {
+          "recovering": 0.0,
+          "positioning": 292.6697755551422
+        },
+        "physical_mode_time": {
+          "recovery": 0.506366377128252,
+          "plunge": 8.01984618509849,
+          "pursuit": 5.0529332528395265,
+          "ascent": 12.010556803795758,
+          "orient": 5.878076465132164,
+          "search": 4.53222091597307
+        },
+        "phases": {
+          "not_dolphin": 35.99999999996726
+        },
+        "exposure_time": {
+          "water": 15.563490056635292,
+          "air": 20.43650994333197,
+          "bite_window": 13.072779437938017,
+          "underwater_bite_window": 5.0529332528395265,
+          "water_recovery": 0.0,
+          "air_recovery": 0.506366377128252,
+          "underwater_bite_recovery": 0.0,
+          "water_plunge": 0.0,
+          "air_plunge": 8.01984618509849,
+          "underwater_bite_plunge": 0.0,
+          "water_pursuit": 5.0529332528395265,
+          "air_pursuit": 0.0,
+          "underwater_bite_pursuit": 5.0529332528395265,
+          "water_ascent": 10.510556803795765,
+          "air_ascent": 1.499999999999993,
+          "underwater_bite_ascent": 0.0,
+          "water_orient": 0.0,
+          "air_orient": 5.878076465132164,
+          "underwater_bite_orient": 0.0,
+          "water_search": 0.0,
+          "air_search": 4.53222091597307,
+          "underwater_bite_search": 0.0
+        },
+        "captures": 3,
+        "virtual_successes": 0,
+        "contacts": 4,
+        "launches": 6,
+        "reasons": {
+          "gannet_global_dense_target_selected": 6,
+          "recovery_complete": 6,
+          "local_prey_detected": 6,
+          "launch": 6,
+          "water_entry": 5,
+          "capture": 3,
+          "flight_height_reached": 5,
+          "contact_miss": 1,
+          "target_not_visible": 1
+        }
+      }
+    },
+    "school_structure": {
+      "n_live": 157,
+      "survival_fraction": 0.98125,
+      "envelope_retention": 0.45625,
+      "largest_component_fraction": 0.9745222929936306,
+      "largest_component_retention": 0.95625,
+      "r90": 4.678539590191002,
+      "rg": 3.565811773269624,
+      "outward_fraction": 0.12101910828025478,
+      "outward_p90": 0.37795554906703455,
+      "mean_depth": 8.684099967875564,
+      "centroid": [
+        152.0117362156282,
+        -8.308960194928623,
+        -8.684099967875564
+      ],
+      "mean_velocity": [
+        2.2235934769217107,
+        -1.5648357009305889,
+        0.5931714547768709
+      ],
+      "polarization": 0.9276572101732541,
+      "contained": true,
+      "time": 55.999999999967194,
+      "elapsed": 35.99999999996726
+    },
+    "effort_interpretation": "observed physical effort only; no post-depletion extrapolation",
+    "food_interpretation": "actual unique captures; all later counts fixed after complete prey depletion",
+    "physical_accounting_audit": {
+      "status": "passed",
+      "errors": [],
+      "scope": "independent time, event tally and removal conservation; no native re-simulation"
+    },
+    "private_capture_and_tie_replay": "passed"
+  }
+}

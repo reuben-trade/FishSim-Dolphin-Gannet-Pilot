@@ -1,0 +1,274 @@
+"""Pure contract regressions. Native constructors are forbidden in this suite."""
+import ast
+from dataclasses import replace
+import json
+from pathlib import Path
+import sys
+from types import SimpleNamespace
+
+import numpy as np
+import pytest
+
+HERE=Path(__file__).resolve().parent
+ROOT=HERE.parents[1]
+sys.path[:0]=[str(HERE),str(ROOT),str(ROOT/'lib')]
+from cases import (Case,SEEDS,all_cases,execution_stages,smoke_cases,PREP_STEPS,
+    FEEDING_STEPS,SMOKE_STEPS,SMOKE_RESERVE,CONSERVATIVE_TOTAL_CAP)
+from cadence import sample_due,progress_due
+import prepare
+
+
+@pytest.fixture(autouse=True)
+def forbid_native(monkeypatch):
+    """Any native construction caused by a purported pure test is a failure."""
+    import research.prey_mediated.scenario as scenario
+    def forbidden(*a,**k):raise AssertionError('Native construction forbidden in pure regression')
+    monkeypatch.setattr(scenario.TravellingSchool,'__init__',forbidden)
+    try:
+        from fish_sim import cmodel
+    except ImportError:
+        return
+    for name in ('School','FishSchool'):
+        if hasattr(cmodel,name):monkeypatch.setattr(cmodel,name,forbidden)
+
+
+def test_fixed_forty_cases_and_completion_barriers():
+    cells=all_cases()
+    assert len(cells)==len({c.name for c in cells})==40
+    assert set(c.school_seed for c in cells)==set(range(39065501,39065509))
+    assert {c.capture_seed for c in cells}=={61001}
+    assert {c.herding_minimum for c in cells if c.dolphins}=={1.}
+    assert {c.gannets for c in cells if c.gannets}=={6}
+    stages=execution_stages()
+    assert [len(v) for _,v in stages]==[16,8,16]
+    assert all(c.presence=='D' for c in stages[0][1])
+    assert all(c.presence=='G' and c.grid=='fine' for c in stages[1][1])
+    assert all(c.presence=='DG' for c in stages[2][1])
+    assert tuple(c for _,group in stages for c in group)!=cells
+    assert set(c for _,group in stages for c in group)==set(cells)
+
+
+@pytest.mark.parametrize('args',[(39065501,'coarse','G'),(39061001,'fine','D'),
+    (39065501,'fine','D',61002),(39065509,'fine','DG')])
+def test_outside_protocol_cases_are_rejected(args):
+    with pytest.raises(ValueError):Case(*args)
+
+
+def test_step_budgets_and_fresh_smokes():
+    assert sum(round(36/c.dt) for c in all_cases())==FEEDING_STEPS==1843200
+    assert sum(round(4/c.dt) for c in smoke_cases())==SMOKE_STEPS==25600
+    assert PREP_STEPS==8*round(92/.00125)==588800
+    assert PREP_STEPS+FEEDING_STEPS+SMOKE_STEPS==2457600
+    assert SMOKE_RESERVE==32000 and CONSERVATIVE_TOTAL_CAP==2924800
+    assert [(c.grid,c.presence) for c in smoke_cases()]==[
+        ('fine','D'),('coarse','D'),('fine','G'),('fine','DG'),('coarse','DG')]
+
+
+@pytest.mark.parametrize('dt',[.00125,.000625])
+def test_physical_cadences_do_not_change_with_grid(dt):
+    steps=round(4/dt)
+    sampled=[i*dt for i in range(steps+1) if sample_due(i,steps,dt)]
+    progressed=[i*dt for i in range(steps+1) if progress_due(i,steps,dt)]
+    assert np.allclose(sampled,np.arange(41)*.1,rtol=0,atol=1e-14)
+    assert progressed==[0.,1.,2.,3.,4.]
+
+
+def state(finite=True):
+    positions=np.zeros((160,3));positions[:,2]=-3.
+    if not finite:positions[0,0]=np.nan
+    return SimpleNamespace(positions=positions,prey_ids=np.arange(160))
+
+
+def samples(original_speed=3.,additional_speed=3.):
+    rows=[]
+    for t in np.arange(20,92.01,.5):
+        x=(min(t,56)-20)*original_speed+max(0,t-56)*additional_speed
+        rows.append(dict(time=float(t),centroid_x=float(x),largest_component_fraction=1.))
+    return rows
+
+
+def test_original_pass_additional_fail_does_not_reject():
+    original,extra,_=prepare.screen_checks(samples(additional_speed=0),state(),state(False),3.)
+    assert original['passed'] is True and extra['passed'] is False
+
+
+def test_original_fail_additional_pass_does_not_accept():
+    original,extra,_=prepare.screen_checks(samples(original_speed=0),state(False),state(),3.)
+    assert original['passed'] is False and extra['passed'] is True
+
+
+def test_original_connectivity_is_still_an_inclusion_requirement():
+    rows=samples()
+    for r in rows:
+        if r['time']<56:r['largest_component_fraction']=.5
+    original,extra,_=prepare.screen_checks(rows,state(),state(),3.)
+    assert not original['passed'] and extra['passed']
+
+
+def fixture_prepared(*,dt=.00125,capture_seed=61001):
+    import build
+    directory=ROOT/'research/pilot_regime_sweep_2026-11-09_v2/results/full_36T_v1/cases/s39061001_H1_G6_DG_c61001'
+    config=json.loads((directory/'config.json').read_text())
+    initial=build.setup._legacy_setup().read_school(directory/'initial_school.npz')
+    declaration_path=build.V2/'v2_numeric_execution_v1.json'
+    case=SimpleNamespace(school_seed=39061001,dt=dt,dolphins=True,gannets=6,
+        herding_minimum=1.,capture_seed=capture_seed,policy='H1_G6',asdict=lambda: {})
+    prepared=build.prepare_from_initial(case,initial,json.loads(declaration_path.read_text()),
+        dict(path=config['checkpoint_path'],sha256=config['checkpoint_sha256']),declaration_path,None)
+    return prepared,json.loads((directory/'initial_engine.json').read_text())
+
+
+def test_shared_builder_replays_exact_discovery_states_and_private_streams():
+    prepared,archived=fixture_prepared()
+    assert prepared.receipt()==archived
+    assert prepared.scenario.dt==.00125
+
+
+def test_fine_grid_preserves_all_initial_states_and_rng():
+    coarse,_=fixture_prepared();fine,_=fixture_prepared(dt=.000625)
+    assert fine.receipt()==coarse.receipt()
+    assert replace(fine.scenario,dt=.00125)==coarse.scenario
+
+
+def test_capture_label_does_not_change_readiness_but_changes_private_draws():
+    old,_=fixture_prepared();alternative,_=fixture_prepared(capture_seed=61002)
+    a,b=old.receipt(),alternative.receipt()
+    assert a['actors']==b['actors'] and a['actor_policy']==b['actor_policy']
+    assert a['capture_rng']!=b['capture_rng'] and a['tie_rng']!=b['tie_rng']
+    for who in a['controllers']:
+        if who.startswith('D'):assert a['controllers'][who]==b['controllers'][who]
+        else:assert a['controllers'][who]['target_rng_state']!=b['controllers'][who]['target_rng_state']
+
+
+def test_model_files_are_byte_identical_to_discovery():
+    discovery=ROOT/'research/pilot_regime_sweep_2026-11-09_v2'
+    for name in ('regime_controller.py','gannet.py','horizons.py'):
+        assert (HERE/name).read_bytes()==(discovery/name).read_bytes()
+
+
+def synthetic_rows():
+    rows=[]
+    for case in all_cases():
+        i=case.school_seed-SEEDS[0]
+        d=20+(i-3 if case.grid=='fine' else 2-i) if case.presence=='DG' else 20 if case.presence=='D' else 0
+        g=5+(2-i) if case.presence=='DG' else 5 if case.presence=='G' else 0
+        rows.append(dict(case.asdict(),D_captures=d,G_captures=g))
+    return rows
+
+
+def test_whole_school_species_and_grid_bootstrap_matches_weight_matrix():
+    from analyze import paired_statistics
+    settings=json.loads((HERE/'analysis_plan.json').read_text())['bootstrap']
+    pairs,summary=paired_statistics(synthetic_rows(),settings)
+    values=np.asarray([[p[k] for k in ('fine_D_rate_change','fine_G_rate_change',
+        'coarse_D_rate_change','fine_minus_coarse_D_rate_change')] for p in pairs])
+    index=np.random.default_rng(88495509).integers(0,8,size=(10000,8))
+    weights=np.zeros((10000,8),dtype=int)
+    for i in range(8):weights[:,i]=(index==i).sum(axis=1)
+    expected=np.quantile(weights@values/8,[.025,.975],axis=0)
+    for j,row in enumerate(summary):
+        assert row['independent_schools']==8
+        assert row['mean_rate_change']==pytest.approx(values[:,j].mean(),abs=1e-15)
+        assert [row['pointwise95_low'],row['pointwise95_high']]==pytest.approx(expected[:,j],abs=1e-15)
+    assert np.allclose(values[:,3],values[:,0]-values[:,2],rtol=0,atol=1e-16)
+
+
+@pytest.mark.parametrize('change',['missing','duplicate'])
+def test_analysis_refuses_incomplete_or_duplicate_case_set(change):
+    from analyze import paired_statistics
+    rows=synthetic_rows()
+    if change=='missing':rows.pop()
+    else:rows[-1]=rows[0]
+    with pytest.raises(ValueError):paired_statistics(rows,dict(seed=88495509,draws=10000,quantiles=[.025,.975]))
+
+
+@pytest.mark.parametrize('depleted,observed,exposure,recent,expected',[
+    (False,35.99999999996726,0.,0.,(36.,36.)),
+    (False,35.99999999996726,4.,7.,(29.,32.)),
+    (True,12.,4.,7.,(5.,8.)),(True,.05,.1,.1,(0.,0.))])
+def test_actual_summary_complementary_clock_block(depleted,observed,exposure,recent,expected):
+    tree=ast.parse((HERE/'run.py').read_text())
+    block=next(n for n in ast.walk(tree) if isinstance(n,ast.For)
+        and isinstance(n.target,ast.Tuple) and [getattr(e,'id','') for e in n.target.elts]==['who','row']
+        and isinstance(n.iter,ast.Call) and isinstance(n.iter.func,ast.Attribute)
+        and isinstance(n.iter.func.value,ast.Name) and n.iter.func.value.id=='per')
+    env=dict(per={'D00':{}},semantic_time={'D00':{}},available={'D00':0.},
+        exposure={'D00':exposure},with_recent_event={'D00':recent},duration=36.,
+        observed_duration=observed,depletion_elapsed=observed if depleted else None)
+    exec(compile(ast.Module(body=[block],type_ignores=[]),str(HERE/'run.py'),'exec'),env)
+    row=env['per']['D00']
+    assert (row['sampled_no_recent_gannet_event_T'],row['sampled_no_opportunity_T'])==expected
+
+
+def test_unapproved_builder_stops_before_native(monkeypatch):
+    import build
+    def denied(stage):raise RuntimeError('No fresh phase approval')
+    monkeypatch.setattr(build,'require_approval',denied)
+    monkeypatch.setattr(build,'prepare_case',lambda c:pytest.fail('Builder crossed the approval boundary'))
+    with pytest.raises(RuntimeError,match='No fresh'):build.build(Case(SEEDS[0],'fine','D'),stage='initialization')
+
+
+def test_all_python_files_compile():
+    for path in HERE.glob('*.py'):compile(path.read_text(),str(path),'exec')
+
+
+def test_separate_repeat_schedule_and_budget_do_not_expand_primary():
+    from repeat_cases import RepeatCase,all_repeat_cases,repeat_stages,repeat_smoke_cases,initialization_cases
+    assert len(all_cases())==40 and {c.capture_seed for c in all_cases()}=={61001}
+    cells=all_repeat_cases()
+    assert len(cells)==24 and len(initialization_cases())==64
+    assert len({c.name for c in initialization_cases()})==64
+    assert {c.capture_seed for c in cells}=={61002} and {c.grid for c in cells}=={'fine'}
+    assert [len(c) for _,c in repeat_stages()]==[8,8,8]
+    assert sum(round(36/c.dt) for c in cells)==1382400
+    assert sum(round(4/c.dt) for c in repeat_smoke_cases())==19200
+    assert PREP_STEPS+FEEDING_STEPS+SMOKE_STEPS+1382400+19200==3859200
+    with pytest.raises(ValueError):RepeatCase(SEEDS[0],'coarse','DG')
+    with pytest.raises(ValueError):RepeatCase(SEEDS[0],'fine','DG',61001)
+
+
+def test_repeat_analysis_keeps_eight_school_units_and_primary_unchanged():
+    from analyze_repeat import repeat_statistics
+    from repeat_cases import all_repeat_cases
+    primary=synthetic_rows();before=json.dumps(primary,sort_keys=True)
+    repeated=[]
+    primary_fine={(r['school_seed'],r['presence']):r for r in primary if r['grid']=='fine'}
+    for c in all_repeat_cases():
+        old=primary_fine[c.school_seed,c.presence]
+        repeated.append(dict(c.asdict(),D_captures=old['D_captures']+(2 if c.presence=='DG' else 0),
+            G_captures=old['G_captures']-(1 if c.presence=='DG' else 0)))
+    settings=json.loads((HERE/'repeat_analysis_plan.json').read_text())['bootstrap']
+    pairs,summary=repeat_statistics(primary,repeated,settings)
+    assert len(pairs)==8 and all(r['independent_schools']==8 for r in summary)
+    assert all(p['repeat_minus_primary_D_change']==2 and p['repeat_minus_primary_G_change']==-1 for p in pairs)
+    assert summary[2]['mean_rate_change']==pytest.approx(2/432)
+    assert summary[2]['pointwise95_low']==pytest.approx(2/432)
+    assert summary[2]['pointwise95_high']==pytest.approx(2/432)
+    assert summary[3]['mean_rate_change']==pytest.approx(-1/216)
+    assert json.dumps(primary,sort_keys=True)==before
+    with pytest.raises(ValueError):repeat_statistics(primary,repeated[:-1],settings)
+
+
+def test_raw_sampler_preflight_is_native_free():
+    import preflight
+    result=preflight.validate()
+    assert result['status']=='passed' and result['native_constructions']==result['native_steps']==0
+    assert result['sampler_candidates']==8 and result['pure_cases']==40 and result['pure_repeat_cases']==24
+    assert result['pure_initialization_cases']==64
+
+
+def test_rejected_preparation_cannot_be_used_as_zero_or_replaced(monkeypatch,tmp_path):
+    import evidence
+    folder=tmp_path/'preparation';folder.mkdir()
+    checkpoints={str(s):dict(sha256='fake',path='unused',accepted=s!=SEEDS[2]) for s in SEEDS}
+    candidates=[dict(school_seed=s,accepted=s!=SEEDS[2],checkpoint=dict(sha256='fake')) for s in SEEDS]
+    manifest=dict(status='complete',checkpoints=checkpoints,candidates=candidates,total_native_steps=588800)
+    def read_fake(path):
+        if Path(path).name=='manifest.json':return manifest
+        return next(r for r in candidates if 's'+str(r['school_seed'])==Path(path).parent.name)
+    monkeypatch.setattr(evidence,'PREP_OUTPUT',folder)
+    monkeypatch.setattr(evidence,'read',read_fake)
+    monkeypatch.setattr(evidence,'validate_seal',lambda path:dict(files={}))
+    monkeypatch.setattr(evidence,'sha',lambda path:'fake')
+    with pytest.raises(RuntimeError,match='Rejected candidate retained'):
+        evidence.preparation_manifest()

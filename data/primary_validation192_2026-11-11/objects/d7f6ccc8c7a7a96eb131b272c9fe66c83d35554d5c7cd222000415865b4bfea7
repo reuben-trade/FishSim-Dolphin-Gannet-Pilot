@@ -1,0 +1,84 @@
+{
+  "study": "heldout_regime_validation_2026-11-09",
+  "status": "private_candidate_no_native_execution_authorized",
+  "H0": 1,
+  "H_star": 1,
+  "N_star": 6,
+  "selection_sha256": "759b98915a30b4770842c961ff405a2cb31f6d1af7c34f0fa8598d05b26a7810",
+  "school_seeds": [
+    39065501,
+    39065502,
+    39065503,
+    39065504,
+    39065505,
+    39065506,
+    39065507,
+    39065508
+  ],
+  "capture_labels": [
+    61001
+  ],
+  "capture61002": "not authorized or scheduled",
+  "fish": 160,
+  "dolphins": 12,
+  "q": 0.7,
+  "preparation": {
+    "dt": 0.00125,
+    "burn_T": 20,
+    "original_inclusion_screen_T": 36,
+    "additional_diagnostic_T": 36,
+    "total_T": 92,
+    "max_steps": 588800,
+    "inclusion": "Original36T screen only; extra36T diagnostic does not select schools",
+    "replacement": "None; rejection blocks automatic feeding for recorded technical review"
+  },
+  "feeding": {
+    "duration_T": 36,
+    "fine_dt": 0.000625,
+    "fine_arms": [
+      "D_H1",
+      "DG_H1_G6",
+      "Gonly6"
+    ],
+    "fine_cases": 24,
+    "coarse_dt": 0.00125,
+    "coarse_arms": [
+      "D_H1",
+      "DG_H1_G6"
+    ],
+    "coarse_cases": 16,
+    "H0_duplicate": "elided because H0 equals Hstar",
+    "order": "All16 D-only complete before any mixed; fine G-only wave between D-only and mixed"
+  },
+  "smoke": {
+    "duration_T": 4,
+    "fine_cases": 3,
+    "coarse_cases": 2,
+    "steps": 25600,
+    "approved_reserve": 32000
+  },
+  "budgets": {
+    "preparation": 588800,
+    "feeding": 1843200,
+    "selected_total_with_smokes": 2457600,
+    "conservative_total_ceiling": 2924800
+  },
+  "fixed": "Model/native/q/mouth/speeds/turning/recovery/cues/point-body roster byte-identical to discovery; only seed/grid/phase harness refactored",
+  "initialization": "Original stable-ID readiness/capture/tie/target formulas; readiness excludes capturelabel; capturelabel affects capture/tie AND G target streams",
+  "cadence": "Explicit case dt; sample0.1T/progress1T on both grids; no physics monkeypatch",
+  "storage": "/tmp/FishSim_Heldout_2026-11-09",
+  "root_reserve_bytes": 1073741824,
+  "workers": 3,
+  "numeric_threads": 1,
+  "stopping": "Fresh outputs,retain failures,no automatic retry,replacement,outcome selection,72T or parameter expansion",
+  "gates": [
+    "pure sampler/source review",
+    "preparation freeze and explicit approval",
+    "all8 preparation seals/dispositions",
+    "feeding-input freeze and zero-step approval",
+    "all40 actual starts; final feeding freeze",
+    "fresh five-case4T smoke approval and physical review",
+    "fresh full feeding approval and independent final audit"
+  ],
+  "native_steps": 0
+}

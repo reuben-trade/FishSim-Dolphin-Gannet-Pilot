@@ -1,0 +1,16 @@
+"""Explicit local numerical grid with common physical diagnostic intervals."""
+def exact_steps(interval,dt):
+    if dt not in (.00125,.000625):raise ValueError('Undeclared grid')
+    n=round(interval/dt)
+    if n<=0 or abs(n*dt-interval)>1e-12:raise ValueError('Nonintegral physical interval')
+    return n
+
+
+def due(number,steps,stride):
+    if isinstance(number,bool) or int(number)!=number or not 0<=number<=steps:
+        raise ValueError('Invalid diagnostic clock')
+    return number%stride==0 or number==steps
+
+
+def sample_due(number,steps,dt):return due(number,steps,exact_steps(.1,dt))
+def progress_due(number,steps,dt):return due(number,steps,exact_steps(1.,dt))

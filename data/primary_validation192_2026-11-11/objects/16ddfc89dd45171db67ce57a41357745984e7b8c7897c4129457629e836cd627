@@ -1,0 +1,58 @@
+"""Durable foreground phase runner; creates no approvals and never retries."""
+import argparse,os,subprocess,sys,time
+from pathlib import Path
+from common import HERE,read,write,sha,stamp,reserve
+from cases import BULK
+from evidence import require_approval
+
+
+def main():
+    parser=argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('--phase',choices=('preparation','smoke','feeding','repeat_smoke','repeat_feeding'),required=True)
+    args=parser.parse_args();require_approval(args.phase)
+    BULK.mkdir(exist_ok=True);receipt=BULK/(args.phase+'_supervisor_v1.json')
+    logpath=BULK/(args.phase+'_supervisor_v1.log');heartbeat=BULK/(args.phase+'_heartbeat_v1.json')
+    if receipt.exists() or logpath.exists():raise RuntimeError('Fresh phase supervisor required; no retry')
+    output=BULK/({'preparation':'preparation_v1','smoke':'smoke_4T_v1','feeding':'feeding_36T_v1',
+        'repeat_smoke':'repeat_smoke_4T_v1','repeat_feeding':'repeat_feeding_36T_v1'}[args.phase])
+    mode={'smoke':'--smoke','feeding':'--execute','repeat_smoke':'--repeat-smoke','repeat_feeding':'--repeat-execute'}
+    commands=([('preparation',[sys.executable,str(HERE/'prepare.py'),'--execute','--output',str(output)])]
+        if args.phase=='preparation' else
+        [('feeding',[sys.executable,str(HERE/'run.py'),mode[args.phase],'--workers','3','--output',str(output)]),
+         ('physical_review',[sys.executable,str(HERE/'review_actual.py'),'--output',str(output)])])
+    if args.phase=='feeding':commands.append(('analysis',[sys.executable,str(HERE/'analyze.py'),'--input',str(output)]))
+    if args.phase=='repeat_feeding':commands.append(('repeat_analysis',[sys.executable,str(HERE/'analyze_repeat.py'),'--input',str(output)]))
+    record=dict(status='running',phase=args.phase,started_at=stamp(),pid=os.getpid(),
+        protocol_sha256=sha(HERE/'protocol.json'),supervisor_sha256=sha(__file__),
+        retries=0,publication=False,stages=[])
+    write(receipt,record)
+    with logpath.open('x') as log:
+        for label,command in commands:
+            reserve(output)
+            child=subprocess.Popen(command,cwd=HERE.parents[1],stdout=log,stderr=subprocess.STDOUT)
+            row=dict(stage=label,command=command,pid=child.pid,started_at=stamp());record['stages'].append(row);write(receipt,record)
+            while child.poll() is None:
+                progress=[]
+                base=output if args.phase=='preparation' else output/'cases'
+                for path in sorted(base.glob('*/progress.json')):
+                    try:
+                        value=read(path);progress.append(dict(case=path.parent.name,
+                            native_steps=value.get('native_steps',0),elapsed=value.get('elapsed',0),
+                            complete=(path.parent/'completion.json').exists()))
+                    except (OSError,ValueError):pass
+                write(heartbeat,dict(at=stamp(),phase=args.phase,stage=label,child_pid=child.pid,
+                    complete=sum(v['complete'] for v in progress),cases=progress))
+                try:child.wait(timeout=20)
+                except subprocess.TimeoutExpired:pass
+            row.update(finished_at=stamp(),exit_code=child.returncode);write(receipt,record)
+            if child.returncode:
+                record.update(status='failed_or_partial',finished_at=stamp(),failed_stage=label)
+                write(receipt,record);raise SystemExit(child.returncode)
+    if args.phase=='preparation' and not read(output/'manifest.json')['preparation_gate_passed']:
+        record.update(status='preparation_rejected_technical_review_required',finished_at=stamp())
+    else:record.update(status='complete',finished_at=stamp())
+    record['final_output']=str(output);write(receipt,record)
+    print({k:v for k,v in record.items() if k!='stages'})
+
+
+if __name__=='__main__':main()

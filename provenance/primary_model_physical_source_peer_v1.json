@@ -1,0 +1,106 @@
+{
+  "status": "passed",
+  "schema": "primary_full36_model_independent_physical_source_reference_review_v1",
+  "scope": "Source/reference/recorded-pure-proof scope ONLY. Operational snapshot contract remains BLOCKED; this receipt does not authorize any native execution or publication.",
+  "candidate": "/home/venture/FishSim_Primary_Model_Candidate_2026-11-10",
+  "handoff_sha256": "62bc2af3d2c13be6a421f053e80e2e537c1856cc7d8f503eb2cc3a4690d79095",
+  "freeze_sha256": "b6ed64c8f6df737e83912ab68a58462770f9496ea4d2b0e293d66d7a86ffb6ef",
+  "interface_files": {
+    "primary_runtime.py": "b9aae14485a1cf43d9d276ecb516a65c1f670884f7da2b626e64c132d70e0765",
+    "primary_gate.py": "917accc9217433ef53af205c52ff969d5c4b0daf63bc235614cfe73bf2d3e2a5",
+    "primary_worker.py": "ff85e99f5e00d949db3d88381325b105264f5e6940b08fac6f4ced92cb8dbfa3",
+    "run_primary_model.py": "eb02a2e45258b120c86c082f4b750ebc49111c07a65a19f9f139a89e99c22f7e",
+    "MODEL_INPUTS.json": "69f9ee49d1e9ff9831f0a5936bb96ad1b7eebdd55a9b625893592c70719d3f98",
+    "REFERENCE_MANIFEST.json": "d77424a0f01d90eaf5ed64166db73e062f28ea4cf39e9876ad0cc0a72b63512f"
+  },
+  "candidate_files_verified": 323,
+  "parent_source_bindings_verified": 2127,
+  "protected_public_files_verified": 9916,
+  "old_g36_v2_files_verified": 53,
+  "accepted_reference_files_verified": 303,
+  "accepted_full36T_cases": 6,
+  "accepted_smoke4T_cases": 6,
+  "accepted_review_sha256": "1609c4dd6d131bd95232ec3600dc428deba69d6b959eb46099fe057c4cd9a59c",
+  "constructor_proof": {
+    "constructor_ast_sha256": "cb1eb7b812b25fc4902b3356d7178be845d8d10e70fcad799ee7dd2913530c5d",
+    "pure_assembly_unchanged": true
+  },
+  "physical_runner_proof": {
+    "physical_ast_sha256": "b938e6d20eed3f52b5b23c05cb08fdeb1dbe24189e13908aa62d25a22059b15d",
+    "physical_tail_unchanged": true
+  },
+  "builder_whole_module_AST_exact_except_operational_evidence_imports": true,
+  "pure_formula_functions_AST_exact": [
+    "prepare_from_initial",
+    "initial_private_streams",
+    "_seed_words",
+    "prepare_case"
+  ],
+  "runner_helpers_AST_exact": [
+    "stamp",
+    "jsonline",
+    "logging_context",
+    "snapshot",
+    "local_geometry",
+    "visible_sample",
+    "physical_category",
+    "frame_sample",
+    "point_on_step",
+    "water_entries",
+    "response_cohort",
+    "response_sample",
+    "stream_helpers",
+    "write_horizon_checkpoint",
+    "bird_accessibility"
+  ],
+  "recorded_pure_proofs_verified": {
+    "historical": {
+      "pure_receipt_sha256": "19abb638eca2cbe42a673fb925df243ed12852a2355af79d556cba14395cf7ce",
+      "runtime_declaration_sha256": "25d63c27819c8f2c3819aa261cc51b940dcc36cb19ac4505db41187a1919bd93",
+      "active_native_sha256": "eb8654a520304cc429aced67c7e3706db8d2ef1449c5e1327a682a479b10a558",
+      "recorded_pure_cases": 192,
+      "runtime_files_verified": 4521,
+      "recorded_max_heading_normalization_delta": 6.80566714095221e-13
+    },
+    "source-built": {
+      "pure_receipt_sha256": "7742fcc572b9dd263bf4c81ccb9f502db30ee443a73cf004fa5ccf8fc9aa6415",
+      "runtime_declaration_sha256": "a785ace87f71f8e47f6d69b51c404255936dad8ba1a68711975e7d3aa0f12ae8",
+      "active_native_sha256": "cc21f00f355e1d25e8ecb48bd6aa50a7c9b63f909d921f4864a96e91d9ef2d4b",
+      "recorded_pure_cases": 192,
+      "runtime_files_verified": 4521,
+      "recorded_max_heading_normalization_delta": 6.80566714095221e-13
+    }
+  },
+  "new_pure_model_assembly_performed": false,
+  "saved_replay_checker_source_review": {
+    "terminal_engine_and_tie_streams_exact": true,
+    "terminal_native_arrays_byte_exact": true,
+    "full_actor_time_contact_food_accounting_exact": true,
+    "trajectory_dtypes_shapes_bytes_exact": true,
+    "initial_engine_and_shared_exact": true,
+    "event_and_geometry_records_exact": true,
+    "encounter_end_opportunity_rows_rejected": true,
+    "distinct_smoke4T_and_full36T_terminal_references": true,
+    "pinned_physical_predicate_sha256": "fb694fdf2e86dc023400c06a5a75467d5b89be44c154a367ee52fc02e207c52a"
+  },
+  "known_operational_blocker": {
+    "receipt": "/home/venture/FishSim_Primary_Model_Operational_Peer_Review_2026-11-10_v1.json",
+    "sha256": "7505fd7c4168c66873dc9579fa37db11484c3495aa82b12274b0285d4dd1fd5d",
+    "detail": "Snapshot API accepts a manifest file but prepare later appends SNAPSHOT.json as if the same argument were a directory. Corrected separate v2 and focused peer review required.",
+    "production_ready": false
+  },
+  "native_imports": 0,
+  "native_constructions": 0,
+  "native_steps": 0,
+  "native_lease_acquisitions": 0,
+  "compiler_invocations": 0,
+  "unaccepted_feeding_rows_read": 0,
+  "public_writes": 0,
+  "elapsed_seconds": 5.5042514419183135,
+  "review_python": "3.12.13",
+  "limitations": [
+    "Recorded384 real-Python starts were source/hash reviewed, not rerun by this reviewer.",
+    "No binary was loaded.384 actual native starts and576000 steps of distinct4T/36T replay remain future gated work.",
+    "No full192-ensemble replay or cross-platform fidelity claim is established."
+  ]
+}

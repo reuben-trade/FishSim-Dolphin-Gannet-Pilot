@@ -1,0 +1,96 @@
+{
+  "status": "passed",
+  "reviewer": "/root/brief_audit",
+  "review_type": "independent_complete_data_read_only",
+  "at": "2026-11-09T07:58:33.803567+00:00",
+  "study": "/home/venture/uwa/complex-systems/FishSim-RL/research/pilot_regime_sweep_2026-11-09_v2",
+  "gate_sha256": {
+    "status": "a0e5a54606dfb8e595ce95d27655bb5f8ebea82b9c51a50f92ac83b662290b70",
+    "anchor": "0b01e9c666209fc60937446880e00baf012da9c4df791e828cc0706b041c4d8c",
+    "physical": "94316c28c9d82b0b47c9c945843d4810c85bb2aa13991902d8a6946d5450691d",
+    "analysis": "5bfc893562c1c583bb306737ffe25d2a6f665fd90fd1c478e22bdfabb0b01486"
+  },
+  "frozen_sources_sha256": "0b9084ffeeb48de6952bd5a547d32694776b5f3f7215bd603ddfcbff5e128750",
+  "source_hashes_verified": 422,
+  "prior_stopped_attempt_files_verified": 211,
+  "all_prior_files_unchanged": true,
+  "raw_cases_reconciled": 60,
+  "paired_school_rows_reconciled": 36,
+  "mixed_summary_cells_reconciled": 9,
+  "exact_original_anchors_rechecked": 8,
+  "exact_comparisons_per_anchor": 17,
+  "case_checks": [
+    "Every completion file and source binding",
+    "Raw transition launches and closing oral contacts/captures by species",
+    "Unique prey IDs and initial/final live-fish conservation",
+    "All physical-review case completion hashes, actor geometry/capture RNG/recovery and bird-target/tie RNG pass statuses",
+    "Full fixed36T nominal denominators and shared same-H D/count-matched G controls"
+  ],
+  "bootstrap": {
+    "draws": 10000,
+    "seed": 88493009,
+    "independent_units": 4,
+    "method": "One common whole-school resample; independently formed school-count weight matrix and multiplied raw-count rate matrices, preserving all cells/species/shared controls",
+    "best_Donly_H_reselected_per_resample": true,
+    "comparison_absolute_tolerance": 1e-14,
+    "scope": "Derived floating arithmetic comparison only; original physical anchor comparisons remain exact",
+    "all_primary_reciprocal_and_strong_benchmark_bounds_match": true
+  },
+  "selection": {
+    "Donly_totals_by_H": {
+      "1": 91,
+      "2": 86,
+      "3": 73
+    },
+    "H0_best_tested_Donly": 1,
+    "selected_mixed_H": 1,
+    "selected_gannets": 6,
+    "selected_mixed_D_total": 113,
+    "selected_same_H_Donly_total": 91,
+    "selected_best_tested_Donly_total": 91,
+    "rule": "Maximise exact integer total mixed dolphin captures across all9 settings; ties fewer gannets then smaller H. Best D-only uses highest integer total; ties smaller H.",
+    "selected_D_school_changes": [
+      4,
+      9,
+      4,
+      5
+    ],
+    "selected_G_school_changes": [
+      -5,
+      6,
+      2,
+      10
+    ],
+    "selected_Gonly_total": 24,
+    "selected_mixed_G_total": 37
+  },
+  "additional_joint_setting": {
+    "H": 2,
+    "gannets": 6,
+    "Donly_total": 86,
+    "Dmixed_total": 103,
+    "Gonly_total": 24,
+    "Gmixed_total": 53,
+    "joint_positive_schools": 4,
+    "D_vs_best_Donly_pointwise95_per_D_36T": [
+      -0.08333333333333333,
+      0.5833333333333334
+    ]
+  },
+  "native_study_steps": 1728000,
+  "native_steps_executed_by_audit": 0,
+  "partial_effect_selection_performed": false,
+  "limitations": [
+    "Four previously observed school geometries, one capture-setting label; exploratory discovery bank",
+    "Eight exact anchor replays are existing outcomes and add no independent samples",
+    "Pointwise n4 uncertainty has no multiplicity or mixed-setting selection correction",
+    "Original coarse timestep; finer-grid eight-school sensitivity retained and convergence unresolved",
+    "No biological cooperation, energy profitability or global-policy optimality claim"
+  ],
+  "source_files": {
+    "case_outcomes.csv": "32ebeeff82639e7e4ea2703c0d88276296e03bb50665fc0d63682a0687b8603a",
+    "paired_school_changes.csv": "47a7d5cc8aed13c34d9380c59ac2e77922e60cabac92d24f83e1acb18d0fe9b9",
+    "regime_summary.csv": "25fb3454fe67d3d7e3f6352f126074a113df806b8dfd7e617282eff769eca8f7",
+    "best_tested_Donly.json": "137363774427fde8f3f3d5585be381b734aab79f3ea52286dab82df1a56f7258"
+  }
+}

@@ -1,0 +1,76 @@
+"""Explicitly approved actual initialization; model stepping is forbidden."""
+from dataclasses import asdict
+from pathlib import Path
+from unittest.mock import patch
+import gc,hashlib
+import numpy as np
+from common import HERE,read,write,sha,clean
+from cases import SEEDS,all_cases
+from repeat_cases import initialization_cases
+from evidence import require_approval
+from build import build,prepare_case
+from horizons import species_projection
+from run import snapshot
+
+
+def digest(state):
+    h=hashlib.sha256()
+    for name,value in asdict(state).items():
+        a=np.asarray(value);h.update(name.encode());h.update(str(a.dtype).encode())
+        h.update(str(a.shape).encode());h.update(a.tobytes())
+    return h.hexdigest()
+
+
+def validate():
+    require_approval('initialization')
+    from research.prey_mediated.encounter import Encounter
+    from research.prey_mediated.scenario import TravellingSchool
+    from research.prey_mediated.surface_safe_school import SurfaceSafeSchool
+    def prohibited(*args,**kwargs):raise RuntimeError('Stepping forbidden in initialization gate')
+    states={};receipts={};rows=[]
+    with patch.object(Encounter,'step',prohibited),patch.object(TravellingSchool,'step',prohibited),patch.object(SurfaceSafeSchool,'step',prohibited):
+        for case in initialization_cases():
+            pure=prepare_case(case)
+            engine,metadata=build(case,stage='initialization')
+            actual=engine.school.state();receipt=snapshot(engine)
+            assert receipt==pure.receipt()
+            assert abs(actual.time-20)<1e-8 and actual.step_index==16000 and len(actual.prey_ids)==160
+            assert np.array_equal(actual.positions,pure.initial.positions)
+            assert engine.scenario.dt==case.dt and metadata['dt']==case.dt
+            assert metadata['capture_probability']==.7
+            states[case.name]=digest(actual);receipts[case.name]=receipt
+            rows.append(dict(**case.asdict(),actual_initial_school_sha256=states[case.name]))
+            del engine;gc.collect()
+    for seed in SEEDS:
+        cells=[c for c in initialization_cases() if c.school_seed==seed]
+        assert len({states[c.name] for c in cells})==1
+        for label in (61001,61002):
+            subset=[c for c in cells if c.capture_seed==label]
+            d=next(c for c in subset if c.grid=='fine' and c.presence=='D')
+            g=next(c for c in subset if c.presence=='G')
+            for case in subset:
+                if case.dolphins:assert species_projection(receipts[case.name],'D')==species_projection(receipts[d.name],'D')
+                if case.gannets:assert species_projection(receipts[case.name],'G')==species_projection(receipts[g.name],'G')
+                assert receipts[case.name]['tie_rng']==receipts[d.name]['tie_rng']
+        for presence in ('D','G','DG'):
+            a,b=[receipts[next(c for c in cells if c.grid=='fine' and c.presence==presence and c.capture_seed==label).name]
+                 for label in (61001,61002)]
+            assert a['actors']==b['actors'] and a['actor_policy']==b['actor_policy'] and a['ownership']==b['ownership']
+            assert a['capture_rng']!=b['capture_rng'] and a['tie_rng']!=b['tie_rng']
+            for who in a['controllers']:
+                if who.startswith('D'):assert a['controllers'][who]==b['controllers'][who]
+                else:assert a['controllers'][who]['target_rng_state']!=b['controllers'][who]['target_rng_state']
+    import fish_sim.cmodel as native
+    declaration=read(HERE.parents[1]/'research/herding_study_2026-11-07/v2_numeric_execution_v1.json')
+    assert sha(native.__file__)==declaration['native']['sha256']
+    return dict(status='passed',actual_cases=64,primary_actual_cases=40,secondary_actual_cases=24,native_constructions=64,native_steps=0,
+        feeding_input_freeze_sha256=sha(HERE/'FEEDING_INPUT_FREEZE.json'),
+        native_sha256=sha(native.__file__),independent_starting_schools=8,
+        step_guard='Encounter,TravellingSchool,SurfaceSafeSchool.step all replaced by exceptions',
+        checks='Exact loaded fish/actor/controller/private/tie starts across all arms and grids; expected pure receipts match actual states',rows=rows)
+
+
+if __name__=='__main__':
+    path=HERE/'ACTUAL_ZERO_STEP.json'
+    if path.exists():raise RuntimeError('Refuse initialization receipt overwrite')
+    result=validate();write(path,result);print({k:v for k,v in result.items() if k!='rows'})

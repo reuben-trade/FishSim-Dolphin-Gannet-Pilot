@@ -1,0 +1,30 @@
+{
+  "required_cases": 40,
+  "independent_unit": "Accepted starting school, not arm/grid repetitions",
+  "capture_labels": [
+    61001
+  ],
+  "primary": "Fine paired D DG-D captures/(12*36); report raw catches/absolute change too",
+  "secondary": [
+    "Fine G per-bird DG-Gonly captures/(6*36)",
+    "Paired coarse D effect and fine-minus-coarse effect",
+    "H0 is frozen Hstar; no duplicate control and no reselection"
+  ],
+  "bootstrap": {
+    "draws": 10000,
+    "seed": 88495509,
+    "quantiles": [
+      0.025,
+      0.975
+    ],
+    "generator": "NumPy default_rng PCG64",
+    "resampling": "One common whole-school matrix across species and grids",
+    "interpretation": "Pointwise95%; one primary endpoint; secondary numerical/species diagnostics"
+  },
+  "incomplete": "No final analysis until all scheduled cells/physical reviews pass",
+  "rejected": "Retain every disposition; never code rejected as zero; preparation rejection stops for technical review",
+  "no_pooling_with_discovery": true,
+  "no_H_reselection": true,
+  "numerical_convergence": "not established",
+  "native_steps": 0
+}

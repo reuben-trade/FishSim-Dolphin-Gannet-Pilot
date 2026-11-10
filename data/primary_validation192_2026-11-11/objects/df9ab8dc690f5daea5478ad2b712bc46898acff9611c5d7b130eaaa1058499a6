@@ -1,0 +1,58 @@
+{"complete": 1, "case": "s39063501_H2_G0_D_c61001", "species": {"D": {"count": 12, "captures": 23, "launches": 48, "contacts": 33}, "G": {"count": 0, "captures": 0, "launches": 0, "contacts": 0}}}
+{"complete": 2, "case": "s39061001_H2_G0_D_c61001", "species": {"D": {"count": 12, "captures": 22, "launches": 56, "contacts": 32}, "G": {"count": 0, "captures": 0, "launches": 0, "contacts": 0}}}
+{"complete": 3, "case": "s39061002_H2_G0_D_c61001", "species": {"D": {"count": 12, "captures": 19, "launches": 46, "contacts": 26}, "G": {"count": 0, "captures": 0, "launches": 0, "contacts": 0}}}
+Process ForkProcess-1:
+Process ForkProcess-2:
+Traceback (most recent call last):
+Traceback (most recent call last):
+  File "/home/venture/.local/share/uv/python/cpython-3.12.13-linux-x86_64-gnu/lib/python3.12/multiprocessing/process.py", line 314, in _bootstrap
+    self.run()
+  File "/home/venture/.local/share/uv/python/cpython-3.12.13-linux-x86_64-gnu/lib/python3.12/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/venture/.local/share/uv/python/cpython-3.12.13-linux-x86_64-gnu/lib/python3.12/concurrent/futures/process.py", line 252, in _process_worker
+    call_item = call_queue.get(block=True)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/venture/.local/share/uv/python/cpython-3.12.13-linux-x86_64-gnu/lib/python3.12/multiprocessing/queues.py", line 102, in get
+    with self._rlock:
+         ^^^^^^^^^^^
+  File "/home/venture/.local/share/uv/python/cpython-3.12.13-linux-x86_64-gnu/lib/python3.12/multiprocessing/synchronize.py", line 95, in __enter__
+    return self._semlock.__enter__()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+KeyboardInterrupt
+  File "/home/venture/.local/share/uv/python/cpython-3.12.13-linux-x86_64-gnu/lib/python3.12/multiprocessing/process.py", line 314, in _bootstrap
+    self.run()
+  File "/home/venture/.local/share/uv/python/cpython-3.12.13-linux-x86_64-gnu/lib/python3.12/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/venture/.local/share/uv/python/cpython-3.12.13-linux-x86_64-gnu/lib/python3.12/concurrent/futures/process.py", line 252, in _process_worker
+    call_item = call_queue.get(block=True)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/venture/.local/share/uv/python/cpython-3.12.13-linux-x86_64-gnu/lib/python3.12/multiprocessing/queues.py", line 103, in get
+    res = self._recv_bytes()
+          ^^^^^^^^^^^^^^^^^^
+  File "/home/venture/.local/share/uv/python/cpython-3.12.13-linux-x86_64-gnu/lib/python3.12/multiprocessing/connection.py", line 216, in recv_bytes
+    buf = self._recv_bytes(maxlength)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/venture/.local/share/uv/python/cpython-3.12.13-linux-x86_64-gnu/lib/python3.12/multiprocessing/connection.py", line 430, in _recv_bytes
+    buf = self._recv(4)
+          ^^^^^^^^^^^^^
+  File "/home/venture/.local/share/uv/python/cpython-3.12.13-linux-x86_64-gnu/lib/python3.12/multiprocessing/connection.py", line 395, in _recv
+    chunk = read(handle, remaining)
+            ^^^^^^^^^^^^^^^^^^^^^^^
+KeyboardInterrupt
+Traceback (most recent call last):
+  File "/home/venture/uwa/complex-systems/FishSim-RL/research/pilot_regime_sweep_2026-11-09/run.py", line 604, in <module>
+    if __name__=='__main__':main()
+                            ^^^^^^
+  File "/home/venture/uwa/complex-systems/FishSim-RL/research/pilot_regime_sweep_2026-11-09/run.py", line 587, in main
+    _execute_wave(tuple(c for c in anchors if c.gannets==0),output,36.,args.workers,completed)
+  File "/home/venture/uwa/complex-systems/FishSim-RL/research/pilot_regime_sweep_2026-11-09/run.py", line 532, in _execute_wave
+    for future in as_completed(pending):
+                  ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/venture/.local/share/uv/python/cpython-3.12.13-linux-x86_64-gnu/lib/python3.12/concurrent/futures/_base.py", line 243, in as_completed
+    waiter.event.wait(wait_timeout)
+  File "/home/venture/.local/share/uv/python/cpython-3.12.13-linux-x86_64-gnu/lib/python3.12/threading.py", line 655, in wait
+    signaled = self._cond.wait(timeout)
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/venture/.local/share/uv/python/cpython-3.12.13-linux-x86_64-gnu/lib/python3.12/threading.py", line 355, in wait
+    waiter.acquire()
+KeyboardInterrupt

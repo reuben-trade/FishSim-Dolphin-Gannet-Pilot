@@ -1,0 +1,32 @@
+{
+  "approved": true,
+  "stage": "smoke",
+  "at": "2026-11-10T08:26:56.948078+00:00",
+  "reviewer": "/root/brief_audit",
+  "protocol_sha256": "5217d71784fe7c4611d74c636720942eeab25a392dd898608d13a3585eb2da1f",
+  "freeze_sha256": "253071467e55b4cdbe91f75ba1de3f1bb80d65344e9cba05aadb86bccb08da0b",
+  "independent_review_sha256": "5050a3a7957f093b024141a4b114e10b2f29d3bd7573c67f07634db6d0ccdb6d",
+  "maximum_native_steps": 28800,
+  "workers": 8,
+  "case_names": [
+    "s39065501_coarse_H1_G0_D_c71001",
+    "s39065501_coarse_Gonly36_G_c71001",
+    "s39065501_coarse_H1_G36_DG_c71001",
+    "s39065501_fine_H1_G0_D_c71001",
+    "s39065501_fine_Gonly36_G_c71001",
+    "s39065501_fine_H1_G36_DG_c71001"
+  ],
+  "operational_supervisor_sha256": "c1f83c25fd2cdee6fa80b81879ec6e54a0db724ad0db9f7b053a1e50ce259d77",
+  "required_command": "project .venv Python -B supervise.py --stage smoke",
+  "numeric_threads_per_worker": 1,
+  "duration_T": 4.0,
+  "scope": "Exactly6 engineering cases: first school39065501,label71001,3arms on2grids; D-only then G-only then mixed. No full feeding, additional worlds, retries or model changes.",
+  "case_order": "Coarse/fine D-only wave finishes, then coarse/fine G-only wave, then coarse/fine mixed wave.",
+  "actual_zero_step_sha256": "ed402b01c1984af14d205db6386607f72b634bbd14ab8226ae187310533470ea",
+  "native_step_budgets": {
+    "coarse": 9600,
+    "fine": 19200
+  },
+  "full_feeding_authorized": false,
+  "food_success_requirement": false
+}

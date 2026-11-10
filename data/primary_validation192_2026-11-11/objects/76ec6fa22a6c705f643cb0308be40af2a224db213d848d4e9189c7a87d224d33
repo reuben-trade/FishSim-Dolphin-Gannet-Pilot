@@ -1,0 +1,105 @@
+"""Complete held-out estimates from all sealed cases; no simulation or selection."""
+import argparse,csv,gzip
+from pathlib import Path
+import numpy as np
+from common import HERE,read,sha,write,stamp
+from cases import BULK,SEEDS,all_cases
+from evidence import verify_feeding_freeze,validate_candidate_seal,preparation_manifest
+
+
+def case_row(folder,case):
+    validate_candidate_seal(folder)
+    config=read(folder/'config.json');summary=read(folder/'summary.json')
+    if (config['school_seed']!=case.school_seed or config['grid']!=case.grid
+            or config['dt']!=case.dt or config['capture_seed']!=case.capture_seed
+            or config['dolphin_target_policy']!='exposed'
+            or config['minimum_herding_duration']!=case.herding_minimum):
+        raise RuntimeError('Held-out identity/selection mismatch')
+    with gzip.open(folder/'events.jsonl.gz','rt') as f:events=[read_line(line) for line in f]
+    row=case.asdict();removed=[]
+    for species,count in [('D',12 if case.dolphins else 0),('G',case.gannets)]:
+        oral=[e for e in events if e['kind']=='oral' and e['closes_bout'] and e['actor_id'].startswith(species)]
+        caught=[e for e in oral if e['status']=='captured']
+        launched=[e for e in events if e['kind']=='transition' and e['reason']=='launch' and e['actor_id'].startswith(species)]
+        if summary['species'][species]!=dict(count=count,captures=len(caught),contacts=len(oral),launches=len(launched)):
+            raise RuntimeError('Raw event accounts disagree')
+        removed.extend(e['prey_id'] for e in caught)
+        row.update({species+'_captures':len(caught),species+'_contacts':len(oral),species+'_launches':len(launched),
+                    species+'_rate':len(caught)/(count*36) if count else None})
+    if len(removed)!=len(set(removed)) or len(removed)!=160-summary['final_count']:
+        raise RuntimeError('Unique removals disagree')
+    row.update(native_steps=summary['native_steps'],remaining_fish=summary['final_count'],
+               completion_sha256=sha(folder/'completion.json'))
+    return row
+
+
+def read_line(line):
+    import json
+    return json.loads(line)
+
+
+def paired_statistics(rows,settings):
+    expected={c.name for c in all_cases()}
+    if len(rows)!=40 or {r['case_name'] for r in rows}!=expected:
+        raise ValueError('All40 cells exactly once required; no incomplete outcome selection')
+    lookup={(r['school_seed'],r['grid'],r['presence']):r for r in rows}
+    vectors=[];paired=[]
+    for seed in SEEDS:
+        fd,fg,fdg=(lookup[seed,'fine',p] for p in ('D','G','DG'))
+        cd,cdg=(lookup[seed,'coarse',p] for p in ('D','DG'))
+        d=fdg['D_captures']-fd['D_captures'];g=fdg['G_captures']-fg['G_captures']
+        coarse=cdg['D_captures']-cd['D_captures']
+        vector=[d/(12*36),g/(6*36),coarse/(12*36),(d-coarse)/(12*36)]
+        vectors.append(vector)
+        paired.append(dict(school_seed=seed,fine_D_alone=fd['D_captures'],fine_D_mixed=fdg['D_captures'],
+            fine_G_alone=fg['G_captures'],fine_G_mixed=fdg['G_captures'],coarse_D_alone=cd['D_captures'],
+            coarse_D_mixed=cdg['D_captures'],fine_D_capture_change=d,fine_G_capture_change=g,
+            coarse_D_capture_change=coarse,fine_minus_coarse_D_capture_change=d-coarse,
+            fine_D_rate_change=vector[0],fine_G_rate_change=vector[1],coarse_D_rate_change=vector[2],
+            fine_minus_coarse_D_rate_change=vector[3],both_fine_species_positive=d>0 and g>0))
+    values=np.asarray(vectors,float)
+    index=np.random.default_rng(settings['seed']).integers(0,len(SEEDS),size=(settings['draws'],len(SEEDS)))
+    intervals=np.quantile(values[index].mean(axis=1),settings['quantiles'],axis=0)
+    names=['fine_D_primary','fine_G_secondary','coarse_D_secondary','fine_minus_coarse_D_secondary']
+    summary=[]
+    for j,name in enumerate(names):
+        summary.append(dict(endpoint=name,independent_schools=len(SEEDS),mean_rate_change=float(values[:,j].mean()),
+            pointwise95_low=float(intervals[0,j]),pointwise95_high=float(intervals[1,j]),
+            positive_schools=int((values[:,j]>0).sum()),zero_schools=int((values[:,j]==0).sum()),
+            negative_schools=int((values[:,j]<0).sum())))
+    return paired,summary
+
+
+def csv_write(path,rows):
+    with path.open('w',newline='') as f:
+        writer=csv.DictWriter(f,fieldnames=list(rows[0]));writer.writeheader();writer.writerows(rows)
+
+
+def main():
+    parser=argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('--input',type=Path,default=BULK/'feeding_36T_v1')
+    parser.add_argument('--output',type=Path);args=parser.parse_args()
+    verify_feeding_freeze();preparation=preparation_manifest()
+    status=read(args.input/'status.json');physical=read(args.input/'physical_review.json')
+    if status.get('status')!='complete' or status.get('complete')!=40 or physical.get('status')!='passed':
+        raise RuntimeError('All40 cases plus physical review required before estimates')
+    rows=[case_row(args.input/'cases'/c.name,c) for c in all_cases()]
+    seals={r['case_name']:r['completion_sha256'] for r in rows}
+    if {r['case']:r['completion_sha256'] for r in physical['cases']}!=seals:
+        raise RuntimeError('Physical review does not bind every current case')
+    paired,summary=paired_statistics(rows,read(HERE/'analysis_plan.json')['bootstrap'])
+    output=args.output or args.input/'analysis_final';output.mkdir(parents=True,exist_ok=False)
+    csv_write(output/'case_outcomes.csv',rows);csv_write(output/'paired_school_changes.csv',paired)
+    csv_write(output/'heldout_summary.csv',summary)
+    write(output/'preparation_dispositions.json',dict(candidates=preparation['candidates'],
+        accepted=sum(r['accepted'] for r in preparation['candidates']),rejected=sum(not r['accepted'] for r in preparation['candidates'])))
+    audit=dict(status='passed',at=stamp(),native_steps_executed_by_analysis=0,cases=40,
+        independent_accepted_schools=8,selection_sha256=sha(HERE/'selection.json'),
+        feeding_freeze_sha256=sha(HERE/'FEEDING_FREEZE.json'),case_completion_sha256=seals,
+        bootstrap=read(HERE/'analysis_plan.json')['bootstrap'],
+        interpretation='Separate held-out fine primary; one fixed capture label; secondary species/grid diagnostics; no discovery pooling,reselection or convergence claim',
+        files={p.name:sha(p) for p in output.iterdir() if p.is_file()})
+    write(output/'analysis_audit.json',audit);print(dict(status='passed',cases=40,independent_schools=8,native_steps=0))
+
+
+if __name__=='__main__':main()

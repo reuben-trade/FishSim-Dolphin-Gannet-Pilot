@@ -1,0 +1,1 @@
+Historical exact notebook/profile from public3c2380b before primary192 integration. These files are preserved byte-exact and are not the active entrypoint. Their original relative paths assume the repository root as the working directory. Current analysis opens repository-root main.ipynb.

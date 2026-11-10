@@ -1,0 +1,73 @@
+"""Separate61002 robustness repeat; retain primary estimates and eight school units."""
+import argparse
+from pathlib import Path
+import numpy as np
+from common import HERE,read,sha,write,stamp
+from cases import BULK,SEEDS,all_cases
+from repeat_cases import all_repeat_cases
+from evidence import verify_feeding_freeze,preparation_manifest
+from analyze import case_row,csv_write,paired_statistics
+
+
+def repeat_statistics(primary_rows,repeat_rows,settings):
+    # Reuse the primary complete-set guard without changing or pooling its estimates.
+    primary_pairs,_=paired_statistics(primary_rows,settings)
+    expected={c.name for c in all_repeat_cases()}
+    if len(repeat_rows)!=24 or {r['case_name'] for r in repeat_rows}!=expected:
+        raise ValueError('All24 separately declared repeat cases exactly once required')
+    lookup={(r['school_seed'],r['presence']):r for r in repeat_rows}
+    primary={r['school_seed']:r for r in primary_pairs};pairs=[];vectors=[]
+    for seed in SEEDS:
+        d,g,dg=(lookup[seed,p] for p in ('D','G','DG'))
+        dd=dg['D_captures']-d['D_captures'];gg=dg['G_captures']-g['G_captures']
+        pd=primary[seed]['fine_D_capture_change'];pg=primary[seed]['fine_G_capture_change']
+        vector=[dd/432,gg/216,(dd-pd)/432,(gg-pg)/216];vectors.append(vector)
+        pairs.append(dict(school_seed=seed,primary_D_change=pd,repeat_D_alone=d['D_captures'],
+            repeat_D_mixed=dg['D_captures'],repeat_D_change=dd,primary_G_change=pg,
+            repeat_G_alone=g['G_captures'],repeat_G_mixed=dg['G_captures'],repeat_G_change=gg,
+            repeat_minus_primary_D_change=dd-pd,repeat_minus_primary_G_change=gg-pg,
+            both_repeat_species_positive=dd>0 and gg>0))
+    values=np.asarray(vectors,float)
+    index=np.random.default_rng(settings['seed']).integers(0,8,size=(settings['draws'],8))
+    interval=np.quantile(values[index].mean(axis=1),settings['quantiles'],axis=0)
+    names=['repeat_fine_D_secondary','repeat_fine_G_secondary','repeat_minus_primary_D_secondary','repeat_minus_primary_G_secondary']
+    summary=[dict(endpoint=name,independent_schools=8,mean_rate_change=float(values[:,i].mean()),
+        pointwise95_low=float(interval[0,i]),pointwise95_high=float(interval[1,i]),
+        positive_schools=int((values[:,i]>0).sum()),zero_schools=int((values[:,i]==0).sum()),
+        negative_schools=int((values[:,i]<0).sum())) for i,name in enumerate(names)]
+    return pairs,summary
+
+
+def main():
+    parser=argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('--input',type=Path,default=BULK/'repeat_feeding_36T_v1')
+    parser.add_argument('--primary',type=Path,default=BULK/'feeding_36T_v1')
+    parser.add_argument('--output',type=Path);args=parser.parse_args()
+    verify_feeding_freeze();preparation_manifest()
+    allrows=[];seals={}
+    for output,cells in ((args.primary,all_cases()),(args.input,all_repeat_cases())):
+        status=read(output/'status.json');physical=read(output/'physical_review.json')
+        if status.get('status')!='complete' or status.get('complete')!=len(cells) or physical.get('status')!='passed':
+            raise RuntimeError('Complete primary and separate repeat physical reviews required')
+        rows=[case_row(output/'cases'/c.name,c) for c in cells]
+        current={r['case_name']:r['completion_sha256'] for r in rows}
+        if {r['case']:r['completion_sha256'] for r in physical['cases']}!=current:
+            raise RuntimeError('Physical review does not bind every current case')
+        allrows.append(rows);seals.update(current)
+    if read(args.primary/'analysis_final/analysis_audit.json').get('status')!='passed':
+        raise RuntimeError('Unchanged primary analysis must already be complete')
+    pairs,summary=repeat_statistics(*allrows,read(HERE/'repeat_analysis_plan.json')['bootstrap'])
+    output=args.output or args.input/'analysis_final';output.mkdir(parents=True,exist_ok=False)
+    csv_write(output/'repeat_case_outcomes.csv',allrows[1]);csv_write(output/'paired_stochastic_repeat.csv',pairs)
+    csv_write(output/'repeat_summary.csv',summary)
+    write(output/'analysis_audit.json',dict(status='passed',at=stamp(),native_steps_executed_by_analysis=0,
+        repeat_cases=24,primary_reference_cases=40,independent_schools=8,pooled=False,
+        primary_analysis_sha256=sha(args.primary/'analysis_final/analysis_audit.json'),
+        repeat_declaration_sha256=sha(HERE/'secondary_declaration.json'),case_completion_sha256=seals,
+        bootstrap=read(HERE/'repeat_analysis_plan.json')['bootstrap'],
+        interpretation='Separate secondary61002 robustness repeat; no primary changes,no pooling,n8 schools,pointwise intervals',
+        files={p.name:sha(p) for p in output.iterdir() if p.is_file()}))
+    print(dict(status='passed',repeat_cases=24,independent_schools=8,native_steps=0))
+
+
+if __name__=='__main__':main()

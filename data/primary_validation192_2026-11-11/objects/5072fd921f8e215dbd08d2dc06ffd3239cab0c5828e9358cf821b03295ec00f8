@@ -1,0 +1,45 @@
+"""Audited integer raw outcomes; full confirmatory statistics require all192."""
+import csv,gzip,json
+from common import HERE,read,write,sha,stamp
+from cases import *
+from evidence import validate_candidate_seal,verify_source_freeze
+
+def raw_account(folder):
+    s=read(folder/'summary.json')
+    with gzip.open(folder/'events.jsonl.gz','rt') as f:events=[json.loads(t) for t in f]
+    oral=[e for e in events if e['kind']=='oral' and e['closes_bout']];captured=[e['prey_id'] for e in oral if e['status']=='captured']
+    if len(captured)!=len(set(captured)) or len(captured)!=160-s['final_count']:raise RuntimeError('Unique removals mismatch')
+    out={}
+    for species in ('D','G'):
+        contacts=[e for e in oral if e['actor_id'].startswith(species)];caps=sum(e['status']=='captured' for e in contacts)
+        if caps!=s['species'][species]['captures'] or len(contacts)!=s['species'][species]['contacts']:raise RuntimeError('Raw/summary counts mismatch')
+        out.update({species+'_captures':caps,species+'_contacts':len(contacts),species+'_launches':s['species'][species]['launches']})
+    return out
+
+def row(case):
+    folder=phase_output(case_phase(case))/'cases'/case.name;validate_candidate_seal(folder);s=read(folder/'summary.json')
+    out=dict(case.asdict(),**raw_account(folder))
+    out.update(actual_duration_T=s['actual_duration'],native_steps=s['native_steps'],native_absorbing_termination=s['native_absorbing_termination'],remaining_fish=s['final_count'],initial_fish=160,completion_sha256=sha(folder/'completion.json'));return out
+
+def csvwrite(path,rows):
+    with path.open('w',newline='') as f:
+        w=csv.DictWriter(f,fieldnames=list(rows[0]));w.writeheader();w.writerows(rows)
+
+def descriptive(phase):
+    rows=[row(c) for c in phase_cases(phase)];r=phase_record(phase)
+    csvwrite(r/'case_outcomes.csv',rows)
+    write(r/'descriptive.json',dict(status='complete_prespecified_block_descriptive_only',phase=phase,at=stamp(),independent_schools=4,replicate_labels=2,grid=phase.split('_')[1],cases=len(rows),decision=None,scope='No confirmatory decision or stopping before all16schools/192cases; all later blocks mandatory',table_sha256=sha(r/'case_outcomes.csv')))
+
+def final():
+    from preparation_provenance import verify
+    verify()
+    verify_source_freeze();from review_phase import verify_completed
+    reviews={phase:verify_completed(phase) for phase in PHASES};rows=[row(c) for c in all_cases()]
+    if len(rows)!=192 or len({r['case_name'] for r in rows})!=192:raise RuntimeError('All192 distinct full cases required')
+    from validation_statistics import analyse
+    statistics=analyse(rows);out=BULK/'analysis_final'
+    if out.exists():raise RuntimeError('Preserve final analysis')
+    out.mkdir();csvwrite(out/'case_outcomes.csv',rows);write(out/'statistics.json',statistics)
+    total=sum(r['native_steps'] for r in rows)
+    if total>FEEDING_CAP:raise RuntimeError('Full native step ceiling exceeded')
+    write(out/'analysis_audit.json',dict(status='passed',full_cases=192,independent_schools=16,replicate_labels=2,primary_grid='fine',native_steps=total,native_steps_executed_by_analysis=0,source_freeze_sha256=sha(HERE/'frozen_sources.json'),protocol_sha256=sha(HERE/'protocol.json'),phase_review_sha256={p:sha(phase_record(p)/'physical_review.json') for p in PHASES},case_completion_sha256={r['case_name']:r['completion_sha256'] for r in rows},files={p.name:sha(p) for p in out.iterdir() if p.is_file()}))

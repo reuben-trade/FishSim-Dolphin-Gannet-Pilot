@@ -1,0 +1,22 @@
+"""Separately declared61002 secondary repeat; primary schedule remains unchanged."""
+from dataclasses import dataclass
+from cases import Case,SEEDS
+
+@dataclass(frozen=True)
+class RepeatCase(Case):
+    capture_seed:int=61002
+    def __post_init__(self):
+        if type(self.school_seed) is not int or self.school_seed not in SEEDS:
+            raise ValueError('Only the same eight held-out schools')
+        if self.grid!='fine' or self.presence not in ('D','G','DG') or self.capture_seed!=61002:
+            raise ValueError('Secondary61002 fine D/G/DG only')
+
+def all_repeat_cases():return tuple(RepeatCase(s,'fine',p) for s in SEEDS for p in ('D','G','DG'))
+def repeat_stages():
+    cells=all_repeat_cases()
+    return tuple((name,tuple(c for c in cells if c.presence==p)) for name,p in
+        [('D_only','D'),('G_only','G'),('mixed','DG')])
+def repeat_smoke_cases():return tuple(RepeatCase(SEEDS[0],'fine',p) for p in ('D','G','DG'))
+def initialization_cases():
+    from cases import all_cases
+    return all_cases()+all_repeat_cases()

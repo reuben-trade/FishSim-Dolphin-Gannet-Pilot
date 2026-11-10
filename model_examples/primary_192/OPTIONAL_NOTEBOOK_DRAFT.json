@@ -1,0 +1,14 @@
+{
+  "status": "PRIVATE proposal; do not integrate until full-horizon artifact release and complete primary192 publication checks",
+  "default_native_enabled": false,
+  "scope": "Current main.ipynb and old optional examples stay unchanged. New selected world may run4T or actual36T; full192 queue explicit separately.",
+  "plan_cell": "from pathlib import Path\nimport subprocess, sys\nPROJECT_ROOT = Path.cwd().resolve()\nPRIMARY = PROJECT_ROOT/'model_examples'/'primary'/'run_primary_model.py'\nsubprocess.run([sys.executable,'-B',str(PRIMARY),'--package-root',str(PROJECT_ROOT),'--plan','--duration','36','--grid','both'],check=True,cwd=PROJECT_ROOT)\n",
+  "opt_in_cell": "RUN_PRIMARY_MODEL = False\nPRIMARY_HORIZON_T = 4\nif RUN_PRIMARY_MODEL:\n    import tempfile\n    work = Path(tempfile.mkdtemp(prefix='FishSim_primary_replay_', dir=Path.home()))\n    runtime,zero,output = work/'runtime',work/'zero192.json',work/'model_output'\n    snapshot = PROJECT_ROOT/'data'/'primary_validation192_snapshot'\n    base = [sys.executable,'-B',str(PRIMARY),'--package-root',str(PROJECT_ROOT),'--runtime',str(runtime)]\n    subprocess.run(base+['--prepare','--snapshot',str(snapshot)],check=True,cwd=PROJECT_ROOT)\n    subprocess.run(base+['--check','--output',str(zero)],check=True,cwd=PROJECT_ROOT)\n    subprocess.run(base+['--run','--duration',str(PRIMARY_HORIZON_T),'--school','39065501','--label','71001','--grid','both','--arms','D,G,DG','--workers','6','--zero-receipt',str(zero),'--output',str(output)],check=True,cwd=PROJECT_ROOT)\nelse:\n    print('Actual model replay is off; saved-data paper reproduction remains the default.4T is a short demonstration;36T is a full encounter.')\n",
+  "future_integration_checks": [
+    "Use PROJECT_ROOT for package runner, not paper-profile ROOT",
+    "Keep literal RUN_PRIMARY_MODEL=False under canonical pre-kernel code guard",
+    "Install reviewed portable reader at the pinned path and accepted production snapshot",
+    "Bind exact artifact-specific actual192zero plus4T and full36T both-grid release proofs",
+    "No claim default saved-data analysis executes the full model or all192 native encounters"
+  ]
+}

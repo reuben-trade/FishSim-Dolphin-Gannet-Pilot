@@ -1,0 +1,153 @@
+{
+  "status": "complete_independently_audited",
+  "scope": {
+    "H": 1,
+    "G": 36,
+    "D": [
+      12,
+      24
+    ],
+    "new_full_cases": 8,
+    "reused_comparators": 12,
+    "independent_schools": 4,
+    "selected_roles_deduplicated": true,
+    "new_independent_schools": 0
+  },
+  "native": {
+    "zero_step_constructions": 8,
+    "zero_step_steps": 0,
+    "smoke_steps": 6400,
+    "full_steps": 230400,
+    "all_stage_steps": 236800,
+    "failures": 0,
+    "retries": 0,
+    "further_native_work": "HOLD; no authorization follows this bounded study"
+  },
+  "bindings": {
+    "independent_review": {
+      "path": "/tmp/FishSim_Dolphin_Count_Sensitivity_2026-11-09/independent_complete_map_review.json",
+      "sha256": "5b804d899c7feca29323d22af4a15985b853b103ee5a3976ba699bb3194d1f67"
+    },
+    "execution_freeze_sha256": "6b404be6af4760c04349c4d48f722fc2b9eff5242d5897ff45df9424d633592b",
+    "files": {
+      "full_36T_v1/status.json": "b829e39ad849913a32c250ec5930379a472a97f38be8544bf6fd4deeb84a82e7",
+      "full_36T_v1/physical_review.json": "07e79ca8984517092d1c1d7c7e896b68ecb441bb7c662c64549ec0c2b2587807",
+      "full_36T_v1/analysis_final/analysis_audit.json": "de1de0c105e553d9ef4d6fdbe9447324ddf46f840c1bb587f271942a3f893cc3",
+      "full_36T_v1/analysis_final/case_outcomes.csv": "733fb2c8285644e3cd7912518c3098b10548f692a8deaa7fcbf6dcd86be27163",
+      "full_36T_v1/analysis_final/reused_case_outcomes.csv": "73b3a1a133c23a7e9178e1848ffd24b1099702d238bb341ad9bbbff98ced8164",
+      "full_36T_v1/analysis_final/paired_school_changes.csv": "79aeb1b0c86e09fcbcf61a98345f55b6fd500cf367e87b013c53718a3e103aeb",
+      "full_36T_v1/analysis_final/regime_summary.csv": "1d4a99cac6456cb00121553e94d272a6352b111a192fc49774c71dab08b0e17e"
+    }
+  },
+  "verified_group_totals": {
+    "D12_alone": 91,
+    "D12_mixed": 132,
+    "D24_alone": 183,
+    "D24_mixed": 229,
+    "G_only": 16,
+    "G_with_D12": 94,
+    "G_with_D24": 80
+  },
+  "D24_dolphin_gains": [
+    1,
+    26,
+    6,
+    13
+  ],
+  "D24_gannet_gains": [
+    -3,
+    7,
+    33,
+    27
+  ],
+  "per36T_individual_endpoints": {
+    "D12_partner_rate_change": {
+      "mean": 0.8541666666666666,
+      "pointwise95": [
+        0.6666666666666666,
+        1.0416666666666665
+      ],
+      "school_signs": {
+        "positive": 4,
+        "zero": 0,
+        "negative": 0
+      }
+    },
+    "D24_partner_rate_change": {
+      "mean": 0.4791666666666667,
+      "pointwise95": [
+        0.14583333333333331,
+        0.8749999999999999
+      ],
+      "school_signs": {
+        "positive": 4,
+        "zero": 0,
+        "negative": 0
+      }
+    },
+    "D24_minus_D12_partner_rate_change": {
+      "mean": -0.37500000000000006,
+      "pointwise95": [
+        -0.8125,
+        -0.020833333333333332
+      ],
+      "school_signs": {
+        "positive": 1,
+        "zero": 0,
+        "negative": 3
+      }
+    },
+    "D24_minus_D12_mixed_rate": {
+      "mean": -0.3645833333333333,
+      "pointwise95": [
+        -0.6666666666666666,
+        -0.0625
+      ],
+      "school_signs": {
+        "positive": 0,
+        "zero": 0,
+        "negative": 4
+      }
+    },
+    "G_with_D12_partner_rate_change": {
+      "mean": 0.5416666666666665,
+      "pointwise95": [
+        0.46527777777777773,
+        0.6319444444444444
+      ],
+      "school_signs": {
+        "positive": 4,
+        "zero": 0,
+        "negative": 0
+      }
+    },
+    "G_with_D24_partner_rate_change": {
+      "mean": 0.4444444444444444,
+      "pointwise95": [
+        0.05555555555555555,
+        0.8333333333333333
+      ],
+      "school_signs": {
+        "positive": 3,
+        "zero": 0,
+        "negative": 1
+      }
+    }
+  },
+  "interpretation": "At this selected fixedH/G, D24 still has positive dolphin mean/each-school partnergains and positive mean birdgain, but weaker per-dolphin partnergain and mixed food; birds gain3/4 vs4/4 withD12. More groupfood doesnot imply morefood peranimal. Not an optimalpod or isolatedcompetition mechanism result.",
+  "limitations": [
+    "Four previously observed schools, onecapturelabel, exploratoryD12-basedregimeselection.",
+    "No fine-grid or fresh-school validation of this population sensitivity.",
+    "D24 duplicates each original12launchslot, pointbodies/noavoidance, noaddedspatialcoverage.",
+    "Fish threatproximity combines bymaximum, not additiveamplitude."
+  ],
+  "publication": {
+    "base_git": "73cffca",
+    "native_doc_id": "13wFf-UVt0-ooEVR_VeUrYbBFTdAL_ugYp9my8bJHuss",
+    "current_profile": "current_through36_2026-11-10",
+    "notebook": "main.ipynb",
+    "protected_prior_inputs": 9335,
+    "owner": "/root/paper_update",
+    "state": "private acceptance/preparation activated; noD24 publicationyet"
+  }
+}

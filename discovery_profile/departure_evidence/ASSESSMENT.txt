@@ -1,0 +1,92 @@
+GANNET DEPARTURE AND BENEFIT THROUGH TIME — 9 NOVEMBER 2026
+
+Scope: the corrected 60-run, 36T H × G discovery bank. There are 36 mixed
+runs, 12 gannet-only controls and 12 dolphin-only controls, reusing four
+school geometries. All source configurations and consumed files were sealed;
+no behaviour, probability, movement rule or native simulation was changed.
+
+HOW COMMON IS THE DEFAULT'S BEHAVIOUR?
+The strict observed pattern is: every gannet ends in search, no bird has an
+accessible new target, and fish are shallow enough but beyond the travel gate.
+This occurs in only 2/48 bird-bearing runs: 1/36 mixed and 1/12 gannet-only.
+
+School      Treatment                 Last launch  Last water entry  Last bout end
+39061001    H1 / 6G / mixed (default)  17.6675T     19.4128T          19.5638T
+39061002    6G / gannets only          14.1280T     13.7243T          16.0513T
+
+All birds enter search by 21.8267T and 18.8057T respectively. Their sampled
+whole-school depth blackouts are 17.3–31.9T and 16.4–26.9T. Shallow fish later
+return, but straight-flight search has taken the birds beyond the travel gate.
+The second case contains no dolphins, so upward dolphin herding cannot be the
+sole explanation or solution for this search/reacquisition limitation.
+
+Four runs have no new launch during the final 6T. The other two are school
+39061001 G-only/1G (last launch 29.0637T) and school 39061002 H3/3G mixed
+(29.7137T). They end orienting/returning with eligible targets, not with the
+whole flock lost. A long launch gap must not be called permanent cessation.
+Indeed, 20/48 runs launch again after a gap of at least 6T, and 33/48 have a
+committed attack in progress at the observation boundary.
+
+At bird level, 14/160 saved bird trajectories end searching without accessible
+prey: 12 belong to the two full-flock losses; two more are G0/G2 in school
+39063502 H2/3G, where fish are still too deep. These are repeated trajectories,
+not 160 independent biological samples.
+
+DOES BENEFIT DROP WHEN ATTACKS CEASE?
+The plots compare each mixed species with its own matched solo control:
+same school and H for dolphins; same school and bird count for gannets.
+They show cumulative percent gain, absolute cumulative captures/predator
+advantage, and the trailing 6T capture-rate advantage. A zero control gives
+an undefined percentage, not zero or infinity. The first 6T has no complete
+trailing window. Raw mixed/control counts accompany the exported data.
+
+The default has a short dolphin-benefit dip: cumulative gain is +20% at
+19.6T, reaches 0% around 20–21T, then recovers and ends at +17.39% (27 vs
+23 captures). Thus the full curve does not show a persistent collapse after
+gannet attacks cease. It should not be summarized as never dipping.
+
+Using equal, fully observed 6T windows around its final committed bout end
+(19.56375T), dolphins capture 5 vs 4 in the preceding window and 9 vs 7 in
+the following window. Relative gain is +25% before and +28.57% after;
+absolute rate advantage changes from +0.01389 to +0.02778 captures/predator/T.
+This is one trajectory comparison with integer counts, not a causal test.
+
+Gannets already trail their control before the last launch: 2 vs 5 captures
+at 17.7T. Their cumulative gap later widens to 2 vs 7 (-71.43%). A recent
+window with zero catches in both runs is not improved gannet feeding, even
+though its absolute difference is zero; its percentage is undefined.
+
+Only 2/36 mixed runs have complete 6T windows on both sides of the last
+launch; dolphin rate advantage rises in both. Only the default has complete
+6T windows around the final committed attack ending. In 24/36 runs a gannet
+attack is unfinished at 36T, and 11 end too late for a full post-window.
+There is therefore no basis here for a general claim that benefit declines
+after cessation, nor for a general claim that cessation has no effect.
+
+HOW TO READ THE MARKERS
+In the exported PNG/PDF figures, solid burgundy is the last realised launch;
+dashed blue is the last committed water entry. The browser has its own legend.
+Dotted grey: end of the final committed plunge/pursuit, if observed. Shading
+spans launch to that end. Ascent and prey responses can continue afterward.
+An uncompleted bout has no invented ending. T is model time, not seconds.
+In cessation_summary.csv, last_gannet_bout_end_T means the latest observed
+closed bout. For final attack cessation, use benefit_by_time's final active-end
+marker and right-censoring flag; an unfinished later bout is not a cessation.
+
+NEXT MODEL TESTS
+An explicit dolphin surface-herding objective and a separate gannet holding/
+reacquisition rule would address different mechanisms. The observed default
+does not justify assuming flock departure is common across this bank. Neither
+behaviour has been changed here; fish depth and contact probability are not
+adjusted to manufacture continued feeding.
+
+DELIVERABLES
+The updated current-run browser includes selectable timecourse metrics, exact
+last-attack markers, click-to-seek and a last-launch/activity filter. Its fixed
+36T outcome table remains separate from time-varying plots.
+benefit_default.png/pdf: default's six-panel plot.
+benefit_atlas.pdf: all 36 mixed-run plots.
+cessation_overview.png/pdf: actual attack raster for all 48 bird-bearing runs.
+departure_depth_accessibility.png/pdf: the two full-flock losses.
+cessation_summary.csv, bird_details.csv: affected runs and birds.
+benefit_by_time.csv/json, before_after.csv: complete numerical data.

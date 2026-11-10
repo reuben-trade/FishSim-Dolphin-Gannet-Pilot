@@ -1,0 +1,46 @@
+"""Native-free meaningful inventory, phase-boundary and physical-tail tests."""
+import ast
+from pathlib import Path
+import pytest
+from cases import *
+from evidence import validate_dispatch
+
+def test_inventory_and_budget():
+    cells=all_cases();assert len(cells)==len({c.name for c in cells})==192
+    assert sum(phase_limit(p) for p in PHASES)==8294400
+    assert phase_limit('smoke')==28800 and ALL_NEW_CAP==8912000
+    assert [len(phase_cases(p)) for p in PHASES]==[24]*8
+
+def test_phase_partition_and_order():
+    assert set(sum((phase_cases(p) for p in PHASES),()))==set(all_cases())
+    for p in PHASES:
+        stages=execution_stages(p);assert [n for n,_ in stages]==['D_only_controls','G_only_controls','mixed']
+        assert [len(x) for _,x in stages]==[8,8,8]
+
+def test_wrong_case_grid_and_output_rejected_before_any_constructor():
+    phase='block1_coarse';wave,cells=execution_stages(phase)[0];d=dict(status='running',phase=phase,wave=wave,case_names=[c.name for c in cells])
+    assert validate_dispatch(cells[0],'feeding',phase_output(phase),d)==(phase,wave)
+    for c in (Case(SEEDS[0],'fine','D'),Case(SEEDS[4],'coarse','D'),Case(SEEDS[0],'coarse','DG')):
+        with pytest.raises(ValueError):validate_dispatch(c,'feeding',phase_output(phase),d)
+    with pytest.raises(ValueError):validate_dispatch(cells[0],'feeding',Path('/tmp/wrong'),d)
+
+def test_physical_tail_and_helpers_exact():
+    old=ast.parse((ROOT/'research/heldout_regime_validation_2026-11-09/run.py').read_text());new=ast.parse((HERE/'physical_run.py').read_text())
+    a={n.name:n for n in old.body if isinstance(n,ast.FunctionDef)};b={n.name:n for n in new.body if isinstance(n,ast.FunctionDef)}
+    for n in b:
+        if n!='run_case':assert ast.dump(a[n],include_attributes=False)==ast.dump(b[n],include_attributes=False)
+    x=a['run_case'].body;y=b['run_case'].body
+    i=next(i for i,n in enumerate(x) if 'engine, metadata = build' in ast.unparse(n));j=next(i for i,n in enumerate(y) if 'engine, metadata = build' in ast.unparse(n))
+    assert [ast.dump(n,include_attributes=False) for n in x[i+1:]]==[ast.dump(n,include_attributes=False) for n in y[j+1:]]
+
+def test_physical_modules_byte_exact():
+    for n in ['regime_controller.py','gannet.py','cadence.py','horizons.py','review_actual.py']:
+        assert (HERE/n).read_bytes()==(ROOT/'research/heldout_regime_validation_2026-11-09'/n).read_bytes()
+
+
+def test_raw_accounting_on_sealed_historical_fixtures():
+    from analyze import raw_account
+    base=Path('/tmp/FishSim_Upper_Count_Extension_2026-11-09/full_36T_v1/cases')
+    a=raw_account(base/'s39061001_H1_G36_DG_c61001');b=raw_account(base/'s39061001_Gonly36_G_c61001')
+    assert a['D_captures']==36 and a['G_captures']==26
+    assert b['D_captures']==0 and b['G_captures']==7

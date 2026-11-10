@@ -1,0 +1,57 @@
+"""Native-free declared sampler and execution-contract preflight."""
+from dataclasses import replace
+import hashlib
+from pathlib import Path
+import numpy as np
+from common import HERE,read,sha,write,require_unoptimized
+from cases import SEEDS,all_cases,execution_stages,smoke_cases
+from repeat_cases import all_repeat_cases,repeat_stages,repeat_smoke_cases,initialization_cases
+from evidence import verify_selection,DISCOVERY
+
+
+def initial_array_digest(state):
+    return hashlib.sha256(state.positions.tobytes()+state.directions.tobytes()).hexdigest()
+
+
+def validate():
+    require_unoptimized();verify_selection(deep=True)
+    import prepare
+    from research.prey_mediated.scenario import ScenarioConfig,make_initial_state
+    declaration=prepare.declaration();config=ScenarioConfig(**declaration['scenario'])
+    rows=[]
+    for seed in SEEDS:
+        initial=make_initial_state(seed,config)
+        if (len(initial.prey_ids)!=160 or len(np.unique(initial.prey_ids))!=160
+                or not np.isfinite(initial.positions).all() or np.any(initial.positions[:,2]>0)
+                or not np.isfinite(initial.directions).all()
+                or not np.allclose(np.linalg.norm(initial.directions,axis=1),1.,rtol=0,atol=1e-12)
+                or initial.time!=0 or initial.step_index!=0):
+            raise RuntimeError('Original raw sampler identity/finite/unit-heading/start clock changed')
+        rows.append(dict(school_seed=seed,initial_array_sha256=initial_array_digest(initial)))
+    cells=all_cases()
+    if len(cells)!=40 or len({c.name for c in cells})!=40:
+        raise RuntimeError('Forty unique primary-label held-out cases required')
+    if sum(round(36/c.dt) for c in cells)!=1843200:
+        raise RuntimeError('Full feeding step budget changed')
+    if sum(round(4/c.dt) for c in smoke_cases())!=25600:
+        raise RuntimeError('Smoke step budget changed')
+    if [len(c) for _,c in execution_stages()]!=[16,8,16]:
+        raise RuntimeError('D-only/control/mixed completion waves changed')
+    if (len(all_repeat_cases())!=24 or len(initialization_cases())!=64
+            or sum(round(36/c.dt) for c in all_repeat_cases())!=1382400
+            or sum(round(4/c.dt) for c in repeat_smoke_cases())!=19200
+            or [len(c) for _,c in repeat_stages()]!=[8,8,8]):
+        raise RuntimeError('Separate secondary repeat schedule changed')
+    return dict(status='passed',native_constructions=0,native_steps=0,pure_cases=40,
+        sampler_candidates=8,sampler_rows=rows,model_byte_identity={n:sha(HERE/n)
+          for n in ('regime_controller.py','gannet.py','horizons.py')},
+        criterion='Original36T screen only; extra36T diagnostic separately recorded',
+        primary_capture_labels=[61001],secondary_capture_labels=[61002],
+        pure_repeat_cases=24,pure_initialization_cases=64,H0_equals_Hstar=True)
+
+
+if __name__=='__main__':
+    destination=HERE/'PURE_PREFLIGHT.json'
+    if destination.exists():raise RuntimeError('Refuse to overwrite a pure receipt')
+    result=validate();write(destination,result)
+    print({k:v for k,v in result.items() if k!='sampler_rows'})

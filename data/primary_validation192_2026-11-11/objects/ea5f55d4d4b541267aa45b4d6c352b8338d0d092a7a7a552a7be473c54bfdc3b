@@ -1,0 +1,8 @@
+"""Exact reviewed preparation-control provenance; no model imports."""
+from common import sha
+FILES={'/home/venture/uwa/complex-systems/FishSim-RL/research/independent_validation_2026-11-10/PREPARATION_APPROVED.json': '72b26b090fb9a7335212b105700918f4fc65933b49c51a9444a6a39b65b57c49', '/home/venture/uwa/complex-systems/FishSim-RL/research/independent_validation_2026-11-10/INDEPENDENT_PREPARATION_REVIEW.json': 'ae461b38b6004eee288575c660de8e7df76d5ac3a1416b42d43f8b01c98bd748', '/home/venture/FishSim_Independent_Validation_2026-11-10/preparation_supervisor_v1.json': '4bda479ded01cfde5004c4ce8cf42f5cf3a248992a31aa34144549353ce9f00d', '/home/venture/FishSim_Independent_Validation_2026-11-10/independent_preparation_outcome_review.json': 'd3c14eb086e0dfd20338f7c6979d2887783aec04582fc89f94ddf7a613e455c9', '/tmp/FishSim_Validation_Preparation_Supervisor_2026-11-10.py': 'f3e3d0a4fd1cd2fe629937543665e0f1ae705951545a0610c3c5d70fc9f4cd02'}
+
+def verify():
+    for p,d in FILES.items():
+        if sha(p)!=d:raise RuntimeError("Preparation-control receipt changed: "+p)
+    return True

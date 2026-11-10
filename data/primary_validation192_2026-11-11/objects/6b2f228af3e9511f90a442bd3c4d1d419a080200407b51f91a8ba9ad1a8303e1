@@ -1,0 +1,25 @@
+{
+  "capture_label": 61002,
+  "required_cases": 24,
+  "independent_unit": "Same8 schools; not additional independent replicates",
+  "primary_unchanged": true,
+  "estimands": [
+    "Secondary fine D paired DG-D/(12*36)",
+    "Secondary fine G paired DG-Gonly/(6*36)",
+    "Within-school secondary-minus-primary D effect",
+    "Within-school secondary-minus-primary G effect"
+  ],
+  "bootstrap": {
+    "draws": 10000,
+    "seed": 88495509,
+    "quantiles": [
+      0.025,
+      0.975
+    ],
+    "generator": "NumPy default_rng PCG64",
+    "resampling": "One common whole-school matrix across species and grids",
+    "interpretation": "Pointwise95%; one primary endpoint; secondary numerical/species diagnostics"
+  },
+  "interpretation": "Separate secondary stochastic robustness repeat; report alongside unchanged primary,n8 not n16,no sign-dependent execution,no H/N reselection or pooling",
+  "native_steps": 0
+}

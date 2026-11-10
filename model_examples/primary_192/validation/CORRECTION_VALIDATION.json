@@ -1,0 +1,67 @@
+{
+  "schema": "primary_model_snapshot_contract_correction_validation_v2",
+  "status": "passed_focused_source_and_synthetic_contract_checks",
+  "original_v1_directory": "/home/venture/FishSim_Primary_Model_Candidate_2026-11-10",
+  "original_v1_freeze_sha256": "b6ed64c8f6df737e83912ab68a58462770f9496ea4d2b0e293d66d7a86ffb6ef",
+  "original_v1_handoff_sha256": "62bc2af3d2c13be6a421f053e80e2e537c1856cc7d8f503eb2cc3a4690d79095",
+  "original_v1_frozen_files_unchanged": 323,
+  "interface_files": {
+    "primary_runtime.py": "a0db03c31a614cad35dd4141fe4b57cc299c2bc5cfa84dca141fef0edf936ef6",
+    "primary_gate.py": "917accc9217433ef53af205c52ff969d5c4b0daf63bc235614cfe73bf2d3e2a5",
+    "primary_worker.py": "ff85e99f5e00d949db3d88381325b105264f5e6940b08fac6f4ced92cb8dbfa3",
+    "run_primary_model.py": "eb02a2e45258b120c86c082f4b750ebc49111c07a65a19f9f139a89e99c22f7e",
+    "MODEL_INPUTS.json": "69f9ee49d1e9ff9831f0a5936bb96ad1b7eebdd55a9b625893592c70719d3f98",
+    "REFERENCE_MANIFEST.json": "d77424a0f01d90eaf5ed64166db73e062f28ea4cf39e9876ad0cc0a72b63512f"
+  },
+  "changed_executable_interface_files": [
+    "primary_runtime.py"
+  ],
+  "correction": "Normalize directory or explicit SNAPSHOT.json once to one canonical manifest file; use it for the real pinned reader and declaration hash/file/root. Validate evidence before resolving primary source objects.",
+  "targeted_tests": {
+    "status": "passed",
+    "tests": 8,
+    "elapsed_seconds": 0.257,
+    "test_source_sha256": "8e28677f0c45d3cd5d2a665c023eb76d5a9d457368914d937ef350d4346a2039",
+    "execution": "Actual CPython3.12 -B -m unittest -v test_snapshot_contract",
+    "synthetic_only": true,
+    "coverage": [
+      "real pinned reader API accepts explicitly synthetic manifest file after file/directory/space-path normalization",
+      "same tested provenance helper supplies prepare declaration SHA/file/root",
+      "production preparation rejects synthetic fixtures coherently for both forms before creating runtime",
+      "missing manifest/wrong filename/nonpath inputs fail closed",
+      "missing or changed pinned reader fails closed",
+      "directory/file symlinks normalize consistently",
+      "real evidence validator remains before primary source path resolution",
+      "private author branch and all other runtime operations AST-exact outside manifest loading/declaration provenance"
+    ]
+  },
+  "portable_reader_sha256": "3d08ad828a2bb64c93492a7181ba5351d66ae57d4118b4eee877c0126a7c95e3",
+  "retained_v1_proofs": {
+    "preparation_validation_sha256": "a4f2bd62d845ded5bd2288d4d158b9dca2134d88ebe966aac659eb93f972af71",
+    "historical_pure192_sha256": "19abb638eca2cbe42a673fb925df243ed12852a2355af79d556cba14395cf7ce",
+    "source_built_pure192_sha256": "7742fcc572b9dd263bf4c81ccb9f502db30ee443a73cf004fa5ccf8fc9aa6415",
+    "pure_starts_previously_verified": 384,
+    "prior_targeted_tests_passed": 18,
+    "parent_source_bindings_verified": 2127,
+    "prior_public_protected_paths_verified": 9916,
+    "old_g36_v2_files_verified": 53,
+    "reuse_basis": "Constructor/pure assembly/physical derivation and author-input branch are AST-identical; worker/gate/CLI/RNG/input manifests are byte-identical. No new v2 actual runtime or native proof inferred."
+  },
+  "accepted_reference_files_unchanged": 303,
+  "new_bootstrap_draws": 0,
+  "unaccepted_feeding_rows_read": 0,
+  "native_imports": 0,
+  "native_constructions": 0,
+  "native_steps": 0,
+  "native_lease_acquisitions": 0,
+  "compiler_invocations": 0,
+  "production_snapshot_created": false,
+  "release_certificate_exists": false,
+  "public_or_Doc_writes": 0,
+  "pending": "Independent focused v2 peer review, then future actual native engineering only after parent192 FINAL+metadata PASS/released lease/fresh root authority.",
+  "future_engineering_maximum_steps": 576000,
+  "test_environment": {
+    "python": "3.12",
+    "platform": "Linux-7.0.0-38-generic-x86_64-with-glibc2.43"
+  }
+}

@@ -1,0 +1,174 @@
+"""Phase-specific freezes and explicit reviewed native boundaries."""
+from pathlib import Path
+from common import HERE,ROOT,read,sha,write,validate_seal,require_unoptimized
+from cases import BULK,SEEDS,H0,H_STAR,N_STAR,all_cases,smoke_cases
+
+DISCOVERY=ROOT/'research/pilot_regime_sweep_2026-11-09_v2'
+PREP_OUTPUT=BULK/'preparation_v1'
+
+
+def verify_selection(deep=False):
+    selection=read(HERE/'selection.json')
+    if sha(HERE/'selection.json')!=read(HERE/'protocol.json')['selection_sha256']:
+        raise RuntimeError('Exact frozen selection receipt changed')
+    if (selection['H0'],selection['H_star'],selection['N_star'])!=(H0,H_STAR,N_STAR):
+        raise RuntimeError('Frozen selection differs from the held-out identities')
+    if selection['capture_seed']!=61001 or selection['gannet_sign_used_for_selection']:
+        raise RuntimeError('Selection rule or capture label changed')
+    declaration=read(HERE/'secondary_declaration.json');protocol=read(HERE/'protocol.json')
+    if (sha(HERE/'secondary_declaration.json')!=protocol['secondary_repeat']['declaration_sha256']
+            or declaration.get('approved') is not True
+            or declaration.get('selection_sha256')!=protocol['selection_sha256']
+            or declaration.get('primary_capture_setting')!=61001 or declaration.get('secondary_capture_setting')!=61002
+            or declaration.get('secondary_full_cases')!=24 or declaration.get('secondary_maximum_steps')!=1401600
+            or declaration.get('primary_estimate_changed') is not False
+            or declaration.get('selected_primary_plus_secondary_all_stage_maximum_steps')!=3859200
+            or read(HERE/'analysis_plan.json')!=read(HERE/'primary_analysis_plan_before_repeat.json')):
+        raise RuntimeError('Separate secondary declaration or unchanged primary analysis contract differs')
+    for path,digest in selection['evidence_sha256'].items():
+        if sha(path)!=digest:raise RuntimeError('Discovery evidence changed: '+path)
+    for name,digest in selection['case_completion_sha256'].items():
+        case=DISCOVERY/'results/full_36T_v1/cases'/name
+        if sha(case/'completion.json')!=digest:raise RuntimeError('Discovery seal changed')
+        if deep:validate_seal(case)
+    for name in ('regime_controller.py','gannet.py','horizons.py'):
+        if sha(HERE/name)!=sha(DISCOVERY/name):raise RuntimeError('Frozen model changed: '+name)
+    return selection
+
+
+def base_sources():
+    selection=verify_selection()
+    original=read(DISCOVERY/'frozen_sources.json')['source_sha256']
+    for path,digest in original.items():
+        if sha(path)!=digest:raise RuntimeError('Discovery source dependency changed: '+path)
+    files=list(HERE.glob('*.py'))+[HERE/name for name in
+        ('protocol.json','analysis_plan.json','selection.json','root_plan.md','runtime.json',
+         'primary_protocol_before_repeat.json','primary_analysis_plan_before_repeat.json',
+         'PRIMARY_PURE_PREFLIGHT_BEFORE_REPEAT.json','secondary_declaration.json','repeat_analysis_plan.json')]
+    files += [DISCOVERY/'frozen_sources.json',*map(Path,selection['evidence_sha256'])]
+    for name in selection['case_completion_sha256']:
+        folder=DISCOVERY/'results/full_36T_v1/cases'/name
+        seal=validate_seal(folder)
+        files += [folder/'completion.json']+[folder/n for n in seal['files']]
+    result=dict(original)
+    result.update({str(p.resolve()):sha(p) for p in files})
+    return result
+
+
+def verify_preparation_freeze():
+    frozen=read(HERE/'PREPARATION_FREEZE.json')
+    if frozen['source_sha256']!=base_sources() or frozen['pure_preflight_sha256']!=sha(HERE/'PURE_PREFLIGHT.json'):
+        raise RuntimeError('Preparation source/input/pure preflight freeze changed')
+    pure=read(HERE/'PURE_PREFLIGHT.json')
+    if pure.get('status')!='passed' or pure.get('native_steps')!=0 or pure.get('native_constructions')!=0:
+        raise RuntimeError('Passed native-free preflight required')
+    return frozen
+
+
+def preparation_manifest():
+    manifest=read(PREP_OUTPUT/'manifest.json')
+    if manifest.get('status')!='complete' or set(manifest['checkpoints'])!={str(s) for s in SEEDS}:
+        raise RuntimeError('All eight preparation dispositions are required')
+    if (len(manifest['candidates'])!=8 or {r['school_seed'] for r in manifest['candidates']}!=set(SEEDS)
+            or manifest.get('total_native_steps')!=588800):
+        raise RuntimeError('Exact eight dispositions and bounded original preparation required')
+    dispositions={r['school_seed']:r for r in manifest['candidates']}
+    for seed in SEEDS:
+        folder=PREP_OUTPUT/f's{seed}'
+        validate_seal(folder)
+        row=read(folder/'summary.json');checkpoint=manifest['checkpoints'][str(seed)]
+        if row['checkpoint']['sha256']!=checkpoint['sha256'] or sha(checkpoint['path'])!=checkpoint['sha256']:
+            raise RuntimeError('Prepared checkpoint changed')
+        if row!=dispositions[seed] or bool(row['accepted'])!=bool(checkpoint['accepted']):
+            raise RuntimeError('Preparation disposition differs from its sealed summary')
+    if not all(row['accepted'] for row in manifest['candidates']):
+        raise RuntimeError('Rejected candidate retained: stop for a recorded technical review; no replacement or automatic feeding')
+    return manifest
+
+
+def feeding_sources():
+    verify_preparation_freeze();preparation_manifest()
+    sources=base_sources()
+    for p in PREP_OUTPUT.rglob('*'):
+        if p.is_file():sources[str(p.resolve())]=sha(p)
+    sources[str((HERE/'PREPARATION_FREEZE.json').resolve())]=sha(HERE/'PREPARATION_FREEZE.json')
+    return sources
+
+
+def verify_feeding_inputs():
+    frozen=read(HERE/'FEEDING_INPUT_FREEZE.json')
+    if frozen['source_sha256']!=feeding_sources():raise RuntimeError('Feeding source/preparation freeze changed')
+    return frozen
+
+
+def verify_feeding_freeze():
+    frozen=read(HERE/'FEEDING_FREEZE.json');inputs=verify_feeding_inputs()
+    if (frozen['feeding_input_freeze_sha256']!=sha(HERE/'FEEDING_INPUT_FREEZE.json')
+            or frozen['actual_zero_step_sha256']!=sha(HERE/'ACTUAL_ZERO_STEP.json')
+            or frozen['source_sha256']!=inputs['source_sha256']):
+        raise RuntimeError('Final feeding/initial-state freeze changed')
+    zero=read(HERE/'ACTUAL_ZERO_STEP.json')
+    if (zero.get('status')!='passed' or zero.get('native_steps')!=0 or zero.get('actual_cases')!=64
+            or zero.get('feeding_input_freeze_sha256')!=sha(HERE/'FEEDING_INPUT_FREEZE.json')):
+        raise RuntimeError('All64 primary/repeat actual zero-step starts required')
+    return frozen
+
+
+def require_approval(phase):
+    require_unoptimized()
+    names={'preparation':('PREPARATION_FREEZE.json','PREPARATION_APPROVED.json',588800),
+           'initialization':('FEEDING_INPUT_FREEZE.json','INITIALIZATION_APPROVED.json',0),
+           'smoke':('FEEDING_FREEZE.json','SMOKE_APPROVED.json',32000),
+           'feeding':('FEEDING_FREEZE.json','FEEDING_APPROVED.json',1843200),
+           'repeat_smoke':('FEEDING_FREEZE.json','REPEAT_SMOKE_APPROVED.json',19200),
+           'repeat_feeding':('FEEDING_FREEZE.json','REPEAT_FEEDING_APPROVED.json',1382400)}
+    if phase not in names:raise ValueError('Unknown held-out phase')
+    freeze_name,approval_name,ceiling=names[phase]
+    frozen=(verify_preparation_freeze() if phase=='preparation' else
+            verify_feeding_inputs() if phase=='initialization' else verify_feeding_freeze())
+    approval=read(HERE/approval_name)
+    if (approval.get('approved') is not True or approval.get('phase')!=phase
+            or approval.get('freeze_sha256')!=sha(HERE/freeze_name)
+            or approval.get('protocol_sha256')!=sha(HERE/'protocol.json')
+            or approval.get('maximum_native_steps')!=ceiling):
+        raise RuntimeError('Fresh exact reviewed phase approval required: '+phase)
+    if phase=='initialization' and approval.get('maximum_native_constructions')!=64:
+        raise RuntimeError('Exactly64 zero-step constructions must be approved')
+    if phase.startswith('repeat_'):
+        primary=BULK/'feeding_36T_v1'
+        if (read(primary/'status.json').get('complete')!=40 or read(primary/'status.json').get('status')!='complete'
+                or read(primary/'physical_review.json').get('status')!='passed'
+                or read(primary/'analysis_final/analysis_audit.json').get('status')!='passed'):
+            raise RuntimeError('Complete primary40 physical/analysis before secondary execution,regardless of sign')
+    if phase in ('feeding','repeat_feeding'):
+        from repeat_cases import repeat_smoke_cases
+        repeat=phase=='repeat_feeding';smoke=BULK/('repeat_smoke_4T_v1' if repeat else 'smoke_4T_v1')
+        status=read(smoke/'status.json');physical=read(smoke/'physical_review.json')
+        cells=repeat_smoke_cases() if repeat else smoke_cases()
+        if status.get('status')!='complete' or status.get('complete')!=len(cells) or physical.get('status')!='passed':
+            raise RuntimeError('All phase smokes and physical review required')
+        for case in cells:validate_candidate_seal(smoke/'cases'/case.name,duration=4.)
+        if approval.get('smoke_review_sha256')!=sha(smoke/'physical_review.json'):
+            raise RuntimeError('Full approval must bind the smoke review')
+    return frozen
+
+
+def source_manifest():
+    result=dict(verify_feeding_freeze()['source_sha256'])
+    for name in ('FEEDING_INPUT_FREEZE.json','ACTUAL_ZERO_STEP.json','FEEDING_FREEZE.json'):
+        result[str((HERE/name).resolve())]=sha(HERE/name)
+    return result
+
+
+def validate_candidate_seal(folder,duration=36.):
+    folder=Path(folder);receipt=validate_seal(folder);summary=read(folder/'summary.json')
+    dt=read(folder/'config.json')['dt'];observed=summary['actual_duration']
+    if (dt not in (.00125,.000625) or summary['dt']!=dt or summary['planned_duration']!=duration
+            or summary['native_steps']!=round(observed/dt) or observed>duration+1e-7 or observed<=0
+            or (not summary['native_absorbing_termination'] and abs(observed-duration)>1e-7)
+            or (summary['native_absorbing_termination'] and summary['final_count']!=0)):
+        raise RuntimeError('Incomplete/invalid held-out horizon')
+    if read(folder/'source_manifest.json')!=source_manifest():raise RuntimeError('Case source bindings differ')
+    audit=read(folder/'audit.json')
+    if audit.get('status')!='passed' or audit.get('errors'):raise RuntimeError('Accounting failed')
+    return receipt

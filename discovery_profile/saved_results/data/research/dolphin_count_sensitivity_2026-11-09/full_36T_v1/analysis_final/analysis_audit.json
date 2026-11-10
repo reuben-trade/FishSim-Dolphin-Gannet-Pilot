@@ -1,0 +1,54 @@
+{
+  "status": "passed",
+  "native_steps_executed_by_analysis": 0,
+  "new_cases": 8,
+  "reused_comparator_cases": 12,
+  "selected_regimes": 1,
+  "independent_schools": 4,
+  "selected_regimes_sha256": "6b2974e3ddffabf68c98262d2b259b61d74a1f496a3ae0c36dc974bc825fe582",
+  "source_freeze_sha256": "6b404be6af4760c04349c4d48f722fc2b9eff5242d5897ff45df9424d633592b",
+  "complete_D12_csv_sha256": "b04a96bc358c24766ba8de79898fff750277bbd034a8033f13fb4fbc8da09e76",
+  "complete_D12_analysis_audit_sha256": "bb33dc3412a889a4aba2197db40c4e998bf7d7a73a865cad39c5c2a4e1bc6cd9",
+  "complete_D12_independent_review_sha256": "54331dbc2430a6f6660cea3aedbf37c45bb7a224c8303ff5bebf03647b9c20d3",
+  "new_case_completion_sha256": {
+    "s39061001_D24_H1_G0_D_c61001": "4741da9c55587dd478df353b1ab1fca984ee3a6cb3d749172ca260204070695d",
+    "s39061001_D24_H1_G36_DG_c61001": "6e98be83bb52288cd4dc99f0814e02a29b9519ad8013a01fa33b2ab090c169c9",
+    "s39061002_D24_H1_G0_D_c61001": "e8b391a60efcb3f907865d21a3ce8478493a5fbdfa80a1366c8504370bd5e267",
+    "s39061002_D24_H1_G36_DG_c61001": "14a645eab58cb3849b4966b7ae7d46524f545637d62939602fd63a9eb48c386a",
+    "s39063501_D24_H1_G0_D_c61001": "c568be01172054822bbbbbc4191e5a7e6de441440a55fee24c98addfeefa632f",
+    "s39063501_D24_H1_G36_DG_c61001": "9d23bfd4c431db3b2a0a505f262ab8d38e45e4c1504dcbf2ec9844465ce80d4b",
+    "s39063502_D24_H1_G0_D_c61001": "65895d78aef8c9dbcad2539107f453bba97d0aa573c2070e07ebbb9895ba7057",
+    "s39063502_D24_H1_G36_DG_c61001": "b4122b5a5a56011c7dfc5b500a4162f08993fd6a9ee23c82ee2172046d5a2d26"
+  },
+  "reused_case_completion_sha256": {
+    "s39061001_H1_G0_D_c61001": "e0f3a7c351298d1d87d0fb7a5289f43180d27b5356854945cf7f1a1d2bfd21ef",
+    "s39061001_H1_G36_DG_c61001": "dcebf0caf8c7fcf034d867e3a01c802cb13acc7cdf15b3da8630c02df2916fd9",
+    "s39061001_Gonly36_G_c61001": "9e95630a16740de6ac0ad60a9a207cba303a2b54656ca9c0b897be4b4c780352",
+    "s39061002_H1_G0_D_c61001": "b8f811c12b67a555323b9afa9a47f673062188ebf09bf8096ec020ae0077452b",
+    "s39061002_H1_G36_DG_c61001": "3da9dad5cd03b40b06f09aa5578aa77301e147d41d38ed929a1ec8daf103fe70",
+    "s39061002_Gonly36_G_c61001": "060c326c91a4d5fcf11de50b2f61687bf2b3078892a57dad42fec1174e15d018",
+    "s39063501_H1_G0_D_c61001": "f917bb927477c8f1782473d01295e01d0c9fae24e33be7e0918a071be1ea4cc9",
+    "s39063501_H1_G36_DG_c61001": "839d15d2fb731ee05dc03e8d634b1c911501ea789307c398aeb0811278631a28",
+    "s39063501_Gonly36_G_c61001": "556e4fba1f8673ff17bad4109f494dd696cbfe997f17ef6b503d0d4fff9a2859",
+    "s39063502_H1_G0_D_c61001": "8a5d8091d0b3e0482b2233743def3207cde23f7f12aa62f5d5c47f55207e8a73",
+    "s39063502_H1_G36_DG_c61001": "161f10bd8cdb564f32e70c9d5a1ea1406559ded96f29c541f5f2d678782d723d",
+    "s39063502_Gonly36_G_c61001": "c7590eeec8c8f97f27c65b8761a5538261160ecb35de2a22dd680d37e4c16694"
+  },
+  "bootstrap": {
+    "seed": 88493024,
+    "draws": 10000,
+    "unit": "whole paired school vector",
+    "quantiles": [
+      0.025,
+      0.975
+    ]
+  },
+  "limitations": "D24 versus D12 at regimes selected from the complete prior D12 map before D24 outcomes. Each population has its own same-H dolphin-only baseline; count-matched gannet-only outcomes are reused. Primary effects are captures per dolphin per nominal36T with gannets minus without, and their D24\u2212D12 interaction. Integer count contrasts precede division: mathematical zeros retain exact zero signs. All four previously observed school vectors are jointly resampled for pointwise95% intervals; n4, one capture setting, exploratory selection, no independent validation or numerical-convergence claim. D24 places two point dolphins at each original12slot, without avoidance/collision or increased spatial coverage. Group catches are distinct from per-animal benefit; every sign remains visible.",
+  "files": {
+    "caption.txt": "022a29d5074a6be5da7af49f52f888295c2ee3d872ce409c5ead47b9bbc3659d",
+    "regime_summary.csv": "1d4a99cac6456cb00121553e94d272a6352b111a192fc49774c71dab08b0e17e",
+    "paired_school_changes.csv": "79aeb1b0c86e09fcbcf61a98345f55b6fd500cf367e87b013c53718a3e103aeb",
+    "reused_case_outcomes.csv": "73b3a1a133c23a7e9178e1848ffd24b1099702d238bb341ad9bbbff98ced8164",
+    "case_outcomes.csv": "733fb2c8285644e3cd7912518c3098b10548f692a8deaa7fcbf6dcd86be27163"
+  }
+}

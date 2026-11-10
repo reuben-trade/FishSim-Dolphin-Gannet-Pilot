@@ -1,0 +1,113 @@
+"""Source-bound independent validation gates; all scientific model laws frozen."""
+from pathlib import Path
+from common import HERE,ROOT,read,sha,write,validate_seal,require_unoptimized
+from cases import *
+AUTHORITY=Path('/tmp/FishSim_Independent_Validation_Design_Authorization_2026-11-10.json')
+OLD=ROOT/'research/heldout_regime_validation_2026-11-09'
+OLD_PREP=BULK/'archived_preparation_first8'
+PREP_OUTPUT=BULK/'new_preparation_v1'
+
+def prep_sources():
+    original=read(OLD/'PREPARATION_FREEZE.json')['source_sha256']
+    relocated=read(HERE/'ARCHIVAL_SOURCE_RELOCATIONS.json')['files'];inherited={}
+    for p,d in original.items():
+        q=relocated[p]['path'] if p in relocated else p
+        if sha(q)!=d or (p in relocated and relocated[p]['sha256']!=d):raise RuntimeError('Historical frozen bytes changed: '+p)
+        inherited[q]=d
+    paths=[HERE/n for n in ('prepare.py','common.py','cases.py','evidence.py','protocol.json','analysis_plan.json','ARCHIVAL_SOURCE_RELOCATIONS.json')]+[AUTHORITY,OLD/'PREPARATION_FREEZE.json']
+    for p in OLD_PREP.rglob('*'):
+        if p.is_file():paths.append(p)
+    result=dict(inherited);result.update({str(p.resolve()):sha(p) for p in paths})
+    return result
+
+def verify_preparation_freeze():
+    p=read(HERE/'protocol.json');a=read(AUTHORITY);f=read(HERE/'PREPARATION_FREEZE.json');pure=read(HERE/'PURE_PREPARATION.json')
+    if not a.get('approved') or p['authority']['sha256']!=sha(AUTHORITY):raise RuntimeError('Bound root design required')
+    if f['source_sha256']!=prep_sources() or f['pure_sha256']!=sha(HERE/'PURE_PREPARATION.json') or pure['status']!='passed' or pure['native_steps']!=0:raise RuntimeError('Preparation source/pure freeze required')
+    return f
+
+def preparation_manifest():
+    result=read(OLD_PREP/'manifest.json');new=read(PREP_OUTPUT/'manifest.json')
+    if result['status']!='complete' or new['status']!='complete':raise RuntimeError('All16 predator-free preparations required')
+    checkpoints={}
+    for seed in SEEDS:
+        base=OLD_PREP if seed in OLD_SEEDS else PREP_OUTPUT
+        folder=base/f's{seed}';validate_seal(folder);summary=read(folder/'summary.json')
+        if not summary['accepted']:raise RuntimeError('Technical preparation rejection retained; no replacement')
+        cp=folder/'encounter.npz'
+        if sha(cp)!=summary['checkpoint']['sha256']:raise RuntimeError('Checkpoint changed')
+        checkpoints[str(seed)]=dict(path=str(cp),sha256=sha(cp),accepted=True,screen_status='passed')
+    if result['native']['sha256']!=new['native']['sha256']:raise RuntimeError('Preparation binaries differ')
+    return dict(status='complete',native=result['native'],checkpoints=checkpoints)
+
+def input_sources():
+    inherited=verify_preparation_freeze()['source_sha256'];preparation_manifest()
+    paths=list(HERE.glob('*.py'))+[HERE/'protocol.json',HERE/'analysis_plan.json',HERE/'PREPARATION_FREEZE.json',HERE/'PURE_PREPARATION.json']
+    paths += [p for p in PREP_OUTPUT.rglob('*') if p.is_file()]
+    result=dict(inherited);result.update({str(p.resolve()):sha(p) for p in paths});return result
+
+def verify_input_freeze():
+    f=read(HERE/'INPUT_FREEZE.json');p=read(HERE/'PURE_PREFLIGHT.json')
+    if f['source_sha256']!=input_sources() or f['pure_sha256']!=sha(HERE/'PURE_PREFLIGHT.json') or p['status']!='passed' or p['pure_cases']!=192 or p['native_steps']!=0:raise RuntimeError('Full192 pure/input freeze required')
+    return f
+
+def verify_source_freeze():
+    expected=dict(verify_input_freeze()['source_sha256'])
+    for n in ('INPUT_FREEZE.json','PURE_PREFLIGHT.json','ACTUAL_ZERO_STEP.json'):expected[str((HERE/n).resolve())]=sha(HERE/n)
+    f=read(HERE/'frozen_sources.json');z=read(HERE/'ACTUAL_ZERO_STEP.json')
+    if f['source_sha256']!=expected or z['status']!='passed' or z['native_constructions']!=192 or z['native_steps']!=0:raise RuntimeError('Fresh actual192-start zero-step freeze required')
+    return f
+
+def source_manifest():return verify_source_freeze()['source_sha256']
+
+def require_approval(stage):
+    require_unoptimized()
+    if stage not in ('preparation','initialization','smoke','feeding'):raise ValueError('Unknown bounded phase')
+    fn='PREPARATION_FREEZE.json' if stage=='preparation' else ('INPUT_FREEZE.json' if stage=='initialization' else 'frozen_sources.json')
+    f=verify_preparation_freeze() if stage=='preparation' else (verify_input_freeze() if stage=='initialization' else verify_source_freeze())
+    approval=read(HERE/(stage.upper()+'_APPROVED.json'));review=read(HERE/('INDEPENDENT_'+stage.upper()+'_REVIEW.json'))
+    cap={'preparation':PREPARATION_CAP,'initialization':0,'smoke':SMOKE_CAP,'feeding':FEEDING_CAP}[stage]
+    if approval.get('approved') is not True or approval['stage']!=stage or approval['protocol_sha256']!=sha(HERE/'protocol.json') or approval['freeze_sha256']!=sha(HERE/fn) or approval['independent_review_sha256']!=sha(HERE/('INDEPENDENT_'+stage.upper()+'_REVIEW.json')) or approval['maximum_native_steps']!=cap or review['status']!='passed' or review['freeze_sha256']!=sha(HERE/fn):raise RuntimeError('Fresh exact reviewed phase approval required')
+    if stage=='initialization' and approval['maximum_native_constructions']!=192:raise RuntimeError('Exact192 constructions required')
+    if stage in ('smoke','feeding'):
+        cases=smoke_cases() if stage=='smoke' else all_cases()
+        if approval['case_names']!=[c.name for c in cases] or approval['workers']!=8:raise RuntimeError('Exact case roster/workers required')
+    if stage=='preparation' and (approval['school_seeds']!=list(NEW_SEEDS) or approval['workers']!=8):raise RuntimeError('Exact8 new preparation seeds required')
+    if stage=='feeding':
+        smoke=read(BULK/'phases/smoke/physical_review.json')
+        if smoke['status']!='passed' or approval['smoke_review_sha256']!=sha(BULK/'phases/smoke/physical_review.json') or approval['independent_smoke_review_sha256']!=sha(HERE/'INDEPENDENT_SMOKE_REVIEW.json'):raise RuntimeError('Complete independent smoke gate required')
+    return f
+
+def validate_candidate_seal(folder,duration=36.):
+    seal=validate_seal(folder);s=read(Path(folder)/'summary.json');observed=s['actual_duration']
+    if s['planned_duration']!=duration or s['dt'] not in GRIDS.values() or observed<=0 or observed>duration+1e-7 or s['native_steps']!=round(observed/s['dt']):raise RuntimeError('Bad physical horizon')
+    if s['native_absorbing_termination']:
+        if s['final_count']!=0:raise RuntimeError('Invalid depletion')
+    elif abs(observed-duration)>1e-7:raise RuntimeError('Incomplete horizon')
+    if read(Path(folder)/'source_manifest.json')!=source_manifest() or read(Path(folder)/'audit.json')['status']!='passed':raise RuntimeError('Source/physical audit mismatch')
+    return seal
+
+
+def validate_dispatch(case,stage,output,dispatch):
+    """Pure active-block/arm guard, evaluated before any output or constructor."""
+    if case not in all_cases():raise ValueError('Undeclared validation case')
+    phase=dispatch.get('phase')
+    if dispatch.get('status')!='running' or phase not in (('smoke',) if stage=='smoke' else PHASES):raise ValueError('No exact active phase')
+    if stage=='feeding' and phase!=case_phase(case):raise ValueError('Case is outside active block/grid')
+    if Path(output).resolve()!=phase_output(phase).resolve():raise ValueError('Case output differs from active phase')
+    stages=dict(execution_stages(phase));wave=dispatch.get('wave')
+    if wave not in stages or dispatch.get('case_names')!=[c.name for c in stages[wave]] or case not in stages[wave]:raise ValueError('Case is outside active arm wave')
+    return phase,wave
+
+
+def require_case_permission(case,stage,output=None):
+    if case not in all_cases():raise ValueError('Undeclared validation case')
+    if stage=='initialization':return
+    phase,wave=validate_dispatch(case,stage,output or phase_output('smoke' if stage=='smoke' else case_phase(case)),read(BULK/'active_dispatch.json'))
+    if stage=='feeding':
+        for prior in PHASES[:PHASES.index(phase)]:
+            if read(phase_record(prior)/'physical_review.json')['status']!='passed':raise RuntimeError('Earlier fixed block/grid incomplete')
+    for label,cells in execution_stages(phase):
+        if label==wave:break
+        barrier=read(phase_record(phase)/(label+'_stage.json'))
+        if barrier.get('status')!='complete' or barrier['cases']!=[c.name for c in cells]:raise RuntimeError('Control-before-mixed barrier absent')

@@ -1,0 +1,67 @@
+"""Native-free preparation and complete matched-world preflights."""
+import argparse,hashlib,json,sys
+from pathlib import Path
+from dataclasses import asdict
+from unittest.mock import patch
+import numpy as np
+from common import HERE,read,write,sha
+from cases import *
+
+def digest(value):return hashlib.sha256(json.dumps(value,sort_keys=True).encode()).hexdigest()
+
+def preparation():
+    import prepare
+    frozen=prepare.declaration()
+    from research.prey_mediated.scenario import ScenarioConfig,make_initial_state,TravellingSchool
+    from research.prey_mediated.encounter import Encounter
+    from research.prey_mediated.surface_safe_school import SurfaceSafeSchool
+    rows=[]
+    def forbidden(*a,**k):raise RuntimeError('Native constructor prohibited in purepreflight')
+    with patch.object(TravellingSchool,'__init__',forbidden),patch.object(Encounter,'__init__',forbidden),patch.object(SurfaceSafeSchool,'__init__',forbidden):
+        for seed in NEW_SEEDS:
+            initial=make_initial_state(seed,ScenarioConfig(**frozen['scenario']))
+            rows.append(dict(school_seed=seed,initial_array_sha256=hashlib.sha256(initial.positions.tobytes()+initial.directions.tobytes()).hexdigest()))
+    result=dict(status='passed',sampler_rows=rows,native_constructions=0,native_steps=0,source_sha256=prepare.bindings()['source_sha256'])
+    write(HERE/'PURE_PREPARATION.json',result);return result
+
+def full():
+    from preparation_provenance import verify
+    verify()
+    from build import prepare_case,initial_private_streams
+    from research.prey_mediated.scenario import TravellingSchool
+    from research.prey_mediated.encounter import Encounter
+    from research.prey_mediated.surface_safe_school import SurfaceSafeSchool
+    from horizons import species_projection
+    receipts={};fish={};rows=[];worlds={};capture_states=set();tie_states=set();target_states=set()
+    def forbidden(*a,**k):raise RuntimeError('Native constructor prohibited in purepreflight')
+    with patch.object(TravellingSchool,'__init__',forbidden),patch.object(Encounter,'__init__',forbidden),patch.object(SurfaceSafeSchool,'__init__',forbidden):
+        for case in all_cases():
+            p=prepare_case(case);r=p.receipt();receipts[case.name]=r
+            fish[case.name]=hashlib.sha256(p.initial.positions.tobytes()+p.initial.directions.tobytes()).hexdigest()
+            rows.append(dict(**case.asdict(),pure_receipt_sha256=digest(r),raw_fish_sha256=fish[case.name],engine_seed=p.engine_seed))
+        for seed in SEEDS:
+            cells=[c for c in all_cases() if c.school_seed==seed];assert len({fish[c.name] for c in cells})==1
+            for label in CAPTURE_LABELS:
+                matching=[c for c in cells if c.capture_seed==label]
+                d=receipts[Case(seed,'coarse','D',label).name];g=receipts[Case(seed,'coarse','G',label).name]
+                for c in matching:
+                    r=receipts[c.name]
+                    if c.dolphins:assert species_projection(r,'D')==species_projection(d,'D')
+                    if c.gannets:assert species_projection(r,'G')==species_projection(g,'G')
+                    assert r['tie_rng']==d['tie_rng']
+                eng,_=initial_private_streams(seed,[],label);assert eng not in worlds;worlds[eng]=(seed,label)
+                both=receipts[Case(seed,'coarse','DG',label).name]
+                for v in both['capture_rng'].values():
+                    z=digest(v);assert z not in capture_states;capture_states.add(z)
+                z=digest(both['tie_rng']);assert z not in tie_states;tie_states.add(z)
+                for who,v in both['controllers'].items():
+                    if who.startswith('G'):
+                        z=digest(v['target_rng_state']);assert z not in target_states;target_states.add(z)
+            a=receipts[Case(seed,'coarse','DG',CAPTURE_LABELS[0]).name];b=receipts[Case(seed,'fine','DG',CAPTURE_LABELS[1]).name]
+            for k in ('actors','actor_policy','ownership'):assert a[k]==b[k]
+            for who in a['controllers']:
+                if who.startswith('D'):assert a['controllers'][who]==b['controllers'][who]
+    result=dict(status='passed',pure_cases=192,independent_schools=16,worlds=32,distinct_capture_states=len(capture_states),distinct_tie_states=len(tie_states),distinct_G_target_states=len(target_states),native_constructions=0,native_steps=0,rows=rows)
+    write(HERE/'PURE_PREFLIGHT.json',result);return result
+if __name__=='__main__':
+    p=argparse.ArgumentParser();p.add_argument('--preparation',action='store_true');a=p.parse_args();r=preparation() if a.preparation else full();print({k:v for k,v in r.items() if k not in ('rows','sampler_rows','source_sha256')})

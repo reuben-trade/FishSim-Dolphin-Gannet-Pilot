@@ -1,0 +1,65 @@
+"""Durable fixed-order case queue; resumes completed seals, never partial runs."""
+from pathlib import Path
+import argparse,os,time
+from concurrent.futures import ProcessPoolExecutor,as_completed
+from common import HERE,read,write,sha,stamp,native_lease,reserve
+from cases import *
+from evidence import require_approval,validate_candidate_seal
+from physical_run import run_case
+
+def case_row(case,folder):
+    validate_candidate_seal(folder,4. if 'smoke_4T_v1' in str(folder) else 36.)
+    s=read(folder/'summary.json');return dict(case=case.asdict(),native_steps=s['native_steps'],species=s['species'],wall_seconds=s['wall_seconds'],completion_sha256=sha(folder/'completion.json'))
+
+def execute(phase,workers):
+    output=phase_output(phase);record=phase_record(phase);record.mkdir(parents=True,exist_ok=True);cells=phase_cases(phase);completed={}
+    for case in cells:
+        folder=output/'cases'/case.name
+        if folder.exists():
+            if not (folder/'completion.json').exists():raise RuntimeError('Preserve partial case; technical review required, no automatic retry: '+case.name)
+            completed[case.name]=case_row(case,folder)
+    duration=4. if phase=='smoke' else 36.
+    execution=record/'execution.json'
+    if execution.exists():
+        prior=read(execution)
+        if prior['freeze_sha256']!=sha(HERE/'frozen_sources.json'):raise RuntimeError('Resume source mismatch')
+    write(execution,dict(status='running',phase=phase,at=stamp(),workers=workers,maximum_native_steps=phase_limit(phase),freeze_sha256=sha(HERE/'frozen_sources.json'),resumed_complete=len(completed)))
+    def status(state):
+        write(record/'status.json',dict(status=state,phase=phase,at=stamp(),complete=len(completed),planned=len(cells),cases=[completed[c.name] for c in cells if c.name in completed],total_native_steps=sum(r['native_steps'] for r in completed.values())))
+    status('running')
+    for wave,wave_cells in execution_stages(phase):
+        prior=record/(wave+'_stage.json')
+        active=dict(status='running',phase=phase,wave=wave,parent_pid=os.getpid(),case_names=[c.name for c in wave_cells],at=stamp(),freeze_sha256=sha(HERE/'frozen_sources.json'))
+        write(BULK/'active_dispatch.json',active);write(record/(wave+'_dispatch.json'),active)
+        pending=[c for c in wave_cells if c.name not in completed]
+        if pending:
+            with ProcessPoolExecutor(max_workers=workers) as pool:
+                futures={pool.submit(run_case,c,output,duration):c for c in pending}
+                for future in as_completed(futures):
+                    case=futures[future];future.result();completed[case.name]=case_row(case,output/'cases'/case.name);status('running')
+        write(prior,dict(status='complete',at=stamp(),cases=[c.name for c in wave_cells]))
+    total=sum(r['native_steps'] for r in completed.values())
+    if total>phase_limit(phase):raise RuntimeError('Phase native step cap exceeded')
+    status('complete');write(execution,dict(status='complete',phase=phase,at=stamp(),workers=workers,maximum_native_steps=phase_limit(phase),total_native_steps=total,freeze_sha256=sha(HERE/'frozen_sources.json')))
+    (BULK/'active_dispatch.json').unlink(missing_ok=True)
+    from review_phase import review
+    review(phase)
+    if phase!='smoke':
+        from analyze import descriptive
+        descriptive(phase)
+
+if __name__=='__main__':
+    p=argparse.ArgumentParser();p.add_argument('--stage',choices=('smoke','feeding'),required=True);p.add_argument('--workers',type=int,default=8);a=p.parse_args()
+    if a.workers!=8:raise ValueError('Exactly8workersmaximum/fixedqueue')
+    from preparation_provenance import verify
+    verify()
+    require_approval(a.stage);BULK.mkdir(exist_ok=True)
+    with native_lease():
+        for phase in (('smoke',) if a.stage=='smoke' else PHASES):
+            if (phase_record(phase)/'physical_review.json').exists():
+                from review_phase import verify_completed
+                verify_completed(phase);continue
+            execute(phase,a.workers)
+        if a.stage=='feeding':
+            from analyze import final
+            final()

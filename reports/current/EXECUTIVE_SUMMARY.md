@@ -1,4 +1,19 @@
-# FishSim executive summary —10 November 2026
+# FishSim executive summary — 11 November 2026
+
+**The completed independent validation supports mutual feeding benefits within the model at H=1T/G=36.** Twelve dolphins and thirty-six gannets were tested on sixteen new schools, with two nested randomness labels, matched single-species controls, and both encounter timesteps: 192 full cases. The finer timestep was designated primary before feeding.
+
+| Species | Fine alone→mixed captures | Relative increase | Mean gain per individual over 36T | 97.5% t interval |
+|---|---:|---:|---:|---:|
+| Dolphins |719→905|25.9%|+0.484375|[0.224689,0.744061]|
+| Gannets |292→536|83.6%|+0.211806|[0.093497,0.330114]|
+
+Both lower bounds exceed zero, meeting the prespecified criterion. Labels are averaged within each school; the independent sample is 16, not 32 worlds or 192 executions. School means include dolphin 14 gains/1 tie/1 loss and gannet 14 gains/2 losses; both species gain in 12/16 schools. Coarse-grid totals are D 708→889 and G 243→460. Paired-grid intervals span differences in either direction and are not a convergence proof.
+
+Fine-grid dolphin contacts rise 1,051→1,334 and bird contacts 410→760, while eligible oral-contact success remains fixed at q=0.7. These descriptive opportunity changes accompany the food gains; they do not isolate panic, coordination or a causal mechanism. Food counts are not energetic profit or fitness. Model units, information assumptions and contact probability remain uncalibrated.
+
+The following original four-school map and population check remain a separate discovery stage. Their selected 45.1% dolphin gain is not the new validation estimate. All settings, ties and losses are retained.
+
+## Discovery findings
 
 The completed count extension finds **mutual feeding benefits within the model** at several settings, using an unchanged dolphin rule and matched single-species controls. The full map now contains 140 condition-school outcomes and 24 mixed settings on the same four previously observed schools.
 
@@ -6,7 +21,7 @@ At **H=1T/G=36**, dolphins capture 132 fish versus 91 without birds (+45.1%), an
 
 At **H=2T/G=12**, dolphins 86→110 (+27.9%) and gannets 31→57 (+83.9%), again with both species gaining in all four schools. Dolphins also exceed the best-tested H1 bird-free benchmark 91→110 (+20.9%). A smaller flock therefore supports mutual benefit too, with a different distribution of food.
 
-## Complete response map
+## Complete discovery response map — four schools
 
 All24 settings and signs are retained. Counts are four-school totals. D controls have the same H; G controls have the same bird count. There are 18 positive, two exact-zero and four negative mean dolphin changes; corresponding gannet counts are 20/two/two. Individual predators, reused controls and repeated settings are not independent schools.
 
@@ -55,15 +70,15 @@ Food per bird generally declines as flocks grow, but not monotonically at every 
 
 The map uses one capture setting and four previously examined schools. Its pointwise 95% intervals are exploratory, unadjusted across 24 settings and not independent confirmation of selected cells. School identity also seeds readiness/private streams; starting geometry and chance are not causally separated. Time and length are uncalibrated;36T is not 36 seconds, and catches do not measure energetic profit, fitness or intentional cooperation.
 
-Original shared-rule pilots gave dolphin gains 17.1% and 16.1% in distinct earlier cohorts. They remain archived. The separate eight-school H2/G3 check changed mean dolphin effects from+1 to 0 fish/school when the timestep was halved, and gannet effects from+5.125 to+2.5. Its fine dolphin mean combines four gains, three losses and one tie. That result neither refines the selected H1/G36/H2/G12 settings nor proves their benefits vanish; their numerical robustness and fresh-school generalisation remain untested.
+Original shared-rule pilots gave dolphin gains 17.1% and 16.1% in distinct earlier cohorts. They remain archived. The separate eight-school H2/G3 check changed mean dolphin effects from+1 to 0 fish/school when the timestep was halved, and gannet effects from+5.125 to+2.5. Its fine dolphin mean combines four gains, three losses and one tie. That older result concerns another setting. H1/G36 now has the separate completed sixteen-school validation above; H2/G12 and the remaining discovery cells have not received that same validation. Two encounter grids do not establish numerical convergence.
 
 The departure diagnostic remains the older 48 bird-bearing G1/3/6 encounters, not all 128 bird-bearing runs in this map. It does not establish that continued bird diving is required to maintain dolphin gains.
 
-## Current artifacts and next tests
+## Current artifacts and separate model replay
 
-The six-page paper has four figures and ten references. [main.ipynb](https://github.com/reuben-trade/FishSim-Dolphin-Gannet-Pilot/blob/main/main.ipynb) reproduces its figures and nine summary tables with ten code cells, zero model steps and no new bootstrap draws. The full raw-data inventory has 220 feeding execution records; replays, horizons and engineering checks add no independent schools. Earlier notebooks/manifests and the through 18 report remain preserved.
+The six-page current paper has four figures and ten references. [main.ipynb](https://github.com/reuben-trade/FishSim-Dolphin-Gannet-Pilot/blob/main/main.ipynb) has 14 logical cells/7 code cells and reproduces 4 figures/13 canonical tables with zero model steps and no new bootstrap draws. Fresh-kernel production and a separate byte-copied space-path analysis both passed. Raw seals, controls, both labels/grids and all old profiles remain available; executions, replays and engineering checks are not independent schools.
 
-The interactive 3D viewer retains its validated 108-encounter through 18 catalogue. New upper-count raw cases are bundled separately. Optional native examples remain the bounded earlier H1/G9 and H2/G12 settings, disabled by default; they do not execute the entire new map.
+The interactive 3D viewer retains its validated 108-encounter through18 catalogue; it is not a new validation simulator. The primary H1/G36 native frontend has distinct 4T/36T modes and the 192-case identity inventory, but its release remains pending separate exact-artifact engineering. Optional execution is off. Older H1/G9/H2/G12 examples remain historical and do not replay the new full study.
 
 The completed D24 check uses H1/G36 on the same four schools, with one extra dolphin placed at each original slot and matched D24-only controls. Dolphin group food rises from 183 alone to 229 with birds (+25.1%), with gains in every school; pooled bird catches rise from 16 alone to 80, with one school loss. Mixed food per dolphin is 2.385 at D24 versus 2.750 at D12, lower in all four schools. The per-dolphin partner gain falls from 0.854 to 0.479 fish per 36T; its paired difference is −0.375 (exploratory pointwise 95% interval −0.8125 to −0.0208). More group food therefore does not mean greater individual return. This selected, coarse-grid check identifies neither an optimal pod size nor an isolated competition mechanism. Attack synchronisation remains a future controlled test.
 

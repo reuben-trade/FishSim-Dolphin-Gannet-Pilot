@@ -1,57 +1,25 @@
 # Repository guide
 
-For ordinary use, start with [main.ipynb](../main.ipynb), the
-[3D viewer](VISUALISATION.md) and the [current paper](../reports/current/).
-The root contains historical names as well as current entry points because
-the notebook verifies 9,797 exact input paths and hashes. A file that looks
-old is not necessarily disposable.
+Start with [main.ipynb](../main.ipynb), the [current paper](../reports/current/) and the [local setup](LOCAL_ANALYSIS_SETUP.md). The current notebook reproduces thirteen canonical tables and four figures from saved evidence; it starts no model and makes no new bootstrap draws.
 
 | Area | Purpose |
 | --- | --- |
-| `main.ipynb` | Current paper analysis; native execution disabled by default |
-| `tools/watch_replays.py` | Local saved-run 3D viewer |
-| `paper_profiles/current_through36_D24_2026-11-10/` | Current analysis inputs, figures and nine output tables |
-| `reports/current/` | Current manuscript and figures |
-| `run_v6_example.py`, `regime_runtime*.py` | Optional bounded parameter-map model examples |
-| `run_current_model.py`, `current_runtime*.py` | Separate coarse/fine replication runner |
-| `frozen_model/`, `study_sources/`, `current_model_inputs/` | Preserved source, native binaries and model inputs |
-| `data/` | Saved feeding encounters, trajectories and event records |
-| `validation/`, `runtime_validation/` | Analysis checks and bounded native/build provenance |
-| `snapshots/`, `reports/snapshots/` | Earlier evidence and report versions |
-| `archive/` | Older generated exports and historical delivery receipt |
+| `main.ipynb`, `FINAL_NOTEBOOK_PROFILE.json` | Current discovery plus separate complete sixteen-school validation |
+| `data/primary_validation192_2026-11-11/` | Accepted portable snapshot: 192 validation encounters and exact source/evidence objects |
+| `discovery_profile/` | Preserved discovery analysis: full 24-setting map, selected D24 check and older diagnostic subsets |
+| `paper_profiles/final_primary192_2026-11-11/` | Current six-page paper source, four figures and thirteen table exports |
+| `reports/current/` | Convenient aliases for the current manuscript and figures |
+| `execution_proofs/` | Actual kernel, relocation, scientific review and guarded Doc publication receipts |
+| `validation_tools/` | Saved-data acceptance reader and frozen validation plotter |
+| `model_examples/primary_192/` | Reviewed full-primary replay source; native release remains separately gated |
+| `tools/watch_replays.py` | Saved-run 3D viewer, retaining its validated 108-encounter catalogue |
+| `paper_profiles/current_through36_D24_2026-11-10/` | Unchanged previous paper and analysis profile |
+| `archive/notebooks/`, `archive/docs/` | Earlier active notebook and documentation |
+| `reports/supplements/` | Prospective plans and unchanged descriptive progress snapshots |
+| `frozen_model/`, `study_sources/`, `runtime_validation/` | Historical sources, inputs, native binaries and bounded engineering evidence |
 
-The full response map, denominators, experimental conditions, interpretation
-and platform limits are in the [scientific overview](STUDY_OVERVIEW.md).
-Earlier alternative-policy comparisons remain historical; the current
-parameter map uses one fixed exposed-prey dolphin rule.
+The independent validation uses sixteen new schools, two labels averaged within each school, matched presence arms and two encounter grids. These 192 cases are separate from the four-school discovery map and its population follow-up; execution counts are not independent sample sizes. The primary snapshot contains about 1.4 GB of sealed raw/source evidence. Its relative content-addressed objects can be read without the author's paths.
 
-## Cleanup performed
+The active package preserves the prior 10,077 protected input paths and adds versioned current evidence. Historical filenames and source pins remain intentional. Do not edit sealed inputs in place: some old recordings share immutable inodes. Generated root `outputs/` directories are ignored. See [NOTEBOOK_MAINTENANCE.md](../NOTEBOOK_MAINTENANCE.md) before changing the active notebook.
 
-- The README is now a concise entry page with footage, a viewer command and
-  notebook/report links. The previous complete scientific text is preserved
-  in `docs/STUDY_OVERVIEW.md`.
-- 112 generated figure/table/engineering-output files are preserved under
-  `archive/legacy_outputs_2026-11-09/`; the older delivery receipt is archived
-  separately. [Relocation hashes](../archive/relocations_2026-11-09.json)
-  identify every original path and unchanged byte sequence.
-- Root `outputs/` is ignored for future regenerated exports. Current-paper
-  outputs remain in their versioned profile; regenerated figures, logs and
-  caches there are ignored while the nine tracked CSVs stay tracked. Generated evidence and vendor
-  code are marked for GitHub’s diff/language classification.
-- Frozen data, runtime binaries, model rules, manifests and third-party
-  licenses have not been removed or rewritten.
-
-Some old receipts still contain their original output paths. They describe
-historical execution; the archive map gives the retained files’ new paths.
-Running an older notebook regenerates its root `outputs/` folders.
-
-Moving the remaining pinned root modules or manifests requires a versioned
-layout migration and renewed reproduction checks. Deleting them would break
-the current analysis and historical reproduction paths.
-
-See [NOTEBOOK_MAINTENANCE.md](../NOTEBOOK_MAINTENANCE.md) before rebuilding
-the active notebook, and [PROVENANCE.md](../PROVENANCE.md) for source notices.
-
-The full current inventory has 220 feeding execution records; its discovery map has 140 outcomes on four known schools. `upper_count_evidence_v7.py --diagnostics` separately reconstructs raw events, seals, starts, phases, r90 and the fixed whole-school bootstrap without model execution. The compact main notebook generates no new bootstrap draws. The3D catalogue remains the validated 108-encounter through 18 subset.
-
-The additive `dolphin_count_evidence_v8.py` reconstructs the completed8-case D24 sensitivity with12 reused comparators, six population endpoints and the fixed whole-school bootstrap. Main notebook analysis retains those audited endpoints without new draws. Optional native examples remain D12/H1/G9 orD12/H2/G12.
+The separately reviewed primary replay source is disabled in default analysis and awaits artifact-specific native release certification. Older `run_v6_example.py` examples cover D12/H1/G9 and D12/H2/G12 short runs; they do not reproduce the new H1/G36 ensemble. [PROVENANCE.md](../PROVENANCE.md) retains upstream FishSim attribution and licenses.

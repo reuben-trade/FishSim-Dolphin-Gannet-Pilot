@@ -1,0 +1,79 @@
+"""Frozen held-out identities and budgets; importing never constructs a model."""
+from dataclasses import dataclass
+from pathlib import Path
+
+HERE=Path(__file__).resolve().parent
+ROOT=HERE.parents[1]
+BULK=Path('/tmp/FishSim_Heldout_2026-11-09')
+SEEDS=tuple(range(39065501,39065509))
+CAPTURE_SEED=61001
+CAPTURE_LABELS=(61001,)
+H_STAR=H0=1.
+N_STAR=6
+DURATION=36.
+GRIDS={'fine':.000625,'coarse':.00125}
+PREP_STEPS=588800
+FEEDING_STEPS=1843200
+SMOKE_STEPS=25600
+SMOKE_RESERVE=32000
+CONSERVATIVE_TOTAL_CAP=2924800
+
+
+@dataclass(frozen=True)
+class Case:
+    school_seed:int
+    grid:str
+    presence:str
+    capture_seed:int=CAPTURE_SEED
+
+    def __post_init__(self):
+        if type(self.school_seed) is not int or self.school_seed not in SEEDS:
+            raise ValueError('Only the eight fixed fresh candidates are allowed')
+        if self.grid not in GRIDS or self.presence not in ('D','G','DG'):
+            raise ValueError('Unknown frozen grid or presence')
+        if self.grid=='coarse' and self.presence=='G':
+            raise ValueError('No coarse G-only arm was selected')
+        if type(self.capture_seed) is not int or self.capture_seed not in CAPTURE_LABELS:
+            raise ValueError('Only primary capture label61001 is approved')
+
+    @property
+    def dt(self):return GRIDS[self.grid]
+    @property
+    def dolphins(self):return 'D' in self.presence
+    @property
+    def gannets(self):return N_STAR if 'G' in self.presence else 0
+    @property
+    def herding_minimum(self):return H_STAR if self.dolphins else None
+    @property
+    def policy(self):return f'H{H_STAR:g}_G{self.gannets}' if self.dolphins else f'Gonly{N_STAR}'
+    @property
+    def name(self):return f's{self.school_seed}_{self.grid}_{self.policy}_{self.presence}_c{self.capture_seed}'
+
+    def asdict(self):
+        return dict(school_seed=self.school_seed,grid=self.grid,herding_minimum_T=self.herding_minimum,
+            gannets=self.gannets,dolphins=12 if self.dolphins else 0,policy=self.policy,
+            presence=self.presence,capture_seed=self.capture_seed,dt=self.dt,duration_T=DURATION,
+            case_name=self.name)
+
+
+def all_cases(seeds=SEEDS):
+    return tuple(Case(s,g,p) for s in seeds for g in ('fine','coarse')
+                 for p in (('D','G','DG') if g=='fine' else ('D','DG')))
+
+
+def execution_stages(seeds=SEEDS):
+    cells=all_cases(seeds)
+    return (('D_only',tuple(c for c in cells if c.presence=='D')),
+            ('fine_G_only',tuple(c for c in cells if c.presence=='G')),
+            ('mixed',tuple(c for c in cells if c.presence=='DG')))
+
+
+def smoke_cases():
+    return (Case(SEEDS[0],'fine','D'),Case(SEEDS[0],'coarse','D'),
+            Case(SEEDS[0],'fine','G'),Case(SEEDS[0],'fine','DG'),Case(SEEDS[0],'coarse','DG'))
+
+
+def decode(seed,policy,presence,grid,capture_seed=CAPTURE_SEED):
+    case=Case(int(seed),grid,presence,capture_seed)
+    if case.policy!=policy:raise ValueError('Frozen H/N cannot be changed')
+    return case

@@ -1,0 +1,411 @@
+"""Independent read-only validation evidence audit; no model execution.
+
+The physical predicate is the unchanged, byte-pinned archived auditor. This
+script rereads the raw files independently and reconstructs statistical
+results with a separate integer count-weight implementation.
+"""
+from __future__ import annotations
+
+import argparse
+import csv
+from datetime import datetime, timezone
+import gzip
+import hashlib
+import importlib.util
+import json
+from pathlib import Path
+import sys
+
+import numpy as np
+
+HERE = Path('/home/venture/uwa/complex-systems/FishSim-RL/research/independent_validation_2026-11-10')
+INPUT_SHA = 'ea146c0ab2786b3bdc2fdf069d1d03c2c219eff09e0a5e17c00ffd32ce8b9408'
+FREEZE_SHA = '253071467e55b4cdbe91f75ba1de3f1bb80d65344e9cba05aadb86bccb08da0b'
+ZERO_SHA = 'ed402b01c1984af14d205db6386607f72b634bbd14ab8226ae187310533470ea'
+PHYSICAL_SHA = 'fb694fdf2e86dc023400c06a5a75467d5b89be44c154a367ee52fc02e207c52a'
+ORACLE = Path('/tmp/FishSim_Independent_Validation_Statistics_2026-11-10_v2.py')
+ORACLE_SHA = '43fc65d5150388ac807fbaaadda937cbd349256c233b470a285e24f9d9b4114a'
+STATE_FIELDS = ('positions', 'directions', 'prey_ids', 'time', 'step_index', 'surface_reflections')
+
+
+def read(path):
+    return json.loads(Path(path).read_text())
+
+
+def sha(path):
+    return hashlib.sha256(Path(path).read_bytes()).hexdigest()
+
+
+def records(path):
+    with gzip.open(path, 'rt') as handle:
+        return [json.loads(line) for line in handle]
+
+
+def csv_rows(path):
+    with Path(path).open(newline='') as handle:
+        return list(csv.DictReader(handle))
+
+
+def close(a, b):
+    assert np.isfinite(float(a)) and np.isfinite(float(b))
+    assert abs(float(a) - float(b)) <= 1e-13, (a, b)
+
+
+def boolean(value):
+    if value is True or value == 'True':
+        return True
+    if value is False or value == 'False':
+        return False
+    raise AssertionError('Expected explicit boolean or canonical CSV boolean')
+
+
+def digest_state(state):
+    h = hashlib.sha256()
+    for name in STATE_FIELDS:
+        a = np.asarray(state[name])
+        h.update(name.encode()); h.update(str(a.dtype).encode())
+        h.update(str(a.shape).encode()); h.update(a.tobytes())
+    return h.hexdigest()
+
+
+def prefix_rows(small, full, observed):
+    assert not any(row.get('reason') == 'encounter_end' for row in small)
+    assert all('elapsed' in row for row in small + full)
+    assert small == [row for row in full if row['elapsed'] <= observed + 1e-8]
+
+
+class Context:
+    def __init__(self):
+        assert __debug__
+        assert sha(HERE / 'INPUT_FREEZE.json') == INPUT_SHA
+        assert sha(HERE / 'frozen_sources.json') == FREEZE_SHA
+        assert sha(HERE / 'ACTUAL_ZERO_STEP.json') == ZERO_SHA
+        assert sha(HERE / 'review_actual.py') == PHYSICAL_SHA
+        sys.path.insert(0, str(HERE))
+        import cases
+        import evidence
+        from review_actual import audit_case
+        self.c, self.e, self.physical = cases, evidence, audit_case
+        self.freeze = evidence.verify_source_freeze()
+        self.zero = read(HERE / 'ACTUAL_ZERO_STEP.json')
+        self.zero_rows = {row['case_name']: row for row in self.zero['rows']}
+        self.all = cases.all_cases()
+        assert len(self.all) == len(self.zero_rows) == 192
+        assert set(self.zero_rows) == {case.name for case in self.all}
+        self.bindings = dict(input_freeze_sha256=INPUT_SHA, execution_freeze_sha256=FREEZE_SHA,
+                             actual_zero_sha256=ZERO_SHA,
+                             protocol_sha256=sha(HERE / 'protocol.json'),
+                             preparation_outcome_review_sha256=sha(cases.BULK / 'independent_preparation_outcome_review.json'))
+        assert 'fish_sim.cmodel' not in sys.modules
+
+    def raw(self, case, *, smoke=False):
+        duration = 4. if smoke else 36.
+        phase = 'smoke' if smoke else self.c.case_phase(case)
+        folder = self.c.phase_output(phase) / 'cases' / case.name
+        self.e.validate_candidate_seal(folder, duration)
+        initial = read(folder / 'initial_engine.json')
+        config, summary = read(folder / 'config.json'), read(folder / 'summary.json')
+        expected_roster = ([f'D{i:02d}' for i in range(12)] if case.dolphins else [])
+        expected_roster += [f'G{i}' for i in range(case.gannets)]
+        expected_roster.sort()
+        assert [row['actor_id'] for row in initial['actors']] == expected_roster
+        for field in ('actor_policy', 'capture_rng', 'controllers'):
+            assert set(initial[field]) == set(expected_roster)
+        assert set(summary['per_actor']) == set(expected_roster)
+        assert config['actors'] == [dict(state=state,
+            **initial['actor_policy'][state['actor_id']]) for state in initial['actors']]
+        assert config['controller_initial_state'] == initial['controllers']
+        assert read(folder / 'initial_shared.json') == {
+            k: v for k, v in initial.items() if k != 'controllers'}
+        engine_hash = hashlib.sha256(json.dumps(initial, sort_keys=True).encode()).hexdigest()
+        assert engine_hash == self.zero_rows[case.name]['actual_engine_receipt_sha256']
+        with np.load(folder / 'initial_school.npz', allow_pickle=False) as arrays:
+            state = {name: arrays[name] for name in arrays.files}
+            assert set(state) == set(STATE_FIELDS)
+            assert digest_state(state) == self.zero_rows[case.name]['actual_fish_sha256']
+        assert read(folder / 'source_manifest.json') == self.freeze['source_sha256']
+        assert config['dt'] == case.dt and config['duration'] == duration
+        for k, v in case.asdict().items():
+            assert config[k] == v, (case.name, k)
+        assert config['counts'] == dict(fish=160, D=12 if case.dolphins else 0, G=case.gannets)
+        assert summary['planned_duration'] == duration and summary['dt'] == case.dt
+        observed = summary['actual_duration']
+        steps = summary['native_steps']
+        assert 0 < observed <= duration + 1e-7 and steps == round(observed / case.dt)
+        assert abs(observed - steps * case.dt) <= 1e-7
+        events = records(folder / 'events.jsonl.gz')
+        oral = [event for event in events if event['kind'] == 'oral' and event['closes_bout']]
+        removed = [event['prey_id'] for event in oral if event['status'] == 'captured']
+        assert len(removed) == len(set(removed)) == 160 - summary['final_count']
+        if summary['native_absorbing_termination']:
+            assert summary['final_count'] == 0 and len(removed) == 160
+        else:
+            assert abs(observed - duration) <= 1e-7
+        output = dict(case.asdict(), actual_duration_T=observed, native_steps=steps,
+                      native_absorbing_termination=summary['native_absorbing_termination'],
+                      remaining_fish=summary['final_count'], initial_fish=160,
+                      completion_sha256=sha(folder / 'completion.json'))
+        for species in ('D', 'G'):
+            who = [row for row in oral if row['actor_id'].startswith(species)]
+            launches = [row for row in events if row['kind'] == 'transition'
+                        and row['reason'] == 'launch' and row['actor_id'].startswith(species)]
+            captures = sum(row['status'] == 'captured' for row in who)
+            assert captures == summary['species'][species]['captures']
+            assert len(who) == summary['species'][species]['contacts']
+            assert len(launches) == summary['species'][species]['launches']
+            output.update({species + '_captures': captures, species + '_contacts': len(who),
+                           species + '_launches': len(launches)})
+        return output, self.physical(folder)
+
+    def phase(self, phase):
+        smoke = phase == 'smoke'
+        stage = 'smoke' if smoke else 'feeding'
+        self.e.require_approval(stage)
+        cells = self.c.phase_cases(phase)
+        record = self.c.phase_record(phase)
+        status, execution, physical = [read(record / name) for name in
+                                      ('status.json', 'execution.json', 'physical_review.json')]
+        assert status['status'] == execution['status'] == 'complete'
+        assert status['phase'] == execution['phase'] == phase
+        assert status['complete'] == status['planned'] == len(cells)
+        assert len(status['cases']) == len(cells)
+        indexed = {row['case']['case_name']: row for row in status['cases']}
+        assert len(indexed) == len(cells) and set(indexed) == {case.name for case in cells}
+        assert physical['status'] == 'passed'
+        assert physical['status_sha256'] == sha(record / 'status.json')
+        assert physical['review_source_sha256'] == PHYSICAL_SHA
+        assert physical['wrapper_source_sha256'] == sha(HERE / 'review_phase.py')
+        assert execution['freeze_sha256'] == FREEZE_SHA and execution['workers'] == 8
+        assert execution['maximum_native_steps'] == self.c.phase_limit(phase)
+        barriers = {}
+        for wave, members in self.c.execution_stages(phase):
+            barrier, dispatch = read(record / (wave + '_stage.json')), read(record / (wave + '_dispatch.json'))
+            names = [case.name for case in members]
+            assert barrier['status'] == 'complete' and barrier['cases'] == names
+            assert dispatch['phase'] == phase and dispatch['wave'] == wave
+            assert dispatch['case_names'] == names and dispatch['freeze_sha256'] == FREEZE_SHA
+            barriers[wave] = dict(barrier_sha256=sha(record / (wave + '_stage.json')),
+                                  dispatch_sha256=sha(record / (wave + '_dispatch.json')))
+        rows, receipts = [], []
+        for case in cells:
+            row, receipt = self.raw(case, smoke=smoke)
+            recorded = indexed[case.name]
+            assert recorded['case'] == case.asdict()
+            assert recorded['native_steps'] == row['native_steps']
+            assert recorded['completion_sha256'] == row['completion_sha256']
+            assert recorded['species'] == read(self.c.phase_output(phase) / 'cases' / case.name / 'summary.json')['species']
+            rows.append(row); receipts.append(receipt)
+        assert receipts == physical['cases']
+        total = sum(row['native_steps'] for row in rows)
+        assert total == status['total_native_steps'] == execution['total_native_steps'] == physical['native_steps']
+        assert total <= self.c.phase_limit(phase)
+        return dict(phase=phase, rows=rows, physical_cases=receipts, native_steps=total,
+                    phase_limit=self.c.phase_limit(phase), phase_approval_sha256=sha(HERE / (stage.upper() + '_APPROVED.json')),
+                    status_sha256=sha(record / 'status.json'), execution_sha256=sha(record / 'execution.json'),
+                    physical_review_sha256=sha(record / 'physical_review.json'), control_barriers=barriers)
+
+    def prefix(self, case):
+        small = self.c.phase_output('smoke') / 'cases' / case.name
+        full = self.c.phase_output(self.c.case_phase(case)) / 'cases' / case.name
+        observed = read(small / 'summary.json')['actual_duration']
+        for name in ('initial_engine.json', 'initial_shared.json'):
+            assert read(small / name) == read(full / name)
+        for name in ('initial_school.npz', 'trajectories.npz'):
+            with np.load(small / name, allow_pickle=False) as a, np.load(full / name, allow_pickle=False) as b:
+                assert set(a.files) == set(b.files)
+                count = len(a['time']) if name == 'trajectories.npz' else None
+                for key in a.files:
+                    x, y = a[key], b[key]
+                    if count is not None and key not in ('actor_ids', 'prey_ids'):
+                        y = y[:count]
+                    assert x.dtype == y.dtype and x.shape == y.shape and x.tobytes() == y.tobytes(), key
+        for name in ('events.jsonl.gz', 'monitor.jsonl.gz', 'opportunities.jsonl.gz',
+                     'bird_events.jsonl.gz', 'responses.jsonl.gz'):
+            prefix_rows(records(small / name), records(full / name), observed)
+        prefix_rows(read(small / 'school_metrics.json'), read(full / 'school_metrics.json'), observed)
+        ties = read(small / 'tie_stream_calls.json')
+        assert ties == read(full / 'tie_stream_calls.json')[:len(ties)]
+        return dict(case=case.name, status='passed', prefix_T=observed,
+                    smoke_completion_sha256=sha(small / 'completion.json'),
+                    full_completion_sha256=sha(full / 'completion.json'))
+
+    def final(self):
+        output = self.c.BULK / 'analysis_final'
+        audit = read(output / 'analysis_audit.json')
+        assert audit['status'] == 'passed' and audit['full_cases'] == 192
+        assert audit['independent_schools'] == 16 and audit['replicate_labels'] == 2
+        assert audit['source_freeze_sha256'] == FREEZE_SHA
+        assert audit['protocol_sha256'] == self.bindings['protocol_sha256']
+        assert audit['native_steps_executed_by_analysis'] == 0
+        for name, digest in audit['files'].items():
+            assert Path(name).name == name and sha(output / name) == digest
+        phases = {phase: self.phase(phase) for phase in ('smoke', *self.c.PHASES)}
+        rows = [row for phase in self.c.PHASES for row in phases[phase]['rows']]
+        index = {row['case_name']: row for row in rows}
+        assert len(rows) == len(index) == 192 and set(index) == {case.name for case in self.all}
+        saved = csv_rows(output / 'case_outcomes.csv')
+        assert len(saved) == 192 and {row['case_name'] for row in saved} == set(index)
+        for row in saved:
+            raw = index[row['case_name']]
+            assert row['completion_sha256'] == raw['completion_sha256']
+            for species in ('D', 'G'):
+                for key in ('captures', 'contacts', 'launches'):
+                    assert int(row[species + '_' + key]) == raw[species + '_' + key]
+            for key in ('school_seed', 'capture_seed', 'capture_label', 'replicate_label', 'dolphins', 'gannets', 'native_steps', 'remaining_fish', 'initial_fish'):
+                assert int(row[key]) == raw[key]
+            for key in ('case_id', 'policy', 'grid', 'presence'):
+                assert row[key] == raw[key]
+            assert float(row['dt']) == raw['dt']
+            assert float(row['duration_T']) == raw['duration_T'] == 36.
+            if raw['herding_minimum_T'] is None:
+                assert row['herding_minimum_T'] == ''
+            else:
+                assert float(row['herding_minimum_T']) == raw['herding_minimum_T']
+            assert boolean(row['native_absorbing_termination']) == raw['native_absorbing_termination']
+            assert abs(float(row['actual_duration_T']) - raw['actual_duration_T']) <= 1e-7
+        assert audit['case_completion_sha256'] == {row['case_name']: row['completion_sha256'] for row in rows}
+        assert audit['phase_review_sha256'] == {p: phases[p]['physical_review_sha256'] for p in self.c.PHASES}
+        assert sha(ORACLE) == ORACLE_SHA
+        spec = importlib.util.spec_from_file_location('independent_validation_stats_reference', ORACLE)
+        oracle = importlib.util.module_from_spec(spec); spec.loader.exec_module(oracle)
+        expected = oracle.summarize(rows, bootstrap_draws=50000, bootstrap_seed=8611030)
+        actual = read(output / 'statistics.json')
+        assert actual['case_count'] == 192 and actual['primary']['grid'] == 'fine'
+        assert actual['primary']['joint_criterion_met'] == expected['fine_mutual_benefit_criterion_met']
+        assert actual['bootstrap']['draws'] == 50000 and actual['bootstrap']['seed'] == 8611030
+        assert actual['bootstrap']['quantiles'] == [.0125, .9875]
+        names = {name: (name.split('_')[-1] + '_' + name[0] if 'minus' not in name
+                        else 'fine_minus_coarse_' + name[0])
+                 for name in oracle.ENDPOINTS}
+        saved_schools = {row['school_seed']: row for row in actual['school_points']}
+        assert len(actual['school_points']) == len(saved_schools) == 16
+        assert set(saved_schools) == set(self.c.SEEDS)
+        for row in expected['school_effects']:
+            for name, column in names.items():
+                close(saved_schools[row['school_seed']][column], row[name])
+        worlds = {(row['school_seed'], row['capture_seed'], row['grid'], row['presence']): row
+                  for row in rows}
+        saved_worlds = {(row['school_seed'], row['replicate_label'], row['grid']): row
+                        for row in actual['world_points']}
+        assert len(actual['world_points']) == len(saved_worlds) == 64
+        expected_worlds = {(s, label, grid) for s in self.c.SEEDS
+                           for label in self.c.CAPTURE_LABELS for grid in self.c.GRIDS}
+        assert set(saved_worlds) == expected_worlds
+        for (school, label, grid), row in saved_worlds.items():
+            mixed = worlds[school, label, grid, 'DG']
+            for species, count in (('D', 12), ('G', 36)):
+                alone = worlds[school, label, grid, species][species + '_captures']
+                both = mixed[species + '_captures']
+                assert row[species + '_mixed_group_captures'] == both
+                assert row[species + '_alone_group_captures'] == alone
+                assert row[species + '_group_capture_change'] == both - alone
+                close(row[species + '_effect_per_individual_36T'], (both - alone) / count)
+                close(row[species + '_rate_change_per_individual_per_T'], (both - alone) / (count * 36))
+        saved_grid = {(row['school_seed'], row['replicate_label']): row
+                      for row in actual['paired_grid_world_points']}
+        assert len(actual['paired_grid_world_points']) == len(saved_grid) == 32
+        assert set(saved_grid) == {(s, label) for s in self.c.SEEDS for label in self.c.CAPTURE_LABELS}
+        for (school, label), row in saved_grid.items():
+            for species, count in (('D', 12), ('G', 36)):
+                fine = saved_worlds[school, label, 'fine'][species + '_group_capture_change']
+                coarse = saved_worlds[school, label, 'coarse'][species + '_group_capture_change']
+                assert row[species + '_group_effect_fine_minus_coarse'] == fine - coarse
+                close(row[species + '_effect_fine_minus_coarse_per_individual_36T'], (fine - coarse) / count)
+        returns = {(row['grid'], row['presence']): row for row in actual['group_returns']}
+        assert len(actual['group_returns']) == len(returns) == 6
+        assert set(returns) == {(g, p) for g in self.c.GRIDS for p in ('D', 'G', 'DG')}
+        for (grid, presence), row in returns.items():
+            group = [r for r in rows if r['grid'] == grid and r['presence'] == presence]
+            assert len(group) == row['n_worlds'] == 32 and row['n_schools'] == 16
+            for species, count in (('D', 12 if 'D' in presence else 0),
+                                   ('G', 36 if 'G' in presence else 0)):
+                total = sum(r[species + '_captures'] for r in group)
+                assert row[species + '_group_total_captures'] == total
+                close(row[species + '_mean_group_captures_per_world'], total / 32)
+                if count:
+                    close(row[species + '_mean_captures_per_individual_36T'], total / (32 * count))
+                    close(row[species + '_mean_captures_per_individual_per_T'], total / (32 * count * 36))
+                else:
+                    assert row[species + '_mean_captures_per_individual_36T'] is None
+                    assert row[species + '_mean_captures_per_individual_per_T'] is None
+        case_points = {row['case_id']: row for row in actual['case_points']}
+        assert len(actual['case_points']) == len(case_points) == 192 and set(case_points) == set(index)
+        for name, row in case_points.items():
+            raw = index[name]
+            for key in ('school_seed', 'replicate_label', 'grid', 'presence', 'dt', 'dolphins', 'gannets'):
+                assert row[key] == raw[key]
+            for species, count in (('D', raw['dolphins']), ('G', raw['gannets'])):
+                assert row[species + '_captures'] == raw[species + '_captures']
+                if count:
+                    close(row[species + '_captures_per_individual_36T'], raw[species + '_captures'] / count)
+                    close(row[species + '_captures_per_individual_per_T'], raw[species + '_captures'] / (count * 36))
+                else:
+                    assert row[species + '_captures_per_individual_36T'] is None
+                    assert row[species + '_captures_per_individual_per_T'] is None
+        maximum = 0.
+        for name, wanted in expected['endpoints'].items():
+            if 'minus' in name:
+                got = actual['secondary']['fine_minus_coarse'][name[0]]
+            elif name.endswith('coarse'):
+                got = actual['secondary']['coarse'][name[0]]
+            else:
+                got = actual['primary']['species'][name[0]]
+            comparisons = [(got['mean'], wanted['mean']), (got['school_sd'], wanted['sample_sd_school_means']),
+                           (got['se'], wanted['sampling_se']), (got['within_school_variance_W'], wanted['mean_within_school_repeat_variance']),
+                           (got['conditional_mcse'], wanted['conditional_mcse'])]
+            comparisons += list(zip(got['student_t_97_5_ci'], [wanted['school_t_975_low'], wanted['school_t_975_high']]))
+            comparisons += list(zip(got['bootstrap_97_5_ci'], [wanted['bootstrap_975_low'], wanted['bootstrap_975_high']]))
+            for a, b in comparisons:
+                close(a, b); maximum = max(maximum, abs(a - b))
+            assert got['df'] == 15 and got['n_schools'] == 16 and got['n_worlds'] == 32
+            assert got['school_signs'] == {key: wanted[key + '_schools'] for key in ('positive', 'zero', 'negative')}
+            close(got['mean_rate_change_per_individual_per_T'], wanted['mean'] / 36)
+        full_steps = sum(phases[p]['native_steps'] for p in self.c.PHASES)
+        all_steps = full_steps + phases['smoke']['native_steps'] + 588800
+        assert full_steps == audit['native_steps'] <= 8294400 and all_steps <= 8912000
+        return dict(phases=phases, new_full_cases=192, independent_schools=16,
+                    reused_discovery_cases_in_estimate=0, full_native_steps=full_steps,
+                    all_new_native_steps=all_steps, independent_statistics=expected,
+                    maximum_numeric_discrepancy=maximum,
+                    prefixes=[self.prefix(case) for case in self.c.smoke_cases()],
+                    analysis_audit_sha256=sha(output / 'analysis_audit.json'))
+
+    def audit(self, mode):
+        if mode == 'smoke':
+            phase = self.phase('smoke')
+            result = dict(phase=phase, physical_review_sha256=phase['physical_review_sha256'],
+                          interpretation='Engineering-only complete six cases; no feeding-benefit inference.')
+        elif mode.startswith('block'):
+            number = int(mode[5:]); assert 1 <= number <= 4
+            phases = {grid: self.phase(f'block{number}_{grid}') for grid in ('coarse', 'fine')}
+            result = dict(phases=phases, completed_full_cases=48, independent_schools=4,
+                          interpretation='Complete prespecified paired block only; descriptive raw counts, no confirmatory decision or reselection.')
+            if number == 1:
+                result['prefixes'] = [self.prefix(case) for case in self.c.smoke_cases()]
+        elif mode == 'final':
+            result = self.final()
+        else:
+            raise ValueError('Unknown independent audit mode')
+        self.e.verify_source_freeze()
+        assert 'fish_sim.cmodel' not in sys.modules
+        result.update(status='passed', stage=mode, at=datetime.now(timezone.utc).isoformat(),
+                      bindings=self.bindings, freeze_sha256=FREEZE_SHA,
+                      audit_source_sha256=sha(__file__), native_constructions_by_review=0,
+                      native_steps_by_review=0)
+        return result
+
+
+def main():
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('--phase', choices=('smoke', 'block1', 'block2', 'block3', 'block4', 'final'), required=True)
+    parser.add_argument('--output', type=Path, required=True)
+    args = parser.parse_args()
+    assert not args.output.exists(), 'Never overwrite a review receipt'
+    result = Context().audit(args.phase)
+    with args.output.open('x') as handle:
+        handle.write(json.dumps(result, indent=2, allow_nan=False) + '\n')
+    print(json.dumps(dict(status='passed', receipt=str(args.output), sha256=sha(args.output), native_steps_by_review=0)))
+
+
+if __name__ == '__main__':
+    main()
