@@ -55,6 +55,8 @@ A separate [higher-count accessibility supplement](reports/supplements/HIGH_COUN
 
 Active validation: the [frozen pre-analysis plan and 192 planned case identities](reports/supplements/VALIDATION_PREANALYSIS_PLAN.md) describe the separate 16-school study. This public archive is posted after feeding began and reports no validation effects. The current paper remains the earlier discovery report.
 
+The [first independently audited paired48 progress snapshot](reports/supplements/VALIDATION_PROGRESS_48.md) covers four of those schools, both nested labels and both timesteps. Mean feeding changes are positive for both species in this block, while individual school losses remain visible. It is descriptive only; all192 encounters and the final primary analysis remain mandatory.
+
 A [prospective H2/G12 follow-up and four-endpoint programme addendum](reports/supplements/LOWER_COUNT_FOLLOWUP_PLAN.md) uses the same 16 schools. It is planned but not authorised for native execution and leaves the active H1/G36 primary analysis unchanged.
 
 A [prospective crossed follow-up](reports/supplements/CROSSED_FOLLOWUP_PLAN.md) proposes H1/G12 and H2/G36 to separate the two tested herding durations and bird counts. Its 128 new mixed encounters would reuse exact controls on the same 16 schools; execution waits for both complete 192-case audits and fresh authority.
