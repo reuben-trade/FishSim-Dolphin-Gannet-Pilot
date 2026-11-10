@@ -55,6 +55,8 @@ A separate [higher-count accessibility supplement](reports/supplements/HIGH_COUN
 
 Active validation: the [frozen pre-analysis plan and 192 planned case identities](reports/supplements/VALIDATION_PREANALYSIS_PLAN.md) describe the separate 16-school study. This public archive is posted after feeding began and reports no validation effects. The current paper remains the earlier discovery report.
 
+A [prospective H2/G12 follow-up and four-endpoint programme addendum](reports/supplements/LOWER_COUNT_FOLLOWUP_PLAN.md) uses the same 16 schools. It is planned but not authorised for native execution and leaves the active H1/G36 primary analysis unchanged.
+
 ## Model execution and repository history
 
 New simulations are separate from replay and default notebook analysis. Read [V6_MODEL_SETUP.md](V6_MODEL_SETUP.md) for bounded parameter-map examples, [CURRENT_MODEL_SETUP.md](CURRENT_MODEL_SETUP.md) for the coarse/fine replication runner, or [NATIVE_SETUP.md](NATIVE_SETUP.md) for the historical runner.

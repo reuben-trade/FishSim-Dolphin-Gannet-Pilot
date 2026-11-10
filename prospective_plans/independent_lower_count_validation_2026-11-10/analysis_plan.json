@@ -1,0 +1,61 @@
+{
+  "schema": "fishsim_prespecified_parameter_followup_analysis_v1",
+  "approved_for_native_free_implementation": true,
+  "date_local": "2026-11-10",
+  "timezone": "Australia/Perth",
+  "study": "independent_lower_count_validation_2026-11-10",
+  "role": "Prespecified parameter follow-up in the SAME16-school validation cohort, not a second independent cohort.",
+  "selection": "H2/G12 was named in the primary root design before fresh feeding began. This analysis plan is fixed before any completed paired coarse/fine validation block or fine-grid feeding-effect analysis. No settings are selected using the active cohort's outcomes.",
+  "matching": "Reuse16 starting schools and labels71001/71002, with NEW H2 dolphin-only, G12-only and H2/G12 mixed encounters. H1 D-only or G36-only outcomes cannot substitute for these controls. Preserve cross-setting school/label pairing.",
+  "estimand": "For each species, form integer mixed-minus-matched-control capture differences, divide by12 individuals, average the two labels within each school and then average the16 school effects. Nominal36T remains the denominator under coherent early depletion; rates divide by36 separately.",
+  "secondary_estimation": {
+    "fine_grid": 0.000625,
+    "coarse_grid": 0.00125,
+    "independent_school_clusters": 16,
+    "nested_labels": 2,
+    "interval_role": "95% POINTWISE paired school-mean Student t intervals, not a second confirmatory success family.",
+    "t_confidence": 0.95,
+    "degrees_of_freedom": 15,
+    "t_critical": 2.131449545559776,
+    "automated_success_decision": null,
+    "outputs": "All world/school effects and signs, per-individual and group food, school SD/SE, W and conditional repeat MCSE. Coarse and fine-minus-coarse results remain secondary.",
+    "bootstrap_sensitivity": {
+      "draws": 50000,
+      "generator": "PCG64",
+      "seed": 8611030,
+      "quantiles": [
+        0.025,
+        0.975
+      ],
+      "unit": "Whole-school vectors jointly across labels, species and grids"
+    },
+    "decision_guard": "The original H1/G36 primary97.5% intervals and criterion remain unchanged. H2/G12 cannot rescue or replace that primary decision. Report uncertainty and directions rather than an automated secondary pass/fail."
+  },
+  "additional_programme_family": {
+    "declared_now_regardless_of_future_results": true,
+    "execute_only_after": "Both complete192-case studies and their independent final audits pass; verify all384 case identities and the same16 school/label vectors.",
+    "endpoints": [
+      "fine_H1_G36_D",
+      "fine_H1_G36_G",
+      "fine_H2_G12_D",
+      "fine_H2_G12_G"
+    ],
+    "intervals": "98.75% two-sided school-level Student t intervals for the four fine-grid mean effects, Bonferroni approximate95% simultaneous coverage under individual interval assumptions.",
+    "confidence": 0.9875,
+    "degrees_of_freedom": 15,
+    "t_critical": 2.8366274760941357,
+    "programme_criterion": "All four lower bounds exceed zero for a programme-wide claim that both tested settings benefit both species.",
+    "preservation": "Always retain and report the original primary and secondary estimates/intervals alongside this additional conservative analysis; do not replace a less favourable result or choose whether to compute the family after seeing outcomes.",
+    "independence": "n remains16 school clusters. If any resampling is used in a later programme sensitivity analysis, resample the same complete school vector jointly across both settings and labels; never treat the settings as32 schools.",
+    "comparison_guard": "H1/G36 versus H2/G12 changes BOTH herding duration and bird number. It cannot isolate either factor or establish an optimum."
+  },
+  "native_steps_authorized_by_this_plan": 0,
+  "all_current_primary_2127_bindings_immutable": true,
+  "future_native_gates_remain_closed": true,
+  "status": "settled_independently_reviewed",
+  "root_lock": {
+    "path": "/tmp/FishSim_Lower_Count_Validation_Analysis_Plan_2026-11-10.json",
+    "sha256": "9609528b734398af03dd597725020b6659e0ebb07b1c8f5e9bfe51ac7d5bb081"
+  },
+  "implementation_native_permission": false
+}

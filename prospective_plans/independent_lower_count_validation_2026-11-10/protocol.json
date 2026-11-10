@@ -1,0 +1,69 @@
+{
+  "status": "native_free_preparation_only",
+  "authority": {
+    "path": "/tmp/FishSim_Lower_Count_Validation_Preparation_Authorization_2026-11-10.json",
+    "sha256": "de66ccf346d535db49a878d7c5e8d9f12e3915c85400bae5411a85c1425edb8e"
+  },
+  "clarification": {
+    "path": "/tmp/FishSim_Lower_Count_Validation_Preparation_Clarification_2026-11-10.json",
+    "sha256": "d9004135819e153fff62ef0c86afb792c8b02899cb70f29027f0ebeada0393d2"
+  },
+  "future_execution_authority": null,
+  "regime": {
+    "H": 2.0,
+    "gannets": 12,
+    "dolphins": 12,
+    "fish": 160,
+    "q_eligible_contact": 0.7
+  },
+  "schools": [
+    39065501,
+    39065502,
+    39065503,
+    39065504,
+    39065505,
+    39065506,
+    39065507,
+    39065508,
+    39065509,
+    39065510,
+    39065511,
+    39065512,
+    39065513,
+    39065514,
+    39065515,
+    39065516
+  ],
+  "capture_labels": [
+    71001,
+    71002
+  ],
+  "grids": {
+    "coarse": 0.00125,
+    "fine": 0.000625
+  },
+  "duration_T": 36.0,
+  "full_cases": 192,
+  "full_step_ceiling": 8294400,
+  "new_preparation_step_ceiling": 0,
+  "smoke_cases": 6,
+  "smoke_duration_T": 4.0,
+  "smoke_step_ceiling": 28800,
+  "all_new_step_ceiling": 8323200,
+  "actual_zero_step_constructors": 192,
+  "workers": 8,
+  "numeric_threads": 1,
+  "minimum_root_free_GiB": 8,
+  "minimum_output_free_GiB": 2,
+  "ordering": "Four fixed four-school blocks, coarse then fine, D-only then G-only then mixed; both labels/all cases mandatory regardless signs",
+  "parent_study": "/home/venture/uwa/complex-systems/FishSim-RL/research/independent_validation_2026-11-10",
+  "parent_source_freeze_sha256": "253071467e55b4cdbe91f75ba1de3f1bb80d65344e9cba05aadb86bccb08da0b",
+  "input_reuse": "Exact same sixteen prepared20T schools and two labels as parent; sixteen school clusters, not32 independent schools across settings. No new preparations or replacements.",
+  "randomness": "Original school-inclusive SeedSequence arithmetic; stable-ID readiness independent of label; capture/tie/Gtarget change with label. No added timing or spacing parameter.",
+  "footprint": "Original twelve dolphin slots; nested G0-G11 at three original sites, four point birds per site. No added coverage/avoidance.",
+  "grid_scope": "Encounter-grid sensitivity conditional on same coarse-prepared starts; no preparation convergence claim",
+  "selection": "H2/G12 fixed prospectively before fresh feeding outcomes; not selected from active cohort results",
+  "execution_permission": "CLOSED: primary192 completion and independent final review, settled secondary inference plan, fresh root authority/input/zero/source/smoke/feeding gates all required; preparation grants no native permissions",
+  "resumption": "Case-granularity only; sealed complete cases may resume, partial/unsealed outcomes stop for review without automatic rerun",
+  "bulk": "/home/venture/FishSim_Lower_Count_Validation_2026-11-10"
+}

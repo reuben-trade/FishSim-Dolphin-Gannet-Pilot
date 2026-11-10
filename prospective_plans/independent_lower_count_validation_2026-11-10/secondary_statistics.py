@@ -1,0 +1,334 @@
+"""Native-free secondary estimation for the prospective H2/G12 follow-up.
+
+Both species have twelve individuals. Two labels are averaged within each of
+sixteen shared school clusters before pointwise95% Student-t intervals. The
+50,000 whole-school-vector bootstrap is a fixed sensitivity analysis. There is
+no automated secondary success decision; the original H1/G36 primary remains
+unchanged. Incomplete/duplicate rows and incoherent depletion fail analysis.
+"""
+from __future__ import annotations
+
+import hashlib
+import json
+import math
+from decimal import Decimal, InvalidOperation
+from typing import Iterable, Mapping, Any
+
+import numpy as np
+
+SCHOOL_SEEDS = tuple(range(39065501, 39065517))
+REPLICATE_LABELS = (71001, 71002)
+GRID_DT = {"coarse": Decimal("0.00125"), "fine": Decimal("0.000625")}
+PRESENCES = ("D", "G", "DG")
+DOLPHINS = 12
+GANNETS = 12
+INITIAL_FISH = 160
+DURATION_T = 36
+N_SCHOOLS = 16
+EXPECTED_CASES = 192
+DF = 15
+# t_(.975), df15:95% pointwise secondary intervals, no joint criterion.
+T_CRITICAL = 2.131449545559776
+BOOTSTRAP_DRAWS = 50_000
+BOOTSTRAP_SEED = 8_611_030
+QUANTILES = (0.025, 0.975)
+CONTRASTS = (
+    "fine_D", "fine_G", "coarse_D", "coarse_G",
+    "fine_minus_coarse_D", "fine_minus_coarse_G",
+)
+
+
+def _integer(value: Any, field: str) -> int:
+    if isinstance(value, (bool, np.bool_)):
+        raise ValueError(f"{field} must be an integer, not a boolean")
+    try:
+        number = Decimal(str(value).strip())
+    except (InvalidOperation, ValueError) as exc:
+        raise ValueError(f"{field} must be a finite integer") from exc
+    if not number.is_finite() or number != number.to_integral_value():
+        raise ValueError(f"{field} must be a finite integer")
+    return int(number)
+
+
+def _aliases(row: Mapping[str, Any], names: tuple[str, ...], integer=False):
+    found = [(name, row[name]) for name in names if name in row]
+    if not found:
+        raise ValueError(f"Missing required field: {' / '.join(names)}")
+    values = [_integer(value, name) if integer else str(value).strip()
+              for name, value in found]
+    if any(value != values[0] for value in values[1:]):
+        raise ValueError(f"Conflicting aliases: {' / '.join(names)}")
+    return values[0]
+
+
+def _boolean(value: Any, field: str) -> bool:
+    if isinstance(value, (bool, np.bool_)):
+        return bool(value)
+    if isinstance(value, str) and value.strip().lower() in ("true", "false"):
+        return value.strip().lower() == "true"
+    raise ValueError(f"{field} must be an explicit boolean")
+
+
+def _normalise(rows: Iterable[Mapping[str, Any]]) -> list[dict[str, Any]]:
+    cells = {}
+    ids = set()
+    for row in rows:
+        case_id = _aliases(row, ("case_id", "case_name"))
+        if not case_id:
+            raise ValueError("Empty case identifier")
+        school = _aliases(row, ("school_seed", "school"), integer=True)
+        label = _aliases(row, ("replicate_label", "capture_label", "capture_seed"), integer=True)
+        if school not in SCHOOL_SEEDS or label not in REPLICATE_LABELS:
+            raise ValueError("Unexpected school or replicate label; discovery records cannot be pooled")
+        try:
+            dt = Decimal(str(row["dt"]).strip())
+        except (KeyError, InvalidOperation, ValueError) as exc:
+            raise ValueError("Missing or invalid dt") from exc
+        grids = [name for name, expected in GRID_DT.items() if dt == expected]
+        if len(grids) != 1:
+            raise ValueError(f"Unexpected timestep: {dt}")
+        grid = grids[0]
+        if "grid" in row and row["grid"] != grid:
+            raise ValueError("Grid label does not match dt")
+        presence = row.get("presence")
+        if presence not in PRESENCES:
+            raise ValueError(f"Unexpected presence: {presence}")
+        key = (school, label, grid, presence)
+        if key in cells:
+            raise ValueError(f"Duplicate design cell: {key}")
+        if case_id in ids:
+            raise ValueError(f"Reused case identifier: {case_id}")
+        dc = _integer(row.get("D_captures"), "D_captures")
+        gc = _integer(row.get("G_captures"), "G_captures")
+        if dc < 0 or gc < 0 or dc + gc > INITIAL_FISH:
+            raise ValueError("Capture counts violate nonnegative unique-prey accounting")
+        nd = DOLPHINS if "D" in presence else 0
+        ng = GANNETS if "G" in presence else 0
+        if (nd == 0 and dc) or (ng == 0 and gc):
+            raise ValueError("An absent species cannot capture fish")
+        for field, expected in (("dolphins", nd), ("gannets", ng), ("initial_fish", INITIAL_FISH)):
+            if field in row and _integer(row[field], field) != expected:
+                raise ValueError(f"Unexpected {field}")
+        if "herding_minimum_T" in row:
+            value = row["herding_minimum_T"]
+            if nd and (isinstance(value, bool) or str(value) not in ("2", "2.0")):
+                raise ValueError("H2-specific dolphin controls are required")
+            if not nd and value not in (None, "", "None"):
+                raise ValueError("G-only cases have no dolphin herding parameter")
+        if "remaining_fish" in row:
+            remaining = _integer(row["remaining_fish"], "remaining_fish")
+            if remaining < 0 or remaining + dc + gc != INITIAL_FISH:
+                raise ValueError("Remaining fish do not match capture accounting")
+        for field in ("duration_T",):
+            if field in row:
+                try:
+                    duration = float(row[field])
+                except (TypeError, ValueError) as exc:
+                    raise ValueError(f"Invalid {field}") from exc
+                if not math.isfinite(duration) or not math.isclose(duration, DURATION_T, rel_tol=0, abs_tol=1e-7):
+                    raise ValueError("Only complete 36T encounters enter final inference")
+        absorbed = _boolean(row.get("native_absorbing_termination", False), "native_absorbing_termination")
+        full_steps = int(Decimal(36) / dt)
+        steps = _integer(row["native_steps"], "native_steps") if "native_steps" in row else full_steps
+        try:
+            actual_duration = float(row.get("actual_duration_T", DURATION_T))
+        except (TypeError, ValueError) as exc:
+            raise ValueError("Invalid actual_duration_T") from exc
+        if absorbed:
+            required = ("actual_duration_T", "native_steps", "remaining_fish")
+            if any(field not in row for field in required):
+                raise ValueError("Declared depletion requires its actual clock, steps and remaining fish")
+            if (not math.isfinite(actual_duration) or not 0 < actual_duration <= DURATION_T + 1e-7
+                    or steps < 1 or steps != round(actual_duration / float(dt))
+                    or not math.isclose(actual_duration, steps * float(dt), rel_tol=0, abs_tol=1e-7)
+                    or _integer(row["remaining_fish"], "remaining_fish") != 0 or dc + gc != INITIAL_FISH):
+                raise ValueError("Incoherent declared absorbing depletion")
+        else:
+            if not math.isfinite(actual_duration) or not math.isclose(actual_duration, DURATION_T, rel_tol=0, abs_tol=1e-7):
+                raise ValueError("Only complete36T encounters or declared absorbing depletion enter final inference")
+            if steps != full_steps:
+                raise ValueError("Native-step count does not match the full encounter/grid")
+        if "completion_sha256" in row:
+            digest = str(row["completion_sha256"])
+            if len(digest) != 64 or any(char not in "0123456789abcdef" for char in digest):
+                raise ValueError("Invalid completion SHA-256")
+        # The executor owns raw scientific audits. These optional columns also
+        # reject impossible contact/launch normalisations if supplied here.
+        for species, captures, count in (("D", dc, nd), ("G", gc, ng)):
+            metrics = {"captures": captures}
+            for metric in ("contacts", "launches"):
+                name = f"{species}_{metric}"
+                if name in row:
+                    value = _integer(row[name], name)
+                    if value < 0 or (count == 0 and value):
+                        raise ValueError(f"Invalid {name}")
+                    metrics[metric] = value
+            if "contacts" in metrics and captures > metrics["contacts"]:
+                raise ValueError("Captures exceed eligible contacts")
+            if "contacts" in metrics and "launches" in metrics and metrics["contacts"] > metrics["launches"]:
+                raise ValueError("Eligible contacts exceed initiated bouts")
+        cells[key] = {
+            "case_id": case_id, "school_seed": school, "replicate_label": label,
+            "grid": grid, "dt": float(dt), "presence": presence,
+            "dolphins": nd, "gannets": ng, "D_captures": dc, "G_captures": gc,
+            "duration_T": DURATION_T, "actual_duration_T": actual_duration,
+            "native_steps": steps, "native_absorbing_termination": absorbed,
+            "remaining_fish": INITIAL_FISH - dc - gc,
+        }
+        ids.add(case_id)
+    expected = {(s, r, g, p) for s in SCHOOL_SEEDS for r in REPLICATE_LABELS
+                for g in GRID_DT for p in PRESENCES}
+    if set(cells) != expected:
+        missing = sorted(expected - set(cells))
+        raise ValueError(f"Final analysis requires all 192 cases; missing {len(missing)} cells. No zero imputation or early decision.")
+    return [cells[s, r, g, p] for s in SCHOOL_SEEDS for r in REPLICATE_LABELS
+            for g in GRID_DT for p in PRESENCES]
+
+
+def _signs(points: np.ndarray) -> dict[str, int]:
+    return {"positive": int(np.count_nonzero(points > 0)),
+            "zero": int(np.count_nonzero(points == 0)),
+            "negative": int(np.count_nonzero(points < 0))}
+
+
+def analyse(rows: Iterable[Mapping[str, Any]]) -> dict[str, Any]:
+    """Analyse the complete, locked design; reject incomplete/duplicate cases.
+
+    Counts must already come from the executor's audited outputs. Aliases are
+    checked for agreement, not silently preferred. Optional raw-audit fields
+    are checked when supplied. Input order never affects pairing or resampling.
+    """
+    cases = _normalise(rows)
+    index = {(r["school_seed"], r["replicate_label"], r["grid"], r["presence"]): r for r in cases}
+    deltas = {}
+    world_points = []
+    for school in SCHOOL_SEEDS:
+        for label in REPLICATE_LABELS:
+            for grid in GRID_DT:
+                mixed = index[school, label, grid, "DG"]
+                da = index[school, label, grid, "D"]["D_captures"]
+                ga = index[school, label, grid, "G"]["G_captures"]
+                dd, gd = mixed["D_captures"] - da, mixed["G_captures"] - ga
+                deltas[school, label, grid] = (dd, gd)
+                world_points.append({
+                    "school_seed": school, "replicate_label": label, "grid": grid,
+                    "D_mixed_group_captures": mixed["D_captures"], "D_alone_group_captures": da,
+                    "G_mixed_group_captures": mixed["G_captures"], "G_alone_group_captures": ga,
+                    "D_group_capture_change": dd, "G_group_capture_change": gd,
+                    "D_effect_per_individual_36T": dd / DOLPHINS,
+                    "G_effect_per_individual_36T": gd / GANNETS,
+                    "D_rate_change_per_individual_per_T": dd / (DOLPHINS * DURATION_T),
+                    "G_rate_change_per_individual_per_T": gd / (GANNETS * DURATION_T),
+                })
+    school_points = []
+    school_counts = []
+    world_counts = []  # [school, labelled world, six integer contrasts]
+    grid_world_points = []
+    for school in SCHOOL_SEEDS:
+        worlds = []
+        sums = {grid: [sum(deltas[school, label, grid][j] for label in REPLICATE_LABELS)
+                       for j in (0, 1)] for grid in GRID_DT}
+        # Integer contrasts before normalisation preserve exact mathematical
+        # zeros, including paired-grid differences and label averages.
+        counts = [sums["fine"][0], sums["fine"][1], sums["coarse"][0], sums["coarse"][1],
+                  sums["fine"][0] - sums["coarse"][0], sums["fine"][1] - sums["coarse"][1]]
+        denominators = (24, 24, 24, 24, 24, 24)
+        vector = [value / denominator for value, denominator in zip(counts, denominators)]
+        school_counts.append(counts)
+        school_points.append({"school_seed": school, **dict(zip(CONTRASTS, vector))})
+        for label in REPLICATE_LABELS:
+            fine, coarse = deltas[school, label, "fine"], deltas[school, label, "coarse"]
+            worlds.append([fine[0], fine[1], coarse[0], coarse[1], fine[0] - coarse[0], fine[1] - coarse[1]])
+            grid_world_points.append({"school_seed": school, "replicate_label": label,
+                                      "D_group_effect_fine_minus_coarse": fine[0] - coarse[0],
+                                      "G_group_effect_fine_minus_coarse": fine[1] - coarse[1],
+                                      "D_effect_fine_minus_coarse_per_individual_36T": (fine[0] - coarse[0]) / 12,
+                                      "G_effect_fine_minus_coarse_per_individual_36T": (fine[1] - coarse[1]) / 12})
+        world_counts.append(worlds)
+    vectors = np.asarray([[r[name] for name in CONTRASTS] for r in school_points], dtype=float)
+    integer_schools = np.asarray(school_counts, dtype=np.int64)
+    integer_worlds = np.asarray(world_counts, dtype=np.int64)
+    school_denominators = np.asarray(denominators, dtype=np.int64)
+    world_denominators = school_denominators // 2
+    labelled = integer_worlds / world_denominators
+    # One common school-index matrix preserves species/grid/label matching.
+    # Labels have already been averaged within each school: never resample
+    # the32 labelled worlds as if they were32 independent schools.
+    rng = np.random.Generator(np.random.PCG64(BOOTSTRAP_SEED))
+    draw_indices = rng.integers(0, N_SCHOOLS, size=(BOOTSTRAP_DRAWS, N_SCHOOLS), dtype=np.int64)
+    boot_means = integer_schools[draw_indices].sum(axis=1) / (N_SCHOOLS * school_denominators)
+    intervals = np.quantile(boot_means, QUANTILES, axis=0, method="linear")
+    summaries = {}
+    for j, name in enumerate(CONTRASTS):
+        points = vectors[:, j]
+        average = int(integer_schools[:, j].sum()) / (N_SCHOOLS * int(school_denominators[j]))
+        sd = float(np.std(points, ddof=1))
+        se = sd / math.sqrt(N_SCHOOLS)
+        repeat_differences = (integer_worlds[:, 0, j] - integer_worlds[:, 1, j]) / world_denominators[j]
+        within_variance = float(np.mean(repeat_differences ** 2 / 2))
+        summaries[name] = {
+            "mean": average, "school_sd": sd, "se": se, "n_schools": N_SCHOOLS,
+            "n_worlds": N_SCHOOLS * 2, "df": DF,
+            "student_t_95_ci": [average - T_CRITICAL * se, average + T_CRITICAL * se],
+            "bootstrap_95_ci": [float(intervals[0, j]), float(intervals[1, j])],
+            "school_signs": _signs(points), "world_signs": _signs(labelled[:, :, j].ravel()),
+            "within_school_variance_W": within_variance,
+            "conditional_mcse": math.sqrt(within_variance / (N_SCHOOLS * 2)),
+            "label_effect_differences": repeat_differences.tolist(),
+            "unit": "captures per individual over the complete36T encounter",
+            "mean_rate_change_per_individual_per_T": average / DURATION_T,
+        }
+    fine = {species: summaries[f"fine_{species}"] for species in ("D", "G")}
+    case_points = []
+    for row in cases:
+        enriched = dict(row)
+        for species, count in (("D", row["dolphins"]), ("G", row["gannets"])):
+            enriched[f"{species}_captures_per_individual_36T"] = row[f"{species}_captures"] / count if count else None
+            enriched[f"{species}_captures_per_individual_per_T"] = row[f"{species}_captures"] / (count * 36) if count else None
+        case_points.append(enriched)
+    group_returns = []
+    for grid in GRID_DT:
+        for presence in PRESENCES:
+            subset = [r for r in cases if r["grid"] == grid and r["presence"] == presence]
+            totals = {s: sum(r[f"{s}_captures"] for r in subset) for s in ("D", "G")}
+            group_returns.append({"grid": grid, "presence": presence, "n_schools": 16, "n_worlds": 32,
+                                  **{f"{s}_group_total_captures": totals[s] for s in ("D", "G")},
+                                  **{f"{s}_mean_group_captures_per_world": totals[s] / 32 for s in ("D", "G")},
+                                  **{f"{s}_mean_captures_per_individual_36T": totals[s] / (32 * subset[0][count]) if subset[0][count] else None
+                                     for s, count in (("D", "dolphins"), ("G", "gannets"))},
+                                  **{f"{s}_mean_captures_per_individual_per_T": totals[s] / (32 * subset[0][count] * 36) if subset[0][count] else None
+                                     for s, count in (("D", "dolphins"), ("G", "gannets"))}})
+    return {
+        "status": "complete_prespecified_secondary_estimation", "case_count": EXPECTED_CASES,
+        "design": {"schools": list(SCHOOL_SEEDS), "replicate_labels": list(REPLICATE_LABELS),
+                   "grids": {key: float(value) for key, value in GRID_DT.items()},
+                   "presence_arms": list(PRESENCES), "dolphins": DOLPHINS, "gannets": GANNETS,
+                   "fish": INITIAL_FISH, "duration_T": DURATION_T,
+                   "independent_unit": "school; average two labelled worlds before inference",
+                   "label_scope": "capture, tie and gannet-target streams; not pure capture-q noise"},
+        "secondary_estimation": {"grid": "fine", "species": fine,
+                                 "automated_joint_decision": None,
+                                 "interval_role": "95% pointwise school-mean intervals; no secondary success family",
+                                 "parent_primary_unchanged": True},
+        "secondary": {"coarse": {s: summaries[f"coarse_{s}"] for s in ("D", "G")},
+                      "fine_minus_coarse": {s: summaries[f"fine_minus_coarse_{s}"] for s in ("D", "G")},
+                      "qualification": "Secondary numerical contrasts with95% pointwise intervals; no convergence or joint-success inference"},
+        "bootstrap": {"role": "sensitivity only; never select an inference method by whether it passes",
+                      "draws": BOOTSTRAP_DRAWS, "seed": BOOTSTRAP_SEED, "generator": "PCG64",
+                      "unit": "whole matched school vector", "quantiles": list(QUANTILES),
+                      "quantile_method": "linear", "common_draws_across_all_contrasts": True,
+                      "index_matrix_sha256": hashlib.sha256(draw_indices.astype("<i8", copy=False).tobytes()).hexdigest()},
+        "uncertainty": {"total_se": "school SD / sqrt(16), already including repeat noise",
+                        "W": "mean across16 schools of (label1 effect - label2 effect)^2 /2",
+                        "conditional_mcse": "sqrt(W/(16*2)); descriptive conditional repeat component",
+                        "mcse_added_to_total_se": False},
+        "school_vector_columns": list(CONTRASTS[:4]),
+        "school_points": school_points, "world_points": world_points, "case_points": case_points,
+        "paired_grid_world_points": grid_world_points, "group_returns": group_returns,
+        "t_critical": T_CRITICAL, "native_steps": 0,
+        "normalised_input_sha256": hashlib.sha256(json.dumps(cases, sort_keys=True, separators=(",", ":")).encode()).hexdigest(),
+    }
+
+
+summarize = analyse
+analyze = analyse
