@@ -51,6 +51,8 @@ The current paper includes a complete H × gannet-count map through thirty-six g
 
 These are model results with exploratory uncertainty, unresolved timestep sensitivity and uncalibrated physical units. They do not establish general biological cooperation or numerical convergence.
 
+A separate [higher-count accessibility supplement](reports/supplements/HIGH_COUNT_ACCESSIBILITY.md) examines potential prey-access windows in all128 saved bird-bearing encounters. It retains all24 conditions and adds no simulations or schools; the current paper and notebook remain unchanged.
+
 ## Model execution and repository history
 
 New simulations are separate from replay and default notebook analysis. Read [V6_MODEL_SETUP.md](V6_MODEL_SETUP.md) for bounded parameter-map examples, [CURRENT_MODEL_SETUP.md](CURRENT_MODEL_SETUP.md) for the coarse/fine replication runner, or [NATIVE_SETUP.md](NATIVE_SETUP.md) for the historical runner.

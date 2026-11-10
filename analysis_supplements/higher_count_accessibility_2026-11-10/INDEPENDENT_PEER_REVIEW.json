@@ -1,0 +1,83 @@
+{
+  "status": "passed_independent_read_only_scientific_review",
+  "source_path": "/home/venture/uwa/complex-systems/FishSim-RL/research/higher_count_accessibility_2026-11-10/analyze.py",
+  "source_sha256": "838ded0738594d3551ecfea17a491f4d3eaf3ac21d599cafd4ad63133c04d22f",
+  "audit_path": "/home/venture/uwa/complex-systems/FishSim-RL/research/higher_count_accessibility_2026-11-10/outputs/analysis_audit.json",
+  "audit_sha256": "28da54606449783e65d39106150e8269eabc99636be6621a5bb479d3aa6ce169",
+  "verified_input_hashes": 644,
+  "verified_output_hashes": {
+    "regime_accessibility.csv": "a5a2d50f99a9db2a907c303eed5003d9332dc964251663b036bc023b50c37127",
+    "case_accessibility.csv": "79f8e811c45afbc81868d3b333245a505311c31ce7db3ada7267c8e2070bde17",
+    "sampled_accessibility.csv": "6cc34ab670d4fd78c14282e3f4eb6e9cdf34249a89f16b9c4281ea1e6327c7b7",
+    "paired_accessibility.csv": "aa580a5e858de4109f7727f1f98184f13d45845d7589704c970f4e11d5f2c6f4"
+  },
+  "output_hashes_match_original_candidate": true,
+  "bank_outcomes": 140,
+  "bird_bearing_cases": 128,
+  "mixed_cases": 96,
+  "bird_only_cases": 32,
+  "previously_examined_schools": 4,
+  "independently_checked_saved_frames": 46208,
+  "independently_checked_paired_rows": 96,
+  "independently_checked_regime_means": 24,
+  "legacy_cases_reconciled": 48,
+  "legacy_comparisons": [
+    "no_launch_final_6T",
+    "all_birds_final_search",
+    "all_birds_final_no_accessible_targets",
+    "last_gannet_launch_T",
+    "depth_blackout_total_sampled_T"
+  ],
+  "independent_geometry": "Vectorised depth/sense-radius/travel predicates reconstructed directly from sealed trajectories and actor configs, without importing author analysis/helper. All per-frame depth counts, potential-target bird counts, aggregate availability, search counts and median live depth matched.",
+  "minimum_live_fish": 95,
+  "depth_blackout_frames": 4546,
+  "blackout_frames_with_above_surface_live_fish": 0,
+  "maximum_time_integral_discrepancy": 0.0,
+  "integration": "Trapezoidal time means for continuous depth fields; left-constant saved0.1T durations for booleans.",
+  "raw_event_summary_checks": "All128 gannet launch/capture totals matched raw transitions/oral events; capture/contact/launch totals matched sealed species summaries. Completion/source hashes and matching identities verified.",
+  "H1G36": {
+    "school_access_changes_T": [
+      6.0,
+      9.7,
+      6.5,
+      24.5
+    ],
+    "mean_sampled_access_change_T": 11.675,
+    "mean_sampled_depth_blackout_change_T": -7.425,
+    "mean_sampled_shallow_unreachable_change_T": -4.25,
+    "mean_depth_eligible_live_fraction_change": -0.0003168639749293739,
+    "G_only_totals": {
+      "launches": 355,
+      "contacts": 26,
+      "captures": 16
+    },
+    "mixed_totals": {
+      "launches": 921,
+      "contacts": 130,
+      "captures": 94
+    },
+    "pooled_contact_yield": [
+      0.07323943661971831,
+      0.14115092290988057
+    ]
+  },
+  "map_access_mean_signs": {
+    "positive": 20,
+    "zero": 0,
+    "negative": 4
+  },
+  "limitations": [
+    "Posthoc descriptive analysis of four previously examined schools; no new independent evidence or primary-validation endpoint.",
+    "Potential geometric new-target eligibility is evaluated regardless of actor readiness/committed bout; it is not actual attack-ready time or a causal controller decision.",
+    "Surviving-prey denominators and all trajectories change under predator presence; access, disturbance, removal and search effects are not isolated.",
+    "Sampled-duration uncertainty applies per transition boundary; do not treat three decimal places as continuous-time precision.",
+    "The4.25T average reduction in shallow-unreachable time is entirely one G-only case with17T of that state.",
+    "Mean per-school contact-yield changes differ from pooled contacts divided by pooled launches.",
+    "Counterexamples exist: some settings gain bird captures despite reduced sampled access, and some gain access without bird feeding gains."
+  ],
+  "new_native_steps": 0,
+  "new_model_imports": 0,
+  "new_bootstrap_draws": 0,
+  "scientific_source_or_output_mutations": 0,
+  "reviewer": "/root/current_paper_merge"
+}
