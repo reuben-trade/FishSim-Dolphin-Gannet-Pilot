@@ -1,0 +1,36 @@
+{
+  "status": "failed_closed_reviewer_schema_mismatch",
+  "schema": "professor_local_QA_saved_review_failed_attempt_v1",
+  "audit_source_sha256": "62964facf78354b2943e84d0715bea35773a76079320b60b4f49cc88024f14eb",
+  "actual_authority_sha256": "60f1518648e4bfa32eb095e359cfa1c5bd744e811def74b39bc5c2c9473eae36",
+  "actual_terminal_sha256": "93bd9b8d822feec3cb07a80434ba2d4ac4178c2534329ea9cafaf51f6c88ebae",
+  "exit_code": 1,
+  "error": "ValueError: QA source list differs",
+  "location": "AUDIT.py:139",
+  "actual_source_file_keys": [
+    "EXPECTED_ACCEPTANCE.json",
+    "GUARD_CONFIG.TEMPLATE.json",
+    "PLAN.md",
+    "QA_PLAN.json",
+    "ROOT_QA_AUTHORITY.TEMPLATE.json",
+    "qa_startup_guard.py",
+    "run_notebook_once.py"
+  ],
+  "incorrect_expected_keys_from_QA_PLAN_source_files": [
+    "PLAN.md",
+    "qa_startup_guard.py",
+    "run_notebook_once.py"
+  ],
+  "actual_matches_all_seven_frozen_QA_files": true,
+  "all_actual_source_hashes_verified_before_rejection": true,
+  "canonical_pass_receipt_created": false,
+  "raw_case_review_reached": false,
+  "model_imports": 0,
+  "native_constructions": 0,
+  "native_steps": 0,
+  "lease_acquisitions": 0,
+  "model_processes_started": 0,
+  "source_changed": false,
+  "automatic_retry_performed": false,
+  "remedy_scope": "Requires separate versioned reviewer + independent source peer; bind exact seven CANDIDATE_FREEZE.files instead of three QA_PLAN.source_files. Keep source V2 and all actual execution evidence unchanged."
+}

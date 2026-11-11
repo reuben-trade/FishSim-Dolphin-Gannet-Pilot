@@ -43,7 +43,7 @@ Open **[main.ipynb](main.ipynb)** in JupyterLab and choose **Run → Run All Cel
 python -m jupyterlab
 ```
 
-The default seven code cells reproduce four figures and thirteen canonical summary tables from saved results. They take zero native model steps and generate no new bootstrap draws. Actual full-study reproduction passed in fresh kernels and a separate space-containing checkout. Saving outputs/kernel metadata and repeating Run All in the same kernel also passes; the four optional settings are checked by type. [Detailed setup and platform notes](docs/LOCAL_ANALYSIS_SETUP.md). Optional native replay remains disabled and its release is separate. [Notebook and replay setup](docs/PRIMARY_REPLAY_SETUP.md).
+The default seven code cells reproduce four figures and thirteen canonical summary tables from saved results. They take zero native model steps and generate no new bootstrap draws; the committed notebook also displays real saved-data outputs. Actual full-study reproduction passed in fresh kernels and a separate space-containing checkout. Saving outputs/kernel metadata and repeating Run All in the same kernel also passes; the four optional settings are checked by type. [Detailed analysis setup](docs/LOCAL_ANALYSIS_SETUP.md). Optional native replay is off by default; its [setup and tested scope](docs/PRIMARY_MODEL_LOCAL_SETUP_2026-11-11.md) are documented separately.
 
 ## What this study shows
 
@@ -57,6 +57,6 @@ The [pre-analysis plan](reports/supplements/VALIDATION_PREANALYSIS_PLAN.md) and 
 
 ## Model execution and repository history
 
-New simulations are separate from replay and default notebook analysis. The reviewed [primary H1/G36 replay source](model_examples/primary_192/PRIMARY_MODEL_SETUP.md) has distinct 4T and 36T modes; native release remains pending its separate artifact-specific engineering checks. It is not activated by the default notebook. Read [V6_MODEL_SETUP.md](V6_MODEL_SETUP.md) for bounded parameter-map examples, [CURRENT_MODEL_SETUP.md](CURRENT_MODEL_SETUP.md) for the coarse/fine replication runner, or [NATIVE_SETUP.md](NATIVE_SETUP.md) for the historical runner.
+New simulations are separate from replay and default notebook analysis. The [current primary H1/G36 replay guide](docs/PRIMARY_MODEL_LOCAL_SETUP_2026-11-11.md) provides explicit 4T and 36T modes for six fixed-world examples on both encounter grids. Both binaries have actual zero-start, short and full-horizon replay proofs. The historical 4T local notebook route also passed a separate instrumented test in a relocated package. This does not claim a fresh replay of all 192 encounters, a fresh dependency installation or cross-platform support. Native replay starts only after explicit opt-in; the default notebook reads saved results. Read [V6_MODEL_SETUP.md](V6_MODEL_SETUP.md) for earlier bounded parameter-map examples, [CURRENT_MODEL_SETUP.md](CURRENT_MODEL_SETUP.md) for the coarse/fine replication runner, or [NATIVE_SETUP.md](NATIVE_SETUP.md) for the historical runner.
 
 Earlier generated exports and the old delivery receipt are grouped under [archive/](archive/README.md). Hash-pinned source, data and historical filenames remain intact because the notebook checks their exact paths. The [repository guide](docs/REPOSITORY_GUIDE.md) identifies the files needed for everyday use. Third-party notices remain in [PROVENANCE.md](PROVENANCE.md).

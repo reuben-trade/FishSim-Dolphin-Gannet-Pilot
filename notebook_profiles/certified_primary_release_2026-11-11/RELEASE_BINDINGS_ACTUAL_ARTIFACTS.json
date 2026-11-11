@@ -1,0 +1,69 @@
+{
+  "schema": "fishsim_postcert_notebook_bindings_v1",
+  "status": "ACTUAL_ARTIFACT_BACKENDS_BOUND_PROFESSOR_LOCAL_QA_PENDING",
+  "original_package_manifest_sha256": "a30927d7a62dc56f1d23b5c7bf2d77a663ac6892f9b40712e03ec2e69d48e3cd",
+  "original_main_archive": "archive/notebooks/primary192_saved_data_2026-11-11/main.ipynb",
+  "original_main_sha256": "763887eccb331dbc506064843e5334707bb834def5dc9b89059852a07e57617c",
+  "files": {
+    "replay_tools/__init__.py": "1e7937a47b792d5c6aaa4380ce63205abe428b7d13b536a0ea87dd61c2dbed89",
+    "replay_tools/primary_192/execute_notebook.py": "33cb934237b7234c991d89898ec60e00dad0a5e02d0e075cb4abf32697168d1d",
+    "replay_tools/primary_192/portable_seal_adapter.py": "37a93a74eb5fa9942a806ba3ce1153bc8a1ac5e9d4712404c2cb30e8b06a850d",
+    "replay_tools/primary_192/optional_native.py": "e37de32618cbbdcfacc2e8dcecf8ac589ff4d1107e5b0b44c376a4c2cc82ece4",
+    "replay_tools/primary_192/notebook_session.py": "8e5e2d57cb04363fbafdfcd927ab8b68ba49db4f4f624692f33972f09c5c6417",
+    "replay_tools/primary_192/check_primary_replay_v2.py": "55adee85ec494ac4125aaa3e051e5e73518876d7a8f6e9cf584e3600095fe7d4",
+    "replay_tools/primary_192/SOURCE_PINS.json": "e058a0d8e79cb06630acd397741e975d86768f9a6e6e389a143b028aeeed9418",
+    "replay_tools/primary_192/NOTEBOOK_TEMPLATE.json": "c5cfc92298571d2990d027cd17b53c5f7c9b594fdfe4b064bb7f524b244a4d68",
+    "replay_tools/primary_192/notebook_template.py": "d86e724c68a2b5cf21694e852dde5ee9b36e8b078a631c21e574ffb478f19e9b",
+    "replay_tools/primary_192/__init__.py": "43170e29e40adda4c4ff63f603b7e7b68dba08bfa1de04a6021af8a895463fca",
+    "archive/notebooks/primary192_saved_data_2026-11-11/main.ipynb": "763887eccb331dbc506064843e5334707bb834def5dc9b89059852a07e57617c",
+    "replay_tools/primary_192/certified_native_v1.py": "4cf4db76a5125349ecd78c7e04861535810e7a6a8c8ede15b0e330730bfb09d9",
+    "notebook_profiles/native_facade_v1_2026-11-11/NOTEBOOK_TEMPLATE.json": "476dfe9b07558e259ac54f1cad0e742ae3212eebca9fb6ea0905f2212a51e4e5",
+    "notebook_profiles/certified_primary_release_2026-11-11/NOTEBOOK_TEMPLATE.json": "1b7849ead2e7acabb7e0bca602c70147d452c105759445d30abf6262313709fe"
+  },
+  "notebook_template": {
+    "path": "notebook_profiles/certified_primary_release_2026-11-11/NOTEBOOK_TEMPLATE.json",
+    "configuration_cell_id": "cell_9cf3cfec07846a03",
+    "logical_sha256": "8ea761ed42a9c80fffdc84a1725d4aed49735cb800dcd98ea7e56b50b9941d91"
+  },
+  "allowed_settings": {
+    "RUN_NATIVE": false,
+    "NATIVE_DURATION_T": 4,
+    "NATIVE_ARTIFACT": "historical",
+    "NATIVE_WORKERS": 6
+  },
+  "native_release": {
+    "status": "ACTUAL_BOTH_ARTIFACTS_RELEASE_ACCEPTED",
+    "certificate_path": "model_examples/primary_192/PRIMARY_MODEL_RELEASE.json",
+    "certificate_sha256": "7a1461e4ee2f382d285c6421568b6877ad0b5c7ccdd3c3f3b6c3d03727b5db98",
+    "root_release_acceptance_path": "notebook_profiles/certified_primary_release_2026-11-11/ROOT_ACTUAL_RELEASE_ACCEPTANCE.json",
+    "root_release_acceptance_sha256": "0b9eeed0fd1da87bce61769d7be8ff4f982879106cf2ff3de8766a54fa4a9029",
+    "acceptance_contract": {
+      "schema": "primary_model_root_actual_release_acceptance_v1",
+      "status": "passed",
+      "recorded_by": "/root",
+      "certificate_sha256": "7a1461e4ee2f382d285c6421568b6877ad0b5c7ccdd3c3f3b6c3d03727b5db98",
+      "interface_files": {
+        "primary_runtime.py": "a0db03c31a614cad35dd4141fe4b57cc299c2bc5cfa84dca141fef0edf936ef6",
+        "primary_gate.py": "917accc9217433ef53af205c52ff969d5c4b0daf63bc235614cfe73bf2d3e2a5",
+        "primary_worker.py": "ff85e99f5e00d949db3d88381325b105264f5e6940b08fac6f4ced92cb8dbfa3",
+        "run_primary_model.py": "eb02a2e45258b120c86c082f4b750ebc49111c07a65a19f9f139a89e99c22f7e",
+        "MODEL_INPUTS.json": "69f9ee49d1e9ff9831f0a5936bb96ad1b7eebdd55a9b625893592c70719d3f98",
+        "REFERENCE_MANIFEST.json": "d77424a0f01d90eaf5ed64166db73e062f28ea4cf39e9876ad0cc0a72b63512f"
+      },
+      "source_freeze_sha256": "253071467e55b4cdbe91f75ba1de3f1bb80d65344e9cba05aadb86bccb08da0b",
+      "independent_programme_acceptance_sha256": "d72d466f80ef508e5848f75fbb66a0a52948ff2b7b95ca39e764eb122f8ecaca",
+      "actual_engineering_constructors": 408,
+      "actual_engineering_steps": 576000,
+      "artifacts": [
+        "historical",
+        "source-built"
+      ],
+      "platform_scope": "Observed Linux x86-64 CPython3.12.13 environments only",
+      "scope": "Artifact software replay certification for exactly192 zero-start assertions and six fixedworld examples at4T/36T each. No new scientific sample, full192 feeding replay or freshinstall/generalplatform guarantee.",
+      "actual_local_QA_native_execution_authorized_by_this_record": false,
+      "public_release_authorized_by_this_record": false
+    }
+  },
+  "native_execution_activated": false,
+  "professor_local_QA": "PENDING separate fresh ROOT198constructor/28800step approval and actual run"
+}

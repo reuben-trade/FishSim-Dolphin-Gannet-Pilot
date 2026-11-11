@@ -1,0 +1,2455 @@
+{
+  "status": "passed",
+  "schema": "primary_model_exact_horizon_engineering_v1",
+  "interface_files": {
+    "primary_runtime.py": "a0db03c31a614cad35dd4141fe4b57cc299c2bc5cfa84dca141fef0edf936ef6",
+    "primary_gate.py": "917accc9217433ef53af205c52ff969d5c4b0daf63bc235614cfe73bf2d3e2a5",
+    "primary_worker.py": "ff85e99f5e00d949db3d88381325b105264f5e6940b08fac6f4ced92cb8dbfa3",
+    "run_primary_model.py": "eb02a2e45258b120c86c082f4b750ebc49111c07a65a19f9f139a89e99c22f7e",
+    "MODEL_INPUTS.json": "69f9ee49d1e9ff9831f0a5936bb96ad1b7eebdd55a9b625893592c70719d3f98",
+    "REFERENCE_MANIFEST.json": "d77424a0f01d90eaf5ed64166db73e062f28ea4cf39e9876ad0cc0a72b63512f"
+  },
+  "exact_case_names": [
+    "s39065501_coarse_H1_G0_D_c71001",
+    "s39065501_coarse_Gonly36_G_c71001",
+    "s39065501_coarse_H1_G36_DG_c71001",
+    "s39065501_fine_H1_G0_D_c71001",
+    "s39065501_fine_Gonly36_G_c71001",
+    "s39065501_fine_H1_G36_DG_c71001"
+  ],
+  "duration_T": 4,
+  "source_execution_native_steps": 28800,
+  "active_native_sha256": "eb8654a520304cc429aced67c7e3706db8d2ef1449c5e1327a682a479b10a558",
+  "runtime_declaration_sha256": "dbfad5383ed4df8b680155fb96e11f837b5824b0152e6fb7ce6e2d38fa0b19d8",
+  "exact_full_trajectory_and_event_replay": true,
+  "model_steps_by_reviewer": 0,
+  "native_imports": 0,
+  "native_constructions": 0,
+  "full192_ensemble_fidelity_claimed": false,
+  "independent_review_claimed": false,
+  "scope": "Owner saved-data check only; firstschool39065501/label71001 bothgrids/three arms at actual complete horizon. Original physical functions/tolerances and exact compare are retained; independent bb920 review remains mandatory.",
+  "operational_adapter_version": 2,
+  "original_owner_checker_sha256": "33b304993a2c5c3ccbe18979ced15d25bfbc4632e029a7c16248bebdc967d55c",
+  "original_physical_review_sha256": "fb694fdf2e86dc023400c06a5a75467d5b89be44c154a367ee52fc02e207c52a",
+  "original_physical_function_asts_sha256": "0542a19936e28f7d446514d2d0333559ef2b4656eb6b02cf63bec70d4c93f6ea",
+  "portable_source_preparation_reconstruction": {
+    "source_bindings": 2127,
+    "runtime_files": 4521,
+    "reference_files": 303,
+    "snapshot_manifest_sha256": "1ab5c57ff5d6077f9239254c7f12b06249b1c23b34d5c5e37c695dd299864cd6",
+    "preparation_index_sha256": "4aaa654ec530235efeb524845768777767a916ae351098a6f04ac60cf7f89700",
+    "original_source_freeze_sha256": "253071467e55b4cdbe91f75ba1de3f1bb80d65344e9cba05aadb86bccb08da0b",
+    "builder_proof": {
+      "constructor_ast_sha256": "cb1eb7b812b25fc4902b3356d7178be845d8d10e70fcad799ee7dd2913530c5d",
+      "pure_assembly_unchanged": true
+    },
+    "runner_proof": {
+      "physical_ast_sha256": "b938e6d20eed3f52b5b23c05cb08fdeb1dbe24189e13908aa62d25a22059b15d",
+      "physical_tail_unchanged": true
+    }
+  },
+  "request_sha256": "5926e4d293209edc41f48922efd55ed0e7f16cbe9b2c26de7dce8c379ad1a888",
+  "dispatch_sha256": "cbda5b3a17998befaf32d0219ebb0b3d8ad01b0a46b23eec53298b9491f96417",
+  "physical_cases": [
+    {
+      "case": "s39065501_coarse_H1_G0_D_c71001",
+      "status": "passed",
+      "native_steps": 3200,
+      "actual_duration_T": 3.999999999996362,
+      "saved_frames": 41,
+      "actor_monitor_samples_each": 41,
+      "dolphin_cycle_launches": 6,
+      "actors": {
+        "D00": {
+          "status": "passed",
+          "captures": 0,
+          "launches": 0,
+          "oral_contacts": 0,
+          "geometry": "passed",
+          "capture_rng": "passed",
+          "recovery": "passed"
+        },
+        "D01": {
+          "status": "passed",
+          "captures": 0,
+          "launches": 1,
+          "oral_contacts": 0,
+          "geometry": "passed",
+          "capture_rng": "passed",
+          "recovery": "passed"
+        },
+        "D02": {
+          "status": "passed",
+          "captures": 1,
+          "launches": 1,
+          "oral_contacts": 1,
+          "geometry": "passed",
+          "capture_rng": "passed",
+          "recovery": "passed"
+        },
+        "D03": {
+          "status": "passed",
+          "captures": 1,
+          "launches": 1,
+          "oral_contacts": 1,
+          "geometry": "passed",
+          "capture_rng": "passed",
+          "recovery": "passed"
+        },
+        "D04": {
+          "status": "passed",
+          "captures": 0,
+          "launches": 0,
+          "oral_contacts": 0,
+          "geometry": "passed",
+          "capture_rng": "passed",
+          "recovery": "passed"
+        },
+        "D05": {
+          "status": "passed",
+          "captures": 0,
+          "launches": 0,
+          "oral_contacts": 0,
+          "geometry": "passed",
+          "capture_rng": "passed",
+          "recovery": "passed"
+        },
+        "D06": {
+          "status": "passed",
+          "captures": 0,
+          "launches": 1,
+          "oral_contacts": 0,
+          "geometry": "passed",
+          "capture_rng": "passed",
+          "recovery": "passed"
+        },
+        "D07": {
+          "status": "passed",
+          "captures": 0,
+          "launches": 0,
+          "oral_contacts": 0,
+          "geometry": "passed",
+          "capture_rng": "passed",
+          "recovery": "passed"
+        },
+        "D08": {
+          "status": "passed",
+          "captures": 0,
+          "launches": 0,
+          "oral_contacts": 0,
+          "geometry": "passed",
+          "capture_rng": "passed",
+          "recovery": "passed"
+        },
+        "D09": {
+          "status": "passed",
+          "captures": 0,
+          "launches": 1,
+          "oral_contacts": 0,
+          "geometry": "passed",
+          "capture_rng": "passed",
+          "recovery": "passed"
+        },
+        "D10": {
+          "status": "passed",
+          "captures": 0,
+          "launches": 1,
+          "oral_contacts": 0,
+          "geometry": "passed",
+          "capture_rng": "passed",
+          "recovery": "passed"
+        },
+        "D11": {
+          "status": "passed",
+          "captures": 0,
+          "launches": 0,
+          "oral_contacts": 0,
+          "geometry": "passed",
+          "capture_rng": "passed",
+          "recovery": "passed"
+        }
+      },
+      "gannet_target_rng": {},
+      "tie_rng": "passed",
+      "source_and_case_seals": "passed",
+      "completion_sha256": "a3acad10861314a598c87993f1b373659f2b27bfec959ad9fc4e64491191a3a3"
+    },
+    {
+      "case": "s39065501_coarse_Gonly36_G_c71001",
+      "status": "passed",
+      "native_steps": 3200,
+      "actual_duration_T": 3.999999999996362,
+      "saved_frames": 41,
+      "actor_monitor_samples_each": 41,
+      "dolphin_cycle_launches": 0,
+      "actors": {
+        "G0": {
+          "status": "passed",
+          "captures": 0,
+          "launches": 1,
+          "oral_contacts": 0,
+          "geometry": "passed",
+          "capture_rng": "passed",
+          "recovery": "passed"
+        },
+        "G1": {
+          "status": "passed",
+          "captures": 0,
+          "launches": 1,
+          "oral_contacts": 0,
+          "geometry": "passed",
+          "capture_rng": "passed",
+          "recovery": "passed"
+        },
+        "G10": {
+          "status": "passed",
+          "captures": 0,
+          "launches": 1,
+          "oral_contacts": 0,
+          "geometry": "passed",
+          "capture_rng": "passed",
+          "recovery": "passed"
+        },
+        "G11": {
+          "status": "passed",
+          "captures": 1,
+          "launches": 1,
+          "oral_contacts": 1,
+          "geometry": "passed",
+          "capture_rng": "passed",
+          "recovery": "passed"
+        },
+        "G12": {
+          "status": "passed",
+          "captures": 0,
+          "launches": 1,
+          "oral_contacts": 0,
+          "geometry": "passed",
+          "capture_rng": "passed",
+          "recovery": "passed"
+        },
+        "G13": {
+          "status": "passed",
+          "captures": 0,
+          "launches": 1,
+          "oral_contacts": 0,
+          "geometry": "passed",
+          "capture_rng": "passed",
+          "recovery": "passed"
+        },
+        "G14": {
+          "status": "passed",
+          "captures": 0,
+          "launches": 1,
+          "oral_contacts": 0,
+          "geometry": "passed",
+          "capture_rng": "passed",
+          "recovery": "passed"
+        },
+        "G15": {
+          "status": "passed",
+          "captures": 0,
+          "launches": 1,
+          "oral_contacts": 1,
+          "geometry": "passed",
+          "capture_rng": "passed",
+          "recovery": "passed"
+        },
+        "G16": {
+          "status": "passed",
+          "captures": 0,
+          "launches": 1,
+          "oral_contacts": 0,
+          "geometry": "passed",
+          "capture_rng": "passed",
+          "recovery": "passed"
+        },
+        "G17": {
+          "status": "passed",
+          "captures": 0,
+          "launches": 1,
+          "oral_contacts": 0,
+          "geometry": "passed",
+          "capture_rng": "passed",
+          "recovery": "passed"
+        },
+        "G18": {
+          "status": "passed",
+          "captures": 0,
+          "launches": 1,
+          "oral_contacts": 0,
+          "geometry": "passed",
+          "capture_rng": "passed",
+          "recovery": "passed"
+        },
+        "G19": {
+          "status": "passed",
+          "captures": 0,
+          "launches": 1,
+          "oral_contacts": 0,
+          "geometry": "passed",
+          "capture_rng": "passed",
+          "recovery": "passed"
+        },
+        "G2": {
+          "status": "passed",
+          "captures": 0,
+          "launches": 1,
+          "oral_contacts": 0,
+          "geometry": "passed",
+          "capture_rng": "passed",
+          "recovery": "passed"
+        },
+        "G20": {
+          "status": "passed",
+          "captures": 0,
+          "launches": 1,
+          "oral_contacts": 1,
+          "geometry": "passed",
+          "capture_rng": "passed",
+          "recovery": "passed"
+        },
+        "G21": {
+          "status": "passed",
+          "captures": 0,
+          "launches": 1,
+          "oral_contacts": 0,
+          "geometry": "passed",
+          "capture_rng": "passed",
+          "recovery": "passed"
+        },
+        "G22": {
+          "status": "passed",
+          "captures": 0,
+          "launches": 1,
+          "oral_contacts": 0,
+          "geometry": "passed",
+          "capture_rng": "passed",
+          "recovery": "passed"
+        },
+        "G23": {
+          "status": "passed",
+          "captures": 0,
+          "launches": 1,
+          "oral_contacts": 0,
+          "geometry": "passed",
+          "capture_rng": "passed",
+          "recovery": "passed"
+        },
+        "G24": {
+          "status": "passed",
+          "captures": 0,
+          "launches": 1,
+          "oral_contacts": 0,
+          "geometry": "passed",
+          "capture_rng": "passed",
+          "recovery": "passed"
+        },
+        "G25": {
+          "status": "passed",
+          "captures": 0,
+          "launches": 1,
+          "oral_contacts": 0,
+          "geometry": "passed",
+          "capture_rng": "passed",
+          "recovery": "passed"
+        },
+        "G26": {
+          "status": "passed",
+          "captures": 0,
+          "launches": 1,
+          "oral_contacts": 0,
+          "geometry": "passed",
+          "capture_rng": "passed",
+          "recovery": "passed"
+        },
+        "G27": {
+          "status": "passed",
+          "captures": 0,
+          "launches": 1,
+          "oral_contacts": 1,
+          "geometry": "passed",
+          "capture_rng": "passed",
+          "recovery": "passed"
+        },
+        "G28": {
+          "status": "passed",
+          "captures": 0,
+          "launches": 1,
+          "oral_contacts": 0,
+          "geometry": "passed",
+          "capture_rng": "passed",
+          "recovery": "passed"
+        },
+        "G29": {
+          "status": "passed",
+          "captures": 0,
+          "launches": 1,
+          "oral_contacts": 0,
+          "geometry": "passed",
+          "capture_rng": "passed",
+          "recovery": "passed"
+        },
+        "G3": {
+          "status": "passed",
+          "captures": 0,
+          "launches": 1,
+          "oral_contacts": 0,
+          "geometry": "passed",
+          "capture_rng": "passed",
+          "recovery": "passed"
+        },
+        "G30": {
+          "status": "passed",
+          "captures": 0,
+          "launches": 1,
+          "oral_contacts": 0,
+          "geometry": "passed",
+          "capture_rng": "passed",
+          "recovery": "passed"
+        },
+        "G31": {
+          "status": "passed",
+          "captures": 0,
+          "launches": 1,
+          "oral_contacts": 0,
+          "geometry": "passed",
+          "capture_rng": "passed",
+          "recovery": "passed"
+        },
+        "G32": {
+          "status": "passed",
+          "captures": 0,
+          "launches": 1,
+          "oral_contacts": 0,
+          "geometry": "passed",
+          "capture_rng": "passed",
+          "recovery": "passed"
+        },
+        "G33": {
+          "status": "passed",
+          "captures": 0,
+          "launches": 1,
+          "oral_contacts": 1,
+          "geometry": "passed",
+          "capture_rng": "passed",
+          "recovery": "passed"
+        },
+        "G34": {
+          "status": "passed",
+          "captures": 0,
+          "launches": 1,
+          "oral_contacts": 0,
+          "geometry": "passed",
+          "capture_rng": "passed",
+          "recovery": "passed"
+        },
+        "G35": {
+          "status": "passed",
+          "captures": 0,
+          "launches": 1,
+          "oral_contacts": 0,
+          "geometry": "passed",
+          "capture_rng": "passed",
+          "recovery": "passed"
+        },
+        "G4": {
+          "status": "passed",
+          "captures": 0,
+          "launches": 1,
+          "oral_contacts": 0,
+          "geometry": "passed",
+          "capture_rng": "passed",
+          "recovery": "passed"
+        },
+        "G5": {
+          "status": "passed",
+          "captures": 0,
+          "launches": 1,
+          "oral_contacts": 0,
+          "geometry": "passed",
+          "capture_rng": "passed",
+          "recovery": "passed"
+        },
+        "G6": {
+          "status": "passed",
+          "captures": 0,
+          "launches": 1,
+          "oral_contacts": 0,
+          "geometry": "passed",
+          "capture_rng": "passed",
+          "recovery": "passed"
+        },
+        "G7": {
+          "status": "passed",
+          "captures": 0,
+          "launches": 1,
+          "oral_contacts": 0,
+          "geometry": "passed",
+          "capture_rng": "passed",
+          "recovery": "passed"
+        },
+        "G8": {
+          "status": "passed",
+          "captures": 0,
+          "launches": 1,
+          "oral_contacts": 0,
+          "geometry": "passed",
+          "capture_rng": "passed",
+          "recovery": "passed"
+        },
+        "G9": {
+          "status": "passed",
+          "captures": 0,
+          "launches": 1,
+          "oral_contacts": 0,
+          "geometry": "passed",
+          "capture_rng": "passed",
+          "recovery": "passed"
+        }
+      },
+      "gannet_target_rng": {
+        "G0": {
+          "status": "passed",
+          "weighted_draws": 1
+        },
+        "G1": {
+          "status": "passed",
+          "weighted_draws": 1
+        },
+        "G10": {
+          "status": "passed",
+          "weighted_draws": 1
+        },
+        "G11": {
+          "status": "passed",
+          "weighted_draws": 1
+        },
+        "G12": {
+          "status": "passed",
+          "weighted_draws": 1
+        },
+        "G13": {
+          "status": "passed",
+          "weighted_draws": 1
+        },
+        "G14": {
+          "status": "passed",
+          "weighted_draws": 1
+        },
+        "G15": {
+          "status": "passed",
+          "weighted_draws": 1
+        },
+        "G16": {
+          "status": "passed",
+          "weighted_draws": 1
+        },
+        "G17": {
+          "status": "passed",
+          "weighted_draws": 1
+        },
+        "G18": {
+          "status": "passed",
+          "weighted_draws": 1
+        },
+        "G19": {
+          "status": "passed",
+          "weighted_draws": 1
+        },
+        "G2": {
+          "status": "passed",
+          "weighted_draws": 1
+        },
+        "G20": {
+          "status": "passed",
+          "weighted_draws": 1
+        },
+        "G21": {
+          "status": "passed",
+          "weighted_draws": 1
+        },
+        "G22": {
+          "status": "passed",
+          "weighted_draws": 1
+        },
+        "G23": {
+          "status": "passed",
+          "weighted_draws": 1
+        },
+        "G24": {
+          "status": "passed",
+          "weighted_draws": 1
+        },
+        "G25": {
+          "status": "passed",
+          "weighted_draws": 1
+        },
+        "G26": {
+          "status": "passed",
+          "weighted_draws": 1
+        },
+        "G27": {
+          "status": "passed",
+          "weighted_draws": 1
+        },
+        "G28": {
+          "status": "passed",
+          "weighted_draws": 1
+        },
+        "G29": {
+          "status": "passed",
+          "weighted_draws": 1
+        },
+        "G3": {
+          "status": "passed",
+          "weighted_draws": 1
+        },
+        "G30": {
+          "status": "passed",
+          "weighted_draws": 1
+        },
+        "G31": {
+          "status": "passed",
+          "weighted_draws": 1
+        },
+        "G32": {
+          "status": "passed",
+          "weighted_draws": 1
+        },
+        "G33": {
+          "status": "passed",
+          "weighted_draws": 1
+        },
+        "G34": {
+          "status": "passed",
+          "weighted_draws": 1
+        },
+        "G35": {
+          "status": "passed",
+          "weighted_draws": 1
+        },
+        "G4": {
+          "status": "passed",
+          "weighted_draws": 1
+        },
+        "G5": {
+          "status": "passed",
+          "weighted_draws": 1
+        },
+        "G6": {
+          "status": "passed",
+          "weighted_draws": 1
+        },
+        "G7": {
+          "status": "passed",
+          "weighted_draws": 1
+        },
+        "G8": {
+          "status": "passed",
+          "weighted_draws": 1
+        },
+        "G9": {
+          "status": "passed",
+          "weighted_draws": 1
+        }
+      },
+      "tie_rng": "passed",
+      "source_and_case_seals": "passed",
+      "completion_sha256": "230f18e91eea85fd454b65b5301e657451e5e7f1fe21d3536239a20d099e337a"
+    },
+    {
+      "case": "s39065501_coarse_H1_G36_DG_c71001",
+      "status": "passed",
+      "native_steps": 3200,
+      "actual_duration_T": 3.999999999996362,
+      "saved_frames": 41,
+      "actor_monitor_samples_each": 41,
+      "dolphin_cycle_launches": 5,
+      "actors": {
+        "D00": {
+          "status": "passed",
+          "captures": 0,
+          "launches": 1,
+          "oral_contacts": 0,
+          "geometry": "passed",
+          "capture_rng": "passed",
+          "recovery": "passed"
+        },
+        "D01": {
+          "status": "passed",
+          "captures": 0,
+          "launches": 1,
+          "oral_contacts": 0,
+          "geometry": "passed",
+          "capture_rng": "passed",
+          "recovery": "passed"
+        },
+        "D02": {
+          "status": "passed",
+          "captures": 0,
+          "launches": 1,
+          "oral_contacts": 0,
+          "geometry": "passed",
+          "capture_rng": "passed",
+          "recovery": "passed"
+        },
+        "D03": {
+          "status": "passed",
+          "captures": 0,
+          "launches": 1,
+          "oral_contacts": 0,
+          "geometry": "passed",
+          "capture_rng": "passed",
+          "recovery": "passed"
+        },
+        "D04": {
+          "status": "passed",
+          "captures": 0,
+          "launches": 0,
+          "oral_contacts": 0,
+          "geometry": "passed",
+          "capture_rng": "passed",
+          "recovery": "passed"
+        },
+        "D05": {
+          "status": "passed",
+          "captures": 0,
+          "launches": 0,
+          "oral_contacts": 0,
+          "geometry": "passed",
+          "capture_rng": "passed",
+          "recovery": "passed"
+        },
+        "D06": {
+          "status": "passed",
+          "captures": 0,
+          "launches": 1,
+          "oral_contacts": 0,
+          "geometry": "passed",
+          "capture_rng": "passed",
+          "recovery": "passed"
+        },
+        "D07": {
+          "status": "passed",
+          "captures": 0,
+          "launches": 0,
+          "oral_contacts": 0,
+          "geometry": "passed",
+          "capture_rng": "passed",
+          "recovery": "passed"
+        },
+        "D08": {
+          "status": "passed",
+          "captures": 0,
+          "launches": 0,
+          "oral_contacts": 0,
+          "geometry": "passed",
+          "capture_rng": "passed",
+          "recovery": "passed"
+        },
+        "D09": {
+          "status": "passed",
+          "captures": 0,
+          "launches": 0,
+          "oral_contacts": 0,
+          "geometry": "passed",
+          "capture_rng": "passed",
+          "recovery": "passed"
+        },
+        "D10": {
+          "status": "passed",
+          "captures": 0,
+          "launches": 0,
+          "oral_contacts": 0,
+          "geometry": "passed",
+          "capture_rng": "passed",
+          "recovery": "passed"
+        },
+        "D11": {
+          "status": "passed",
+          "captures": 0,
+          "launches": 0,
+          "oral_contacts": 0,
+          "geometry": "passed",
+          "capture_rng": "passed",
+          "recovery": "passed"
+        },
+        "G0": {
+          "status": "passed",
+          "captures": 0,
+          "launches": 1,
+          "oral_contacts": 0,
+          "geometry": "passed",
+          "capture_rng": "passed",
+          "recovery": "passed"
+        },
+        "G1": {
+          "status": "passed",
+          "captures": 0,
+          "launches": 1,
+          "oral_contacts": 0,
+          "geometry": "passed",
+          "capture_rng": "passed",
+          "recovery": "passed"
+        },
+        "G10": {
+          "status": "passed",
+          "captures": 0,
+          "launches": 1,
+          "oral_contacts": 0,
+          "geometry": "passed",
+          "capture_rng": "passed",
+          "recovery": "passed"
+        },
+        "G11": {
+          "status": "passed",
+          "captures": 0,
+          "launches": 1,
+          "oral_contacts": 0,
+          "geometry": "passed",
+          "capture_rng": "passed",
+          "recovery": "passed"
+        },
+        "G12": {
+          "status": "passed",
+          "captures": 0,
+          "launches": 1,
+          "oral_contacts": 0,
+          "geometry": "passed",
+          "capture_rng": "passed",
+          "recovery": "passed"
+        },
+        "G13": {
+          "status": "passed",
+          "captures": 0,
+          "launches": 1,
+          "oral_contacts": 0,
+          "geometry": "passed",
+          "capture_rng": "passed",
+          "recovery": "passed"
+        },
+        "G14": {
+          "status": "passed",
+          "captures": 0,
+          "launches": 1,
+          "oral_contacts": 0,
+          "geometry": "passed",
+          "capture_rng": "passed",
+          "recovery": "passed"
+        },
+        "G15": {
+          "status": "passed",
+          "captures": 0,
+          "launches": 1,
+          "oral_contacts": 1,
+          "geometry": "passed",
+          "capture_rng": "passed",
+          "recovery": "passed"
+        },
+        "G16": {
+          "status": "passed",
+          "captures": 0,
+          "launches": 1,
+          "oral_contacts": 0,
+          "geometry": "passed",
+          "capture_rng": "passed",
+          "recovery": "passed"
+        },
+        "G17": {
+          "status": "passed",
+          "captures": 0,
+          "launches": 1,
+          "oral_contacts": 0,
+          "geometry": "passed",
+          "capture_rng": "passed",
+          "recovery": "passed"
+        },
+        "G18": {
+          "status": "passed",
+          "captures": 0,
+          "launches": 1,
+          "oral_contacts": 0,
+          "geometry": "passed",
+          "capture_rng": "passed",
+          "recovery": "passed"
+        },
+        "G19": {
+          "status": "passed",
+          "captures": 0,
+          "launches": 1,
+          "oral_contacts": 0,
+          "geometry": "passed",
+          "capture_rng": "passed",
+          "recovery": "passed"
+        },
+        "G2": {
+          "status": "passed",
+          "captures": 0,
+          "launches": 1,
+          "oral_contacts": 0,
+          "geometry": "passed",
+          "capture_rng": "passed",
+          "recovery": "passed"
+        },
+        "G20": {
+          "status": "passed",
+          "captures": 0,
+          "launches": 1,
+          "oral_contacts": 0,
+          "geometry": "passed",
+          "capture_rng": "passed",
+          "recovery": "passed"
+        },
+        "G21": {
+          "status": "passed",
+          "captures": 0,
+          "launches": 1,
+          "oral_contacts": 0,
+          "geometry": "passed",
+          "capture_rng": "passed",
+          "recovery": "passed"
+        },
+        "G22": {
+          "status": "passed",
+          "captures": 0,
+          "launches": 1,
+          "oral_contacts": 0,
+          "geometry": "passed",
+          "capture_rng": "passed",
+          "recovery": "passed"
+        },
+        "G23": {
+          "status": "passed",
+          "captures": 0,
+          "launches": 1,
+          "oral_contacts": 0,
+          "geometry": "passed",
+          "capture_rng": "passed",
+          "recovery": "passed"
+        },
+        "G24": {
+          "status": "passed",
+          "captures": 0,
+          "launches": 1,
+          "oral_contacts": 0,
+          "geometry": "passed",
+          "capture_rng": "passed",
+          "recovery": "passed"
+        },
+        "G25": {
+          "status": "passed",
+          "captures": 0,
+          "launches": 1,
+          "oral_contacts": 0,
+          "geometry": "passed",
+          "capture_rng": "passed",
+          "recovery": "passed"
+        },
+        "G26": {
+          "status": "passed",
+          "captures": 0,
+          "launches": 1,
+          "oral_contacts": 0,
+          "geometry": "passed",
+          "capture_rng": "passed",
+          "recovery": "passed"
+        },
+        "G27": {
+          "status": "passed",
+          "captures": 0,
+          "launches": 1,
+          "oral_contacts": 1,
+          "geometry": "passed",
+          "capture_rng": "passed",
+          "recovery": "passed"
+        },
+        "G28": {
+          "status": "passed",
+          "captures": 0,
+          "launches": 1,
+          "oral_contacts": 0,
+          "geometry": "passed",
+          "capture_rng": "passed",
+          "recovery": "passed"
+        },
+        "G29": {
+          "status": "passed",
+          "captures": 1,
+          "launches": 1,
+          "oral_contacts": 1,
+          "geometry": "passed",
+          "capture_rng": "passed",
+          "recovery": "passed"
+        },
+        "G3": {
+          "status": "passed",
+          "captures": 0,
+          "launches": 1,
+          "oral_contacts": 0,
+          "geometry": "passed",
+          "capture_rng": "passed",
+          "recovery": "passed"
+        },
+        "G30": {
+          "status": "passed",
+          "captures": 0,
+          "launches": 1,
+          "oral_contacts": 0,
+          "geometry": "passed",
+          "capture_rng": "passed",
+          "recovery": "passed"
+        },
+        "G31": {
+          "status": "passed",
+          "captures": 0,
+          "launches": 1,
+          "oral_contacts": 0,
+          "geometry": "passed",
+          "capture_rng": "passed",
+          "recovery": "passed"
+        },
+        "G32": {
+          "status": "passed",
+          "captures": 0,
+          "launches": 1,
+          "oral_contacts": 0,
+          "geometry": "passed",
+          "capture_rng": "passed",
+          "recovery": "passed"
+        },
+        "G33": {
+          "status": "passed",
+          "captures": 0,
+          "launches": 1,
+          "oral_contacts": 1,
+          "geometry": "passed",
+          "capture_rng": "passed",
+          "recovery": "passed"
+        },
+        "G34": {
+          "status": "passed",
+          "captures": 0,
+          "launches": 1,
+          "oral_contacts": 0,
+          "geometry": "passed",
+          "capture_rng": "passed",
+          "recovery": "passed"
+        },
+        "G35": {
+          "status": "passed",
+          "captures": 0,
+          "launches": 1,
+          "oral_contacts": 0,
+          "geometry": "passed",
+          "capture_rng": "passed",
+          "recovery": "passed"
+        },
+        "G4": {
+          "status": "passed",
+          "captures": 0,
+          "launches": 1,
+          "oral_contacts": 0,
+          "geometry": "passed",
+          "capture_rng": "passed",
+          "recovery": "passed"
+        },
+        "G5": {
+          "status": "passed",
+          "captures": 0,
+          "launches": 1,
+          "oral_contacts": 0,
+          "geometry": "passed",
+          "capture_rng": "passed",
+          "recovery": "passed"
+        },
+        "G6": {
+          "status": "passed",
+          "captures": 0,
+          "launches": 1,
+          "oral_contacts": 0,
+          "geometry": "passed",
+          "capture_rng": "passed",
+          "recovery": "passed"
+        },
+        "G7": {
+          "status": "passed",
+          "captures": 0,
+          "launches": 1,
+          "oral_contacts": 0,
+          "geometry": "passed",
+          "capture_rng": "passed",
+          "recovery": "passed"
+        },
+        "G8": {
+          "status": "passed",
+          "captures": 0,
+          "launches": 1,
+          "oral_contacts": 0,
+          "geometry": "passed",
+          "capture_rng": "passed",
+          "recovery": "passed"
+        },
+        "G9": {
+          "status": "passed",
+          "captures": 1,
+          "launches": 1,
+          "oral_contacts": 1,
+          "geometry": "passed",
+          "capture_rng": "passed",
+          "recovery": "passed"
+        }
+      },
+      "gannet_target_rng": {
+        "G0": {
+          "status": "passed",
+          "weighted_draws": 1
+        },
+        "G1": {
+          "status": "passed",
+          "weighted_draws": 1
+        },
+        "G10": {
+          "status": "passed",
+          "weighted_draws": 1
+        },
+        "G11": {
+          "status": "passed",
+          "weighted_draws": 1
+        },
+        "G12": {
+          "status": "passed",
+          "weighted_draws": 1
+        },
+        "G13": {
+          "status": "passed",
+          "weighted_draws": 1
+        },
+        "G14": {
+          "status": "passed",
+          "weighted_draws": 1
+        },
+        "G15": {
+          "status": "passed",
+          "weighted_draws": 1
+        },
+        "G16": {
+          "status": "passed",
+          "weighted_draws": 1
+        },
+        "G17": {
+          "status": "passed",
+          "weighted_draws": 1
+        },
+        "G18": {
+          "status": "passed",
+          "weighted_draws": 1
+        },
+        "G19": {
+          "status": "passed",
+          "weighted_draws": 1
+        },
+        "G2": {
+          "status": "passed",
+          "weighted_draws": 1
+        },
+        "G20": {
+          "status": "passed",
+          "weighted_draws": 1
+        },
+        "G21": {
+          "status": "passed",
+          "weighted_draws": 1
+        },
+        "G22": {
+          "status": "passed",
+          "weighted_draws": 1
+        },
+        "G23": {
+          "status": "passed",
+          "weighted_draws": 1
+        },
+        "G24": {
+          "status": "passed",
+          "weighted_draws": 1
+        },
+        "G25": {
+          "status": "passed",
+          "weighted_draws": 1
+        },
+        "G26": {
+          "status": "passed",
+          "weighted_draws": 1
+        },
+        "G27": {
+          "status": "passed",
+          "weighted_draws": 1
+        },
+        "G28": {
+          "status": "passed",
+          "weighted_draws": 1
+        },
+        "G29": {
+          "status": "passed",
+          "weighted_draws": 1
+        },
+        "G3": {
+          "status": "passed",
+          "weighted_draws": 1
+        },
+        "G30": {
+          "status": "passed",
+          "weighted_draws": 1
+        },
+        "G31": {
+          "status": "passed",
+          "weighted_draws": 1
+        },
+        "G32": {
+          "status": "passed",
+          "weighted_draws": 1
+        },
+        "G33": {
+          "status": "passed",
+          "weighted_draws": 1
+        },
+        "G34": {
+          "status": "passed",
+          "weighted_draws": 1
+        },
+        "G35": {
+          "status": "passed",
+          "weighted_draws": 1
+        },
+        "G4": {
+          "status": "passed",
+          "weighted_draws": 1
+        },
+        "G5": {
+          "status": "passed",
+          "weighted_draws": 1
+        },
+        "G6": {
+          "status": "passed",
+          "weighted_draws": 1
+        },
+        "G7": {
+          "status": "passed",
+          "weighted_draws": 1
+        },
+        "G8": {
+          "status": "passed",
+          "weighted_draws": 1
+        },
+        "G9": {
+          "status": "passed",
+          "weighted_draws": 1
+        }
+      },
+      "tie_rng": "passed",
+      "source_and_case_seals": "passed",
+      "completion_sha256": "5637da037311ac10cb7f9f68f831621d8ed8194bb0a723badc0987aacdd938eb"
+    },
+    {
+      "case": "s39065501_fine_H1_G0_D_c71001",
+      "status": "passed",
+      "native_steps": 6400,
+      "actual_duration_T": 3.999999999996362,
+      "saved_frames": 41,
+      "actor_monitor_samples_each": 41,
+      "dolphin_cycle_launches": 6,
+      "actors": {
+        "D00": {
+          "status": "passed",
+          "captures": 0,
+          "launches": 0,
+          "oral_contacts": 0,
+          "geometry": "passed",
+          "capture_rng": "passed",
+          "recovery": "passed"
+        },
+        "D01": {
+          "status": "passed",
+          "captures": 0,
+          "launches": 1,
+          "oral_contacts": 0,
+          "geometry": "passed",
+          "capture_rng": "passed",
+          "recovery": "passed"
+        },
+        "D02": {
+          "status": "passed",
+          "captures": 1,
+          "launches": 1,
+          "oral_contacts": 1,
+          "geometry": "passed",
+          "capture_rng": "passed",
+          "recovery": "passed"
+        },
+        "D03": {
+          "status": "passed",
+          "captures": 1,
+          "launches": 1,
+          "oral_contacts": 1,
+          "geometry": "passed",
+          "capture_rng": "passed",
+          "recovery": "passed"
+        },
+        "D04": {
+          "status": "passed",
+          "captures": 0,
+          "launches": 0,
+          "oral_contacts": 0,
+          "geometry": "passed",
+          "capture_rng": "passed",
+          "recovery": "passed"
+        },
+        "D05": {
+          "status": "passed",
+          "captures": 0,
+          "launches": 0,
+          "oral_contacts": 0,
+          "geometry": "passed",
+          "capture_rng": "passed",
+          "recovery": "passed"
+        },
+        "D06": {
+          "status": "passed",
+          "captures": 0,
+          "launches": 1,
+          "oral_contacts": 0,
+          "geometry": "passed",
+          "capture_rng": "passed",
+          "recovery": "passed"
+        },
+        "D07": {
+          "status": "passed",
+          "captures": 0,
+          "launches": 0,
+          "oral_contacts": 0,
+          "geometry": "passed",
+          "capture_rng": "passed",
+          "recovery": "passed"
+        },
+        "D08": {
+          "status": "passed",
+          "captures": 0,
+          "launches": 0,
+          "oral_contacts": 0,
+          "geometry": "passed",
+          "capture_rng": "passed",
+          "recovery": "passed"
+        },
+        "D09": {
+          "status": "passed",
+          "captures": 0,
+          "launches": 1,
+          "oral_contacts": 0,
+          "geometry": "passed",
+          "capture_rng": "passed",
+          "recovery": "passed"
+        },
+        "D10": {
+          "status": "passed",
+          "captures": 0,
+          "launches": 1,
+          "oral_contacts": 0,
+          "geometry": "passed",
+          "capture_rng": "passed",
+          "recovery": "passed"
+        },
+        "D11": {
+          "status": "passed",
+          "captures": 0,
+          "launches": 0,
+          "oral_contacts": 0,
+          "geometry": "passed",
+          "capture_rng": "passed",
+          "recovery": "passed"
+        }
+      },
+      "gannet_target_rng": {},
+      "tie_rng": "passed",
+      "source_and_case_seals": "passed",
+      "completion_sha256": "2f6e1b9e4f354609ba0a2ae847d9339fb17ab073e7bc47bbccaf64b3aba52269"
+    },
+    {
+      "case": "s39065501_fine_Gonly36_G_c71001",
+      "status": "passed",
+      "native_steps": 6400,
+      "actual_duration_T": 3.999999999996362,
+      "saved_frames": 41,
+      "actor_monitor_samples_each": 41,
+      "dolphin_cycle_launches": 0,
+      "actors": {
+        "G0": {
+          "status": "passed",
+          "captures": 0,
+          "launches": 1,
+          "oral_contacts": 0,
+          "geometry": "passed",
+          "capture_rng": "passed",
+          "recovery": "passed"
+        },
+        "G1": {
+          "status": "passed",
+          "captures": 0,
+          "launches": 1,
+          "oral_contacts": 0,
+          "geometry": "passed",
+          "capture_rng": "passed",
+          "recovery": "passed"
+        },
+        "G10": {
+          "status": "passed",
+          "captures": 0,
+          "launches": 1,
+          "oral_contacts": 0,
+          "geometry": "passed",
+          "capture_rng": "passed",
+          "recovery": "passed"
+        },
+        "G11": {
+          "status": "passed",
+          "captures": 0,
+          "launches": 1,
+          "oral_contacts": 0,
+          "geometry": "passed",
+          "capture_rng": "passed",
+          "recovery": "passed"
+        },
+        "G12": {
+          "status": "passed",
+          "captures": 0,
+          "launches": 1,
+          "oral_contacts": 1,
+          "geometry": "passed",
+          "capture_rng": "passed",
+          "recovery": "passed"
+        },
+        "G13": {
+          "status": "passed",
+          "captures": 0,
+          "launches": 1,
+          "oral_contacts": 0,
+          "geometry": "passed",
+          "capture_rng": "passed",
+          "recovery": "passed"
+        },
+        "G14": {
+          "status": "passed",
+          "captures": 0,
+          "launches": 1,
+          "oral_contacts": 0,
+          "geometry": "passed",
+          "capture_rng": "passed",
+          "recovery": "passed"
+        },
+        "G15": {
+          "status": "passed",
+          "captures": 0,
+          "launches": 1,
+          "oral_contacts": 1,
+          "geometry": "passed",
+          "capture_rng": "passed",
+          "recovery": "passed"
+        },
+        "G16": {
+          "status": "passed",
+          "captures": 0,
+          "launches": 1,
+          "oral_contacts": 0,
+          "geometry": "passed",
+          "capture_rng": "passed",
+          "recovery": "passed"
+        },
+        "G17": {
+          "status": "passed",
+          "captures": 1,
+          "launches": 1,
+          "oral_contacts": 1,
+          "geometry": "passed",
+          "capture_rng": "passed",
+          "recovery": "passed"
+        },
+        "G18": {
+          "status": "passed",
+          "captures": 0,
+          "launches": 1,
+          "oral_contacts": 0,
+          "geometry": "passed",
+          "capture_rng": "passed",
+          "recovery": "passed"
+        },
+        "G19": {
+          "status": "passed",
+          "captures": 0,
+          "launches": 1,
+          "oral_contacts": 0,
+          "geometry": "passed",
+          "capture_rng": "passed",
+          "recovery": "passed"
+        },
+        "G2": {
+          "status": "passed",
+          "captures": 0,
+          "launches": 1,
+          "oral_contacts": 0,
+          "geometry": "passed",
+          "capture_rng": "passed",
+          "recovery": "passed"
+        },
+        "G20": {
+          "status": "passed",
+          "captures": 0,
+          "launches": 1,
+          "oral_contacts": 0,
+          "geometry": "passed",
+          "capture_rng": "passed",
+          "recovery": "passed"
+        },
+        "G21": {
+          "status": "passed",
+          "captures": 0,
+          "launches": 1,
+          "oral_contacts": 0,
+          "geometry": "passed",
+          "capture_rng": "passed",
+          "recovery": "passed"
+        },
+        "G22": {
+          "status": "passed",
+          "captures": 0,
+          "launches": 1,
+          "oral_contacts": 0,
+          "geometry": "passed",
+          "capture_rng": "passed",
+          "recovery": "passed"
+        },
+        "G23": {
+          "status": "passed",
+          "captures": 0,
+          "launches": 1,
+          "oral_contacts": 0,
+          "geometry": "passed",
+          "capture_rng": "passed",
+          "recovery": "passed"
+        },
+        "G24": {
+          "status": "passed",
+          "captures": 0,
+          "launches": 1,
+          "oral_contacts": 0,
+          "geometry": "passed",
+          "capture_rng": "passed",
+          "recovery": "passed"
+        },
+        "G25": {
+          "status": "passed",
+          "captures": 0,
+          "launches": 1,
+          "oral_contacts": 0,
+          "geometry": "passed",
+          "capture_rng": "passed",
+          "recovery": "passed"
+        },
+        "G26": {
+          "status": "passed",
+          "captures": 0,
+          "launches": 1,
+          "oral_contacts": 0,
+          "geometry": "passed",
+          "capture_rng": "passed",
+          "recovery": "passed"
+        },
+        "G27": {
+          "status": "passed",
+          "captures": 0,
+          "launches": 1,
+          "oral_contacts": 1,
+          "geometry": "passed",
+          "capture_rng": "passed",
+          "recovery": "passed"
+        },
+        "G28": {
+          "status": "passed",
+          "captures": 0,
+          "launches": 1,
+          "oral_contacts": 0,
+          "geometry": "passed",
+          "capture_rng": "passed",
+          "recovery": "passed"
+        },
+        "G29": {
+          "status": "passed",
+          "captures": 0,
+          "launches": 1,
+          "oral_contacts": 0,
+          "geometry": "passed",
+          "capture_rng": "passed",
+          "recovery": "passed"
+        },
+        "G3": {
+          "status": "passed",
+          "captures": 0,
+          "launches": 1,
+          "oral_contacts": 0,
+          "geometry": "passed",
+          "capture_rng": "passed",
+          "recovery": "passed"
+        },
+        "G30": {
+          "status": "passed",
+          "captures": 0,
+          "launches": 1,
+          "oral_contacts": 0,
+          "geometry": "passed",
+          "capture_rng": "passed",
+          "recovery": "passed"
+        },
+        "G31": {
+          "status": "passed",
+          "captures": 0,
+          "launches": 1,
+          "oral_contacts": 0,
+          "geometry": "passed",
+          "capture_rng": "passed",
+          "recovery": "passed"
+        },
+        "G32": {
+          "status": "passed",
+          "captures": 0,
+          "launches": 1,
+          "oral_contacts": 0,
+          "geometry": "passed",
+          "capture_rng": "passed",
+          "recovery": "passed"
+        },
+        "G33": {
+          "status": "passed",
+          "captures": 0,
+          "launches": 1,
+          "oral_contacts": 1,
+          "geometry": "passed",
+          "capture_rng": "passed",
+          "recovery": "passed"
+        },
+        "G34": {
+          "status": "passed",
+          "captures": 0,
+          "launches": 1,
+          "oral_contacts": 0,
+          "geometry": "passed",
+          "capture_rng": "passed",
+          "recovery": "passed"
+        },
+        "G35": {
+          "status": "passed",
+          "captures": 0,
+          "launches": 1,
+          "oral_contacts": 0,
+          "geometry": "passed",
+          "capture_rng": "passed",
+          "recovery": "passed"
+        },
+        "G4": {
+          "status": "passed",
+          "captures": 0,
+          "launches": 1,
+          "oral_contacts": 0,
+          "geometry": "passed",
+          "capture_rng": "passed",
+          "recovery": "passed"
+        },
+        "G5": {
+          "status": "passed",
+          "captures": 0,
+          "launches": 1,
+          "oral_contacts": 0,
+          "geometry": "passed",
+          "capture_rng": "passed",
+          "recovery": "passed"
+        },
+        "G6": {
+          "status": "passed",
+          "captures": 0,
+          "launches": 1,
+          "oral_contacts": 0,
+          "geometry": "passed",
+          "capture_rng": "passed",
+          "recovery": "passed"
+        },
+        "G7": {
+          "status": "passed",
+          "captures": 0,
+          "launches": 1,
+          "oral_contacts": 0,
+          "geometry": "passed",
+          "capture_rng": "passed",
+          "recovery": "passed"
+        },
+        "G8": {
+          "status": "passed",
+          "captures": 0,
+          "launches": 1,
+          "oral_contacts": 0,
+          "geometry": "passed",
+          "capture_rng": "passed",
+          "recovery": "passed"
+        },
+        "G9": {
+          "status": "passed",
+          "captures": 0,
+          "launches": 1,
+          "oral_contacts": 0,
+          "geometry": "passed",
+          "capture_rng": "passed",
+          "recovery": "passed"
+        }
+      },
+      "gannet_target_rng": {
+        "G0": {
+          "status": "passed",
+          "weighted_draws": 1
+        },
+        "G1": {
+          "status": "passed",
+          "weighted_draws": 1
+        },
+        "G10": {
+          "status": "passed",
+          "weighted_draws": 1
+        },
+        "G11": {
+          "status": "passed",
+          "weighted_draws": 1
+        },
+        "G12": {
+          "status": "passed",
+          "weighted_draws": 1
+        },
+        "G13": {
+          "status": "passed",
+          "weighted_draws": 1
+        },
+        "G14": {
+          "status": "passed",
+          "weighted_draws": 1
+        },
+        "G15": {
+          "status": "passed",
+          "weighted_draws": 1
+        },
+        "G16": {
+          "status": "passed",
+          "weighted_draws": 1
+        },
+        "G17": {
+          "status": "passed",
+          "weighted_draws": 1
+        },
+        "G18": {
+          "status": "passed",
+          "weighted_draws": 1
+        },
+        "G19": {
+          "status": "passed",
+          "weighted_draws": 1
+        },
+        "G2": {
+          "status": "passed",
+          "weighted_draws": 1
+        },
+        "G20": {
+          "status": "passed",
+          "weighted_draws": 1
+        },
+        "G21": {
+          "status": "passed",
+          "weighted_draws": 1
+        },
+        "G22": {
+          "status": "passed",
+          "weighted_draws": 1
+        },
+        "G23": {
+          "status": "passed",
+          "weighted_draws": 1
+        },
+        "G24": {
+          "status": "passed",
+          "weighted_draws": 1
+        },
+        "G25": {
+          "status": "passed",
+          "weighted_draws": 1
+        },
+        "G26": {
+          "status": "passed",
+          "weighted_draws": 1
+        },
+        "G27": {
+          "status": "passed",
+          "weighted_draws": 1
+        },
+        "G28": {
+          "status": "passed",
+          "weighted_draws": 1
+        },
+        "G29": {
+          "status": "passed",
+          "weighted_draws": 1
+        },
+        "G3": {
+          "status": "passed",
+          "weighted_draws": 1
+        },
+        "G30": {
+          "status": "passed",
+          "weighted_draws": 1
+        },
+        "G31": {
+          "status": "passed",
+          "weighted_draws": 1
+        },
+        "G32": {
+          "status": "passed",
+          "weighted_draws": 1
+        },
+        "G33": {
+          "status": "passed",
+          "weighted_draws": 1
+        },
+        "G34": {
+          "status": "passed",
+          "weighted_draws": 1
+        },
+        "G35": {
+          "status": "passed",
+          "weighted_draws": 1
+        },
+        "G4": {
+          "status": "passed",
+          "weighted_draws": 1
+        },
+        "G5": {
+          "status": "passed",
+          "weighted_draws": 1
+        },
+        "G6": {
+          "status": "passed",
+          "weighted_draws": 1
+        },
+        "G7": {
+          "status": "passed",
+          "weighted_draws": 1
+        },
+        "G8": {
+          "status": "passed",
+          "weighted_draws": 1
+        },
+        "G9": {
+          "status": "passed",
+          "weighted_draws": 1
+        }
+      },
+      "tie_rng": "passed",
+      "source_and_case_seals": "passed",
+      "completion_sha256": "57ff335a21dc7c372035c91351097d0ab4d09b439e1af3614a645d846414051f"
+    },
+    {
+      "case": "s39065501_fine_H1_G36_DG_c71001",
+      "status": "passed",
+      "native_steps": 6400,
+      "actual_duration_T": 3.999999999996362,
+      "saved_frames": 41,
+      "actor_monitor_samples_each": 41,
+      "dolphin_cycle_launches": 5,
+      "actors": {
+        "D00": {
+          "status": "passed",
+          "captures": 0,
+          "launches": 1,
+          "oral_contacts": 0,
+          "geometry": "passed",
+          "capture_rng": "passed",
+          "recovery": "passed"
+        },
+        "D01": {
+          "status": "passed",
+          "captures": 0,
+          "launches": 1,
+          "oral_contacts": 0,
+          "geometry": "passed",
+          "capture_rng": "passed",
+          "recovery": "passed"
+        },
+        "D02": {
+          "status": "passed",
+          "captures": 0,
+          "launches": 1,
+          "oral_contacts": 0,
+          "geometry": "passed",
+          "capture_rng": "passed",
+          "recovery": "passed"
+        },
+        "D03": {
+          "status": "passed",
+          "captures": 0,
+          "launches": 1,
+          "oral_contacts": 0,
+          "geometry": "passed",
+          "capture_rng": "passed",
+          "recovery": "passed"
+        },
+        "D04": {
+          "status": "passed",
+          "captures": 0,
+          "launches": 0,
+          "oral_contacts": 0,
+          "geometry": "passed",
+          "capture_rng": "passed",
+          "recovery": "passed"
+        },
+        "D05": {
+          "status": "passed",
+          "captures": 0,
+          "launches": 0,
+          "oral_contacts": 0,
+          "geometry": "passed",
+          "capture_rng": "passed",
+          "recovery": "passed"
+        },
+        "D06": {
+          "status": "passed",
+          "captures": 0,
+          "launches": 1,
+          "oral_contacts": 0,
+          "geometry": "passed",
+          "capture_rng": "passed",
+          "recovery": "passed"
+        },
+        "D07": {
+          "status": "passed",
+          "captures": 0,
+          "launches": 0,
+          "oral_contacts": 0,
+          "geometry": "passed",
+          "capture_rng": "passed",
+          "recovery": "passed"
+        },
+        "D08": {
+          "status": "passed",
+          "captures": 0,
+          "launches": 0,
+          "oral_contacts": 0,
+          "geometry": "passed",
+          "capture_rng": "passed",
+          "recovery": "passed"
+        },
+        "D09": {
+          "status": "passed",
+          "captures": 0,
+          "launches": 0,
+          "oral_contacts": 0,
+          "geometry": "passed",
+          "capture_rng": "passed",
+          "recovery": "passed"
+        },
+        "D10": {
+          "status": "passed",
+          "captures": 0,
+          "launches": 0,
+          "oral_contacts": 0,
+          "geometry": "passed",
+          "capture_rng": "passed",
+          "recovery": "passed"
+        },
+        "D11": {
+          "status": "passed",
+          "captures": 0,
+          "launches": 0,
+          "oral_contacts": 0,
+          "geometry": "passed",
+          "capture_rng": "passed",
+          "recovery": "passed"
+        },
+        "G0": {
+          "status": "passed",
+          "captures": 0,
+          "launches": 1,
+          "oral_contacts": 0,
+          "geometry": "passed",
+          "capture_rng": "passed",
+          "recovery": "passed"
+        },
+        "G1": {
+          "status": "passed",
+          "captures": 0,
+          "launches": 1,
+          "oral_contacts": 0,
+          "geometry": "passed",
+          "capture_rng": "passed",
+          "recovery": "passed"
+        },
+        "G10": {
+          "status": "passed",
+          "captures": 0,
+          "launches": 1,
+          "oral_contacts": 0,
+          "geometry": "passed",
+          "capture_rng": "passed",
+          "recovery": "passed"
+        },
+        "G11": {
+          "status": "passed",
+          "captures": 0,
+          "launches": 1,
+          "oral_contacts": 0,
+          "geometry": "passed",
+          "capture_rng": "passed",
+          "recovery": "passed"
+        },
+        "G12": {
+          "status": "passed",
+          "captures": 0,
+          "launches": 1,
+          "oral_contacts": 0,
+          "geometry": "passed",
+          "capture_rng": "passed",
+          "recovery": "passed"
+        },
+        "G13": {
+          "status": "passed",
+          "captures": 0,
+          "launches": 1,
+          "oral_contacts": 0,
+          "geometry": "passed",
+          "capture_rng": "passed",
+          "recovery": "passed"
+        },
+        "G14": {
+          "status": "passed",
+          "captures": 0,
+          "launches": 1,
+          "oral_contacts": 0,
+          "geometry": "passed",
+          "capture_rng": "passed",
+          "recovery": "passed"
+        },
+        "G15": {
+          "status": "passed",
+          "captures": 0,
+          "launches": 1,
+          "oral_contacts": 1,
+          "geometry": "passed",
+          "capture_rng": "passed",
+          "recovery": "passed"
+        },
+        "G16": {
+          "status": "passed",
+          "captures": 0,
+          "launches": 1,
+          "oral_contacts": 0,
+          "geometry": "passed",
+          "capture_rng": "passed",
+          "recovery": "passed"
+        },
+        "G17": {
+          "status": "passed",
+          "captures": 0,
+          "launches": 1,
+          "oral_contacts": 0,
+          "geometry": "passed",
+          "capture_rng": "passed",
+          "recovery": "passed"
+        },
+        "G18": {
+          "status": "passed",
+          "captures": 0,
+          "launches": 1,
+          "oral_contacts": 0,
+          "geometry": "passed",
+          "capture_rng": "passed",
+          "recovery": "passed"
+        },
+        "G19": {
+          "status": "passed",
+          "captures": 0,
+          "launches": 1,
+          "oral_contacts": 0,
+          "geometry": "passed",
+          "capture_rng": "passed",
+          "recovery": "passed"
+        },
+        "G2": {
+          "status": "passed",
+          "captures": 0,
+          "launches": 1,
+          "oral_contacts": 0,
+          "geometry": "passed",
+          "capture_rng": "passed",
+          "recovery": "passed"
+        },
+        "G20": {
+          "status": "passed",
+          "captures": 0,
+          "launches": 1,
+          "oral_contacts": 1,
+          "geometry": "passed",
+          "capture_rng": "passed",
+          "recovery": "passed"
+        },
+        "G21": {
+          "status": "passed",
+          "captures": 0,
+          "launches": 1,
+          "oral_contacts": 0,
+          "geometry": "passed",
+          "capture_rng": "passed",
+          "recovery": "passed"
+        },
+        "G22": {
+          "status": "passed",
+          "captures": 0,
+          "launches": 1,
+          "oral_contacts": 0,
+          "geometry": "passed",
+          "capture_rng": "passed",
+          "recovery": "passed"
+        },
+        "G23": {
+          "status": "passed",
+          "captures": 0,
+          "launches": 1,
+          "oral_contacts": 0,
+          "geometry": "passed",
+          "capture_rng": "passed",
+          "recovery": "passed"
+        },
+        "G24": {
+          "status": "passed",
+          "captures": 0,
+          "launches": 1,
+          "oral_contacts": 0,
+          "geometry": "passed",
+          "capture_rng": "passed",
+          "recovery": "passed"
+        },
+        "G25": {
+          "status": "passed",
+          "captures": 0,
+          "launches": 1,
+          "oral_contacts": 0,
+          "geometry": "passed",
+          "capture_rng": "passed",
+          "recovery": "passed"
+        },
+        "G26": {
+          "status": "passed",
+          "captures": 0,
+          "launches": 1,
+          "oral_contacts": 0,
+          "geometry": "passed",
+          "capture_rng": "passed",
+          "recovery": "passed"
+        },
+        "G27": {
+          "status": "passed",
+          "captures": 0,
+          "launches": 1,
+          "oral_contacts": 1,
+          "geometry": "passed",
+          "capture_rng": "passed",
+          "recovery": "passed"
+        },
+        "G28": {
+          "status": "passed",
+          "captures": 0,
+          "launches": 1,
+          "oral_contacts": 0,
+          "geometry": "passed",
+          "capture_rng": "passed",
+          "recovery": "passed"
+        },
+        "G29": {
+          "status": "passed",
+          "captures": 0,
+          "launches": 1,
+          "oral_contacts": 0,
+          "geometry": "passed",
+          "capture_rng": "passed",
+          "recovery": "passed"
+        },
+        "G3": {
+          "status": "passed",
+          "captures": 0,
+          "launches": 1,
+          "oral_contacts": 0,
+          "geometry": "passed",
+          "capture_rng": "passed",
+          "recovery": "passed"
+        },
+        "G30": {
+          "status": "passed",
+          "captures": 0,
+          "launches": 1,
+          "oral_contacts": 0,
+          "geometry": "passed",
+          "capture_rng": "passed",
+          "recovery": "passed"
+        },
+        "G31": {
+          "status": "passed",
+          "captures": 0,
+          "launches": 1,
+          "oral_contacts": 0,
+          "geometry": "passed",
+          "capture_rng": "passed",
+          "recovery": "passed"
+        },
+        "G32": {
+          "status": "passed",
+          "captures": 0,
+          "launches": 1,
+          "oral_contacts": 0,
+          "geometry": "passed",
+          "capture_rng": "passed",
+          "recovery": "passed"
+        },
+        "G33": {
+          "status": "passed",
+          "captures": 0,
+          "launches": 1,
+          "oral_contacts": 1,
+          "geometry": "passed",
+          "capture_rng": "passed",
+          "recovery": "passed"
+        },
+        "G34": {
+          "status": "passed",
+          "captures": 0,
+          "launches": 1,
+          "oral_contacts": 0,
+          "geometry": "passed",
+          "capture_rng": "passed",
+          "recovery": "passed"
+        },
+        "G35": {
+          "status": "passed",
+          "captures": 0,
+          "launches": 1,
+          "oral_contacts": 0,
+          "geometry": "passed",
+          "capture_rng": "passed",
+          "recovery": "passed"
+        },
+        "G4": {
+          "status": "passed",
+          "captures": 0,
+          "launches": 1,
+          "oral_contacts": 0,
+          "geometry": "passed",
+          "capture_rng": "passed",
+          "recovery": "passed"
+        },
+        "G5": {
+          "status": "passed",
+          "captures": 0,
+          "launches": 1,
+          "oral_contacts": 0,
+          "geometry": "passed",
+          "capture_rng": "passed",
+          "recovery": "passed"
+        },
+        "G6": {
+          "status": "passed",
+          "captures": 0,
+          "launches": 1,
+          "oral_contacts": 0,
+          "geometry": "passed",
+          "capture_rng": "passed",
+          "recovery": "passed"
+        },
+        "G7": {
+          "status": "passed",
+          "captures": 0,
+          "launches": 1,
+          "oral_contacts": 0,
+          "geometry": "passed",
+          "capture_rng": "passed",
+          "recovery": "passed"
+        },
+        "G8": {
+          "status": "passed",
+          "captures": 0,
+          "launches": 1,
+          "oral_contacts": 0,
+          "geometry": "passed",
+          "capture_rng": "passed",
+          "recovery": "passed"
+        },
+        "G9": {
+          "status": "passed",
+          "captures": 1,
+          "launches": 1,
+          "oral_contacts": 1,
+          "geometry": "passed",
+          "capture_rng": "passed",
+          "recovery": "passed"
+        }
+      },
+      "gannet_target_rng": {
+        "G0": {
+          "status": "passed",
+          "weighted_draws": 1
+        },
+        "G1": {
+          "status": "passed",
+          "weighted_draws": 1
+        },
+        "G10": {
+          "status": "passed",
+          "weighted_draws": 1
+        },
+        "G11": {
+          "status": "passed",
+          "weighted_draws": 1
+        },
+        "G12": {
+          "status": "passed",
+          "weighted_draws": 1
+        },
+        "G13": {
+          "status": "passed",
+          "weighted_draws": 1
+        },
+        "G14": {
+          "status": "passed",
+          "weighted_draws": 1
+        },
+        "G15": {
+          "status": "passed",
+          "weighted_draws": 1
+        },
+        "G16": {
+          "status": "passed",
+          "weighted_draws": 1
+        },
+        "G17": {
+          "status": "passed",
+          "weighted_draws": 1
+        },
+        "G18": {
+          "status": "passed",
+          "weighted_draws": 1
+        },
+        "G19": {
+          "status": "passed",
+          "weighted_draws": 1
+        },
+        "G2": {
+          "status": "passed",
+          "weighted_draws": 1
+        },
+        "G20": {
+          "status": "passed",
+          "weighted_draws": 1
+        },
+        "G21": {
+          "status": "passed",
+          "weighted_draws": 1
+        },
+        "G22": {
+          "status": "passed",
+          "weighted_draws": 1
+        },
+        "G23": {
+          "status": "passed",
+          "weighted_draws": 1
+        },
+        "G24": {
+          "status": "passed",
+          "weighted_draws": 1
+        },
+        "G25": {
+          "status": "passed",
+          "weighted_draws": 1
+        },
+        "G26": {
+          "status": "passed",
+          "weighted_draws": 1
+        },
+        "G27": {
+          "status": "passed",
+          "weighted_draws": 1
+        },
+        "G28": {
+          "status": "passed",
+          "weighted_draws": 1
+        },
+        "G29": {
+          "status": "passed",
+          "weighted_draws": 1
+        },
+        "G3": {
+          "status": "passed",
+          "weighted_draws": 1
+        },
+        "G30": {
+          "status": "passed",
+          "weighted_draws": 1
+        },
+        "G31": {
+          "status": "passed",
+          "weighted_draws": 1
+        },
+        "G32": {
+          "status": "passed",
+          "weighted_draws": 1
+        },
+        "G33": {
+          "status": "passed",
+          "weighted_draws": 1
+        },
+        "G34": {
+          "status": "passed",
+          "weighted_draws": 1
+        },
+        "G35": {
+          "status": "passed",
+          "weighted_draws": 1
+        },
+        "G4": {
+          "status": "passed",
+          "weighted_draws": 1
+        },
+        "G5": {
+          "status": "passed",
+          "weighted_draws": 1
+        },
+        "G6": {
+          "status": "passed",
+          "weighted_draws": 1
+        },
+        "G7": {
+          "status": "passed",
+          "weighted_draws": 1
+        },
+        "G8": {
+          "status": "passed",
+          "weighted_draws": 1
+        },
+        "G9": {
+          "status": "passed",
+          "weighted_draws": 1
+        }
+      },
+      "tie_rng": "passed",
+      "source_and_case_seals": "passed",
+      "completion_sha256": "aaa0d921120acda277d29854e630a79e0dcf44a71ea21a94ce43fa8899e1d562"
+    }
+  ],
+  "owner_checker_sha256": "55adee85ec494ac4125aaa3e051e5e73518876d7a8f6e9cf584e3600095fe7d4",
+  "seal_adapter_sha256": "37a93a74eb5fa9942a806ba3ce1153bc8a1ac5e9d4712404c2cb30e8b06a850d"
+}

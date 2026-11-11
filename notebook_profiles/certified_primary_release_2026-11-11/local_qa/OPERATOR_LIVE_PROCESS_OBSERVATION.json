@@ -1,0 +1,106 @@
+{
+  "schema": "professor_local_qa_operator_live_observation_v1",
+  "recorded_by": "/root/paper_update",
+  "recorded_utc": "2026-11-11T01:37:27.302592+00:00",
+  "same_tool_session_id": 98853,
+  "scope": "Read-only /proc observation of exact approved coordinator/kernel/check CLI/zero worker, no environment secrets recorded. Coordinator is non-model operator; numerical env requirement is observed on kernel and model children.",
+  "processes": [
+    {
+      "pid": 4185370,
+      "ppid": 4185368,
+      "process_group": 4185368,
+      "state": "S",
+      "argv": [
+        "/home/venture/fishsim_v3_work/.venv-notebook/bin/python",
+        "-B",
+        "/home/venture/FishSim_Professor_Local_QA_Plan_2026-11-11/run_notebook_once.py",
+        "--execute",
+        "--authority",
+        "/home/venture/FishSim Professor Local QA 2026-11-11/control/ACTUAL_ROOT_LOCAL_QA_APPROVAL.json"
+      ],
+      "numeric_environment": {
+        "OMP_NUM_THREADS": "",
+        "OPENBLAS_NUM_THREADS": "",
+        "MKL_NUM_THREADS": "",
+        "NUMEXPR_NUM_THREADS": ""
+      },
+      "PYTHONOPTIMIZE_unset": true
+    },
+    {
+      "pid": 4185371,
+      "ppid": 4185370,
+      "process_group": 4185371,
+      "state": "S",
+      "argv": [
+        "/home/venture/fishsim_v3_work/.venv-notebook/bin/python",
+        "-B",
+        "-m",
+        "ipykernel_launcher",
+        "-f",
+        "/tmp/tmp9v_iue_x.json"
+      ],
+      "numeric_environment": {
+        "OMP_NUM_THREADS": "1",
+        "OPENBLAS_NUM_THREADS": "1",
+        "MKL_NUM_THREADS": "1",
+        "NUMEXPR_NUM_THREADS": "1"
+      },
+      "PYTHONOPTIMIZE_unset": true
+    },
+    {
+      "pid": 4185600,
+      "ppid": 4185371,
+      "process_group": 4185371,
+      "state": "S",
+      "argv": [
+        "/home/venture/fishsim_v3_work/.venv-notebook/bin/python",
+        "-B",
+        "/home/venture/FishSim Professor Local QA 2026-11-11/relocated full package/model_examples/primary_192/run_primary_model.py",
+        "--package-root",
+        "/home/venture/FishSim Professor Local QA 2026-11-11/relocated full package",
+        "--native-kind",
+        "historical",
+        "--runtime",
+        "/home/venture/FishSim-primary-replays/run_20261111T013225Z_bdf578c9/runtime",
+        "--check",
+        "--output",
+        "/home/venture/FishSim-primary-replays/run_20261111T013225Z_bdf578c9/zero192.json"
+      ],
+      "numeric_environment": {
+        "OMP_NUM_THREADS": "1",
+        "OPENBLAS_NUM_THREADS": "1",
+        "MKL_NUM_THREADS": "1",
+        "NUMEXPR_NUM_THREADS": "1"
+      },
+      "PYTHONOPTIMIZE_unset": true
+    },
+    {
+      "pid": 4185605,
+      "ppid": 4185600,
+      "process_group": 4185371,
+      "state": "R",
+      "argv": [
+        "/home/venture/fishsim_v3_work/.venv-notebook/bin/python",
+        "-B",
+        "/home/venture/FishSim Professor Local QA 2026-11-11/relocated full package/model_examples/primary_192/primary_worker.py",
+        "--mode",
+        "zero",
+        "--runtime",
+        "/home/venture/FishSim-primary-replays/run_20261111T013225Z_bdf578c9/runtime",
+        "--output",
+        "/home/venture/FishSim-primary-replays/run_20261111T013225Z_bdf578c9/zero192.json",
+        "--lease-fd",
+        "3",
+        "--dispatch",
+        "/home/venture/FishSim-primary-replays/run_20261111T013225Z_bdf578c9/zero192.json.dispatch.json"
+      ],
+      "numeric_environment": {
+        "OMP_NUM_THREADS": "1",
+        "OPENBLAS_NUM_THREADS": "1",
+        "MKL_NUM_THREADS": "1",
+        "NUMEXPR_NUM_THREADS": "1"
+      },
+      "PYTHONOPTIMIZE_unset": true
+    }
+  ]
+}

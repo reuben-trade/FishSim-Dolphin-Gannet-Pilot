@@ -1,0 +1,49 @@
+{
+  "status": "failed_closed_reviewer_guard_schema_mismatch",
+  "schema": "professor_local_QA_saved_review_failed_attempt_v1",
+  "audit_source_sha256": "02d89f909ad3234e745fbf52f1023477aef6a0d0d280fcc93cca152d95d1101e",
+  "authority_sha256": "60f1518648e4bfa32eb095e359cfa1c5bd744e811def74b39bc5c2c9473eae36",
+  "terminal_sha256": "93bd9b8d822feec3cb07a80434ba2d4ac4178c2534329ea9cafaf51f6c88ebae",
+  "guard_config_sha256": "39fa6515e7b09867c250266b4b7b43c4e209740bc1aac26c294f79b88214b490",
+  "review_tool_session_id": 27940,
+  "exit_code": 1,
+  "error": "ValueError: Guard configuration scope differs:deny_author_roots",
+  "location": "AUDIT.py:59",
+  "guard_scope_difference": {
+    "deny_author_roots": {
+      "template": [
+        "/home/venture/uwa/complex-systems/FishSim-RL",
+        "/home/venture/FishSim_Independent_Validation_2026-11-10",
+        "/home/venture/FishSim-Dolphin-Gannet-Pilot",
+        "/home/venture/FishSim Final Publication Candidate 2026-11-11",
+        "/home/venture/FishSim_Primary_Replay_Engineering_2026-11-11",
+        "/home/venture/fishsim_v3_work"
+      ],
+      "actual": [
+        "/home/venture/uwa/complex-systems/FishSim-RL",
+        "/home/venture/FishSim_Independent_Validation_2026-11-10",
+        "/home/venture/FishSim-Dolphin-Gannet-Pilot",
+        "/home/venture/FishSim Final Publication Candidate 2026-11-11",
+        "/home/venture/FishSim_Primary_Replay_Engineering_2026-11-11",
+        "/home/venture/fishsim_v3_work",
+        "/home/venture/FishSim Certified Release Candidate 2026-11-11"
+      ]
+    }
+  },
+  "previous_stages_completed_without_exception": [
+    "all7source hashes",
+    "certificate/runtime/golden/reference bindings",
+    "zero and local requests",
+    "all6 unchanged bb920 saved raw/accounting cases",
+    "owner/local execution bindings"
+  ],
+  "overall_acceptance_issued": false,
+  "canonical_receipt_created": false,
+  "native_steps_by_review": 0,
+  "native_constructions_by_review": 0,
+  "model_imports": 0,
+  "lease_acquisitions": 0,
+  "qa_or_model_rerun": false,
+  "source_modified": false,
+  "automatic_retry": false
+}
