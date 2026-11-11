@@ -57,6 +57,8 @@ The [pre-analysis plan](reports/supplements/VALIDATION_PREANALYSIS_PLAN.md) and 
 
 The [exploratory attack-timing supplement](reports/supplements/ATTACK_TIMING_EXPLORATORY.md) reanalyses the completed primary study with a fixed 2T window. It preserves both grids and all timing metrics, without new simulations, intervals or causal synchronisation claims. The main paper and notebook are unchanged.
 
+The [prospective 48/72-gannet pilot plan](reports/supplements/HIGHER_COUNT_PILOT_PLAN.md) schedules larger groups after the current H2/G12 study, before the fixed crossed follow-up and fresh-school replication. It uses four known schools, keeps every planned case regardless of signs and reports group totals separately from food per animal; execution is not yet authorized.
+
 A [prospective second held-out replication plan](reports/supplements/SECOND_HELDOUT_REPLICATION_PLAN.md) fixes a separate sixteen-school H1/G36 cohort; its preparation and feeding have not begun.
 
 ## Model execution and repository history
