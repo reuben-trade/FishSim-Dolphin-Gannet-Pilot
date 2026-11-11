@@ -1,16 +1,7 @@
-# Current paper: discovery and independent validation
+# Current paper: primary validation and completed H2/G12 follow-up
 
-The six-page paper has four figures and ten references. Figures1–3 retain the
-complete four-school discovery evidence; Figure4 reports the separately
-prespecified sixteen-school H1/G36 validation, with two nested labels, three
-arms and both encounter grids (192 completed cases). Both fine-grid97.5% t
-lower bounds exceed zero. Full school losses, controls and secondary grid
-contrasts remain reported; no numerical convergence or field-fitness claim.
+The six-page paper retains four unchanged figures and ten references. The original H1/G36 fine-grid97.5% co-primary criterion is met. H2/G12 is a completed secondary comparison on the same sixteen schools, with95% pointwise intervals; its dolphin mean benefit is uncertain and the additional four-endpoint98.75% programme criterion is not met. H and bird count both change. School losses and both grids remain reported; no numerical convergence or field-fitness claim.
 
-Repository-root main.ipynb reproduces the paper's four figures and thirteen
-canonical tables with seven code cells. Fresh production kernels and a
-separate byte-copied space-path run passed without model steps or new draws.
-FINAL_NOTEBOOK_PROFILE.json and the content-addressed primary snapshot bind
-the exact accepted192 evidence. Prior profiles, manifests and raw cases remain
-unchanged. The source-reviewed optional native frontend is separate and its
-release remains pending; it is not executed by default.
+Repository-root [main.ipynb](../../main.ipynb) has16cells/8code and reproduces21canonical tables (13original plus8follow-up) and four figures, with native replay off and zero new bootstrap draws. Fresh-kernel and saved-output Same-Kernel RepeatRunAll checks passed for this source version. The original seven code cells,467-input manifest, primary snapshot, native interface and artifact certificate remain unchanged. The historical professor native/GUI proofs retain their original scope; no H2 native replay or new GUI certification is claimed.
+
+The versioned source is [completed_h2_2026-11-11](../../paper_profiles/completed_h2_2026-11-11/README.md); [prior primary-only source](../../paper_profiles/final_primary192_2026-11-11/README.md) remains unchanged. Optional [certified primary replay](../../docs/PRIMARY_MODEL_LOCAL_SETUP_2026-11-11.md) is documented separately.

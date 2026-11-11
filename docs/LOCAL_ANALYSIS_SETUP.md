@@ -40,3 +40,8 @@ notebook and profile are archived under archive/notebooks/.
 Saving execution outputs and selecting a different kernel does not invalidate the current notebook. The fixed logical cells and typed optional settings are checked against an immutable template. See [PRIMARY_REPLAY_SETUP.md](PRIMARY_REPLAY_SETUP.md); native execution remains closed until its separate release.
 
 The recommended headless driver is analysis-only: it rejects `RUN_NATIVE=True` before starting a kernel and writes a fresh proof under ignored `outputs/headless_*/`. The original root `execute_notebook.py` is preserved for historical provenance; use the versioned command above for current headless analysis.
+
+
+## Completed H2/G12 saved-data addition
+
+The current notebook has16cells/8code and regenerates21tables: the unchanged13 discovery/primary tables plus8 completed-H2/programme tables. It retains four paper figures and all original seven code cells. The follow-up uses the same16schools, not32; H2 intervals are95% pointwise and the additional programme intervals98.75%, leaving the original97.5% primary unchanged. Default native execution remains off; the existing primary replay certificate does not certify H2 dynamics.

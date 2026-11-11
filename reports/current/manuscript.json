@@ -1,7 +1,7 @@
 {
   "title": "Feeding Frenzy: Who Benefits When Dolphins and Gannets Hunt Together?",
   "date": "2026-11-11",
-  "version": "V3 with complete independent-school validation",
+  "version": "V3 primary validation plus completed H2/G12 follow-up",
   "blocks": [
     {
       "kind": "title",
@@ -17,7 +17,7 @@
     },
     {
       "kind": "abstract",
-      "text": "Each winter, South Africa’s sardine run brings dolphins, Cape gannets and other predators together around fish schools. Dolphins may create opportunities for diving birds, but do birds also help dolphins? We compare feeding returns in a three-dimensional model with twelve dolphins whose herding-and-striking rule is unchanged by bird presence. After exploratory testing, we fixed minimum herding of 1T and thirty-six gannets (H1/G36) for sixteen new schools, two nested randomness labels, matched dolphin-only, bird-only and mixed groups, and two encounter timesteps. On the fine grid, dolphins caught 25.9% more and gannets 83.6% more with the other species present. Mean gains over 36T and 97.5% intervals are +0.484 [0.225, 0.744] per dolphin and +0.212 [0.093, 0.330] per gannet. Both fine-grid lower bounds exceed zero, meeting the prespecified mutual-benefit criterion within this model. The earlier four-school map varied herding duration and one to thirty-six birds: dolphin means improved in eighteen of twenty-four settings, including mutual gains at H1/G36. Larger bird groups generally received less food each, and doubling dolphins reduced individual returns despite greater group catches. These comparisons concern food during simulated encounters, not fitness, deliberate coordination or an optimal predator group size."
+      "text": "Each winter, South Africa’s sardine run brings dolphins, Cape gannets and other predators together around fish schools. Dolphins may create opportunities for diving birds, but do birds also help dolphins? We compare feeding returns in a three-dimensional model with twelve dolphins whose herding-and-striking rule is unchanged by bird presence. After exploratory testing, we fixed minimum herding of 1T and thirty-six gannets (H1/G36) for sixteen new schools, two nested randomness labels, matched dolphin-only, bird-only and mixed groups, and two encounter timesteps. On the fine grid, dolphins caught 25.9% more and gannets 83.6% more with the other species present. Mean gains over 36T and 97.5% intervals are +0.484 [0.225, 0.744] per dolphin and +0.212 [0.093, 0.330] per gannet. Both fine-grid lower bounds exceed zero, meeting the prespecified mutual-benefit criterion within this model. A prespecified H2/G12 follow-up on the same schools gives clear bird gains but uncertain dolphin gains; the additional four-endpoint programme criterion is not met. The discovery map and larger-group checks distinguish group catches from individual returns. These comparisons concern food during simulated encounters, not fitness, deliberate coordination or an optimal predator group size."
     },
     {
       "kind": "section",
@@ -109,6 +109,10 @@
       "source": "new locked validation methods"
     },
     {
+      "kind": "p",
+      "text": "H2/G12 was named as a follow-up before primary feeding. Its detailed analysis plan was posted after primary feeding began and before the first complete paired fine-grid block; this was prospective documentation, not formal preregistration. We reran dolphin-only, bird-only and mixed groups on the same sixteen schools and two labels at both grids. Secondary H2 estimates use 95% pointwise school t intervals. The additional programme uses 98.75% marginal intervals for both species at both fine-grid settings, requiring all four lower bounds above zero. The original H1/G36 co-primary criterion is unchanged."
+    },
+    {
       "kind": "section",
       "text": "Results"
     },
@@ -133,15 +137,15 @@
     },
     {
       "kind": "p",
-      "text": "Within the twelve-dolphin map, the largest four-school dolphin total occurs with one unit of minimum herding and thirty-six gannets: 132 captures versus 91 without birds (+45.1%). Dolphins gain in all four schools (+13, +12, +8 and +8 fish); the mean is +0.854 fish per dolphin, with a pointwise 95% interval of [0.667, 1.042]. The corresponding bird total rises from 16 alone to 94 with dolphins: all four schools gain (+19, +16, +24 and +19), giving +0.542 per bird [0.465, 0.632]. This setting produces the largest dolphin, gannet and combined group totals in that map. It adds only five dolphin captures beyond the 127 obtained with nine or eighteen birds. These intervals describe settings selected from the same four-school map and do not establish a population optimum."
+      "text": "The selected H1/G36 discovery setting gave 132 dolphin captures versus 91 alone (+45.1%), and 94 gannet captures versus 16 alone; both species gained in all four schools (Figure 2). This was the largest dolphin total in the twelve-dolphin map, but only five fish above the totals with nine or eighteen gannets. These selected results guided validation; they do not establish thirty-six gannets as an optimum. All school returns and exploratory pointwise intervals remain in the notebook."
     },
     {
       "kind": "p",
-      "text": "H2/G12 also produces mutual gains in all four discovery schools (Figure 2): dolphin totals rise from 86 to 110 (+27.9%) and gannet totals from 31 to 57 (+83.9%). Dolphins exceed the strongest tested bird-free duration, H1, which gives 91 captures. That secondary benchmark remains positive in every school, with +0.396 fish per dolphin [0.208, 0.583]. It differs from the primary comparison that adds birds while holding the dolphin rule fixed."
+      "text": "H2/G12 also yielded mutual gains in all four discovery schools: dolphins 86→110 (+27.9%) and gannets 31→57 (+83.9%). The separate sixteen-school follow-up below tests this setting separately; it is not pooled with the discovery map."
     },
     {
       "kind": "p",
-      "text": "At selected H1/G36, twenty-four dolphins catch 229 fish versus 183 alone (+25.1%). Mean mixed food per dolphin falls from 2.75 with twelve dolphins to 2.39 with twenty-four, lower in every discovery school. Per-dolphin partner gain falls from +0.854 to +0.479 [0.146, 0.875]; the paired difference is −0.375 [−0.813, −0.021]. Birds catch 80 versus 16 alone, with mutual school gains in three of four cases. Greater group catches therefore coexist with lower individual returns. These selected, four-school comparisons have exploratory pointwise intervals and do not identify an optimal pod size."
+      "text": "At H1/G36 on the four discovery schools, twenty-four dolphins captured 229 fish versus 183 alone (+25.1%). Mixed food per dolphin fell from 2.75 with twelve dolphins to 2.39 with twenty-four; the partner gain fell from +0.854 to +0.479 fish per dolphin. Gannets captured 80 versus 16 alone, with both species gaining in three of four schools. These exploratory comparisons show how greater group catches can coexist with lower individual returns; they do not isolate competition or identify an optimal pod size."
     },
     {
       "kind": "subsection",
@@ -188,16 +192,28 @@
       "source": "PENDING final accepted validation exports"
     },
     {
+      "kind": "subsection",
+      "text": "Prespecified H2/G12 follow-up"
+    },
+    {
+      "kind": "p",
+      "text": "At H2/G12 on the same sixteen schools, fine-grid totals are 679 alone versus 732 mixed dolphin captures (+7.8%) and 297 versus 540 gannet captures (+81.8%), across thirty-two labelled encounters per arm. Mean gains over 36T are +0.138 fish per dolphin [−0.026, 0.302] and +0.633 per gannet [0.430, 0.836], using 95% pointwise t intervals. Dolphin school means gain in ten, tie in two and lose in four; gannet means gain in fifteen and lose in one. Both gain in nine of sixteen schools. The dolphin interval includes zero, leaving its mean benefit uncertain."
+    },
+    {
+      "kind": "p",
+      "text": "Coarse-grid totals are dolphins 691→721 and gannets 268→656. The gannet fine-minus-coarse gain is −0.378 fish per bird [−0.641, −0.114], showing numerical sensitivity of magnitude. The additional four-endpoint programme criterion is not met: 98.75% intervals are H1/G36 dolphins [0.189, 0.780], gannets [0.077, 0.347], and H2/G12 dolphins [−0.080, 0.356], gannets [0.362, 0.903]. This does not alter the original H1/G36 result. All school and labelled-world losses remain in the notebook; both H and bird count change between settings."
+    },
+    {
       "kind": "section",
       "text": "Discussion and conclusion"
     },
     {
       "kind": "p",
-      "text": "The independent sixteen-school study supports mutual feeding benefits at fixed H1/G36: both prespecified fine-grid intervals lie above zero. This strengthens the result beyond the outcome-selected four-school map, while school and labelled-world losses remain. The discovery map produces mutual feeding benefits under identifiable hunting conditions, without changing the dolphin rule when birds are added. H1/G36 and H2/G12 give gains for both species in all four discovery schools, while other settings include losses. Doubling dolphins retains mean partner gains but reduces food per dolphin. The benefit of dolphin presence and the effect of adding more birds remain separate questions; combined catches conceal these differences."
+      "text": "The sixteen-school study supports mutual feeding benefits at H1/G36, with both prespecified fine-grid intervals above zero and joint school-mean gains in twelve of sixteen schools. This result emerges without changing the dolphin rule when birds are added. Benefits vary across the discovery map, and doubling dolphins reduces food per individual despite increasing group catches. Group yield, individual return and partner benefit therefore answer different questions. At H2/G12, bird gains remain clear while the positive dolphin estimate remains uncertain. The evidence supports mutual feeding benefit at H1/G36, with transfer to H2/G12 unresolved."
     },
     {
       "kind": "p",
-      "text": "Surface herding offers a plausible access benefit for birds [2,4,8], alongside prey disturbance and competition. Other agent-based work reports non-additive predation effects from non-coordinating predators [7]. Our dolphin controller reacts neither to bird number nor dive events. Contact counts and saved depth/departure diagnostics describe possible routes to feeding changes; they do not isolate a causal mechanism or demonstrate cross-species communication."
+      "text": "Surface herding offers a plausible access benefit for birds [2,4,8], alongside prey disturbance and competition. Other agent-based work reports non-additive predation effects from non-coordinating predators [7]. Our dolphin controller reacts neither to bird number nor dive events. Contact counts and saved depth/departure diagnostics describe possible routes to feeding changes; they do not isolate a causal mechanism or demonstrate cross-species communication. Exploratory timing reanalysis finds positive bird-benefit associations with recent attacks, but weak or inconsistent dolphin associations; recorded timing does not establish synchronisation or causality."
     },
     {
       "kind": "p",
@@ -205,7 +221,7 @@
     },
     {
       "kind": "p",
-      "text": "Prespecified lower-count and crossed follow-ups can test whether the selected result transfers across herding duration and bird abundance. Fixed-total-predator comparisons and calibrated prey-access measures would help distinguish competition from facilitation. Attack overlap may suggest useful timing patterns, but synchronisation needs a controlled intervention. Field calibration and realistic predator spacing are needed before interpreting model returns as biological profit."
+      "text": "The completed H2/G12 follow-up shows why transfer across settings needs direct testing. Because herding time and bird count both change, it does not isolate either factor. Crossed follow-ups and controlled timing interventions can separate these effects. Field calibration and realistic predator spacing remain necessary before interpreting model returns as biological profit."
     },
     {
       "kind": "subsection",
@@ -213,7 +229,7 @@
     },
     {
       "kind": "p",
-      "text": "Fish movement inherits https://github.com/yangyushi/FishSim; code, completed evidence and main.ipynb are at https://github.com/reuben-trade/FishSim-Dolphin-Gannet-Pilot. Default Run All reconstructs nine discovery/population tables and four validation tables, loads archived Figure 1 and redraws Figures 2–4 from the separately verified evidence and saved interval endpoints. The notebook retains discovery, population, older grid and departure evidence as distinct cohorts. It reproduces saved analysis rather than simulating by default, uses no new bootstrap draws, and records package versions. Optional native replay is documented separately, including its platform requirements and tested scope."
+      "text": "Fish movement inherits https://github.com/yangyushi/FishSim; code, completed evidence and main.ipynb are at https://github.com/reuben-trade/FishSim-Dolphin-Gannet-Pilot. Default Run All reconstructs nine discovery/population tables, four primary validation tables and eight H2/programme tables (twenty-one total), loads archived Figure 1 and redraws Figures 2–4 from the separately verified evidence and saved interval endpoints. The notebook retains discovery, population, older grid and departure evidence as distinct comparisons; H1 and H2 share sixteen schools and are not pooled as thirty-two independent schools. It reproduces saved analysis rather than simulating by default, uses no new bootstrap draws, and records package versions. Optional native replay is documented separately, including its platform requirements and tested scope."
     }
   ],
   "references": [
@@ -229,15 +245,15 @@
     "[10] South African National Biodiversity Institute. South African sardine. 20 May 2018. Accessed 9 November 2026. https://www.sanbi.org/animal-of-the-week/south-african-sardine/"
   ],
   "source_document_id": "13wFf-UVt0-ooEVR_VeUrYbBFTdAL_ugYp9my8bJHuss",
-  "source_revision_id": "AHj4eMTpOcWhEatV0uh5JZP3-scigx5dofnNXBTvwgGwVHCUYvrrlq0dwIYpfGxDD6HPZL4xfByWYjijGki17ggPmWvRF1R3CadgLNIxVek",
+  "source_revision_id": "AHj4eMSpqa6kEF10cBr6Na0wj-w4zFLpMQZynhmALhl7wNLcQ4f0Mq3raKKzG01G20aBWsNnuoLOLIFfte2mDX1Id4fDopHwfAkHq7Q_0ys",
   "source_matches_prior_manuscript": false,
   "new_simulations": 0,
   "new_bootstrap_draws": 0,
   "notebook_entrypoint": "main.ipynb",
-  "notebook_execution_status": "passed_actual_production_freshkernel_native0_draw0",
-  "notebook_execution_receipt": "../../../execution_proofs/HEADLESS_RECEIPT.json",
+  "notebook_execution_status": "passed_actual_default_fresh_and_same_kernel_saved_repeat_native0_draw0",
+  "notebook_execution_receipt": "../../notebook_profiles/completed_h2_2026-11-11/DEFAULT_ANALYSIS_QA.json",
   "notebook_verified_input_files": 467,
-  "evidence_profile": "Four-school discovery/population retained; separate completed16school primary192 validation",
+  "evidence_profile": "Four-school discovery/population retained; completed H1/G36 and H2/G12 comparisons share sixteen schools, not thirty-two independent schools",
   "source_document_title_preserved": "Feeding Frenzy ",
   "population_new_cases": 8,
   "population_reused_cases": 12,
@@ -264,11 +280,18 @@
     }
   },
   "primary_validation_criterion": true,
-  "required_before_binding": [
+  "figure4_asset_status": "actual frozen4040 export; PNG90ae5b8c/PDF3512b18c match notebook",
+  "h2_validation_accepted_cases": 192,
+  "h2_validation_independent_schools": 16,
+  "h2_pointwise_confidence": 0.95,
+  "additional_programme_confidence": 0.9875,
+  "additional_programme_criterion": false,
+  "source_document_immediate_revision_guard_still_required": true,
+  "historical_primary_binding_prerequisites": [
     "original8ff FINAL192 PASS",
     "mandatory5cc metadata-sidecar PASS",
     "source2127 freeze253 exact",
     "root production export activation"
   ],
-  "figure4_asset_status": "actual frozen4040 export; PNG90ae5b8c/PDF3512b18c match notebook"
+  "H2_binding_prerequisites_status": "fulfilled: accepted complete composite FINAL, actual terminal, ROOT actual ingestion permission, accepted portable export and independent numeric review"
 }

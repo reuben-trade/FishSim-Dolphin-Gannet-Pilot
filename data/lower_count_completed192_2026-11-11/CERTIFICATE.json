@@ -1,0 +1,98 @@
+{
+  "schema": "fishsim_h2_public_scalar_attestation_v1",
+  "data_kind": "PRODUCTION_ACCEPTED_H2_192",
+  "scope": "Private completed acceptance is hash-attested; public reader recomputes scalar statistics, not private raw audit or native replay.",
+  "method_profile": {
+    "schools": [
+      39065501,
+      39065502,
+      39065503,
+      39065504,
+      39065505,
+      39065506,
+      39065507,
+      39065508,
+      39065509,
+      39065510,
+      39065511,
+      39065512,
+      39065513,
+      39065514,
+      39065515,
+      39065516
+    ],
+    "labels": [
+      71001,
+      71002
+    ],
+    "grids": {
+      "coarse": 0.00125,
+      "fine": 0.000625
+    },
+    "cases_per_setting": 192,
+    "school_clusters": 16,
+    "nested_labels": 2,
+    "D": 12,
+    "H1_G": 36,
+    "H1_H": 1,
+    "H2_G": 12,
+    "H2_H": 2,
+    "fish": 160,
+    "duration_T": 36,
+    "eligible_contact_q": 0.7,
+    "prepared_checkpoint_T": 20,
+    "preparation_dt": 0.00125,
+    "grid_scope": "Same coarse-prepared states; encounter-grid sensitivity, not preparation convergence",
+    "H2_pointwise_confidence": 0.95,
+    "H2_t_critical": 2.131449545559776,
+    "original_primary_confidence": 0.975,
+    "original_primary_t_critical": 2.4898797034798923,
+    "programme_confidence": 0.9875,
+    "programme_t_critical": 2.8366274760941357,
+    "df": 15,
+    "bootstrap_draws_cached": 50000,
+    "bootstrap_seed": 8611030,
+    "bootstrap_generator": "PCG64",
+    "bootstrap_quantiles": [
+      0.025,
+      0.975
+    ],
+    "bootstrap_index_sha256": "213f6163d606a90c56b95cb5df3ccb344e600d45dbada84a815fc93c7d2e3279",
+    "bootstrap_role": "cached sensitivity only; no new draws or inference switching",
+    "base_module_sha256": "6c1018930dcd736c83d41ed0d21690e10ba33c3c221deb35c0768350403e8fd8",
+    "operational_adapter_sha256": "32bc044c059b3a835bdf96c708e0d48d7cb1bb58813c89b730630d325b377368",
+    "composite_source_sha256": "e6a23fa0422fa3d5dea46143edd9bdc0540c64e7517f4c6705b0c1b62ef53942",
+    "unmodified_frozen_6c_cli_passed": false
+  },
+  "evidence_sha256": {
+    "h2_independent_final": "cb71972bb2697110b264ac901950c2ad3c1123d10c2407874bf32f7a8a1dd46f",
+    "h2_owner_analysis": "b8e0f2ef7ccf2b7506d6a85e611eb9395fda3379cb9a3fc967f99782aa14c15a",
+    "supervisor_witness": "e40b798013a3c3bafc79c72e1a482d3dc663f82397c4f4a7b30513267a44ce2c",
+    "terminal_witness": "d3dc7be2db87360db5afd8d3c88b2f73cb8f51d8ff48b42d51528c3ef14fa99a",
+    "completed_acceptance": "998066c377224710f7b8d591826faaa46313d7d37d5b0d467179708401278433",
+    "h1_independent_final": "bcc0dcec0fceba8cba788dc96d5a5a9e6ed3c4a6d91433c65d1ca4a16b4ff026",
+    "h1_owner_analysis": "b9c84ba0d099a29ed9dd699805f003f9c90c943600475bce73d173129d54699b",
+    "h1_metadata": "38b5bdd06eb5a9dff14ff946edbd0b7f23f10a00a8c90f16adcf84350a1f901f"
+  },
+  "source_sha256": {
+    "private_completed_gate": "4c94c3b806076489134e7a344f9d141409bd19f23e6d6dd678f734430d8e1434",
+    "private_exporter": "960e15ca8f8c16e5b2e27b3a2523974e553984801900039d1adc64838edaa530",
+    "public_reader": "97a2986fbf6fac015b46e4684183ab16af762fa3052eb92a051c6708c4a4008f",
+    "statistics_reader": "ed4e19db6eb0fcb695b98c5c05f88d0ab7747159bd5efeb0f99404386fb7aa63"
+  },
+  "accepted_input_sha256": {
+    "h2_case_csv": "4c67e3c78eee61bfba2d2c79e3df697bfc466db7427e17cbd4b4c3198a53bf9b",
+    "h2_statistics": "43fe95236b3bebf65ca0516cc592a9a7c8d8c74753f02816eb259b0f780b5ff3",
+    "primary_case_csv": "81afff984c926222f31f94944e4959865fd94d26900b4490c1f9146e8676bce2"
+  },
+  "public_data_sha256": {
+    "h2_case_csv": "d024808e0ba3e054741b35621d767307468fbacf46e72b23148b3bb10c75b41a",
+    "primary_case_csv": "a312ca873bfb281519e794beb9fd3e9f4b0d7bd29ce26cf8877ad746d71dfd36",
+    "h2_statistics": "3b29c1cdf02f2ac40292cafa4fdd178b185a15c9146cb4962033965f58245ee2",
+    "numeric_reference": "9260d97d67d6511d07f51fe0aed27e45f69a32387a857caabfadcc6ed741cd52"
+  },
+  "private_completed_acceptance_attested": true,
+  "original_primary_criterion": true,
+  "raw_audit_reproduced": false,
+  "native_replay_certificate": false
+}

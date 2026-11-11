@@ -13,6 +13,12 @@ Fine-grid dolphin contacts rise 1,051→1,334 and bird contacts 410→760, while
 
 The following original four-school map and population check remain a separate discovery stage. Their selected 45.1% dolphin gain is not the new validation estimate. All settings, ties and losses are retained.
 
+## Completed H2/G12 follow-up — same sixteen schools
+
+The follow-up adds 192 encounters on the **same sixteen school clusters**, with new matched H2 dolphin-only and G12-only controls, both labels and both grids. It does not add sixteen independent schools. Fine-grid dolphins catch **679→732 (+7.8%)**, mean **+0.138 fish per dolphin over 36T**, with a **95% pointwise t interval [−0.026, 0.302]**; the mean dolphin benefit remains uncertain. Gannets catch **297→540 (+81.8%)**, mean **+0.633 [0.430, 0.836]** per bird. School means include D10 gains/2ties/4losses and G15gains/1loss; joint gains occur in9/16.
+
+Coarse-grid totals are D691→721 and G268→656. The bird fine-minus-coarse partner gain is −0.378 [−0.641, −0.114] fish per bird, indicating numerical magnitude sensitivity. The additional four-fine-endpoint programme criterion is **not met** at98.75% marginal intervals; it leaves the original H1/G36 primary97.5% criterion unchanged. Both H and bird count change, so this comparison isolates neither factor. All six H2 contrasts, school/world losses, SD/SE and cached bootstrap sensitivity remain in the eight follow-up tables; no new bootstrap draws are made.
+
 ## Discovery findings
 
 The completed count extension finds **mutual feeding benefits within the model** at several settings, using an unchanged dolphin rule and matched single-species controls. The full map now contains 140 condition-school outcomes and 24 mixed settings on the same four previously observed schools.
@@ -70,13 +76,13 @@ Food per bird generally declines as flocks grow, but not monotonically at every 
 
 The map uses one capture setting and four previously examined schools. Its pointwise 95% intervals are exploratory, unadjusted across 24 settings and not independent confirmation of selected cells. School identity also seeds readiness/private streams; starting geometry and chance are not causally separated. Time and length are uncalibrated;36T is not 36 seconds, and catches do not measure energetic profit, fitness or intentional cooperation.
 
-Original shared-rule pilots gave dolphin gains 17.1% and 16.1% in distinct earlier cohorts. They remain archived. The separate eight-school H2/G3 check changed mean dolphin effects from+1 to 0 fish/school when the timestep was halved, and gannet effects from+5.125 to+2.5. Its fine dolphin mean combines four gains, three losses and one tie. That older result concerns another setting. H1/G36 now has the separate completed sixteen-school validation above; H2/G12 and the remaining discovery cells have not received that same validation. Two encounter grids do not establish numerical convergence.
+Original shared-rule pilots gave dolphin gains 17.1% and 16.1% in distinct earlier cohorts. They remain archived. The separate eight-school H2/G3 check changed mean dolphin effects from+1 to 0 fish/school when the timestep was halved, and gannet effects from+5.125 to+2.5. Its fine dolphin mean combines four gains, three losses and one tie. That older result concerns another setting. H1/G36 now has the separate completed sixteen-school validation above; H2/G12 now has the completed secondary follow-up above; the remaining discovery cells have not received that same validation. Two encounter grids do not establish numerical convergence.
 
 The departure diagnostic remains the older 48 bird-bearing G1/3/6 encounters, not all 128 bird-bearing runs in this map. It does not establish that continued bird diving is required to maintain dolphin gains.
 
 ## Current artifacts and separate model replay
 
-The six-page current paper has four figures and ten references. [main.ipynb](https://github.com/reuben-trade/FishSim-Dolphin-Gannet-Pilot/blob/main/main.ipynb) has 14 logical cells/7 code cells and reproduces 4 figures/13 canonical tables with zero model steps and no new bootstrap draws. Fresh-kernel production and a separate byte-copied space-path analysis both passed. Raw seals, controls, both labels/grids and all old profiles remain available; executions, replays and engineering checks are not independent schools.
+The six-page current paper has four figures and ten references. [main.ipynb](https://github.com/reuben-trade/FishSim-Dolphin-Gannet-Pilot/blob/main/main.ipynb) has 16 logical cells/8 code cells and reproduces 4 figures/21 canonical tables (13 original plus8 H2/programme) with zero model steps and no new bootstrap draws. Fresh-kernel production and a separate byte-copied space-path analysis both passed. Raw seals, controls, both labels/grids and all old profiles remain available; executions, replays and engineering checks are not independent schools.
 
 The interactive 3D viewer retains its validated 108-encounter through18 catalogue; it is not a new validation simulator. The [certified primary H1/G36 replay](../../docs/PRIMARY_MODEL_LOCAL_SETUP_2026-11-11.md) has accepted checks for both historical and source-built binaries: six fixed-world cases on both grids at 4T and 36T. A separate instrumented, relocated notebook check exercised the historical 4T route. These are software checks, add no independent schools and do not claim a fresh replay of all 192 feeding encounters. Native execution remains off by default; the tested native scope is Linux x86-64 CPython 3.12. Older H1/G9/H2/G12 examples remain historical.
 
