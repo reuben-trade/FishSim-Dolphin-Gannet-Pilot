@@ -55,6 +55,8 @@ The four-school discovery map remains separate, with all 24 H×bird-count settin
 
 The [pre-analysis plan](reports/supplements/VALIDATION_PREANALYSIS_PLAN.md) and earlier [48](reports/supplements/VALIDATION_PROGRESS_48.md), [96](reports/supplements/VALIDATION_PROGRESS_96.md) and [144-case](reports/supplements/VALIDATION_PROGRESS_144.md) snapshots remain unchanged. The separate [accessibility supplement](reports/supplements/HIGH_COUNT_ACCESSIBILITY.md) uses the older 128 bird-bearing discovery encounters. The [H2/G12 follow-up](reports/supplements/LOWER_COUNT_FOLLOWUP_PLAN.md) now has a [cumulative 96-case snapshot](reports/supplements/LOWER_COUNT_PROGRESS_96.md): eight shared schools, two nested labels and both grids, with all gains, ties and losses retained and no interim intervals or final decision. The [earlier 48-case snapshot](reports/supplements/LOWER_COUNT_PROGRESS_48.md) remains unchanged; all 192 follow-up cases continue. The planned [crossed follow-up](reports/supplements/CROSSED_FOLLOWUP_PLAN.md) has no feeding results here.
 
+The [exploratory attack-timing supplement](reports/supplements/ATTACK_TIMING_EXPLORATORY.md) reanalyses the completed primary study with a fixed 2T window. It preserves both grids and all timing metrics, without new simulations, intervals or causal synchronisation claims. The main paper and notebook are unchanged.
+
 A [prospective second held-out replication plan](reports/supplements/SECOND_HELDOUT_REPLICATION_PLAN.md) fixes a separate sixteen-school H1/G36 cohort; its preparation and feeding have not begun.
 
 ## Model execution and repository history
