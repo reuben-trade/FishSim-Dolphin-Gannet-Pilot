@@ -1,0 +1,101 @@
+{
+  "schema": "fishsim_h2_progress144_scalar_results_provenance_v1",
+  "scope": "Cumulative twelve-school simulation scalar snapshot; not real-human/field measurements, a full raw archive or a native replay package",
+  "design": {
+    "completed_cases_in_snapshot": 144,
+    "independent_schools_in_snapshot": 12,
+    "nested_randomness_labels": 2,
+    "school_seeds": [
+      39065501,
+      39065502,
+      39065503,
+      39065504,
+      39065505,
+      39065506,
+      39065507,
+      39065508,
+      39065509,
+      39065510,
+      39065511,
+      39065512
+    ],
+    "labels": [
+      71001,
+      71002
+    ],
+    "presence_arms": [
+      "D",
+      "G",
+      "DG"
+    ],
+    "dolphins_when_present": 12,
+    "gannets_when_present": 12,
+    "herding_minimum_T": 2,
+    "conditional_capture_probability": 0.7,
+    "grids": {
+      "coarse": 0.00125,
+      "fine": 0.000625
+    },
+    "nominal_encounter_T": 36,
+    "school_cohort_shared_with_primary": true,
+    "all192_followup_cases_continue_regardless_of_signs": true
+  },
+  "files": {
+    "lower_count_prefix144_cases.csv": {
+      "sha256": "1dd2aa890bf6ac033f69ebc7e9c7f443b7745c7fdd996aaff5170e2dbcc9734d",
+      "bytes": 28651
+    },
+    "reports/supplements/LOWER_COUNT_PROGRESS_144.md": {
+      "sha256": "83bbbc21dec25b9260e52c92b621ff577dadc5c445d4537563930b009ff91550",
+      "bytes": 6219
+    }
+  },
+  "audit_methods": {
+    "block1": {
+      "method": "Unchanged base raw/physical checks plus separately reviewed exact boundary-continuation adapter",
+      "unmodified_frozen_auditor_cli_passed": false,
+      "original_failed_audit_preserved": true,
+      "accepted_composite_review_sha256": "71d1c96a361942cb06f75b8f9f4b14935f429bd2f77cdac9d2624c2dfb462a3b"
+    },
+    "block2": {
+      "method": "Unchanged original frozen auditor",
+      "unmodified_frozen_auditor_cli_passed": true,
+      "accepted_original_review_sha256": "8c6d436a0d63d45383db74d06e7dfff774b5d412cfa3f9d9b527fa25b9fac04f"
+    },
+    "block3": {
+      "method": "Unchanged original frozen auditor",
+      "unmodified_frozen_auditor_cli_passed": true,
+      "accepted_original_review_sha256": "2c1f07cc7abd6e6fdfbefa07958f4f17b6a7324221dc77ca8f47cc63c779e983"
+    }
+  },
+  "evidence_sha256": {
+    "study_execution_freeze": "3ad4348be2e733d45ecd9a7b65afd00e559a915c65ec013b71287e7d06b3eb30",
+    "base_raw_physical_auditor": "6c1018930dcd736c83d41ed0d21690e10ba33c3c221deb35c0768350403e8fd8",
+    "reviewed_boundary_adapter": "32bc044c059b3a835bdf96c708e0d48d7cb1bb58813c89b730630d325b377368",
+    "preserved_original_failed_audit_witness": "3d6b02bdc605dc9fdd8cccb68d226d2b9dc395828f1f4af726abb55e0093d38b",
+    "independent_boundary_technical_review": "0e597fac14af52590f26279722ec78ae5eaae0d3c8e363e38e1b107a7c2e0b7d",
+    "accepted_block1_composite_review": "71d1c96a361942cb06f75b8f9f4b14935f429bd2f77cdac9d2624c2dfb462a3b",
+    "accepted_block2_original_review": "8c6d436a0d63d45383db74d06e7dfff774b5d412cfa3f9d9b527fa25b9fac04f",
+    "independent_cumulative_descriptive_arithmetic": "681403589cffeb202cb894963494269cf1882c0750ccbd732328a2385a46f7f3",
+    "root_cumulative_descriptive_arithmetic": "283753e75e61e5a6e0dfd1447a74f1ff93b2203f905dcda40a404b46de004c15",
+    "accepted_block3_original_review": "2c1f07cc7abd6e6fdfbefa07958f4f17b6a7324221dc77ca8f47cc63c779e983"
+  },
+  "reporting": {
+    "confidence_intervals_generated": 0,
+    "automated_decision": null,
+    "new_bootstrap_draws": 0,
+    "model_steps_executed_by_reporting": 0,
+    "original_H1_primary_n16_decision_unchanged": true,
+    "H_and_bird_count_both_change_between_regimes": true,
+    "all_labelled_worlds_and_school_signs_retained": true
+  },
+  "archive_exclusions": [
+    "internal execution permissions",
+    "operator configurations and tool witnesses",
+    "audit bodies and source archives",
+    "raw trajectories"
+  ],
+  "existing_public_same_schema_reference": "paper_profiles/final_primary192_2026-11-11/tables/validation_case_counts.csv",
+  "earlier48_snapshot_retained_unchanged": true,
+  "earlier48_and96_snapshots_retained_unchanged": true
+}
